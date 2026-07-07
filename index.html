@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dàn ý ôn thi — Tâm lý học tôn giáo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEE7D8;
+    --paper-dark:#E2D8C0;
+    --card:#F7F2E7;
+    --ink:#2A2420;
+    --ink-soft:#5C5040;
+    --ink-faint:#8A7D68;
+    --maroon:#7C2D2D;
+    --maroon-deep:#571F1F;
+    --forest:#33463B;
+    --gold:#A67C3D;
+    --line:#C9BC9B;
+    --shadow: 0 18px 40px -20px rgba(42,36,32,.45);
+    --serif:'Literata', 'Noto Serif', Georgia, serif;
+    --sans:'IBM Plex Sans','Noto Sans', system-ui, sans-serif;
+    --mono:'IBM Plex Mono','Noto Sans Mono', ui-monospace, monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-font-smoothing:antialiased;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 800px at 15% -10%, #F4EEDF 0%, transparent 55%),
+      var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    line-height:1.6;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  /* ---------- layout shell ---------- */
+  .app{
+    display:grid;
+    grid-template-columns:64px minmax(0,1fr);
+    min-height:100vh;
+  }
+
+  /* ---------- thumb-index tab rail ---------- */
+  .tabs{
+    background:linear-gradient(180deg, var(--paper-dark), var(--paper));
+    border-right:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    padding:22px 0;
+    gap:6px;
+    position:sticky;
+    top:0;
+    height:100vh;
+  }
+  .tabs__label{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    writing-mode:vertical-rl;
+    text-orientation:mixed;
+    text-align:center;
+    margin-bottom:10px;
+    padding-left:2px;
+  }
+  .tab{
+    border:none;
+    background:transparent;
+    cursor:pointer;
+    padding:14px 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    color:var(--ink-soft);
+    font-family:var(--sans);
+    flex:1;
+    min-height:64px;
+  }
+  .tab__num{
+    writing-mode:vertical-rl;
+    text-orientation:mixed;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.06em;
+  }
+  .tab::before{
+    content:"";
+    position:absolute;
+    left:0; top:10%; bottom:10%;
+    width:4px;
+    background:transparent;
+    border-radius:0 3px 3px 0;
+    transition:background .18s ease;
+  }
+  .tab:hover{color:var(--ink);}
+  .tab:hover::before{background:var(--gold);}
+  .tab[aria-selected="true"]{
+    background:var(--card);
+    color:var(--maroon-deep);
+    box-shadow:inset -1px 0 0 var(--card);
+  }
+  .tab[aria-selected="true"]::before{background:var(--maroon);}
+  .tab:focus-visible{outline:2px solid var(--maroon); outline-offset:-2px;}
+
+  /* ---------- reading column ---------- */
+  .reading{
+    padding:44px clamp(20px,5vw,72px) 120px;
+    max-width:820px;
+  }
+
+  .titlepage{
+    margin-bottom:44px;
+    padding-bottom:28px;
+    border-bottom:1px solid var(--line);
+  }
+  .titlepage .eyebrow{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--maroon);
+    margin:0 0 10px;
+  }
+  .titlepage h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(28px,4.2vw,42px);
+    margin:0 0 14px;
+    color:var(--ink);
+    letter-spacing:-.01em;
+  }
+  .titlepage p{
+    margin:0;
+    color:var(--ink-soft);
+    font-size:15px;
+    max-width:56ch;
+  }
+  .titlepage .src{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:16px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--ink-faint);
+  }
+  .titlepage .src .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);}
+
+  .question{ }
+  .question[hidden]{display:none;}
+
+  .q-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:6px;
+  }
+  .q-head .q-no{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:15px;
+    color:var(--card);
+    background:var(--maroon);
+    width:30px;height:30px;
+    border-radius:3px;
+    display:flex;align-items:center;justify-content:center;
+    flex:none;
+  }
+  .q-head h2{
+    font-family:var(--serif);
+    font-size:clamp(21px,2.6vw,27px);
+    font-weight:600;
+    margin:0;
+    color:var(--ink);
+  }
+  .q-sub{
+    color:var(--ink-faint);
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:.04em;
+    margin:0 0 26px 44px;
+  }
+
+  .block{margin:0 0 28px;}
+  .block h3{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--maroon-deep);
+    margin:0 0 12px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .block h3::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+  .block h4{
+    font-family:var(--serif);
+    font-weight:600;
+    font-style:italic;
+    font-size:16px;
+    margin:18px 0 8px;
+    color:var(--ink);
+  }
+  .block p{margin:0 0 10px; color:var(--ink);}
+  .block ul, .block ol{margin:0 0 10px; padding-left:22px;}
+  .block li{margin-bottom:7px;}
+  .block li::marker{color:var(--ink-faint);}
+
+  .callout{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:3px solid var(--forest);
+    border-radius:4px;
+    padding:14px 16px;
+    margin:14px 0 18px;
+    font-size:14.5px;
+  }
+  .callout strong{color:var(--forest);}
+
+  /* citation badge */
+  .cite{
+    font-family:var(--mono);
+    font-size:11.5px;
+    font-weight:600;
+    color:var(--maroon-deep);
+    background:#F0E4D2;
+    border:1px solid var(--gold);
+    border-radius:3px;
+    padding:1px 6px;
+    cursor:pointer;
+    line-height:1.5;
+    white-space:nowrap;
+    transform:rotate(-.4deg);
+    transition:transform .12s ease, background .12s ease, color .12s ease;
+  }
+  .cite:hover{background:var(--maroon); color:#fff; border-color:var(--maroon); transform:rotate(0deg);}
+  .cite:focus-visible{outline:2px solid var(--maroon); outline-offset:2px;}
+
+  .divider-end{
+    margin-top:52px;
+    padding-top:20px;
+    border-top:1px dashed var(--line);
+    color:var(--ink-faint);
+    font-size:13.5px;
+    font-style:italic;
+  }
+
+  /* ---------- floating sources button ---------- */
+  .fab{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    z-index:40;
+    background:var(--maroon);
+    color:#fff;
+    border:none;
+    border-radius:999px;
+    padding:13px 20px 13px 16px;
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:13.5px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+  }
+  .fab:hover{background:var(--maroon-deep);}
+  .fab:focus-visible{outline:2px solid var(--ink); outline-offset:3px;}
+  .fab svg{width:16px;height:16px;flex:none;}
+
+  /* ---------- backdrop + drawer ---------- */
+  .backdrop{
+    position:fixed; inset:0;
+    background:rgba(30,24,18,.38);
+    opacity:0; pointer-events:none;
+    transition:opacity .22s ease;
+    z-index:45;
+  }
+  .backdrop.show{opacity:1; pointer-events:auto;}
+
+  .drawer{
+    position:fixed;
+    top:0; right:0;
+    height:100%;
+    width:min(420px, 92vw);
+    background:var(--card);
+    border-left:1px solid var(--line);
+    box-shadow:var(--shadow);
+    transform:translateX(100%);
+    transition:transform .28s cubic-bezier(.2,.7,.3,1);
+    z-index:50;
+    display:flex;
+    flex-direction:column;
+  }
+  .drawer.open{transform:translateX(0);}
+
+  .drawer__head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 20px;
+    border-bottom:1px solid var(--line);
+    background:var(--paper-dark);
+    flex:none;
+  }
+  .drawer__head-title{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:12px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--maroon-deep);
+    display:flex; align-items:center; gap:8px;
+  }
+  .drawer__close{
+    border:none;
+    background:transparent;
+    color:var(--ink-soft);
+    cursor:pointer;
+    width:30px;height:30px;
+    border-radius:4px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;
+  }
+  .drawer__close:hover{background:var(--paper); color:var(--ink);}
+  .drawer__close:focus-visible{outline:2px solid var(--maroon);}
+
+  .drawer__body{
+    padding:20px;
+    overflow-y:auto;
+    flex:1;
+  }
+
+  .card-detail .tag{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:.05em;
+    color:var(--forest);
+    background:#E4E9E1;
+    border:1px solid #CBD6C5;
+    border-radius:3px;
+    padding:2px 7px;
+    margin-bottom:12px;
+  }
+  .card-detail .chapter{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:16.5px;
+    color:var(--ink);
+    margin:0 0 4px;
+  }
+  .card-detail .page{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--maroon-deep);
+    margin:0 0 16px;
+  }
+  .card-detail blockquote{
+    margin:0;
+    padding:16px 18px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:3px;
+    font-style:italic;
+    font-size:15px;
+    line-height:1.65;
+    color:var(--ink);
+    position:relative;
+  }
+  .card-detail blockquote::before{
+    content:"“";
+    position:absolute;
+    top:-6px; left:10px;
+    font-family:var(--serif);
+    font-size:34px;
+    color:var(--gold);
+    background:var(--paper);
+    padding:0 4px;
+  }
+  .card-detail .meta{
+    margin-top:12px;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-faint);
+  }
+  .back-to-list{
+    margin-top:20px;
+    background:none;
+    border:none;
+    color:var(--maroon-deep);
+    font-family:var(--sans);
+    font-size:12.5px;
+    font-weight:600;
+    cursor:pointer;
+    padding:0;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .back-to-list:hover{text-decoration:underline;}
+
+  .toc-list{list-style:none; margin:0; padding:0;}
+  .toc-item{
+    width:100%;
+    text-align:left;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:12px 14px;
+    margin-bottom:10px;
+    cursor:pointer;
+    font-family:var(--sans);
+  }
+  .toc-item:hover{border-color:var(--gold); background:#F3EBD8;}
+  .toc-item:focus-visible{outline:2px solid var(--maroon);}
+  .toc-item .toc-chapter{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:14px;
+    color:var(--ink);
+  }
+  .toc-item .toc-page{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--maroon-deep);
+    float:right;
+  }
+  .toc-item .toc-snip{
+    display:block;
+    font-size:12.5px;
+    color:var(--ink-faint);
+    margin-top:4px;
+    clear:both;
+  }
+
+  .drawer__intro{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin:0 0 16px;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 720px){
+    .app{grid-template-columns:1fr;}
+    .tabs{
+      position:sticky; top:0; z-index:30;
+      height:auto; width:100%;
+      flex-direction:row;
+      overflow-x:auto;
+      border-right:none;
+      border-bottom:1px solid var(--line);
+      padding:10px 8px;
+    }
+    .tabs__label{display:none;}
+    .tab{min-height:auto; padding:8px 14px; flex:none;}
+    .tab__num{writing-mode:horizontal-tb;}
+    .tab::before{left:10%; right:10%; top:auto; bottom:0; height:3px; width:auto;}
+    .reading{padding:28px 18px 100px;}
+    .q-sub{margin-left:0;}
+    .drawer{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Thumb-index tab rail -->
+  <nav class="tabs" role="tablist" aria-label="Chọn câu hỏi ôn thi">
+    <span class="tabs__label">Mục lục</span>
+    <button class="tab" role="tab" aria-selected="true" aria-controls="q1" data-q="1">
+      <span class="tab__num">Câu 1</span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="q2" data-q="2">
+      <span class="tab__num">Câu 2</span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="q3" data-q="3">
+      <span class="tab__num">Câu 3</span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="q4" data-q="4">
+      <span class="tab__num">Câu 4</span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="q5" data-q="5">
+      <span class="tab__num">Câu 5</span>
+    </button>
+  </nav>
+
+  <!-- Reading column -->
+  <main class="reading">
+
+    <header class="titlepage">
+      <p class="eyebrow">Dàn ý ôn thi</p>
+      <h1>Tâm lý học tôn giáo</h1>
+      <p>Năm dàn ý bám sát cấu trúc chương mục của giáo trình gốc. Nhấn vào các ô <span class="cite" style="cursor:default; transform:none;">tr. 00</span> để mở bảng đối chiếu nguyên văn từ nguồn.</p>
+      <div class="src"><span class="dot"></span> Vũ Dũng — <em>Tâm lý học tôn giáo</em>, Viện Tâm lý học, NXB Khoa học Xã hội, Hà Nội, 1998</div>
+    </header>
+
+    <!-- ================= CÂU 1 ================= -->
+    <section class="question" id="q1" role="tabpanel">
+      <div class="q-head"><span class="q-no">1</span><h2>Nguồn gốc tâm lý của tôn giáo</h2></div>
+      <p class="q-sub">liên hệ xã hội hiện đại ngày nay</p>
+
+      <div class="block">
+        <h3>Đặt vấn đề</h3>
+        <p>Tôn giáo là hiện tượng xã hội "mang đậm màu sắc tâm lý" <button class="cite" data-c="c1">tr. 3</button>; muốn hiểu bản chất của nó phải truy về nguồn gốc tâm lý — cụ thể là nguồn gốc của niềm tin tôn giáo <button class="cite" data-c="c2">tr. 41</button>.</p>
+      </div>
+
+      <div class="block">
+        <h3>Các hướng tiếp cận lý giải nguồn gốc tâm lý</h3>
+
+        <h4>1. Tiếp cận sinh học</h4>
+        <p>G.A. Coe, R.V. Berxol: tồn tại "bản năng tôn giáo" mang tính di truyền, vô thức. Phân tâm học (Freud): tôn giáo bắt nguồn từ "mặc cảm Ơđíp" <button class="cite" data-c="c3">tr. 44</button>, xem tôn giáo như một dạng ám ảnh tâm thần tập thể. Hạn chế: phủ nhận vai trò của yếu tố xã hội.</p>
+
+        <h4>2. Tiếp cận từ nỗi sợ hãi</h4>
+        <p>Phơbách: sợ hãi trước sức mạnh thiên nhiên, trước cái chết, trước điều chưa lý giải được là nguồn gốc tâm lý sâu xa của tôn giáo — con người bất lực trước thiên nhiên nên thần thánh hóa các lực lượng tự nhiên.</p>
+
+        <h4>3. Tiếp cận xã hội — lịch sử</h4>
+        <p>Ma thuật, Tôtem giáo <button class="cite" data-c="c5">tr. 50</button> — hình thức tôn giáo sơ khai gắn với lao động, săn bắt của người nguyên thủy; cơ sở tâm lý là liên tưởng theo sự giống nhau, gần gũi và nhu cầu an toàn trước hiểm họa.</p>
+
+        <h4>4. Quan điểm Mác — Ăngghen — Durkheim</h4>
+        <p>Tôn giáo là "tiếng thở dài của chúng sinh bị áp bức", là sự phản ánh hư ảo các lực lượng trần thế dưới hình thức siêu trần thế <button class="cite" data-c="c4">tr. 52</button>. Durkheim: tôn giáo là nơi sự xã hội hóa cá nhân thể hiện rõ nét nhất.</p>
+
+        <h4>5. Yếu tố tâm lý cá nhân củng cố niềm tin</h4>
+        <p>Sự tự ý thức về sự nhỏ bé, yếu đuối của con người trước lực lượng siêu nhiên "toàn năng, toàn mỹ"; nhu cầu được an ủi, giải tỏa bất lực, hy vọng vào cuộc sống tốt đẹp hơn <button class="cite" data-c="c8">tr. 88</button>.</p>
+      </div>
+
+      <div class="block">
+        <h3>Liên hệ xã hội hiện đại</h3>
+        <div class="callout">
+          <strong>Từ chính tài liệu:</strong> hiện tượng phù thủy, ma thuật chữa bệnh vẫn tồn tại trong xã hội hiện đại <button class="cite" data-c="c11">tr. 109</button> — cho thấy nguồn gốc tâm lý (sợ hãi, bất lực, khát vọng được giúp đỡ) không mất đi cùng sự phát triển khoa học kỹ thuật.
+        </div>
+        <p>Có thể mở rộng liên hệ: sự bất an trước biến động kinh tế, dịch bệnh, khủng hoảng khiến nhiều người tìm đến tín ngưỡng như một hình thức "an ủi tâm lý" hiện đại; các trào lưu tâm linh mới, phong thủy, xem bói online... phản ánh cùng một cơ chế tâm lý: sợ hãi cái chưa biết kết hợp với nhu cầu kiểm soát cuộc sống.</p>
+      </div>
+
+      <p class="divider-end">Xem thêm: mối liên hệ với Câu 2 (niềm tin) và Câu 5 (tình cảm tôn giáo).</p>
+    </section>
+
+    <!-- ================= CÂU 2 ================= -->
+    <section class="question" id="q2" role="tabpanel" hidden>
+      <div class="q-head"><span class="q-no">2</span><h2>Niềm tin tôn giáo</h2></div>
+      <p class="q-sub">toàn bộ Chương IV, tr. 41–83</p>
+
+      <div class="block">
+        <h3>Khái niệm</h3>
+        <p>Niềm tin là định hướng giá trị được xác định vững chắc trong nhận thức, chi phối hành động của cá nhân <button class="cite" data-c="c2">tr. 41</button>. Đối với bất kỳ tôn giáo nào, niềm tin tôn giáo luôn chiếm vị trí trung tâm — "tín đồ" đồng nghĩa với "con người có niềm tin tôn giáo".</p>
+      </div>
+
+      <div class="block">
+        <h3>Nguồn gốc của niềm tin tôn giáo</h3>
+        <p>Xem chi tiết các hướng tiếp cận (sinh học, sợ hãi, xã hội — lịch sử, mácxít) tại Câu 1 <button class="cite" data-c="c3">tr. 44</button> <button class="cite" data-c="c4">tr. 52</button>.</p>
+      </div>
+
+      <div class="block">
+        <h3>Đặc điểm của niềm tin tôn giáo</h3>
+        <ul>
+          <li>Tính bền vững, không tuân theo quy luật tự nhiên hay nhận thức khoa học thông thường.</li>
+          <li>Gắn với cảm giác nhỏ bé của con người trước lực lượng siêu nhiên "toàn năng, toàn mỹ" (Karl Barth).</li>
+          <li>P. Tilich: là "sự ham thích cao nhất của cá nhân", có thể làm thay đổi cấu trúc vô thức và ý thức.</li>
+          <li>Có yếu tố ý chí: niềm tin càng mạnh, khả năng kiểm soát hành vi theo chuẩn mực tôn giáo càng lớn (ví dụ đạo Tin Lành và tinh thần kinh doanh — Max Weber).</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>Các quá trình tâm lý quyết định niềm tin tôn giáo</h3>
+        <p>Nhận thức — tình cảm — ý chí đan xen; vai trò củng cố của gia đình và cộng đồng tôn giáo <button class="cite" data-c="c13">tr. 138</button> <button class="cite" data-c="c15">tr. 143</button> (xem chi tiết ở Câu 3).</p>
+      </div>
+
+      <p class="divider-end">Kết luận: niềm tin luôn hướng đến khách thể là lực lượng siêu nhiên hư ảo — là nền tảng tâm lý cho tình cảm, sùng bái và nhân cách tôn giáo.</p>
+    </section>
+
+    <!-- ================= CÂU 3 ================= -->
+    <section class="question" id="q3" role="tabpanel" hidden>
+      <div class="q-head"><span class="q-no">3</span><h2>Vai trò của gia đình và cộng đồng</h2></div>
+      <p class="q-sub">trong việc hình thành nhân cách tôn giáo — Chương VII, mục III, tr. 138–147</p>
+
+      <div class="block">
+        <h3>Luận điểm chung</h3>
+        <p>Nhân cách tôn giáo không hình thành trừu tượng mà trong các nhóm xã hội cụ thể; nhóm cơ bản đầu tiên là gia đình <button class="cite" data-c="c13">tr. 138</button>.</p>
+      </div>
+
+      <div class="block">
+        <h3>Vai trò của gia đình</h3>
+        <p>Gia đình là môi trường xã hội đầu tiên ảnh hưởng quyết định đến hình thành nhân cách tôn giáo — tạo cơ sở tính cách, định hướng giá trị, thế giới quan <button class="cite" data-c="c13">tr. 138</button>.</p>
+        <p><strong>Cơ chế tác động:</strong> bắt chước vô thức lời nói, hành vi cha mẹ; tiếp thu ngôn ngữ tôn giáo sớm ("Chúa", "Thiên đường"...); uy tín tuyệt đối của cha mẹ với trẻ trước tuổi đến trường.</p>
+        <p><strong>Số liệu minh họa:</strong> V. Start (1963): 85% tín đồ trẻ Thiên Chúa giáo, 71% Cơ Đốc giáo, 65% Do Thái giáo giữ tôn giáo cha mẹ <button class="cite" data-c="c14">tr. 138</button>. Nghiên cứu C. Hann: gia đình giáo dục cả hai chiều (tình yêu + trừng phạt) cho tỷ lệ trẻ tin và sợ Chúa cao nhất (73–84%).</p>
+        <p>Freud: quan hệ cha–con là cơ sở hình ảnh Thượng đế ("hình ảnh đặc biệt của người bố") — tâm lý học Xôviết phản bác, cho rằng gốc rễ là môi trường xã hội nói chung.</p>
+      </div>
+
+      <div class="block">
+        <h3>Vai trò của cộng đồng tôn giáo</h3>
+        <p>Cộng đồng tôn giáo có vị trí "không thể thiếu" cùng với gia đình <button class="cite" data-c="c15">tr. 143</button>. Tồn tại dưới dạng nhóm lớn hoặc nhóm nhỏ; nhóm càng nhỏ, gắn kết càng cao. Có hai hình thức: tổ chức chính thức (giáo lý, giáo luật) và không chính thức (linh hoạt, cảm xúc cao).</p>
+        <p><strong>Kênh tác động:</strong> hoạt động sùng bái chung (cầu nguyện, cúng tế tập thể); thuyết giáo (truyền bá giáo lý, chuẩn mực); vai trò thủ lĩnh tôn giáo (uy tín, khả năng ám thị).</p>
+        <p><strong>Chức năng quan trọng nhất:</strong> định hướng (dù là hư ảo) niềm tin của thành viên về thần thánh, về Thiên đường/Địa ngục.</p>
+      </div>
+
+      <p class="divider-end">Kết luận: gia đình đặt nền móng ban đầu; cộng đồng tôn giáo duy trì và củng cố nhân cách tôn giáo qua sinh hoạt tập thể và thuyết giáo — hai thiết chế bổ sung cho nhau.</p>
+    </section>
+
+    <!-- ================= CÂU 4 ================= -->
+    <section class="question" id="q4" role="tabpanel" hidden>
+      <div class="q-head"><span class="q-no">4</span><h2>Vai trò của nghi lễ tôn giáo</h2></div>
+      <p class="q-sub">đối với tâm lý tín đồ — Chương V mục III & Chương VI mục II, tr. 90–121</p>
+
+      <div class="block">
+        <h3>Cơ sở tâm lý hình thành nghi lễ tôn giáo</h3>
+        <p>Bắt nguồn từ hình thức tôn giáo sơ khai — ma thuật, phản ánh sợ hãi, lo lắng trước thiên nhiên <button class="cite" data-c="c11">tr. 104</button>. Cơ sở tâm lý là liên tưởng tuyệt đối theo sự giống nhau (Lévy-Bruhl). Hiện tượng phù thủy: trạng thái hưng phấn tột độ, tự kỷ ám thị — vẫn tồn tại đến ngày nay <button class="cite" data-c="c11">tr. 109</button>. Tôtem giáo: nghi lễ ăn thịt vật tổ củng cố cảm giác thống nhất cộng đồng <button class="cite" data-c="c5">tr. 50</button>.</p>
+        <p>Hai hình thức sùng bái cơ bản trong xã hội có giai cấp: <strong>cúng tế</strong> và <strong>cầu nguyện</strong>. Cầu nguyện: cơ sở tâm lý là nhu cầu thỉnh cầu, tìm sự thanh thản, hy vọng <button class="cite" data-c="c12">tr. 115</button>; càng sợ hãi/nguy hiểm thì cầu nguyện càng tha thiết.</p>
+      </div>
+
+      <div class="block">
+        <h3>Ba giai đoạn phát triển tình cảm tôn giáo trong nghi lễ</h3>
+        <ol>
+          <li><strong>Giai đoạn bắt đầu</strong> — cường độ cảm xúc tăng dần, cảm xúc tiêu cực (sợ hãi, ăn năn) chiếm ưu thế.</li>
+          <li><strong>Giai đoạn đỉnh cao</strong> — cảm xúc đạt cường độ cao nhất, chuyển từ tiêu cực sang tích cực (từ sợ hãi/tội lỗi sang thanh thản, vui sướng).</li>
+          <li><strong>Giai đoạn kết thúc</strong> — cảm xúc dịu dần, trở nên nhẹ nhàng, đôi khi kèm hy vọng.</li>
+        </ol>
+        <p><button class="cite" data-c="c9">tr. 90</button> Nghi lễ giúp tín đồ "trút bỏ cảm xúc tiêu cực", kết thúc bằng cảm xúc tích cực.</p>
+      </div>
+
+      <div class="block">
+        <h3>Cơ chế tâm lý tác động khi thực hiện nghi lễ</h3>
+        <p>Yếu tố sinh lý (hô hấp, tuần hoàn, thần kinh trung ương); ăn chay làm tăng khả năng tiếp nhận tư tưởng tôn giáo; cơ chế thôi miên (ám thị), bắt chước, lây lan tâm lý theo quy luật cộng hưởng trong tập thể.</p>
+      </div>
+
+      <div class="block">
+        <h3>Xưng tội và suy tưởng — hình thức nghi lễ đặc thù</h3>
+        <p>Xưng tội giúp trút bỏ cảm xúc tiêu cực, tin rằng tội lỗi được tha thứ <button class="cite" data-c="c10">tr. 95</button>. Suy tưởng (thiền định, yoga) giúp đạt trạng thái tập trung cao độ, củng cố niềm tin tôn giáo.</p>
+      </div>
+
+      <p class="divider-end">Kết luận: nghi lễ tôn giáo là cơ chế tâm lý giúp tín đồ giải tỏa cảm xúc tiêu cực, củng cố niềm tin, tạo gắn kết cộng đồng và đạt trạng thái an ủi tinh thần.</p>
+    </section>
+
+    <!-- ================= CÂU 5 ================= -->
+    <section class="question" id="q5" role="tabpanel" hidden>
+      <div class="q-head"><span class="q-no">5</span><h2>Tình cảm tôn giáo</h2></div>
+      <p class="q-sub">Chương V, tr. 84–99</p>
+
+      <div class="block">
+        <h3>Khái niệm và đặc điểm</h3>
+        <p>Tình cảm là cảm xúc thể hiện quan hệ chủ quan của chủ thể đến một đối tượng <button class="cite" data-c="c6">tr. 84</button>. Một số nhà tâm lý học coi tình cảm là nguồn gốc cơ bản của tôn giáo (Gephind, James).</p>
+        <p>Các định nghĩa: Sleimaxơ — "tình cảm phụ thuộc"; R. Ôttô — sự thống nhất giữa lòng khâm phục và sợ hãi thần thánh <button class="cite" data-c="c7">tr. 85</button>. Không nên hiểu tình cảm tôn giáo chỉ là tiêu cực — còn bao gồm tình yêu, sự kính phục, tôn sùng.</p>
+      </div>
+
+      <div class="block">
+        <h3>Các loại tình cảm tôn giáo</h3>
+        <ul>
+          <li><strong>Tiêu cực:</strong> sợ hãi — từ sợ lực lượng tự nhiên (người nguyên thủy) đến sợ lực lượng siêu nhiên (tín đồ hiện đại).</li>
+          <li><strong>Tích cực:</strong> tình yêu — loại tình cảm quan trọng nhất, hình thành qua cầu nguyện, sinh hoạt tôn giáo. Ở tín đồ Kitô giáo: tình yêu Chúa đứng hàng đầu, sau đó là tình yêu con người, không mâu thuẫn nhau.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>Sự an ủi — chức năng tâm lý quan trọng nhất</h3>
+        <div class="callout"><strong>Định nghĩa:</strong> "An ủi tôn giáo là sự tác động có ý nghĩa tới con người, thúc đẩy việc loại trừ những cảm xúc tiêu cực, khắc phục những xung đột tinh thần." <button class="cite" data-c="c8">tr. 88</button></div>
+        <p>Đặc trưng: dựa trên sự thỏa mãn hư ảo nhưng tạo hiệu quả tâm lý thực — giải tỏa stress, tìm phương hướng hành động.</p>
+      </div>
+
+      <div class="block">
+        <h3>Phát triển tình cảm tôn giáo trong nghi lễ</h3>
+        <p>Ba giai đoạn: bắt đầu — đỉnh cao — kết thúc <button class="cite" data-c="c9">tr. 90</button> (chi tiết ở Câu 4). Xưng tội và suy tưởng là phương tiện củng cố tình cảm tôn giáo <button class="cite" data-c="c10">tr. 95</button>.</p>
+      </div>
+
+      <p class="divider-end">Kết luận: tình cảm tôn giáo là khía cạnh tâm lý quan trọng nhất của tôn giáo — gắn bó chặt chẽ với niềm tin, được nuôi dưỡng qua nghi lễ, có chức năng an ủi và gắn kết cộng đồng.</p>
+    </section>
+
+  </main>
+</div>
+
+<!-- Floating button: full source index -->
+<button class="fab" id="fabOpen">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+  Đối chiếu nguồn
+</button>
+
+<div class="backdrop" id="backdrop"></div>
+
+<aside class="drawer" id="drawer" aria-hidden="true" aria-label="Đối chiếu nội dung nguồn">
+  <div class="drawer__head">
+    <span class="drawer__head-title" id="drawerTitle">Toàn bộ trích dẫn</span>
+    <button class="drawer__close" id="drawerClose" aria-label="Đóng bảng đối chiếu">&times;</button>
+  </div>
+  <div class="drawer__body" id="drawerBody"><!-- populated by JS --></div>
+</aside>
+
+<script>
+  const citations = {
+    c1:  { chapter:"Lời nói đầu", page:"tr. 3", quote:"Tôn giáo là một hiện tượng xã hội tồn tại lâu đời nhất trong lịch sử loài người… Tôn giáo là một hiện tượng xã hội mang đậm màu sắc tâm lý. Nó phản ánh rõ nét đời sống tâm lý của con người, và các yếu tố tâm lý mang màu sắc tôn giáo này lại có ảnh hưởng không nhỏ đến hoạt động thực tiễn của con người." },
+    c2:  { chapter:"Chương IV, mục I — Niềm tin tôn giáo", page:"tr. 41", quote:"Niềm tin là định hướng giá trị được xác định vững chắc trong nhận thức và chi phối hành động của cá nhân… Đối với bất kỳ tôn giáo nào, niềm tin tôn giáo bao giờ cũng chiếm vị trí trung tâm. Thuật ngữ 'tín đồ' đồng nghĩa với khái niệm 'con người có niềm tin tôn giáo'." },
+    c3:  { chapter:"Chương IV, mục I — Tiếp cận sinh học", page:"tr. 44", quote:"Các đại biểu của trường phái Phân tâm học đã thử nghiệm tìm hiểu nguồn gốc của niềm tin tôn giáo qua các bản năng sinh học… S. Freud đã giải thích nguồn gốc tôn giáo bằng 'mặc cảm Ơđíp' (trong cuốn Totem and Taboo, 1913)." },
+    c4:  { chapter:"Chương IV — Quan điểm mácxít", page:"tr. 52–53", quote:"C. Mác: 'Tôn giáo là trái tim của thế giới không có trái tim, là tinh thần của xã hội không có tinh thần, là tiếng thở dài của chúng sinh bị áp bức.' Ph. Ăngghen: mọi tôn giáo chẳng qua chỉ là sự phản ánh hư ảo vào đầu óc con người những lực lượng ở trần thế dưới hình thức những lực lượng siêu trần thế." },
+    c5:  { chapter:"Chương IV — Tôtem giáo", page:"tr. 50–51", quote:"Tôtem giáo là tín ngưỡng thờ vật tổ. Con người gán cho một vật trong thiên nhiên là tổ của mình… Cơ sở tâm lý của nó là quan hệ đặc thù giữa nhóm xã hội và tôtem (vật tổ), là cảm giác về sự thống nhất giữa hai cái đó." },
+    c6:  { chapter:"Chương V, mục I — Tình cảm tôn giáo", page:"tr. 84", quote:"Tình cảm là cảm xúc thể hiện quan hệ chủ quan của chủ thể đến một đối tượng nào đó… Nhiều nhà tâm lý học đã coi tình cảm tôn giáo như là nguồn gốc cơ bản của tôn giáo." },
+    c7:  { chapter:"Chương V, mục I — Đặc điểm tình cảm tôn giáo", page:"tr. 85", quote:"Nhà thần học Đức Ph. Sleimaxơ xem tình cảm tôn giáo là 'tình cảm phụ thuộc'. R. Ôttô cho rằng tình cảm tôn giáo là sự thống nhất đặc biệt giữa lòng khâm phục và sự sợ hãi thần thánh… Các tình cảm tôn giáo tích cực gồm: tình yêu, sự kính phục, tôn sùng." },
+    c8:  { chapter:"Chương V, mục II — Sự an ủi", page:"tr. 88", quote:"An ủi tôn giáo là sự tác động có ý nghĩa tới con người, thúc đẩy việc loại trừ những cảm xúc tiêu cực, khắc phục những xung đột tinh thần của con người." },
+    c9:  { chapter:"Chương V, mục III — Các giai đoạn nghi lễ", page:"tr. 90–93", quote:"Trong quá trình thực hiện nghi lễ tôn giáo (cúng tế, cầu nguyện…), tình cảm tôn giáo phát triển qua ba giai đoạn: bắt đầu, đỉnh cao, kết thúc… Sự biến đổi tình cảm tôn giáo bắt đầu từ những cảm xúc tiêu cực và kết thúc bằng những cảm xúc tích cực." },
+    c10: { chapter:"Chương V, mục IV — Xưng tội", page:"tr. 95–96", quote:"Xưng tội là sự giãi bày với người khác về những hành vi mà mình đã thực hiện… Trong quá trình xưng tội tôn giáo, con người trút bỏ được những cảm xúc tiêu cực, tin rằng qua hành vi xưng tội trước Chúa, những tội lỗi của mình sẽ được Người tha thứ." },
+    c11: { chapter:"Chương VI, mục II — Cơ sở tâm lý nghi lễ", page:"tr. 104, 109", quote:"Để tìm hiểu cơ sở tâm lý của nghi lễ tôn giáo, chúng ta bắt đầu từ hình thức tôn giáo sơ khai của con người… phản ánh sự sợ hãi, lo lắng, thiếu tin tưởng vào khả năng của mình trước thiên nhiên hùng vĩ và đầy bí ẩn. Hiện tượng phù thủy vẫn còn tồn tại trong xã hội hiện đại ngày nay, đặc biệt trong lĩnh vực chữa bệnh." },
+    c12: { chapter:"Chương VI, mục II — Cầu nguyện", page:"tr. 115", quote:"Cầu nguyện là nghi lễ tôn giáo đặc biệt được hình thành trên cơ sở những hình thức đọc thần chú và ma thuật nói của người nguyên thủy… L. Phơbách cho rằng, cơ sở tâm lý của cầu nguyện là yêu cầu, là thỉnh cầu hướng tới Chúa của người cầu nguyện." },
+    c13: { chapter:"Chương VII, mục III.1 — Gia đình", page:"tr. 138", quote:"Gia đình là môi trường xã hội đầu tiên có ảnh hưởng quyết định đến việc hình thành nhân cách tôn giáo của con người. Nói cách khác, sự hình thành nhân cách tôn giáo của cá nhân bắt đầu từ gia đình." },
+    c14: { chapter:"Chương VII, mục III.1 — Số liệu (V. Start, 1963)", page:"tr. 138", quote:"85% tín đồ trẻ đạo Thiên Chúa giáo, 71% tín đồ trẻ đạo Cơ Đốc giáo và 65% tín đồ trẻ của đạo Do Thái ở Mỹ đã giữ lại tôn giáo của bố mẹ mình." },
+    c15: { chapter:"Chương VII, mục III.2 — Cộng đồng tôn giáo", page:"tr. 143–144", quote:"Cùng với nhóm gia đình, cộng đồng tôn giáo có vị trí không thể thiếu được đối với sự hình thành nhân cách tôn giáo của cá nhân." },
+    c16: { chapter:"Mục lục sách", page:"tr. 158–159", quote:"Chương IV: Niềm tin tôn giáo (41) — Chương V: Tình cảm tôn giáo (84) — Chương VI: Sùng bái tôn giáo (100) — Chương VII: Nhân cách tôn giáo (133)." }
+  };
+
+  const drawer   = document.getElementById('drawer');
+  const backdrop = document.getElementById('backdrop');
+  const drawerBody  = document.getElementById('drawerBody');
+  const drawerTitle = document.getElementById('drawerTitle');
+  let lastFocused = null;
+
+  function renderList(){
+    drawerTitle.textContent = 'Toàn bộ trích dẫn';
+    let html = '<p class="drawer__intro">Danh sách nguyên văn được trích trong sách, dùng để đối chiếu với các mục trong dàn ý.</p><ul class="toc-list">';
+    Object.keys(citations).forEach(id=>{
+      const c = citations[id];
+      html += `<li><button class="toc-item" data-c="${id}">
+        <span class="toc-page">${c.page}</span>
+        <span class="toc-chapter">${c.chapter}</span>
+        <span class="toc-snip">${c.quote.slice(0,72)}…</span>
+      </button></li>`;
+    });
+    html += '</ul>';
+    drawerBody.innerHTML = html;
+    drawerBody.querySelectorAll('.toc-item').forEach(btn=>{
+      btn.addEventListener('click', ()=>renderDetail(btn.dataset.c));
+    });
+  }
+
+  function renderDetail(id){
+    const c = citations[id];
+    if(!c) return;
+    drawerTitle.textContent = 'Đối chiếu nguồn';
+    drawerBody.innerHTML = `
+      <div class="card-detail">
+        <span class="tag">Trích nguyên văn</span>
+        <p class="chapter">${c.chapter}</p>
+        <p class="page">${c.page}</p>
+        <blockquote>${c.quote}</blockquote>
+        <p class="meta">Vũ Dũng, <em>Tâm lý học tôn giáo</em>, NXB KHXH, Hà Nội, 1998</p>
+        <button class="back-to-list" id="backBtn">&larr; Toàn bộ trích dẫn</button>
+      </div>`;
+    document.getElementById('backBtn').addEventListener('click', renderList);
+  }
+
+  function openDrawer(id){
+    lastFocused = document.activeElement;
+    if(id){ renderDetail(id); } else { renderList(); }
+    drawer.classList.add('open');
+    backdrop.classList.add('show');
+    drawer.setAttribute('aria-hidden','false');
+    document.getElementById('drawerClose').focus();
+  }
+
+  function closeDrawer(){
+    drawer.classList.remove('open');
+    backdrop.classList.remove('show');
+    drawer.setAttribute('aria-hidden','true');
+    if(lastFocused) lastFocused.focus();
+  }
+
+  document.getElementById('fabOpen').addEventListener('click', ()=>openDrawer(null));
+  document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+  backdrop.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape' && drawer.classList.contains('open')) closeDrawer(); });
+
+  document.querySelectorAll('.cite[data-c]').forEach(btn=>{
+    btn.addEventListener('click', ()=>openDrawer(btn.dataset.c));
+  });
+
+  // tab switching
+  const tabs = document.querySelectorAll('.tab[data-q]');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      tabs.forEach(t=>t.setAttribute('aria-selected','false'));
+      tab.setAttribute('aria-selected','true');
+      document.querySelectorAll('.question').forEach(sec=>sec.hidden = true);
+      document.getElementById('q'+tab.dataset.q).hidden = false;
+      document.querySelector('.reading').scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+</script>
+</body>
+</html>
