@@ -39,6 +39,12 @@ body{
 a{color:inherit;}
 ::selection{background:var(--gold); color:var(--paper);}
 
+/* locks page scroll while a modal/drawer/sidepanel is open — toggle via JS */
+body.scroll-lock{
+  overflow:hidden;
+  height:100vh;
+}
+
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
 }

@@ -12,12 +12,14 @@
   gap:6px;
   font-family:var(--mono);
   font-size:11.5px;
+  font-weight:700;
   letter-spacing:.04em;
-  color:var(--ink-faint);
+  color:var(--maroon-deep);
   text-decoration:none;
   margin-bottom:16px;
 }
-.back-link:hover{color:var(--maroon-deep);}
+.back-link:hover{color:var(--maroon); text-decoration:underline;}
+.back-link:focus-visible{outline:2px solid var(--maroon); outline-offset:2px;}
 
 /* ---------- layout shell ---------- */
 .app{
@@ -249,7 +251,7 @@
 /* ---------- backdrop + drawer ---------- */
 .backdrop{
   position:fixed; inset:0;
-  background:rgba(30,24,18,.38);
+  background:rgba(20,16,12,.75);
   opacity:0; pointer-events:none;
   transition:opacity .22s ease;
   z-index:45;
@@ -260,7 +262,9 @@
   position:fixed;
   top:0; right:0;
   height:100%;
-  width:min(420px, 92vw);
+  width:50vw;
+  min-width:360px;
+  max-width:720px;
   background:var(--card);
   border-left:1px solid var(--line);
   box-shadow:var(--shadow);
@@ -462,7 +466,6 @@
 .answer-trigger svg{width:14px;height:14px;flex:none;}
 
 /* ---------- sample-answer sidepanel ---------- */
-.answerDrawer{width:min(480px, 94vw);}
 .answerDrawer .drawer__head{background:#E4E9E1; border-bottom-color:#CBD6C5;}
 .answerDrawer .drawer__head-title{color:var(--forest);}
 
@@ -527,5 +530,31 @@
   .tab::before{left:10%; right:10%; top:auto; bottom:0; height:3px; width:auto;}
   .reading{padding:28px 18px 100px;}
   .q-sub{margin-left:0;}
-  .drawer{width:100%;}
+
+  /* ---------- bottom-sheet drawers on mobile ---------- */
+  .drawer{
+    top:auto; right:0; left:0; bottom:0;
+    width:100%;
+    min-width:0;
+    max-width:none;
+    height:auto;
+    max-height:85vh;
+    border-left:none;
+    border-top:1px solid var(--line);
+    border-radius:16px 16px 0 0;
+    box-shadow:0 -14px 34px -18px rgba(42,36,32,.5);
+    transform:translateY(100%);
+  }
+  .drawer.open{transform:translateY(0);}
+  .drawer::before{
+    content:"";
+    display:block;
+    flex:none;
+    width:40px;
+    height:4px;
+    margin:10px auto 0;
+    border-radius:999px;
+    background:var(--line);
+  }
+  .drawer__body{padding-bottom:32px;}
 }
