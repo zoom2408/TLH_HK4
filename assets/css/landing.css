@@ -1,0 +1,104 @@
+/* =========================================================
+   landing.css — styles specific to the root landing page
+   (index.html). Relies on design tokens from theme.css.
+   ========================================================= */
+
+.page{
+  max-width:960px;
+  margin:0 auto;
+  padding:64px 24px 80px;
+}
+
+.hero{
+  margin-bottom:48px;
+  padding-bottom:28px;
+  border-bottom:1px solid var(--line);
+}
+.hero h1{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:clamp(32px,5vw,48px);
+  margin:0 0 14px;
+  color:var(--ink);
+  letter-spacing:-.01em;
+}
+.hero__desc{
+  margin:0;
+  color:var(--ink-soft);
+  font-size:15.5px;
+  max-width:60ch;
+}
+
+/* ---------- subject card grid ---------- */
+.subjects{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:20px;
+}
+
+.subject-card{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:22px;
+  text-decoration:none;
+  color:var(--ink);
+  box-shadow:var(--shadow);
+  transition:transform .15s ease, border-color .15s ease;
+}
+.subject-card h2{
+  font-family:var(--serif);
+  font-size:19px;
+  font-weight:600;
+  margin:0;
+  color:var(--ink);
+}
+.subject-card p{
+  margin:0;
+  font-size:13.5px;
+  color:var(--ink-soft);
+  line-height:1.55;
+}
+.subject-card__tag{
+  align-self:flex-start;
+}
+.subject-card__cta{
+  margin-top:auto;
+  padding-top:10px;
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:13px;
+  color:var(--maroon-deep);
+}
+
+.subject-card--active{cursor:pointer;}
+.subject-card--active:hover{transform:translateY(-3px); border-color:var(--gold);}
+.subject-card--active:focus-visible{outline:2px solid var(--maroon); outline-offset:3px;}
+
+.subject-card--soon{
+  opacity:.6;
+  background:var(--paper-dark);
+  box-shadow:none;
+  cursor:default;
+}
+.subject-card__tag--soon{
+  color:var(--ink-faint);
+  background:transparent;
+  border-color:var(--line);
+}
+
+.footer{
+  margin-top:56px;
+  padding-top:20px;
+  border-top:1px dashed var(--line);
+  color:var(--ink-faint);
+  font-size:13px;
+  font-style:italic;
+}
+
+@media (max-width:720px){
+  .page{padding:40px 18px 60px;}
+}
