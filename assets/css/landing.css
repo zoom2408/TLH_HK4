@@ -10,9 +10,17 @@
 }
 
 .hero{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:32px;
   margin-bottom:48px;
   padding-bottom:28px;
   border-bottom:1px solid var(--line);
+}
+.hero__content{
+  flex:1 1 auto;
+  min-width:0;
 }
 .hero h1{
   font-family:var(--serif);
@@ -27,6 +35,13 @@
   color:var(--ink-soft);
   font-size:15.5px;
   max-width:60ch;
+}
+
+.hero__art{
+}
+.hero__art img{
+  display:block;
+  height:auto;
 }
 
 /* ---------- subject card grid ---------- */
@@ -101,4 +116,6 @@
 
 @media (max-width:720px){
   .page{padding:40px 18px 60px;}
+  .hero{flex-direction:column; align-items:flex-start; gap:20px;}
+  .hero__art{width:min(200px, 55vw); align-self:center;}
 }
