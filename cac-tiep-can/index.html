@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mục lục — Các tiếp cận tham vấn trị liệu tâm lý</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="reading" style="max-width:980px;">
+
+  <header class="titlepage">
+    <a class="back-link" href="../index.html">&larr; Học kỳ 4</a>
+    <p class="eyebrow">Ôn thi — bộ tài liệu mở rộng</p>
+    <h1>Các tiếp cận tham vấn trị liệu tâm lý</h1>
+    <p>Mục lục môn học: 11 cách tiếp cận trị liệu (dựa trên slide bài giảng gốc của giáo viên), quiz trắc nghiệm 60 câu tự chấm điểm, và 2 câu tự luận cảm nghĩ cá nhân kèm văn mẫu — đúng cấu trúc đề thi giáo viên yêu cầu.</p>
+    <div class="src"><span class="dot"></span> Nội dung dựa trên slide bài giảng gốc của giáo viên — <a href="https://drive.google.com/drive/folders/1-psxQ1fs_h9YM0VsXfAKHfe8ZpDW1bAa" target="_blank" rel="noopener">xem nguồn trên Google Drive ↗</a></div>
+  </header>
+
+  <div class="block">
+    <h3>Công cụ ôn tập</h3>
+    <div class="tool-row">
+      <a class="tool-card" href="quiz.html">
+        <h3>Quiz trắc nghiệm</h3>
+        <p>3 phiên bản 20 / 30 / 60 câu · tự chấm điểm · xem lại đúng/sai kèm giải thích</p>
+      </a>
+      <a class="tool-card" href="cau-hoi-ngan.html">
+        <h3>Câu hỏi ngắn &amp; văn mẫu</h3>
+        <p>2 câu đúng format đề thi (cảm nghĩ cá nhân) + câu hỏi ôn tập mở rộng, mỗi câu kèm 3 văn mẫu</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="block" id="quickrefBlock">
+    <div class="block-head">
+      <h3>Bảng tổng hợp nhanh — 5 mục cần nắm</h3>
+      <div class="block-actions">
+        <button class="btn-ghost" id="qrToggle" type="button" aria-expanded="true" aria-controls="quickrefWrap">
+          <span class="chev">▾</span><span id="qrToggleLabel">Thu gọn</span>
+        </button>
+        <button class="btn-ghost" id="qrPrint" type="button" title="Mở hộp thoại in — chọn &quot;Lưu dưới dạng PDF&quot; để xuất PDF">
+          <span aria-hidden="true">🖨</span> In / Xuất PDF
+        </button>
+      </div>
+    </div>
+    <p style="font-size:13.5px; color:var(--ink-soft); margin:0 0 14px;">Tên cách tiếp cận · sáng lập chính · khái niệm cốt lõi · mục tiêu trị liệu · kỹ thuật — theo đúng yêu cầu của giáo viên. Bấm vào tên để xem chi tiết đầy đủ.</p>
+    <div class="quickref-wrap" id="quickrefWrap">
+      <table class="quickref" id="quickrefTable"><!-- render bởi JS từ data/approaches.js --></table>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>11 cách tiếp cận</h3>
+    <div class="hub-grid" id="hubGrid"><!-- render bởi JS từ data/approaches.js --></div>
+  </div>
+
+  <p class="divider-end">Đổi tên hoặc bổ sung cách tiếp cận: sửa trong <code>data/approaches.js</code> — trang này, bảng tổng hợp, quiz và câu hỏi ngắn sẽ tự cập nhật theo.</p>
+
+</main>
+
+<script src="data/approaches.js"></script>
+<script>
+  const hubGrid = document.getElementById('hubGrid');
+  hubGrid.innerHTML = APPROACHES.map(a => `
+    <a class="hub-card" href="${a.file}">
+      <span class="num">Cách tiếp cận ${String(a.no).padStart(2,'0')}</span>
+      <h3>${a.name}</h3>
+      <p class="who">${a.en} — ${a.founders}</p>
+    </a>
+  `).join('');
+
+  const quickref = document.getElementById('quickrefTable');
+  const head = `<thead><tr>
+    <th>#</th><th>Tên cách tiếp cận / Sáng lập</th><th>Khái niệm cốt lõi</th><th>Mục tiêu trị liệu</th><th>Kỹ thuật</th>
+  </tr></thead>`;
+  const rows = APPROACHES.map(a => `
+    <tr>
+      <td class="qr-no">${String(a.no).padStart(2,'0')}</td>
+      <td class="qr-name"><a href="${a.file}">${a.name}</a><span class="qr-founders">${a.founders}</span></td>
+      <td>${(a.coreConcepts||[]).map(c => `<span class="qr-chip">${c.split('(')[0].trim()}</span>`).join('')}</td>
+      <td class="qr-goal">${a.goal}</td>
+      <td>${(a.techniques||[]).map(t => `<span class="qr-chip">${t.split('(')[0].trim()}</span>`).join('')}</td>
+    </tr>
+  `).join('');
+  quickref.innerHTML = head + `<tbody>${rows}</tbody>`;
+
+  // ---- thu gọn / mở rộng bảng tổng hợp ----
+  const qrToggle = document.getElementById('qrToggle');
+  const qrToggleLabel = document.getElementById('qrToggleLabel');
+  const qrWrap = document.getElementById('quickrefWrap');
+  qrToggle.addEventListener('click', () => {
+    const collapsed = qrWrap.hasAttribute('hidden');
+    if (collapsed) {
+      qrWrap.removeAttribute('hidden');
+      qrToggle.setAttribute('aria-expanded', 'true');
+      qrToggleLabel.textContent = 'Thu gọn';
+    } else {
+      qrWrap.setAttribute('hidden', '');
+      qrToggle.setAttribute('aria-expanded', 'false');
+      qrToggleLabel.textContent = 'Mở rộng';
+    }
+  });
+
+  // ---- in / xuất PDF chỉ riêng bảng tổng hợp — luôn ở khổ ngang (landscape) ----
+  const qrPrint = document.getElementById('qrPrint');
+  let qrLandscapeStyle = null;
+
+  function endQuickrefPrint() {
+    document.body.classList.remove('print-quickref-only');
+    if (qrLandscapeStyle) { qrLandscapeStyle.remove(); qrLandscapeStyle = null; }
+  }
+
+  qrPrint.addEventListener('click', () => {
+    // luôn mở rộng bảng trước khi in để chắc chắn đủ cả 5 mục
+    qrWrap.removeAttribute('hidden');
+    qrToggle.setAttribute('aria-expanded', 'true');
+    qrToggleLabel.textContent = 'Thu gọn';
+
+    document.body.classList.add('print-quickref-only');
+
+    // ép khổ giấy ngang chỉ cho lượt in này (không ảnh hưởng in trang khác)
+    qrLandscapeStyle = document.createElement('style');
+    qrLandscapeStyle.textContent = '@page{ size: landscape; margin: 12mm; }';
+    document.head.appendChild(qrLandscapeStyle);
+
+    window.print();
+  });
+  window.addEventListener('afterprint', endQuickrefPrint);
+</script>
+</body>
+</html>

@@ -13,12 +13,24 @@ Trang web tĩnh (HTML/CSS/JS thuần, không cần build) tổng hợp dàn ý �
 │   │   └── landing.css     # CSS riêng cho trang chủ
 │   └── material/           # Giáo trình / sách / PDF nguồn — thả file trực tiếp vào đây
 │       └── README.md       # Ghi chú tên file cần có cho từng môn
-└── tlh-ton-giao/            # Môn: Tâm lý học Tôn giáo
-    ├── index.html           # Trang ôn tập (5 câu hỏi, trích dẫn đối chiếu, đáp án mẫu 3 giọng văn)
-    └── style.css            # CSS riêng cho trang này (tabs, drawer, citation, đáp án mẫu...)
+├── tlh-ton-giao/            # Môn: Tâm lý học Tôn giáo
+│   ├── index.html           # Trang ôn tập (5 câu hỏi, trích dẫn đối chiếu, đáp án mẫu 3 giọng văn)
+│   └── style.css            # CSS riêng cho trang này (tabs, drawer, citation, đáp án mẫu...)
+└── cac-tiep-can/            # Môn: Các tiếp cận tham vấn trị liệu tâm lý
+    ├── index.html           # Mục lục môn — 11 cách tiếp cận + link quiz/câu hỏi ngắn
+    ├── style.css            # CSS riêng (hub, quiz engine, câu hỏi ngắn/văn mẫu, drawer)
+    ├── quiz.html            # Quiz trắc nghiệm 3 phiên bản 20/30/60 câu, tự chấm điểm + xem lại
+    ├── cau-hoi-ngan.html    # Danh sách câu hỏi ngắn, mỗi câu kèm 3 văn mẫu tham khảo
+    ├── data/
+    │   ├── approaches.js    # Danh sách 11 cách tiếp cận (sửa 1 chỗ, mọi trang tự cập nhật)
+    │   ├── quiz-bank.js     # Ngân hàng câu hỏi trắc nghiệm (đang là bộ demo)
+    │   └── short-answers.js # Câu hỏi ngắn + văn mẫu (đang là bộ demo)
+    └── tiep-can/            # 11 file con, mỗi file 1 cách tiếp cận (khung sườn, nội dung điền dần)
 ```
 
 **Lưu ý:** nút "Tải giáo trình gốc Vũ Dũng (PDF)" ở `tlh-ton-giao/index.html` trỏ tới `../assets/material/Giao trinh Tam ly hoc tam linh - ton giao_Vu Dung.pdf` — cần thả đúng file PDF này vào `assets/material/` để nút hoạt động (xem `assets/material/README.md`).
+
+**Về `cac-tiep-can/`:** đây mới là khung sườn — nội dung chi tiết của 11 cách tiếp cận trong `tiep-can/*.html` còn để placeholder, và `data/quiz-bank.js` / `data/short-answers.js` mới có bộ câu hỏi demo. Thêm câu hỏi/cách tiếp cận mới bằng cách sửa trực tiếp trong các file `data/*.js` (có hướng dẫn ngay trong comment đầu mỗi file) — `index.html`, `quiz.html` và `cau-hoi-ngan.html` đều đọc từ đó nên không cần sửa HTML.
 
 Mỗi môn học mới chỉ cần thêm một thư mục mới (ví dụ `tlh-lam-sang/`) với `index.html` + `style.css` riêng, rồi link tới `../assets/css/theme.css` để dùng chung bộ màu/font/typography — không cần lặp lại CSS nền tảng. Giáo trình/PDF cho môn mới cũng thả chung vào `assets/material/`.
 

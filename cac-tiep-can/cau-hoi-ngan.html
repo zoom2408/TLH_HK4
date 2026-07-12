@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Câu hỏi ngắn &amp; văn mẫu — Các tiếp cận tham vấn trị liệu tâm lý</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <a class="back" href="index.html">&larr; Mục lục môn học</a>
+  <span class="crumb">Câu hỏi ngắn &amp; văn mẫu</span>
+</div>
+
+<main class="reading">
+
+  <header class="titlepage">
+    <p class="eyebrow">Ôn tập tự luận ngắn</p>
+    <h1>Câu hỏi ngắn &amp; văn mẫu</h1>
+    <p>Mỗi câu hỏi kèm 3 văn mẫu tham khảo — khác nhau về cách triển khai, không phải khác nội dung đúng. Với 2 câu đúng format đề thi (cảm nghĩ cá nhân), 3 văn mẫu minh hoạ 3 lựa chọn approach khác nhau để thấy khung lập luận, không phải "đáp án" cố định.</p>
+    <div class="src"><span class="dot"></span> <span id="bankInfo"></span></div>
+  </header>
+
+  <div class="block">
+    <h3>Đề thi thật — 2 câu tự luận</h3>
+    <div id="examList"></div>
+  </div>
+
+  <div class="block">
+    <h3>Câu hỏi ôn tập mở rộng</h3>
+    <div id="saList"></div>
+  </div>
+
+</main>
+
+<div class="backdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-label="Văn mẫu tham khảo">
+  <div class="drawer__head">
+    <span class="drawer__head-title" id="drawerTitle">Văn mẫu</span>
+    <button class="drawer__close" id="drawerClose" aria-label="Đóng">&times;</button>
+  </div>
+  <div class="drawer__body" id="drawerBody"></div>
+</aside>
+
+<script src="data/approaches.js"></script>
+<script src="data/short-answers.js"></script>
+<script>
+  const examCount = SHORT_ANSWERS.filter(sa => sa.examQuestion).length;
+  document.getElementById('bankInfo').textContent =
+    `${examCount} câu đúng format đề thi + ${SHORT_ANSWERS.length - examCount} câu ôn tập mở rộng — bổ sung dần trong data/short-answers.js.`;
+
+  function approachName(id){
+    const a = APPROACHES.find(x => x.id === id);
+    return a ? a.name : 'Tổng hợp / so sánh';
+  }
+
+  function renderCard(sa, i, isExam){
+    return `
+    <div class="sa-card${isExam ? ' exam' : ''}">
+      ${isExam ? '<span class="pill sa-badge">Đề thi</span>' : ''}
+      <p class="sa-q">${sa.question}</p>
+      <p class="sa-meta">${approachName(sa.approachId)}</p>
+      <button class="sa-open" data-i="${i}">Xem văn mẫu</button>
+    </div>`;
+  }
+
+  const examList = document.getElementById('examList');
+  const saList = document.getElementById('saList');
+
+  examList.innerHTML = SHORT_ANSWERS.map((sa, i) => sa.examQuestion ? renderCard(sa, i, true) : '').join('');
+  saList.innerHTML = SHORT_ANSWERS.map((sa, i) => !sa.examQuestion ? renderCard(sa, i, false) : '').join('');
+
+  const drawer = document.getElementById('drawer');
+  const backdrop = document.getElementById('backdrop');
+  const drawerBody = document.getElementById('drawerBody');
+  const drawerTitle = document.getElementById('drawerTitle');
+  let lastFocused = null;
+
+  function openDrawer(i){
+    lastFocused = document.activeElement;
+    const sa = SHORT_ANSWERS[i];
+    drawerTitle.textContent = approachName(sa.approachId);
+
+    let tabsHtml = '<div class="van-mau-tabs">' + sa.samples.map((s, si) =>
+      `<button data-si="${si}" aria-selected="${si===0}">${s.label}</button>`
+    ).join('') + '</div>';
+
+    drawerBody.innerHTML = `
+      <p class="drawer__intro"><strong>${sa.question}</strong></p>
+      ${tabsHtml}
+      <div class="van-mau-body" id="vmBody"></div>
+    `;
+
+    function renderTab(si){
+      drawerBody.querySelectorAll('.van-mau-tabs button').forEach(b =>
+        b.setAttribute('aria-selected', b.dataset.si === String(si)));
+      document.getElementById('vmBody').innerHTML = sa.samples[si].html;
+    }
+    drawerBody.querySelectorAll('.van-mau-tabs button').forEach(b => {
+      b.addEventListener('click', () => renderTab(parseInt(b.dataset.si, 10)));
+    });
+    renderTab(0);
+
+    drawer.classList.add('open');
+    backdrop.classList.add('show');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.getElementById('drawerClose').focus();
+  }
+
+  function closeDrawer(){
+    drawer.classList.remove('open');
+    backdrop.classList.remove('show');
+    drawer.setAttribute('aria-hidden', 'true');
+    if (lastFocused) lastFocused.focus();
+  }
+
+  document.querySelectorAll('.sa-open').forEach(btn => {
+    btn.addEventListener('click', () => openDrawer(parseInt(btn.dataset.i, 10)));
+  });
+  document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+  backdrop.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer(); });
+</script>
+</body>
+</html>

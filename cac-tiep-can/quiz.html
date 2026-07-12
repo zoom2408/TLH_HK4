@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz trắc nghiệm — Các tiếp cận tham vấn trị liệu tâm lý</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <a class="back" href="index.html">&larr; Mục lục môn học</a>
+  <span class="crumb" id="crumb">Quiz trắc nghiệm</span>
+</div>
+
+<main class="reading">
+
+  <!-- ============ MÀN 1: CHỌN PHIÊN BẢN ============ -->
+  <section id="screenSetup">
+    <header class="titlepage">
+      <p class="eyebrow">Ôn tập trắc nghiệm</p>
+      <h1>Quiz — Các tiếp cận tham vấn trị liệu tâm lý</h1>
+      <p>Chọn số lượng câu hỏi. Đề được rút ngẫu nhiên từ ngân hàng câu hỏi chung (<code>data/quiz-bank.js</code>), chấm điểm ngay sau khi nộp bài và có thể xem lại từng câu đúng/sai kèm giải thích.</p>
+      <div class="src"><span class="dot"></span> <span id="bankInfo"></span></div>
+    </header>
+
+    <div class="quiz-setup">
+      <button class="quiz-opt" data-n="20">
+        <span class="n">20</span>
+        <span class="lbl">câu · nhanh gọn</span>
+      </button>
+      <button class="quiz-opt" data-n="30">
+        <span class="n">30</span>
+        <span class="lbl">câu · tiêu chuẩn</span>
+      </button>
+      <button class="quiz-opt" data-n="60">
+        <span class="n">60</span>
+        <span class="lbl">câu · toàn diện</span>
+      </button>
+    </div>
+    <p class="placeholder" id="lowBankNote" hidden></p>
+  </section>
+
+  <!-- ============ MÀN 2: LÀM BÀI ============ -->
+  <section id="screenQuiz" hidden>
+    <header class="titlepage" style="margin-bottom:24px; padding-bottom:0; border-bottom:none;">
+      <p class="eyebrow" id="quizEyebrow">Đang làm bài</p>
+      <h1 id="quizTitle" style="font-size:clamp(22px,3.4vw,30px);">Đề trắc nghiệm</h1>
+    </header>
+
+    <div class="progress-wrap">
+      <span id="progressLabel">0 / 0 đã trả lời</span>
+      <div class="progress-bar"><i id="progressFill"></i></div>
+    </div>
+
+    <div id="quizList"></div>
+
+    <div class="quiz-actions">
+      <button class="btn secondary" id="backToSetup">&larr; Chọn lại phiên bản</button>
+      <button class="btn" id="submitQuiz">Nộp bài &amp; chấm điểm</button>
+    </div>
+  </section>
+
+  <!-- ============ MÀN 3: KẾT QUẢ ============ -->
+  <section id="screenResult" hidden>
+    <header class="titlepage" style="border-bottom:none;">
+      <p class="eyebrow">Kết quả</p>
+      <h1 style="font-size:clamp(22px,3.4vw,30px);">Đối chiếu đáp án</h1>
+    </header>
+
+    <div class="result-summary">
+      <p class="score"><span id="scoreCorrect">0</span><small> / <span id="scoreTotal">0</span></small></p>
+      <p class="pct" id="scorePct"></p>
+    </div>
+
+    <div id="resultList"></div>
+
+    <div class="quiz-actions">
+      <button class="btn secondary" id="backToSetup2">&larr; Chọn lại phiên bản</button>
+      <button class="btn" id="retrySame">Làm lại đề mới (cùng số câu)</button>
+    </div>
+  </section>
+
+</main>
+
+<script src="data/approaches.js"></script>
+<script src="data/quiz-bank.js"></script>
+<script>
+  const bankInfo = document.getElementById('bankInfo');
+  bankInfo.textContent = `Ngân hàng hiện có ${QUIZ_BANK.length} câu hỏi (sẽ tăng dần khi có thêm nội dung bổ sung).`;
+
+  const screenSetup  = document.getElementById('screenSetup');
+  const screenQuiz   = document.getElementById('screenQuiz');
+  const screenResult = document.getElementById('screenResult');
+  const crumb = document.getElementById('crumb');
+
+  let currentN = 20;
+  let currentSet = [];
+  let userAnswers = {}; // id -> chosen index
+
+  function approachName(id){
+    const a = APPROACHES.find(x => x.id === id);
+    return a ? a.name : 'Tổng hợp';
+  }
+
+  function shuffle(arr){
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function pickQuestions(n){
+    const pool = shuffle(QUIZ_BANK);
+    return pool.slice(0, Math.min(n, pool.length));
+  }
+
+  function showScreen(el){
+    [screenSetup, screenQuiz, screenResult].forEach(s => s.hidden = (s !== el));
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function startQuiz(n){
+    currentN = n;
+    currentSet = pickQuestions(n);
+    userAnswers = {};
+
+    document.getElementById('quizEyebrow').textContent = `Phiên bản ${n} câu`;
+    document.getElementById('quizTitle').textContent =
+      currentSet.length < n
+        ? `Đề trắc nghiệm (${currentSet.length}/${n} câu — ngân hàng chưa đủ ${n} câu)`
+        : `Đề trắc nghiệm — ${currentSet.length} câu`;
+    crumb.textContent = `Quiz · ${currentSet.length} câu`;
+
+    const list = document.getElementById('quizList');
+    list.innerHTML = currentSet.map((q, qi) => `
+      <div class="q-card" data-qid="${q.id}">
+        <span class="q-tag">${approachName(q.approachId)}</span>
+        <p class="q-text">${qi + 1}. ${q.question}</p>
+        <ul class="q-options">
+          ${q.options.map((opt, oi) => `
+            <li>
+              <label data-qid="${q.id}" data-oi="${oi}">
+                <input type="radio" name="${q.id}" value="${oi}">
+                <span>${opt}</span>
+              </label>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+    `).join('');
+
+    list.querySelectorAll('input[type=radio]').forEach(inp => {
+      inp.addEventListener('change', () => {
+        const qid = inp.name;
+        userAnswers[qid] = parseInt(inp.value, 10);
+        list.querySelectorAll(`label[data-qid="${qid}"]`).forEach(lbl => {
+          lbl.classList.toggle('chosen', parseInt(lbl.dataset.oi, 10) === userAnswers[qid]);
+        });
+        updateProgress();
+      });
+    });
+
+    updateProgress();
+    showScreen(screenQuiz);
+  }
+
+  function updateProgress(){
+    const answered = Object.keys(userAnswers).length;
+    const total = currentSet.length;
+    document.getElementById('progressLabel').textContent = `${answered} / ${total} đã trả lời`;
+    document.getElementById('progressFill').style.width = total ? `${(answered/total)*100}%` : '0%';
+  }
+
+  function submitQuiz(){
+    const total = currentSet.length;
+    const answered = Object.keys(userAnswers).length;
+    if (answered < total){
+      const ok = confirm(`Bạn mới trả lời ${answered}/${total} câu. Vẫn muốn nộp bài?`);
+      if (!ok) return;
+    }
+
+    let correctCount = 0;
+    const resultList = document.getElementById('resultList');
+    resultList.innerHTML = currentSet.map((q, qi) => {
+      const chosen = userAnswers.hasOwnProperty(q.id) ? userAnswers[q.id] : null;
+      const isCorrect = chosen === q.correct;
+      if (isCorrect) correctCount++;
+
+      const optionsHtml = q.options.map((opt, oi) => {
+        let cls = '';
+        if (oi === q.correct) cls = 'opt-correct';
+        else if (oi === chosen) cls = 'opt-incorrect';
+        return `<li><label class="${cls}"><span>${String.fromCharCode(65+oi)}. ${opt}</span></label></li>`;
+      }).join('');
+
+      const verdict = chosen === null
+        ? `<p class="q-verdict bad">Chưa trả lời — đáp án đúng: ${String.fromCharCode(65+q.correct)}</p>`
+        : isCorrect
+          ? `<p class="q-verdict ok">✓ Đúng</p>`
+          : `<p class="q-verdict bad">✗ Sai — bạn chọn ${String.fromCharCode(65+chosen)}, đáp án đúng là ${String.fromCharCode(65+q.correct)}</p>`;
+
+      return `
+        <div class="q-card ${isCorrect ? 'correct' : 'incorrect'}">
+          <span class="q-tag">${approachName(q.approachId)}</span>
+          <p class="q-text">${qi + 1}. ${q.question}</p>
+          <ul class="q-options">${optionsHtml}</ul>
+          ${verdict}
+          <div class="q-explain"><strong>Vì sao:</strong> ${q.explain}</div>
+        </div>
+      `;
+    }).join('');
+
+    document.getElementById('scoreCorrect').textContent = correctCount;
+    document.getElementById('scoreTotal').textContent = total;
+    const pct = total ? Math.round((correctCount/total)*100) : 0;
+    document.getElementById('scorePct').textContent = `${pct}% chính xác`;
+    crumb.textContent = `Kết quả · ${correctCount}/${total}`;
+
+    showScreen(screenResult);
+  }
+
+  document.querySelectorAll('.quiz-opt').forEach(btn => {
+    btn.addEventListener('click', () => startQuiz(parseInt(btn.dataset.n, 10)));
+  });
+  document.getElementById('submitQuiz').addEventListener('click', submitQuiz);
+  document.getElementById('backToSetup').addEventListener('click', () => {
+    if (confirm('Thoát khỏi bài đang làm và chọn lại phiên bản?')) showScreen(screenSetup);
+  });
+  document.getElementById('backToSetup2').addEventListener('click', () => showScreen(screenSetup));
+  document.getElementById('retrySame').addEventListener('click', () => startQuiz(currentN));
+</script>
+</body>
+</html>
