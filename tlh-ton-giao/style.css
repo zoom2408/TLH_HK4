@@ -512,6 +512,193 @@
 .answer-body p{margin:0 0 12px; font-size:14.5px; line-height:1.75; color:var(--ink);}
 .answer-body p:last-child{margin-bottom:0;}
 
+/* =========================================================
+   Dàn ý giữa kỳ (GK) — khóa mật khẩu, segmented control,
+   mindmap Mermaid, khối dàn ý
+   ========================================================= */
+.q-no--gk{font-size:11px !important; letter-spacing:.04em;}
+
+/* --- màn hình khóa --- */
+.lock{
+  border:1px solid var(--line);
+  border-radius:5px;
+  background:var(--card);
+  padding:34px 24px 30px;
+  text-align:center;
+  max-width:420px;
+  margin:10px auto 0;
+}
+.lock__icon{width:30px;height:30px;color:var(--maroon); margin-bottom:12px;}
+.lock__title{font-family:var(--serif); font-weight:600; font-size:18px; margin:0 0 4px; color:var(--ink);}
+.lock__sub{margin:0 0 18px; font-size:14px; color:var(--ink-soft);}
+.lock__row{display:flex; gap:8px; justify-content:center;}
+.lock__row input{
+  flex:1; max-width:220px;
+  font-family:var(--mono); font-size:13px;
+  padding:9px 12px;
+  border:1px solid var(--line);
+  border-radius:4px;
+  background:var(--paper);
+  color:var(--ink);
+}
+.lock__row input:focus{outline:2px solid var(--maroon); outline-offset:1px;}
+.lock__row button{
+  border:none; cursor:pointer;
+  background:var(--maroon); color:#fff;
+  font-family:var(--sans); font-weight:600; font-size:13px;
+  padding:9px 18px; border-radius:4px;
+}
+.lock__row button:hover{background:var(--maroon-deep);}
+.lock__err{margin:12px 0 0; font-family:var(--mono); font-size:11.5px; color:var(--maroon);}
+.lock.shake{animation:gk-shake .32s;}
+@keyframes gk-shake{
+  0%,100%{transform:translateX(0);}
+  25%{transform:translateX(-5px);}
+  75%{transform:translateX(5px);}
+}
+
+/* --- segmented control --- */
+.seg{
+  position:sticky; top:0; z-index:20;
+  display:flex; gap:4px;
+  padding:10px 0 12px;
+  margin:0 0 22px;
+  background:linear-gradient(var(--paper) 78%, rgba(238,231,216,0));
+}
+.seg__btn{
+  flex:1;
+  border:1px solid var(--line);
+  background:var(--card);
+  color:var(--ink-soft);
+  font-family:var(--sans); font-size:12.5px; font-weight:500;
+  padding:8px 10px;
+  border-radius:4px;
+  cursor:pointer;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  transition:background .15s ease, color .15s ease, border-color .15s ease;
+}
+.seg__btn:hover{border-color:var(--gold); color:var(--ink);}
+.seg__btn:focus-visible{outline:2px solid var(--maroon); outline-offset:1px;}
+.seg__btn.is-on{background:var(--maroon); border-color:var(--maroon); color:#fff;}
+
+/* --- intro + khối dàn ý --- */
+.gk-intro{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:16px 18px;
+  margin:0 0 30px;
+  font-size:14.5px;
+  color:var(--ink-soft);
+}
+.gk-intro strong{color:var(--ink);}
+
+.plan{
+  border:1px solid var(--line);
+  border-radius:5px;
+  background:var(--card);
+  padding:20px 20px 22px;
+  margin:0 0 26px;
+  scroll-margin-top:66px;
+}
+.plan__head{display:flex; align-items:baseline; gap:12px; margin-bottom:10px;}
+.plan__no{
+  font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.08em;
+  color:var(--card); background:var(--forest);
+  border-radius:3px; padding:3px 7px; flex:none;
+}
+.plan__head h4{font-family:var(--serif); font-weight:600; font-size:19px; margin:0; color:var(--ink);}
+
+.chips{list-style:none; display:flex; flex-wrap:wrap; gap:7px; margin:0 0 16px; padding:0;}
+.chips li{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.04em;
+  color:var(--ink-soft); background:var(--paper);
+  border:1px solid var(--line); border-radius:3px; padding:3px 8px;
+}
+.chips li b{color:var(--maroon-deep); font-weight:600;}
+
+/* --- mindmap --- */
+.map{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:4px;
+  margin:0 0 18px;
+  padding:10px;
+  overflow-x:auto;
+}
+.map__canvas{display:flex; justify-content:center; min-height:60px;}
+.map__canvas svg{max-width:100%; height:auto;}
+.map__fallback{
+  display:none;
+  font-family:var(--mono); font-size:11.5px; color:var(--ink-faint);
+  white-space:pre-wrap; margin:0; padding:8px;
+}
+.map.is-failed .map__fallback{display:block;}
+
+/* --- các bước dàn ý --- */
+.plan ol.steps{list-style:none; margin:0 0 16px; padding:0; counter-reset:step;}
+.plan ol.steps > li{
+  counter-increment:step;
+  position:relative;
+  padding:0 0 14px 34px;
+  margin-bottom:0;
+}
+.plan ol.steps > li::before{
+  content:counter(step,upper-roman);
+  position:absolute; left:0; top:1px;
+  font-family:var(--mono); font-size:10.5px; font-weight:600;
+  color:var(--gold);
+}
+.plan ol.steps b{font-family:var(--serif); font-weight:600; color:var(--ink);}
+.plan ol.steps p{margin:3px 0 0; font-size:14.5px;}
+.cue{display:block; margin-top:4px; font-family:var(--mono); font-size:11.5px; color:var(--forest);}
+
+.voice{
+  border-left:3px solid var(--gold);
+  background:var(--paper);
+  padding:12px 14px;
+  font-size:14px;
+  margin:0 0 16px;
+}
+.voice p{margin:0 0 6px;}
+.voice p:last-child{margin:0;}
+.voice strong{color:var(--maroon-deep);}
+
+/* nút bài mẫu: nằm trên đầu khối dàn ý, canh phải */
+.plan__head{flex-wrap:wrap; row-gap:8px;}
+.plan__head h4{flex:1 1 auto; min-width:0;}
+.plan .answer-trigger.plan__sample{
+  margin:0 0 0 auto;
+  align-self:center;
+  flex:none;
+  padding:6px 13px 6px 10px;
+  font-size:11.5px;
+}
+@media (max-width:520px){
+  .plan .answer-trigger.plan__sample{margin-left:0;}
+}
+
+/* --- bài mẫu trong sidepanel --- */
+.answer-body h5{
+  font-family:var(--sans); font-weight:600; font-size:12.5px;
+  letter-spacing:.04em; text-transform:uppercase;
+  color:var(--maroon-deep);
+  margin:22px 0 8px;
+}
+.answer-body blockquote{
+  margin:14px 0; padding-left:14px;
+  border-left:2px solid var(--maroon);
+  font-style:italic; color:var(--ink-soft);
+}
+.answer-body .sample__wc{
+  font-family:var(--mono); font-size:11px; color:var(--ink-faint); margin-bottom:14px;
+}
+
+@media (max-width:720px){
+  .plan{scroll-margin-top:120px;}
+  .seg{top:52px;}
+}
+
 /* ---------- responsive ---------- */
 @media (max-width: 720px){
   .app{grid-template-columns:1fr;}

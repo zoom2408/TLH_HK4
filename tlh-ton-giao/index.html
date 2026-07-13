@@ -8,8 +8,849 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/theme.css">
-<link rel="stylesheet" href="./style.css">
+<style>
+/* =========================================================
+   theme.css — shared design tokens & base styles
+   Used by every page in this site (landing page + subject
+   pages). Subject-specific layout lives in each subject's
+   own stylesheet; only truly reusable pieces belong here.
+   ========================================================= */
+
+:root{
+  --paper:#EEE7D8;
+  --paper-dark:#E2D8C0;
+  --card:#F7F2E7;
+  --ink:#2A2420;
+  --ink-soft:#5C5040;
+  --ink-faint:#8A7D68;
+  --maroon:#7C2D2D;
+  --maroon-deep:#571F1F;
+  --forest:#33463B;
+  --gold:#A67C3D;
+  --line:#C9BC9B;
+  --shadow: 0 18px 40px -20px rgba(42,36,32,.45);
+  --serif:'Literata', 'Noto Serif', Georgia, serif;
+  --sans:'IBM Plex Sans','Noto Sans', system-ui, sans-serif;
+  --mono:'IBM Plex Mono','Noto Sans Mono', ui-monospace, monospace;
+}
+
+*{box-sizing:border-box;}
+html{-webkit-font-smoothing:antialiased;}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 800px at 15% -10%, #F4EEDF 0%, transparent 55%),
+    var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  line-height:1.6;
+}
+
+a{color:inherit;}
+::selection{background:var(--gold); color:var(--paper);}
+
+/* locks page scroll while a modal/drawer/sidepanel is open — toggle via JS */
+body.scroll-lock{
+  overflow:hidden;
+  height:100vh;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+}
+
+:focus-visible{outline:2px solid var(--maroon); outline-offset:2px;}
+
+/* ---------- reusable components ---------- */
+
+/* small uppercase label used above page/section titles */
+.eyebrow{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--maroon);
+  margin:0 0 10px;
+}
+
+/* highlighted note / example box, used across any subject page */
+.callout{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-left:3px solid var(--forest);
+  border-radius:4px;
+  padding:14px 16px;
+  margin:14px 0 18px;
+  font-size:14.5px;
+}
+.callout strong{color:var(--forest);}
+
+/* small rounded tag/badge, e.g. citation chips, status pills */
+.pill{
+  display:inline-flex;
+  align-items:center;
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.04em;
+  color:var(--maroon-deep);
+  background:#F0E4D2;
+  border:1px solid var(--gold);
+  border-radius:3px;
+  padding:2px 8px;
+  white-space:nowrap;
+}
+
+/* =========================================================
+   style.css — page-specific styles for the "Tâm lý học
+   Tôn giáo" study guide. Design tokens, reset and shared
+   components (.eyebrow, .callout, .pill) come from
+   ../assets/css/theme.css, loaded before this file.
+   ========================================================= */
+
+/* ---------- breadcrumb back-link ---------- */
+.back-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-family:var(--mono);
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:.04em;
+  color:var(--maroon-deep);
+  text-decoration:none;
+  margin-bottom:16px;
+}
+.back-link:hover{color:var(--maroon); text-decoration:underline;}
+.back-link:focus-visible{outline:2px solid var(--maroon); outline-offset:2px;}
+
+/* ---------- layout shell ---------- */
+.app{
+  display:grid;
+  grid-template-columns:64px minmax(0,1fr);
+  min-height:100vh;
+}
+
+/* ---------- thumb-index tab rail ---------- */
+.tabs{
+  background:linear-gradient(180deg, var(--paper-dark), var(--paper));
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  padding:22px 0;
+  gap:6px;
+  position:sticky;
+  top:0;
+  height:100vh;
+}
+.tabs__label{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  text-align:center;
+  margin-bottom:10px;
+  padding-left:2px;
+}
+.tab{
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  padding:14px 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  color:var(--ink-soft);
+  font-family:var(--sans);
+  flex:1;
+  min-height:64px;
+}
+.tab__num{
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.06em;
+}
+.tab::before{
+  content:"";
+  position:absolute;
+  left:0; top:10%; bottom:10%;
+  width:4px;
+  background:transparent;
+  border-radius:0 3px 3px 0;
+  transition:background .18s ease;
+}
+.tab:hover{color:var(--ink);}
+.tab:hover::before{background:var(--gold);}
+.tab[aria-selected="true"]{
+  background:var(--card);
+  color:var(--maroon-deep);
+  box-shadow:inset -1px 0 0 var(--card);
+}
+.tab[aria-selected="true"]::before{background:var(--maroon);}
+.tab:focus-visible{outline:2px solid var(--maroon); outline-offset:-2px;}
+
+/* ---------- reading column ---------- */
+.reading{
+  padding:44px clamp(20px,5vw,72px) 120px;
+  max-width:820px;
+}
+
+.titlepage{
+  margin-bottom:44px;
+  padding-bottom:28px;
+  border-bottom:1px solid var(--line);
+}
+.titlepage h1{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:clamp(28px,4.2vw,42px);
+  margin:0 0 14px;
+  color:var(--ink);
+  letter-spacing:-.01em;
+}
+.titlepage p{
+  margin:0;
+  color:var(--ink-soft);
+  font-size:15px;
+  max-width:56ch;
+}
+.titlepage .src{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:16px;
+  font-family:var(--mono);
+  font-size:11.5px;
+  color:var(--ink-faint);
+}
+.titlepage .src .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);}
+
+.question{ }
+.question[hidden]{display:none;}
+
+.q-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+}
+.q-head .q-no{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:15px;
+  color:var(--card);
+  background:var(--maroon);
+  width:30px;height:30px;
+  border-radius:3px;
+  display:flex;align-items:center;justify-content:center;
+  flex:none;
+}
+.q-head h2{
+  font-family:var(--serif);
+  font-size:clamp(21px,2.6vw,27px);
+  font-weight:600;
+  margin:0;
+  color:var(--ink);
+}
+.q-sub{
+  color:var(--ink-faint);
+  font-family:var(--mono);
+  font-size:11.5px;
+  letter-spacing:.04em;
+  margin:0 0 26px 44px;
+}
+
+.block{margin:0 0 28px;}
+.block h3{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:13px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--maroon-deep);
+  margin:0 0 12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.block h3::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:var(--line);
+}
+.block h4{
+  font-family:var(--serif);
+  font-weight:600;
+  font-style:italic;
+  font-size:16px;
+  margin:18px 0 8px;
+  color:var(--ink);
+}
+.block p{margin:0 0 10px; color:var(--ink);}
+.block ul, .block ol{margin:0 0 10px; padding-left:22px;}
+.block li{margin-bottom:7px;}
+.block li::marker{color:var(--ink-faint);}
+
+/* citation badge */
+.cite{
+  font-family:var(--mono);
+  font-size:11.5px;
+  font-weight:600;
+  color:var(--maroon-deep);
+  background:#F0E4D2;
+  border:1px solid var(--gold);
+  border-radius:3px;
+  padding:1px 6px;
+  cursor:pointer;
+  line-height:1.5;
+  white-space:nowrap;
+  transform:rotate(-.4deg);
+  transition:transform .12s ease, background .12s ease, color .12s ease;
+}
+.cite:hover{background:var(--maroon); color:#fff; border-color:var(--maroon); transform:rotate(0deg);}
+.cite:focus-visible{outline:2px solid var(--maroon); outline-offset:2px;}
+
+.divider-end{
+  margin-top:52px;
+  padding-top:20px;
+  border-top:1px dashed var(--line);
+  color:var(--ink-faint);
+  font-size:13.5px;
+  font-style:italic;
+}
+
+/* ---------- floating sources button ---------- */
+.fab{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:40;
+  background:var(--maroon);
+  color:#fff;
+  border:none;
+  border-radius:999px;
+  padding:13px 20px 13px 16px;
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:13.5px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+}
+.fab:hover{background:var(--maroon-deep);}
+.fab:focus-visible{outline:2px solid var(--ink); outline-offset:3px;}
+.fab svg{width:16px;height:16px;flex:none;}
+
+/* ---------- backdrop + drawer ---------- */
+.backdrop{
+  position:fixed; inset:0;
+  background:rgba(20,16,12,.75);
+  opacity:0; pointer-events:none;
+  transition:opacity .22s ease;
+  z-index:45;
+}
+.backdrop.show{opacity:1; pointer-events:auto;}
+
+.drawer{
+  position:fixed;
+  top:0; right:0;
+  height:100%;
+  width:50vw;
+  min-width:360px;
+  max-width:720px;
+  background:var(--card);
+  border-left:1px solid var(--line);
+  box-shadow:var(--shadow);
+  transform:translateX(100%);
+  transition:transform .28s cubic-bezier(.2,.7,.3,1);
+  z-index:50;
+  display:flex;
+  flex-direction:column;
+}
+.drawer.open{transform:translateX(0);}
+
+.drawer__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 20px;
+  border-bottom:1px solid var(--line);
+  background:var(--paper-dark);
+  flex:none;
+}
+.drawer__head-title{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--maroon-deep);
+  display:flex; align-items:center; gap:8px;
+}
+.drawer__close{
+  border:none;
+  background:transparent;
+  color:var(--ink-soft);
+  cursor:pointer;
+  width:30px;height:30px;
+  border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+}
+.drawer__close:hover{background:var(--paper); color:var(--ink);}
+.drawer__close:focus-visible{outline:2px solid var(--maroon);}
+
+.drawer__body{
+  padding:20px;
+  overflow-y:auto;
+  flex:1;
+}
+
+.card-detail .tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:.05em;
+  color:var(--forest);
+  background:#E4E9E1;
+  border:1px solid #CBD6C5;
+  border-radius:3px;
+  padding:2px 7px;
+  margin-bottom:12px;
+}
+.card-detail .chapter{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:16.5px;
+  color:var(--ink);
+  margin:0 0 4px;
+}
+.card-detail .page{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--maroon-deep);
+  margin:0 0 16px;
+}
+.card-detail blockquote{
+  margin:0;
+  padding:16px 18px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:3px;
+  font-style:italic;
+  font-size:15px;
+  line-height:1.65;
+  color:var(--ink);
+  position:relative;
+}
+.card-detail blockquote::before{
+  content:"\201C";
+  position:absolute;
+  top:-6px; left:10px;
+  font-family:var(--serif);
+  font-size:34px;
+  color:var(--gold);
+  background:var(--paper);
+  padding:0 4px;
+}
+.card-detail .meta{
+  margin-top:12px;
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--ink-faint);
+}
+.back-to-list{
+  margin-top:20px;
+  background:none;
+  border:none;
+  color:var(--maroon-deep);
+  font-family:var(--sans);
+  font-size:12.5px;
+  font-weight:600;
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.back-to-list:hover{text-decoration:underline;}
+
+.toc-list{list-style:none; margin:0; padding:0;}
+.toc-item{
+  width:100%;
+  text-align:left;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:12px 14px;
+  margin-bottom:10px;
+  cursor:pointer;
+  font-family:var(--sans);
+}
+.toc-item:hover{border-color:var(--gold); background:#F3EBD8;}
+.toc-item:focus-visible{outline:2px solid var(--maroon);}
+.toc-item .toc-chapter{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:14px;
+  color:var(--ink);
+}
+.toc-item .toc-page{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--maroon-deep);
+  float:right;
+}
+.toc-item .toc-snip{
+  display:block;
+  font-size:12.5px;
+  color:var(--ink-faint);
+  margin-top:4px;
+  clear:both;
+}
+
+.drawer__intro{
+  font-size:13.5px;
+  color:var(--ink-soft);
+  margin:0 0 16px;
+}
+
+/* ---------- textbook download link ---------- */
+.dl-book{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:14px;
+  padding:9px 16px 9px 13px;
+  background:var(--forest);
+  color:#F7F2E7;
+  border-radius:6px;
+  text-decoration:none;
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:12.5px;
+  letter-spacing:.02em;
+  box-shadow:0 8px 18px -10px rgba(51,70,59,.55);
+  transition:background .15s ease, transform .15s ease;
+}
+.dl-book:hover{background:#26352C; transform:translateY(-1px);}
+.dl-book svg{width:15px;height:15px;flex:none;}
+
+/* ---------- sample-answer trigger ---------- */
+.answer-trigger{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin:0 0 26px 44px;
+  padding:7px 14px 7px 11px;
+  background:var(--card);
+  border:1px solid var(--gold);
+  border-radius:999px;
+  color:var(--maroon-deep);
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:12px;
+  letter-spacing:.02em;
+  cursor:pointer;
+  transition:background .15s ease, transform .15s ease;
+}
+.answer-trigger:hover{background:var(--maroon); color:#fff; border-color:var(--maroon); transform:translateY(-1px);}
+.answer-trigger:focus-visible{outline:2px solid var(--maroon); outline-offset:2px;}
+.answer-trigger svg{width:14px;height:14px;flex:none;}
+
+/* ---------- sample-answer sidepanel ---------- */
+.answerDrawer .drawer__head{background:#E4E9E1; border-bottom-color:#CBD6C5;}
+.answerDrawer .drawer__head-title{color:var(--forest);}
+
+.style-tabs{
+  display:flex;
+  gap:6px;
+  padding:14px 20px 0;
+  flex:none;
+  border-bottom:1px solid var(--line);
+  padding-bottom:14px;
+}
+.style-tab{
+  flex:1;
+  border:1px solid var(--line);
+  background:var(--paper);
+  color:var(--ink-soft);
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:11.5px;
+  letter-spacing:.01em;
+  padding:8px 6px;
+  border-radius:6px;
+  cursor:pointer;
+  line-height:1.25;
+  transition:background .15s ease, color .15s ease, border-color .15s ease;
+}
+.style-tab:hover{border-color:var(--gold);}
+.style-tab.active{background:var(--forest); border-color:var(--forest); color:#fff;}
+.style-tab:focus-visible{outline:2px solid var(--maroon); outline-offset:2px;}
+
+.style-tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--maroon-deep);
+  background:#F0E4D2;
+  border:1px solid var(--gold);
+  border-radius:3px;
+  padding:3px 8px;
+  margin-bottom:14px;
+}
+.answer-body p{margin:0 0 12px; font-size:14.5px; line-height:1.75; color:var(--ink);}
+.answer-body p:last-child{margin-bottom:0;}
+
+/* =========================================================
+   Dàn ý giữa kỳ (GK) — khóa mật khẩu, segmented control,
+   mindmap Mermaid, khối dàn ý
+   ========================================================= */
+.q-no--gk{font-size:11px !important; letter-spacing:.04em;}
+
+/* --- màn hình khóa --- */
+.lock{
+  border:1px solid var(--line);
+  border-radius:5px;
+  background:var(--card);
+  padding:34px 24px 30px;
+  text-align:center;
+  max-width:420px;
+  margin:10px auto 0;
+}
+.lock__icon{width:30px;height:30px;color:var(--maroon); margin-bottom:12px;}
+.lock__title{font-family:var(--serif); font-weight:600; font-size:18px; margin:0 0 4px; color:var(--ink);}
+.lock__sub{margin:0 0 18px; font-size:14px; color:var(--ink-soft);}
+.lock__row{display:flex; gap:8px; justify-content:center;}
+.lock__row input{
+  flex:1; max-width:220px;
+  font-family:var(--mono); font-size:13px;
+  padding:9px 12px;
+  border:1px solid var(--line);
+  border-radius:4px;
+  background:var(--paper);
+  color:var(--ink);
+}
+.lock__row input:focus{outline:2px solid var(--maroon); outline-offset:1px;}
+.lock__row button{
+  border:none; cursor:pointer;
+  background:var(--maroon); color:#fff;
+  font-family:var(--sans); font-weight:600; font-size:13px;
+  padding:9px 18px; border-radius:4px;
+}
+.lock__row button:hover{background:var(--maroon-deep);}
+.lock__err{margin:12px 0 0; font-family:var(--mono); font-size:11.5px; color:var(--maroon);}
+.lock.shake{animation:gk-shake .32s;}
+@keyframes gk-shake{
+  0%,100%{transform:translateX(0);}
+  25%{transform:translateX(-5px);}
+  75%{transform:translateX(5px);}
+}
+
+/* --- segmented control --- */
+.seg{
+  position:sticky; top:0; z-index:20;
+  display:flex; gap:4px;
+  padding:10px 0 12px;
+  margin:0 0 22px;
+  background:linear-gradient(var(--paper) 78%, rgba(238,231,216,0));
+}
+.seg__btn{
+  flex:1;
+  border:1px solid var(--line);
+  background:var(--card);
+  color:var(--ink-soft);
+  font-family:var(--sans); font-size:12.5px; font-weight:500;
+  padding:8px 10px;
+  border-radius:4px;
+  cursor:pointer;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  transition:background .15s ease, color .15s ease, border-color .15s ease;
+}
+.seg__btn:hover{border-color:var(--gold); color:var(--ink);}
+.seg__btn:focus-visible{outline:2px solid var(--maroon); outline-offset:1px;}
+.seg__btn.is-on{background:var(--maroon); border-color:var(--maroon); color:#fff;}
+
+/* --- intro + khối dàn ý --- */
+.gk-intro{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:16px 18px;
+  margin:0 0 30px;
+  font-size:14.5px;
+  color:var(--ink-soft);
+}
+.gk-intro strong{color:var(--ink);}
+
+.plan{
+  border:1px solid var(--line);
+  border-radius:5px;
+  background:var(--card);
+  padding:20px 20px 22px;
+  margin:0 0 26px;
+  scroll-margin-top:66px;
+}
+.plan__head{display:flex; align-items:baseline; gap:12px; margin-bottom:10px;}
+.plan__no{
+  font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.08em;
+  color:var(--card); background:var(--forest);
+  border-radius:3px; padding:3px 7px; flex:none;
+}
+.plan__head h4{font-family:var(--serif); font-weight:600; font-size:19px; margin:0; color:var(--ink);}
+
+.chips{list-style:none; display:flex; flex-wrap:wrap; gap:7px; margin:0 0 16px; padding:0;}
+.chips li{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.04em;
+  color:var(--ink-soft); background:var(--paper);
+  border:1px solid var(--line); border-radius:3px; padding:3px 8px;
+}
+.chips li b{color:var(--maroon-deep); font-weight:600;}
+
+/* --- mindmap --- */
+.map{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:4px;
+  margin:0 0 18px;
+  padding:10px;
+  overflow-x:auto;
+}
+.map__canvas{display:flex; justify-content:center; min-height:60px;}
+.map__canvas svg{max-width:100%; height:auto;}
+.map__fallback{
+  display:none;
+  font-family:var(--mono); font-size:11.5px; color:var(--ink-faint);
+  white-space:pre-wrap; margin:0; padding:8px;
+}
+.map.is-failed .map__fallback{display:block;}
+
+/* --- các bước dàn ý --- */
+.plan ol.steps{list-style:none; margin:0 0 16px; padding:0; counter-reset:step;}
+.plan ol.steps > li{
+  counter-increment:step;
+  position:relative;
+  padding:0 0 14px 34px;
+  margin-bottom:0;
+}
+.plan ol.steps > li::before{
+  content:counter(step,upper-roman);
+  position:absolute; left:0; top:1px;
+  font-family:var(--mono); font-size:10.5px; font-weight:600;
+  color:var(--gold);
+}
+.plan ol.steps b{font-family:var(--serif); font-weight:600; color:var(--ink);}
+.plan ol.steps p{margin:3px 0 0; font-size:14.5px;}
+.cue{display:block; margin-top:4px; font-family:var(--mono); font-size:11.5px; color:var(--forest);}
+
+.voice{
+  border-left:3px solid var(--gold);
+  background:var(--paper);
+  padding:12px 14px;
+  font-size:14px;
+  margin:0 0 16px;
+}
+.voice p{margin:0 0 6px;}
+.voice p:last-child{margin:0;}
+.voice strong{color:var(--maroon-deep);}
+
+/* nút bài mẫu: nằm trên đầu khối dàn ý, canh phải */
+.plan__head{flex-wrap:wrap; row-gap:8px;}
+.plan__head h4{flex:1 1 auto; min-width:0;}
+.plan .answer-trigger.plan__sample{
+  margin:0 0 0 auto;
+  align-self:center;
+  flex:none;
+  padding:6px 13px 6px 10px;
+  font-size:11.5px;
+}
+@media (max-width:520px){
+  .plan .answer-trigger.plan__sample{margin-left:0;}
+}
+
+/* --- bài mẫu trong sidepanel --- */
+.answer-body h5{
+  font-family:var(--sans); font-weight:600; font-size:12.5px;
+  letter-spacing:.04em; text-transform:uppercase;
+  color:var(--maroon-deep);
+  margin:22px 0 8px;
+}
+.answer-body blockquote{
+  margin:14px 0; padding-left:14px;
+  border-left:2px solid var(--maroon);
+  font-style:italic; color:var(--ink-soft);
+}
+.answer-body .sample__wc{
+  font-family:var(--mono); font-size:11px; color:var(--ink-faint); margin-bottom:14px;
+}
+
+@media (max-width:720px){
+  .plan{scroll-margin-top:120px;}
+  .seg{top:52px;}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 720px){
+  .app{grid-template-columns:1fr;}
+  .tabs{
+    position:sticky; top:0; z-index:30;
+    height:auto; width:100%;
+    flex-direction:row;
+    overflow-x:auto;
+    border-right:none;
+    border-bottom:1px solid var(--line);
+    padding:10px 8px;
+  }
+  .tabs__label{display:none;}
+  .tab{min-height:auto; padding:8px 14px; flex:none;}
+  .tab__num{writing-mode:horizontal-tb;}
+  .tab::before{left:10%; right:10%; top:auto; bottom:0; height:3px; width:auto;}
+  .reading{padding:28px 18px 100px;}
+  .q-sub{margin-left:0;}
+
+  /* ---------- bottom-sheet drawers on mobile ---------- */
+  .drawer{
+    top:auto; right:0; left:0; bottom:0;
+    width:100%;
+    min-width:0;
+    max-width:none;
+    height:auto;
+    max-height:85vh;
+    border-left:none;
+    border-top:1px solid var(--line);
+    border-radius:16px 16px 0 0;
+    box-shadow:0 -14px 34px -18px rgba(42,36,32,.5);
+    transform:translateY(100%);
+  }
+  .drawer.open{transform:translateY(0);}
+  .drawer::before{
+    content:"";
+    display:block;
+    flex:none;
+    width:40px;
+    height:4px;
+    margin:10px auto 0;
+    border-radius:999px;
+    background:var(--line);
+  }
+  .drawer__body{padding-bottom:32px;}
+}
+
+</style>
 </head>
 <body>
 
@@ -32,6 +873,9 @@
     </button>
     <button class="tab" role="tab" aria-selected="false" aria-controls="q5" data-q="5">
       <span class="tab__num">Câu 5</span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="q6" data-q="6">
+      <span class="tab__num">Dàn ý GK</span>
     </button>
   </nav>
 
@@ -270,6 +1114,195 @@
       <p class="divider-end">Kết luận: tình cảm tôn giáo là chất keo kết dính con người với cái siêu việt — khía cạnh tâm lý quan trọng nhất của tôn giáo, gắn bó chặt chẽ với niềm tin, được nuôi dưỡng qua nghi lễ, có chức năng an ủi và gắn kết cộng đồng.</p>
     </section>
 
+    <!-- ================= DÀN Ý GIỮA KỲ ================= -->
+    <section class="question" id="q6" role="tabpanel" hidden>
+      <div class="q-head"><span class="q-no q-no--gk">GK</span><h2>Dàn ý bài giữa kỳ</h2></div>
+      <p class="q-sub">Tả lại buổi workshop thiền tại chùa Long Phước — một buổi chiều tối</p>
+
+      <div class="lock" id="gkLock">
+        <svg class="lock__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        <p class="lock__title">Phần này được bảo vệ</p>
+        <p class="lock__sub">Nhập mật khẩu để mở dàn ý bài giữa kỳ.</p>
+        <div class="lock__row">
+          <input type="password" id="gkPass" placeholder="Mật khẩu" autocomplete="off" aria-label="Mật khẩu">
+          <button id="gkBtn">Mở</button>
+        </div>
+        <p class="lock__err" id="gkErr" role="alert" hidden>Sai mật khẩu. Thử lại.</p>
+      </div>
+
+      <div class="gk-body" id="gkBody" hidden>
+
+      <div class="seg" role="tablist" aria-label="Chọn dàn ý">
+        <button class="seg__btn is-on" data-go="plan1">01 · Tường thuật</button>
+        <button class="seg__btn" data-go="plan2">02 · Phân tích</button>
+        <button class="seg__btn" data-go="plan3">03 · Tùy bút</button>
+      </div>
+
+      <div class="gk-intro">
+        <strong>Ba lối vào cho cùng một buổi thiền.</strong> Cùng chất liệu quan sát, cùng khung lý thuyết của Vũ Dũng, nhưng ba cấu trúc và ba giọng khác nhau. Chọn theo yêu cầu của đề bài: <em>mô tả</em> → dàn ý 1; <em>phân tích, vận dụng</em> → dàn ý 2; <em>cảm nhận, liên hệ bản thân</em> → dàn ý 3. Mỗi dàn ý kèm mindmap và một bài mẫu đầy đủ.
+      </div>
+
+<div class="plan" id="plan1">
+        <div class="plan__head">
+          <span class="plan__no">01</span>
+          <h4>Tường thuật theo dòng thời gian, lồng lý thuyết</h4>
+        
+          <button class="answer-trigger plan__sample" data-aq="6" data-astyle="sinhvien" title="Đọc bài mẫu — “Bốn tiếng ngồi yên”"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Bài mẫu</button>
+        </div>
+        <ul class="chips">
+          <li>Kiểu bài · <b>Nhật ký điền dã có chú giải</b></li>
+          <li>Độ khó · <b>Dễ</b></li>
+          <li>Rủi ro · <b>Thấp</b></li>
+        </ul>
+
+        <figure class="map" id="map1">
+          <div class="map__canvas"></div>
+          <pre class="map__fallback"></pre>
+        </figure>
+
+        <ol class="steps">
+          <li><b>Mở bài — cơn bồn chồn của người vừa đi làm vừa đi học.</b>
+            <p>Đặt bối cảnh VUCA nhưng không định nghĩa bằng từ điển: mô tả nó bằng một buổi chiều thật của bạn. Đóng mở bài bằng một câu hỏi dẫn dắt.</p>
+            <span class="cue">Gợi ý: “Chuyện gì thực sự diễn ra bên trong một người, khi họ ngồi yên bốn tiếng?”</span>
+          </li>
+          <li><b>Bước qua ngưỡng.</b>
+            <p>Tả cổng chùa bằng giác quan: nhiệt độ, mùi nhang, âm lượng. Chốt bằng khái niệm không gian thiêng. Chi tiết chú giữ xe từ tốn → cá nhân được nhào nặn bởi chuẩn mực cộng đồng <button class="cite" data-c="c15">tr. 143</button>.</p>
+            <span class="cue">Tỉ lệ vàng: 3 câu tả → 1 câu lý thuyết.</span>
+          </li>
+          <li><b>Lời dẫn của Ni sư.</b>
+            <p>Trích một câu nguyên văn. Lập luận: chánh niệm không phải thuốc giảm đau; không có Giới thì không có Định.</p>
+          </li>
+          <li><b>Bốn thực hành — chiếm 40% dung lượng.</b>
+            <p>Mỗi thực hành viết theo cùng một khuôn: cảm giác thân thể → khó khăn gặp phải → một câu quy chiếu lý thuyết. Đừng để thuật ngữ cắt ngang đoạn tả.</p>
+            <span class="cue">Sổ tức niệm là chỗ nên viết thật nhất — ai cũng đếm hỏng, và đó chính là dữ liệu.</span>
+          </li>
+          <li><b>Vòng tròn bảy người — thiền trà và chia sẻ.</b>
+            <p>Sau phần thiền thở, cả lớp chia thành các nhóm bảy người, ngồi vòng tròn, mỗi người cầm một ly trà. Hít thở theo lời dẫn của sư cô, ngửi hương, rồi thưởng trà trong im lặng. Cuối cùng từng người chia sẻ điều mình cảm nhận được. Tả kỹ: khoảng cách giữa các đầu gối, ánh mắt tránh nhau lúc đầu, người mở lời trước.</p>
+            <span class="cue">Chốt lý thuyết: nhóm càng nhỏ, gắn kết càng cao <button class="cite" data-c="c15">tr. 143</button>; việc giãi bày trước nhóm giúp trút bỏ cảm xúc tiêu cực <button class="cite" data-c="c10">tr. 95</button>.</span>
+          </li>
+          <li><b>Đường cong cảm xúc.</b>
+            <p>Đối chiếu trải nghiệm với ba giai đoạn nghi lễ <button class="cite" data-c="c9">tr. 90–93</button>. Đây là đoạn “thu hoạch học thuật” của bài.</p>
+          </li>
+          <li><b>Kết bài.</b>
+            <p>Không tổng kết sáo rỗng. Kết bằng một hình ảnh cụ thể lúc ra về, rồi mới nói tới việc duy trì 5 phút mỗi ngày.</p>
+          </li>
+        </ol>
+
+        <div class="voice">
+          <p><strong>Giọng văn:</strong> ngôi thứ nhất, quá khứ gần, câu ngắn xen câu dài; nhiều động từ chỉ cảm giác, ít tính từ. Thuật ngữ đặt cuối đoạn như một tiếng “à ra thế”.</p>
+          <p><strong>Cấu trúc:</strong> tuyến tính theo giờ (16h → 20h). Tiểu mục đặt tên gợi hình (“Ngưỡng cửa”, “Chén trà và hai bàn tay”) thay vì “Phần 1, Phần 2”.</p>
+        </div>
+      </div>
+<div class="plan" id="plan2">
+        <div class="plan__head">
+          <span class="plan__no">02</span>
+          <h4>Phân tích theo cơ chế tâm lý</h4>
+        
+          <button class="answer-trigger plan__sample" data-aq="6" data-astyle="traophung" title="Đọc bài mẫu — “Một nghi lễ thu nhỏ”"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Bài mẫu</button>
+        </div>
+        <ul class="chips">
+          <li>Kiểu bài · <b>Luận điểm — case study</b></li>
+          <li>Độ khó · <b>Trung bình</b></li>
+          <li>Điểm · <b>Ổn định</b></li>
+        </ul>
+
+        <figure class="map" id="map2">
+          <div class="map__canvas"></div>
+          <pre class="map__fallback"></pre>
+        </figure>
+
+        <ol class="steps">
+          <li><b>Mở bài — nêu luận đề ngay.</b>
+            <p>“Workshop thiền tại chùa Long Phước, tuy mang hình thức một khóa học kỹ năng, thực chất vận hành như một nghi lễ tôn giáo thu nhỏ.” Ba đến bốn câu, không kể lể.</p>
+          </li>
+          <li><b>Cơ chế sinh lý.</b>
+            <p>Thở bụng, đan điền, cơ hoành → cơ sở sinh lý của nghi lễ: hô hấp, tuần hoàn, thần kinh trung ương <button class="cite" data-c="c11">tr. 104</button>. Bổ sung kiến thức ngoài: hệ thần kinh đối giao cảm.</p>
+            <span class="cue">Bắt buộc: một chi tiết bạn tự cảm nhận, làm bằng chứng quan sát.</span>
+          </li>
+          <li><b>Ám thị và tự kỷ ám thị.</b>
+            <p>Thiền buông thư, quán tưởng dòng năng lượng. Hai điều kiện làm ám thị hiệu quả: uy tín người dẫn và tính đơn điệu, lặp lại của kích thích.</p>
+          </li>
+          <li><b>Bắt chước và lây lan tâm lý.</b>
+            <p>Thiền hành tập thể — quy luật cộng hưởng. Nhấn: không ai ra lệnh cho ai, hành vi vẫn đồng bộ. Nhóm trở thành cộng đồng tôn giáo tạm thời <button class="cite" data-c="c15">tr. 143</button>.</p>
+          </li>
+          <li><b>Chức năng an ủi.</b>
+            <p>Thiền trà. Trích <button class="cite" data-c="c8">tr. 88</button>. Nêu rõ nghịch lý phương pháp luận: thỏa mãn có thể hư ảo, hiệu quả tâm lý là thật.</p>
+          </li>
+          <li><b>Nhóm nhỏ và sự giãi bày.</b>
+            <p>Vòng tròn bảy người là một thiết kế nhóm rất có chủ đích: đủ nhỏ để mỗi người đều phải lên tiếng, đủ lớn để không thành đối thoại tay đôi. Giáo trình: nhóm càng nhỏ, gắn kết càng cao <button class="cite" data-c="c15">tr. 143–144</button>. Vòng chia sẻ cuối buổi là một biến thể thế tục của xưng tội <button class="cite" data-c="c10">tr. 95</button> — giãi bày để trút bỏ cảm xúc tiêu cực.</p>
+            <span class="cue">Bằng chứng nên có: một câu chia sẻ nguyên văn của người trong nhóm bạn.</span>
+          </li>
+          <li><b>Ba giai đoạn biến đổi tình cảm.</b>
+            <p>Lập bảng đối chiếu: giai đoạn — biểu hiện trong sách <button class="cite" data-c="c9">tr. 90–93</button> — quan sát tại workshop.</p>
+          </li>
+          <li><b>Bàn luận phản biện — phần ăn điểm.</b>
+            <p>Hiệu ứng nhất thời; mẫu quan sát là người tự nguyện đến chùa; áp lực nhóm trong vòng chia sẻ (dư luận nhóm có thể khiến người ta nói điều được kỳ vọng hơn là điều thật); nguy cơ biến chánh niệm thành “chilling” khi tách khỏi Giới.</p>
+          </li>
+          <li><b>Kết luận.</b>
+            <p>Giá trị của việc soi một trải nghiệm đương đại bằng khung lý thuyết cổ điển.</p>
+          </li>
+        </ol>
+
+        <div class="voice">
+          <p><strong>Giọng văn:</strong> trung tính; ngôi thứ nhất dùng tiết chế (“người viết quan sát thấy…”). Mỗi luận điểm mở bằng câu chủ đề rõ ràng → bằng chứng quan sát → đối chiếu lý thuyết kèm số trang.</p>
+          <p><strong>Cấu trúc:</strong> luận đề → 5 cơ chế → phản biện → kết. Nên chèn một bảng đối chiếu.</p>
+        </div>
+      </div>
+<div class="plan" id="plan3">
+        <div class="plan__head">
+          <span class="plan__no">03</span>
+          <h4>Đối thoại giữa “cái thấy” và “cái biết”</h4>
+        
+          <button class="answer-trigger plan__sample" data-aq="6" data-astyle="phuongtay" title="Đọc bài mẫu — “Cái thấy và cái biết”"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Bài mẫu</button>
+        </div>
+        <ul class="chips">
+          <li>Kiểu bài · <b>Tùy bút phản tư</b></li>
+          <li>Độ khó · <b>Cao</b></li>
+          <li>Rủi ro · <b>Cao — điểm cao</b></li>
+        </ul>
+
+        <figure class="map" id="map3">
+          <div class="map__canvas"></div>
+          <pre class="map__fallback"></pre>
+        </figure>
+
+        <ol class="steps">
+          <li><b>Mở bài — nêu mâu thuẫn, không nêu bối cảnh.</b>
+            <p>Bắt đầu bằng nghịch lý của người học tâm lý: ngồi thiền mà đầu vẫn tự động gọi tên cơ chế. Câu hỏi: biết tên một hiện tượng có làm ta mất khả năng sống nó không?</p>
+            <span class="cue">Tránh mở bài bằng “Vào một buổi chiều…”. Hãy mở bằng một câu tuyên bố.</span>
+          </li>
+          <li><b>Cái biết đi trước.</b>
+            <p>Tả tư thế nhà quan sát: ngồi hàng cuối, ghi chép, dán nhãn mọi thứ. Thuật ngữ ở đây đóng vai trò cơ chế phòng vệ — nó giữ ta ở ngoài trải nghiệm.</p>
+          </li>
+          <li><b>Điểm gãy — sổ tức niệm.</b>
+            <p>Trục của bài. Đếm mãi không tới mười. Không thuật ngữ nào giúp ta đếm được tới mười. Lần đầu tiên người viết bị đưa vào thế bị động.</p>
+          </li>
+          <li><b>Chén trà — chỗ cái biết im lặng.</b>
+            <p>Tả thật kỹ và tuyệt đối không giải thích. Đây là đoạn duy nhất trong bài không có một thuật ngữ nào — sự vắng mặt của thuật ngữ chính là lập luận.</p>
+          </li>
+          <li><b>Đến lượt tôi nói.</b>
+            <p>Vòng chia sẻ: bảy người, mỗi người kể điều mình cảm nhận. Nhà quan sát buộc phải bước vào sân. Không thể đọc thuật ngữ trước sáu người lạ vừa cùng mình im lặng hai mươi phút. Tôi nói câu ngắn nhất và thật nhất mà tôi có.</p>
+            <span class="cue">Đây là điểm gãy thứ hai của bài — và là chỗ “cái thấy” thắng.</span>
+          </li>
+          <li><b>Cái biết trở lại — khiêm tốn hơn.</b>
+            <p>Về nhà, mở giáo trình, nhận ra mình vừa đi trọn ba giai đoạn của tình cảm nghi lễ mà không hay <button class="cite" data-c="c9">tr. 90–93</button>. Lý thuyết đến sau, và đó là chỗ đúng của nó.</p>
+          </li>
+          <li><b>Kết — hòa giải hai cái.</b>
+            <p>Tâm lý học tôn giáo không “giải thiêng” trải nghiệm. Nó cho ta ngôn ngữ để không đánh mất trải nghiệm ấy.</p>
+          </li>
+        </ol>
+
+        <div class="voice">
+          <p><strong>Giọng văn:</strong> huyền bí xen tả thực. Đoạn ngắn, có nhịp; cho phép câu một dòng. Dùng ít số trang — chỉ 2–3 chỗ then chốt, phần còn lại để khái niệm chảy ngầm bên dưới.</p>
+          <p><strong>Cấu trúc:</strong> không tuyến tính theo giờ mà theo hai giọng nói bên trong — cái biết và cái thấy — thay nhau lên tiếng, gặp nhau ở chén trà.</p>
+          <p><strong>Cảnh báo:</strong> chỉ chọn nếu bạn tự tin viết và giảng viên chấp nhận bài phi truyền thống. Nếu không chắc, hãy chọn dàn ý 01.</p>
+        </div>
+      </div>
+      </div><!-- /gk-body -->
+
+      <p class="divider-end" id="gkFoot" hidden>Ba dàn ý dùng chung một kho chi tiết quan sát. Hãy thay các chi tiết trong bài mẫu bằng chi tiết của chính bạn — đó là phần duy nhất không ai chấm trùng được.</p>
+    </section>
+
   </main>
 
   </div>
@@ -402,6 +1435,16 @@
     }
   };
 
+  /* ---------- Dàn ý GK: bài mẫu + mindmap ---------- */
+  sampleAnswers.q6 = {
+    sinhvien:  "<p class=\"sample__wc\">≈ 760 từ</p>\n            <p>Bốn giờ chiều, tôi rời văn phòng với một cái đầu đang mở quá nhiều tab. Tôi là sinh viên văn bằng hai: buổi sáng làm việc, buổi tối đi học, và khoảng giữa là một vùng xám nơi tôi vừa không làm việc hẳn, vừa không nghỉ ngơi hẳn. Người ta gọi thời đại này là VUCA. Tôi thì gọi nó bằng cái tên riêng: sự bồn chồn không rõ nguyên nhân, thứ khiến tôi mở điện thoại ba lần trong lúc chờ đèn đỏ.</p>\n            <p>Tôi đến chùa Long Phước với một câu hỏi rất nghề nghiệp: chuyện gì thực sự diễn ra bên trong một con người, khi họ ngồi yên suốt bốn tiếng?</p>\n            <h5>Ngưỡng cửa</h5>\n            <p>Điều đầu tiên tôi ghi vào sổ không phải mái ngói, mà là chú giữ xe. Chú không quát, không gõ dùi cui xuống yên xe như ở bãi gửi trước cổng cơ quan. Chú đưa tay ra, chậm rãi, chỉ chỗ dựng xe rồi khẽ gật đầu. Một cử chỉ nhỏ. Nhưng nó khiến tôi nhớ tới ý trong giáo trình: nhân cách không rơi từ trên trời xuống, nó được nhào nặn bởi chuẩn mực của cộng đồng mà người ta sống trong đó. Chú giữ xe là sản phẩm của không gian này, y như tôi là sản phẩm của những bãi xe vội vã ngoài kia.</p>\n            <p>Qua cổng, có một thứ vật lý thật sự thay đổi. Không khí mát hơn vài độ. Âm thanh bị tán lá nuốt bớt. Mùi nhang loãng, khô, hơi ngọt. Và bước chân của tất cả mọi người — không ai bảo ai — đều chậm lại. Mircea Eliade viết rằng nghi lễ đưa con người vượt qua ngưỡng cửa từ không gian phàm tục sang không gian thiêng. Tôi từng nghĩ câu đó hơi văn vẻ. Đứng ở đây, tôi thấy nó là một mô tả kỹ thuật.</p>\n            <h5>“Nếu quý vị đến đây để thấy dễ chịu…”</h5>\n            <blockquote>“Nếu quý vị đến đây để thấy dễ chịu, quý vị sẽ thất vọng.”</blockquote>\n            <p>Ni sư nói về trào lưu “healing”, “chilling” — người trẻ tìm đến thiền như tìm một liều thuốc giảm đau, xoa dịu bản ngã một buổi tối rồi hôm sau lại lao vào đúng vòng xoáy cũ. Chánh niệm, theo Ni sư, không phải công cụ tăng hiệu suất. Nó là sự tỉnh thức để nhìn thấy rõ cơ chế đang tạo ra đau khổ của chính mình. Và nó không tách rời Giới — Định — Tuệ: người còn nói dối, còn làm tổn thương ai đó thì đừng mong ngồi yên, vì cái tâm ấy sẽ không cho phép.</p>\n            <p>Tôi ghi vào sổ, chữ run vì ngồi xếp bằng: <em>định tâm không phải kỹ năng, nó là hệ quả của một đời sống không có gì phải giấu.</em></p>\n            <h5>Hơi thở, và chỗ tôi thất bại</h5>\n            <p>Chúng tôi đặt tay lên bụng dưới. Ni sư nói phần lớn người hiện đại thở cạn ở ngực — hơi thở của một cơ thể lúc nào cũng đang chuẩn bị bỏ chạy. Tôi hít vào, và lần đầu tiên sau nhiều tháng, tôi thấy bụng mình phồng lên.</p>\n            <p>Rồi đến sổ tức niệm: hít vào — nín — thở ra — nín, đếm từ một đến mười. Chỉ vậy thôi. Tôi đếm đến ba thì nghĩ đến báo cáo thứ Sáu. Đếm lại. Đến năm thì nhớ mình chưa gọi cho mẹ. Đếm lại. Đến bảy thì bắt đầu tự trách mình vì không đếm nổi tới mười — và cái tự trách đó cũng là một tạp niệm nữa.</p>\n            <p>Tôi không đếm được tới mười lần nào trong buổi tối hôm ấy. Nhưng chính chỗ thất bại đó là dữ liệu quý nhất tôi mang về: hóa ra tôi chưa từng làm chủ tâm trí mình. Tôi chỉ đang bị nó kéo đi, suốt hai mươi mấy năm, và gọi đó là “suy nghĩ”.</p>\n            <h5>Buông thư, bước chân trần, và chén trà</h5>\n            <p>Trời tối. Đèn hạ xuống. Giọng Ni sư dẫn sự chú ý đi từ da đầu xuống quai hàm — và tôi giật mình nhận ra hàm mình đang nghiến chặt, không rõ từ bao giờ. Cơ thể tôi, hóa ra, là một cuốn sổ ghi nợ; mỗi vùng căng cứng là một khoản lo âu chưa trả.</p>\n            <p>Thiền hành: bỏ giày, chân trần chạm nền gạch còn ấm hơi chiều. Trái — thở vào. Phải — thở ra. Cả đoàn đi vòng quanh sân, chậm như một dòng nước đặc. Sự tĩnh lặng của người phía trước rót vào tôi; sự chậm rãi của tôi rót vào người phía sau. Đó là lây lan tâm lý — thứ tôi từng chỉ đọc trên giấy.</p>\n            <h5>Vòng tròn bảy người</h5>\n            <p>Sau phần thiền thở, sư cô yêu cầu chúng tôi chia nhóm. Bảy người một vòng tròn, ngồi bệt, đầu gối gần chạm đầu gối. Tôi được xếp cùng sáu người lạ: hai bạn sinh viên, một chị bán hàng online, một anh kỹ sư, một cô giáo về hưu, và một người đàn ông chừng bốn mươi không nói gì suốt cả buổi.</p>\n            <p>Mỗi người được đặt vào tay một ly trà. Sư cô dặn chưa uống vội. Tay trái đỡ dưới — Đất, Mẹ. Tay phải ôm trên — Trời, Cha. Ba hơi thở: hít vào, để hương trà đi lên; thở ra, thả hai vai xuống. Sư cô bảo hãy nhìn thấy trong ly nước ấy người trồng chè trên đồi sương, đôi bàn tay hái búp, người sao chè trong đêm.</p>\n            <p>Rồi mới uống. Từng ngụm nhỏ, không ai nói gì. Vị chát trải khắp lưỡi, hơi gắt. Vài giây sau, ở cuống họng, cái ngọt mới đến — cái ngọt chỉ đến <em>sau</em> cái đắng, không bao giờ trước. Và tôi nghĩ đến mẹ tôi. Tôi không khóc. Nhưng có một cái gì rất nặng rời khỏi lồng ngực, lặng lẽ.</p>\n            <h5>“Anh chị cảm nhận được gì?”</h5>\n            <p>Phần cuối là chia sẻ. Từng nhóm, từng người, nói ra điều mình vừa cảm nhận. Ban đầu không ai muốn mở lời; chúng tôi nhìn xuống ly trà cạn thay vì nhìn nhau. Rồi chị bán hàng online nói trước, giọng bình thường, gần như nhẹ nhõm: “Em không nhớ lần cuối em ngồi yên không cầm điện thoại là bao giờ.” Cô giáo về hưu kể cô nghe được tiếng thở của chính mình, và nó làm cô sợ, vì nó ngắn quá. Người đàn ông bốn mươi im lặng suốt cả buổi, đến lượt thì nói đúng một câu: “Tôi nhớ ba tôi.” Rồi anh cúi xuống. Không ai hỏi thêm.</p>\n            <p>Điều lạ là sau khi nghe sáu người kia, tôi thấy điều mình sắp nói bớt đáng xấu hổ đi rất nhiều.</p>\n            <p>Về sau tôi mới hiểu vòng tròn ấy được thiết kế rất kỹ. Giáo trình viết: nhóm càng nhỏ, gắn kết càng cao. Bảy người là con số đủ nhỏ để không ai trốn được, đủ lớn để không thành một cuộc thẩm vấn. Và bản thân việc giãi bày — nói ra trước người khác điều đang đè trong lòng — chính là cơ chế mà sách gọi là xưng tội: con người trút bỏ được cảm xúc tiêu cực, và tin rằng mình được chấp nhận.</p>\n            <h5>Đường cong</h5>\n            <p>Mãi khi về nhà, mở lại giáo trình, tôi mới gọi được tên cho buổi tối ấy. Ba giai đoạn của tình cảm trong nghi lễ: bắt đầu bằng căng thẳng và ăn năn; dâng lên đỉnh cao ở khoảnh khắc giao cảm; kết thúc bằng sự giải phóng — tâm hồn nhẹ, trong, sáng hơn. Sách viết cảm xúc đi từ tiêu cực sang tích cực. Tôi đã sống trọn đường cong ấy trong bốn tiếng, mà không hề biết mình đang là đối tượng nghiên cứu của chính mình.</p>\n            <p>Tám giờ tối, tôi ra về. Thành phố vẫn còi xe, vẫn đèn đường, vẫn cái nóng hầm hập của nhựa đường nhả nhiệt. Không có gì thay đổi cả. Chỉ có nhịp thở của tôi là chậm hơn. Ni sư dặn đừng ép mình ngồi một tiếng ngay từ đầu — hãy đặt báo thức năm phút mỗi ngày, tuần sau sáu phút. Cái cây không lớn lên bằng cách bị kéo.</p>\n            <p>Chú giữ xe lại đưa tay ra, chậm rãi, gần như trịnh trọng. Lần này tôi cúi đầu chào lại.</p>",
+    traophung: "<p class=\"sample__wc\">≈ 720 từ</p>\n            <p>Workshop thiền tại chùa Long Phước được giới thiệu như một buổi thực hành chánh niệm dành cho người trẻ. Nhưng nếu đặt nó dưới khung phân tích của tâm lý học tôn giáo, có thể thấy nó vận hành gần như đầy đủ các cơ chế mà giáo trình mô tả khi bàn về nghi lễ. Bài viết này thử đọc buổi chiều tối hôm ấy như một nghi lễ tôn giáo thu nhỏ, qua năm cơ chế, và kết lại bằng phần bàn luận về những giới hạn của chính cách đọc đó.</p>\n            <h5>1. Cơ chế sinh lý: hơi thở như một cửa ngõ</h5>\n            <p>Giáo trình khẳng định nghi lễ tác động tới tín đồ trước hết qua các yếu tố sinh lý — hô hấp, tuần hoàn, thần kinh trung ương. Tại Long Phước, cửa ngõ ấy được mở một cách rất kỹ thuật. Ni sư yêu cầu người tham dự đặt tay lên vùng bụng dưới và chuyển từ thở ngực sang thở bụng, hít một lượng khí đủ lớn để kéo giãn cơ hoành. Người viết ghi nhận, sau khoảng mười phút, nhịp tim của bản thân chậm rõ rệt và cảm giác nôn nao ban đầu tan đi.</p>\n            <p>Điều này giải thích được bằng sinh lý học thần kinh: thở sâu và chậm kích hoạt hệ thần kinh đối giao cảm, kéo cơ thể ra khỏi trạng thái <em>fight-or-flight</em>. Nói cách khác, trước khi bất kỳ nội dung tôn giáo nào được truyền đạt, cơ thể người tham dự đã được đặt vào một trạng thái sinh lý dễ tiếp nhận. Cái thiêng đi vào con người qua đường thân xác trước.</p>\n            <h5>2. Ám thị và tự kỷ ám thị</h5>\n            <p>Trong bài thiền buông thư, người tham dự nằm xuống, để giọng của Ni sư dẫn sự chú ý lần lượt qua da đầu, quai hàm, vai, ngực, tới các ngón chân, đồng thời quán tưởng một dòng năng lượng trong trẻo thanh tẩy phiền muộn. Đây chính là cơ chế ám thị và tự kỷ ám thị mà giáo trình mô tả rất thẳng thắn khi phân tích nghi lễ.</p>\n            <p>Hai điều kiện làm ám thị hiệu quả đều có mặt: uy tín của người dẫn — vai trò thủ lĩnh tôn giáo, và tính đơn điệu, lặp lại của kích thích. Giọng dẫn đều, chậm, không cao trào, trong một không gian ánh sáng thấp. Đáng chú ý là hiệu quả thực tế: vai của người viết đã hạ xuống, quai hàm thôi nghiến — những thay đổi quan sát được, dù nội dung quán tưởng không có cơ sở vật lý.</p>\n            <h5>3. Bắt chước và lây lan tâm lý</h5>\n            <p>Thiền hành là nơi cơ chế nhóm bộc lộ rõ nhất. Cả đoàn bỏ giày, đi chân trần vòng quanh sân, đồng bộ hơi thở với từng bước. Không ai ra hiệu lệnh, nhưng tốc độ của cả đoàn tự động thống nhất. Giáo trình gọi đây là bắt chước và lây lan tâm lý theo quy luật cộng hưởng trong tập thể. Nhóm tham dự trở thành một cộng đồng tôn giáo tạm thời: không giáo luật, không phẩm trật, nhưng đủ ba yếu tố — hoạt động sùng bái chung, thuyết giáo, và một người dẫn có uy tín.</p>\n            <h5>4. Chức năng an ủi</h5>\n            <p>Nghi thức thiền trà — tay trái đỡ chén tượng trưng cho Đất và Mẹ, tay phải ôm chén tượng trưng cho Trời và Cha — là một thao tác dẫn dắt cảm xúc rất tinh vi. Nó chuyển một hành vi sinh hoạt thường ngày thành nghi lễ biết ơn, và qua đó khơi lại quan hệ với cha mẹ, với chuỗi nhân duyên đã tạo ra chén trà.</p>\n            <p>Giáo trình định nghĩa: “An ủi tôn giáo là sự tác động có ý nghĩa tới con người, thúc đẩy việc loại trừ những cảm xúc tiêu cực, khắc phục những xung đột tinh thần” (tr. 88). Điểm cần nhấn mạnh — và cũng là nghịch lý phương pháp luận của toàn ngành — là ở chỗ: <em>sự thỏa mãn có thể mang tính hư ảo, nhưng hiệu quả tâm lý thì hoàn toàn có thật.</em> Nhiều người tham dự lặng đi sau ngụm trà; sự lặng đi ấy là dữ liệu.</p>\n            <h5>5. Nhóm nhỏ và sự giãi bày</h5>\n            <p>Đáng chú ý là thiền trà không được tổ chức cho toàn thể hội chúng, mà theo các nhóm bảy người ngồi vòng tròn — mỗi người một ly trà, cùng hít thở theo lời dẫn của sư cô, cùng thưởng trà trong im lặng, rồi lần lượt chia sẻ điều mình cảm nhận. Đây là một thiết kế nhóm có chủ đích, và nó khớp chính xác với nhận định của giáo trình: cộng đồng tôn giáo tồn tại dưới dạng nhóm lớn hoặc nhóm nhỏ, và <em>nhóm càng nhỏ thì mức độ gắn kết càng cao</em> (tr. 143–144). Bảy người là con số đủ nhỏ để không ai đứng ngoài, đủ lớn để không biến thành đối thoại tay đôi.</p>\n            <p>Vòng chia sẻ cuối buổi, xét về mặt cơ chế, là một biến thể thế tục của <em>xưng tội</em>: “sự giãi bày với người khác về những hành vi mà mình đã thực hiện… con người trút bỏ được những cảm xúc tiêu cực” (tr. 95). Ở Long Phước không có tội để xưng, nhưng có nỗi mệt để nói ra. Một người tham dự — nam, khoảng bốn mươi tuổi, im lặng suốt buổi — khi đến lượt chỉ nói một câu: “Tôi nhớ ba tôi.” Không ai hỏi thêm, và chính sự không truy vấn ấy tạo ra điều kiện an toàn cho việc giãi bày.</p>\n            <p>Cần ghi nhận thêm hiệu ứng chuẩn hóa: sau khi nghe những người trước nói ra điều riêng tư, người nói sau thấy điều mình định nói bớt bất thường. Đây là lây lan tâm lý vận hành ở cấp độ ngôn ngữ, không chỉ ở cấp độ hành vi như trong thiền hành.</p>\n            <h5>6. Biến đổi tình cảm qua ba giai đoạn</h5>\n            <p>Diễn tiến cảm xúc của buổi workshop trùng khớp gần như hoàn toàn với mô hình ba giai đoạn (tr. 90–93). <em>Bắt đầu</em>: người tham dự bồn chồn, khó ngồi yên, tự trách khi không đếm nổi hơi thở tới mười — cảm xúc tiêu cực chiếm ưu thế. <em>Đỉnh cao</em>: khoảnh khắc thiền trà và vòng chia sẻ, cường độ cảm xúc cao nhất, chuyển sang biết ơn và xúc động. <em>Kết thúc</em>: căng thẳng được giải phóng, tâm trạng nhẹ và sáng hơn.</p>\n            <h5>Bàn luận: những giới hạn</h5>\n            <p>Cần thận trọng với bốn điểm. Thứ nhất, hiệu ứng quan sát được có thể chỉ là nhất thời — giáo trình nói tới sự giải tỏa, không nói tới sự chuyển hóa bền vững. Thứ hai, mẫu quan sát là những người tự nguyện đến chùa, vốn đã có sẵn thiện cảm với thực hành này. Thứ ba, chính vòng chia sẻ cũng tạo ra một áp lực nhóm: khi sáu người trước đều nói về sự xúc động, người thứ bảy rất khó nói rằng mình không cảm thấy gì — dư luận nhóm, theo giáo trình, vốn là một cơ chế kiểm soát. Thứ tư — và chính sư cô đã cảnh báo — nếu tách chánh niệm khỏi nền tảng Giới, nó dễ trượt thành một dạng “chilling”, xoa dịu bản ngã tạm thời rồi trả người ta về đúng vòng xoáy cũ.</p>\n            <p>Chính lời cảnh báo ấy, một cách thú vị, lại xác nhận luận đề của bài viết: buổi thiền này chỉ phát huy tác dụng khi được vận hành như một nghi lễ có nền tảng đạo đức, chứ không phải như một kỹ thuật thư giãn tách rời.</p>",
+    phuongtay: "<p class=\"sample__wc\">≈ 690 từ</p>\n            <p>Có một điều họ không nói với anh khi anh đăng ký học tâm lý: rằng anh sẽ không bao giờ được ngồi yên nữa. Anh sẽ luôn có một người quan sát trong đầu, đứng khoanh tay ở góc phòng, gọi tên mọi thứ. Và người ấy không bao giờ ngủ.</p>\n            <p>Tôi mang người ấy theo tới chùa Long Phước, vào một buổi chiều tối.</p>\n            <h5>Cái biết đi trước</h5>\n            <p>Tôi chọn ngồi hàng cuối. Đó là lựa chọn của một người muốn nhìn hơn là muốn tham dự. Trên đùi tôi là cuốn sổ, và trong cuốn sổ, mọi thứ nhanh chóng có tên.</p>\n            <p>Cổng chùa, mùi nhang, bước chân người ta chậm lại: <em>không gian thiêng</em>. Giọng Ni sư đều, thấp, lặp lại: <em>ám thị</em>. Cả đoàn thiền hành đồng bộ nhịp mà không ai ra lệnh: <em>lây lan tâm lý, quy luật cộng hưởng</em>. Chén trà nâng bằng hai tay: <em>nghi lễ, chức năng an ủi, trang tám mươi tám</em>.</p>\n            <p>Tôi ghi nhanh, gọn, chính xác. Và tôi hoàn toàn ở ngoài.</p>\n            <p>Mãi sau này tôi mới hiểu mình đang làm gì. Thuật ngữ, tối hôm ấy, không phải là công cụ nhận thức. Nó là một cơ chế phòng vệ. Gọi tên một cơn xúc động là cách lịch sự nhất để không phải xúc động. Người ta không thể vừa đo cơn sóng vừa để nó cuốn đi.</p>\n            <h5>Điểm gãy</h5>\n            <p>Rồi Ni sư dạy sổ tức niệm. Hít vào — nín — thở ra — nín. Đếm từ một đến mười.</p>\n            <p>Chỉ vậy thôi.</p>\n            <p>Tôi đếm đến ba thì nghĩ đến deadline. Đếm lại. Đến năm thì nhớ ra mình chưa gọi cho mẹ. Đếm lại. Đến bảy thì bắt đầu tự trách mình vì không đếm nổi tới mười — và cái tự trách ấy cũng là một tạp niệm nữa, nó cũng phá tôi.</p>\n            <p>Tôi thử gọi tên nó. <em>Phân tán chú ý. Dòng ý thức.</em> Không có tác dụng gì. Không một thuật ngữ nào trong đời sinh viên của tôi giúp tôi đếm được tới mười.</p>\n            <p>Đó là lần đầu tiên trong buổi tối ấy, người quan sát trong đầu tôi im lặng. Không phải vì tôi bắt anh ta im. Mà vì anh ta không có gì để nói.</p>\n            <p>Và trong khoảng lặng đó, tôi thấy một điều rất đơn giản, rất khó chịu: tôi chưa từng làm chủ tâm trí mình. Suốt hai mươi mấy năm, tôi bị nó kéo đi, và tôi gọi việc bị kéo đi ấy là “suy nghĩ”.</p>\n            <h5>Chén trà</h5>\n            <p>Đèn hạ xuống rất thấp. Sư cô cho chia nhóm: bảy người một vòng tròn, ngồi bệt, đầu gối gần chạm đầu gối. Sáu người tôi chưa từng gặp.</p>\n            <p>Mỗi người một ly trà nhỏ, còn ấm. Tay trái đỡ bên dưới. Tay phải ôm bên trên. Sư cô bảo chưa uống vội — thở ba hơi trước đã.</p>\n            <p>Không ai nói gì cả. Có tiếng côn trùng ngoài sân, thưa, đều. Có mùi trà — thứ mùi ngai ngái của lá bị làm nóng, không thơm theo kiểu người ta hay khen.</p>\n            <p>Tôi đưa chén lên. Nước ấm chạm môi. Vị chát trải khắp lưỡi, hơi gắt, không dễ chịu. Tôi nuốt. Và mấy giây sau, ở cuống họng, cái ngọt mới đến. Cái ngọt chỉ đến sau cái đắng. Không bao giờ trước.</p>\n            <p>Tôi nghĩ đến mẹ tôi.</p>\n            <p>Tôi không khóc. Nhưng có một cái gì đó rất nặng rời khỏi lồng ngực tôi, lặng lẽ, như một con chim bay khỏi mái nhà.</p>\n            <p>Cuốn sổ vẫn nằm trên đùi. Tôi không viết gì trong suốt hai mươi phút ấy.</p>\n            <h5>Đến lượt tôi nói</h5>\n            <p>Rồi sư cô bảo: mỗi người chia sẻ một điều mình vừa cảm nhận.</p>\n            <p>Vòng tròn bắt đầu quay. Người bên trái tôi nói cô nghe được tiếng thở của chính mình, và nó ngắn quá, làm cô sợ. Một anh nói suốt hai mươi năm anh chưa từng ngồi yên như vậy. Người đàn ông đối diện, im lặng cả buổi, đến lượt chỉ nói bốn chữ: “Tôi nhớ ba tôi.” Rồi anh cúi xuống. Không ai hỏi thêm.</p>\n            <p>Và vòng tròn quay đến tôi.</p>\n            <p>Người quan sát trong đầu tôi lập tức đưa ra một bản thảo rất chỉn chu. <em>Tôi nhận thấy cơ chế ám thị hoạt động khá rõ. Không gian thiêng có tác động thực. Đây là một dạng nghi lễ.</em> Đúng. Chính xác. Và tuyệt đối không thể nói ra được — không phải trước sáu con người vừa cùng tôi im lặng hai mươi phút, không phải sau bốn chữ của người đàn ông kia.</p>\n            <p>Lần đầu tiên, tôi không được phép trốn sau thuật ngữ.</p>\n            <p>Tôi nghe giọng mình nói: “Tôi nghĩ đến mẹ tôi. Tôi lâu rồi không gọi cho bà.”</p>\n            <p>Chỉ vậy thôi. Rất ngắn. Không có một khái niệm nào trong đó. Và đó là câu thật nhất tôi nói ra trong cả năm học ấy.</p>\n            <h5>Cái biết trở lại</h5>\n            <p>Đêm đó về nhà, tôi mở giáo trình ra. Và tôi tìm thấy mình trong đó.</p>\n            <p>Trang chín mươi. Ba giai đoạn của tình cảm tôn giáo trong nghi lễ: bắt đầu bằng lo âu và căng thẳng; dâng lên đỉnh cao ở khoảnh khắc giao cảm; kết thúc bằng sự giải phóng, tâm hồn nhẹ nhàng và trong trẻo hơn. Cảm xúc đi từ tiêu cực sang tích cực.</p>\n            <p>Tôi đã đi trọn đường cong ấy. Từng bước một. Và tôi không hề hay biết.</p>\n            <p>Người quan sát trong đầu tôi, tối hôm ấy, đã sai ở một chỗ căn bản: anh ta tưởng biết tên một cơ chế là đứng cao hơn nó. Nhưng cơ chế ấy vẫn chạy qua anh ta, không xin phép, không chừa một ai — kể cả người đang cầm bút ghi lại nó.</p>\n            <h5>Hòa giải</h5>\n            <p>Tôi từng sợ rằng học tâm lý học tôn giáo sẽ giết chết cái thiêng. Rằng khi ta biết chén trà kia hoạt động bằng ám thị, bằng cộng hưởng nhóm, bằng cơ chế an ủi, thì chén trà sẽ chỉ còn là chén trà.</p>\n            <p>Tôi đã sai.</p>\n            <p>Lý thuyết không lấy đi trải nghiệm. Nó chỉ đến sau, mang theo một cái tên, và đặt cái tên ấy xuống bên cạnh — như người ta đặt một tấm bia nhỏ bên một gốc cây, để nhiều năm sau còn nhớ mình đã trồng nó ngày nào.</p>\n            <p>Cái thấy cho tôi buổi tối ấy. Cái biết giữ nó lại, để tôi không đánh mất.</p>"
+  };
+  const gkStyleLabels = { sinhvien:'01 · Tường thuật', traophung:'02 · Phân tích', phuongtay:'03 · Tùy bút' };
+  const gkSampleTitles = { sinhvien:'“Bốn tiếng ngồi yên”', traophung:'“Một nghi lễ thu nhỏ”', phuongtay:'“Cái thấy và cái biết”' };
+  window.GK_MAPS = {"map1": "mindmap\n  root)\"01 · Tường thuật theo dòng thời gian\"(\n    [\"I. Mở bài\"]\n      [\"Bối cảnh VUCA qua một buổi chiều thật\"]\n      [\"Câu hỏi dẫn dắt\"]\n    [\"II. Bước qua ngưỡng\"]\n      [\"Cổng chùa - nhang - bước chân chậm lại\"]\n      [\"Không gian thiêng - Eliade\"]\n      [\"Chú giữ xe - chuẩn mực cộng đồng tr.143\"]\n    [\"III. Lời dẫn của Ni sư\"]\n      [\"Phản biện trào lưu healing\"]\n      [\"Giới - Định - Tuệ\"]\n    [\"IV. Bốn thực hành\"]\n      [\"Thở bụng - đan điền\"]\n      [\"Sổ tức niệm - đếm 1 tới 10\"]\n      [\"Thiền buông thư - quét cơ thể\"]\n      [\"Thiền hành - chân trần\"]\n    [\"V. Vòng tròn bảy người\"]\n      [\"Chia nhóm - ngồi vòng tròn\"]\n      [\"Nâng ly trà - thở theo lời sư cô\"]\n      [\"Thưởng trà trong im lặng\"]\n      [\"Chia sẻ cảm nhận - từng nhóm\"]\n      [\"Giãi bày và cộng cảm tr.95 tr.143\"]\n    [\"VI. Đường cong cảm xúc\"]\n      [\"Bắt đầu lo âu\"]\n      [\"Đỉnh cao giao cảm\"]\n      [\"Kết thúc giải phóng - tr.90-93\"]\n    [\"VII. Kết bài\"]\n      [\"Năm phút mỗi ngày\"]\n      [\"Thiền là chiến thắng chính mình\"]", "map2": "mindmap\n  root)\"02 · Phân tích theo cơ chế tâm lý\"(\n    [\"Luận đề\"]\n      [\"Workshop thiền là một nghi lễ tôn giáo thu nhỏ\"]\n    [\"1. Cơ chế sinh lý\"]\n      [\"Thở bụng - kéo giãn cơ hoành\"]\n      [\"Hô hấp - tuần hoàn - thần kinh trung ương\"]\n      [\"Hệ đối giao cảm\"]\n    [\"2. Ám thị và tự kỷ ám thị\"]\n      [\"Quán tưởng dòng năng lượng\"]\n      [\"Uy tín thủ lĩnh tôn giáo\"]\n      [\"Giọng dẫn đều - đơn điệu hóa kích thích\"]\n    [\"3. Bắt chước và lây lan tâm lý\"]\n      [\"Thiền hành tập thể\"]\n      [\"Quy luật cộng hưởng\"]\n      [\"Cộng đồng tạm thời\"]\n    [\"4. Chức năng an ủi\"]\n      [\"Thiền trà - biết ơn cha mẹ đất trời\"]\n      [\"Hư ảo nhưng hiệu quả có thật - tr.88\"]\n    [\"5. Nhóm nhỏ và sự giãi bày\"]\n      [\"Vòng tròn bảy người\"]\n      [\"Nhóm càng nhỏ gắn kết càng cao - tr.143\"]\n      [\"Chia sẻ cảm nhận - biến thể thế tục của xưng tội tr.95\"]\n      [\"Trút bỏ cảm xúc tiêu cực\"]\n    [\"6. Biến đổi tình cảm\"]\n      [\"Ba giai đoạn nghi lễ - tr.90-93\"]\n    [\"7. Bàn luận phản biện\"]\n      [\"Hiệu ứng nhất thời\"]\n      [\"Mẫu tự nguyện\"]\n      [\"Áp lực nhóm khi phải chia sẻ\"]\n      [\"Nguy cơ chilling hóa chánh niệm\"]\n    [\"Kết luận\"]\n      [\"Giá trị ứng dụng ngoài khung tôn giáo\"]", "map3": "mindmap\n  root)\"03 · Cái thấy và cái biết\"(\n    [\"Mở bài - nêu mâu thuẫn\"]\n      [\"Đi thiền mà đầu vẫn gọi tên cơ chế\"]\n      [\"Biết tên có làm mất trải nghiệm không?\"]\n    [\"Phần 1 - Cái biết đi trước\"]\n      [\"Ngồi hàng cuối - tư thế nhà quan sát\"]\n      [\"Dán nhãn: ám thị - cộng hưởng - không gian thiêng\"]\n      [\"Thuật ngữ như cơ chế phòng vệ\"]\n    [\"Phần 2 - Điểm gãy\"]\n      [\"Sổ tức niệm - đếm mãi không tới mười\"]\n      [\"Cái biết vô dụng ở đây\"]\n      [\"Nhận ra chưa từng làm chủ tâm trí\"]\n    [\"Phần 3 - Chén trà\"]\n      [\"Vòng tròn bảy người\"]\n      [\"Tả kỹ - không giải thích\"]\n      [\"Đoạn duy nhất không có thuật ngữ\"]\n    [\"Phần 3b - Đến lượt tôi nói\"]\n      [\"Nhà quan sát buộc phải lên tiếng\"]\n      [\"Thuật ngữ vô dụng trước sáu người lạ\"]\n    [\"Phần 4 - Cái biết trở lại\"]\n      [\"Đọc lại giáo trình sau buổi thiền\"]\n      [\"Đã sống trọn ba giai đoạn mà không hay\"]\n    [\"Kết - hòa giải\"]\n      [\"Lý thuyết không giải thiêng trải nghiệm\"]\n      [\"Nó cho ta ngôn ngữ để không quên\"]"};
+
   const drawer   = document.getElementById('drawer');
   const backdrop = document.getElementById('backdrop');
   const drawerBody  = document.getElementById('drawerBody');
@@ -494,17 +1537,23 @@
     const qData = sampleAnswers[currentAnswerQ];
     if(!qData) return;
     const meta = styleMeta[currentAnswerStyle];
-    answerDrawerTitle.textContent = 'Đáp án mẫu · Câu ' + currentAnswerQ.replace('q','');
+    const isGK = currentAnswerQ === 'q6';
+    answerDrawerTitle.textContent = isGK
+      ? 'Bài mẫu · Dàn ý giữa kỳ'
+      : 'Đáp án mẫu · Câu ' + currentAnswerQ.replace('q','');
     document.querySelectorAll('.style-tab').forEach(btn=>{
       btn.classList.toggle('active', btn.dataset.style === currentAnswerStyle);
+      btn.textContent = isGK ? gkStyleLabels[btn.dataset.style] : styleMeta[btn.dataset.style].label;
     });
-    answerDrawerBody.innerHTML = `<div class="style-tag">${meta.tag}</div><div class="answer-body">${qData[currentAnswerStyle]}</div>`;
+    const tag = isGK ? gkSampleTitles[currentAnswerStyle] : meta.tag;
+    answerDrawerBody.innerHTML = `<div class="style-tag">${tag}</div><div class="answer-body">${qData[currentAnswerStyle]}</div>`;
+    answerDrawerBody.scrollTop = 0;
   }
 
-  function openAnswerDrawer(qid){
+  function openAnswerDrawer(qid, style){
     lastFocused = document.activeElement;
     currentAnswerQ = qid;
-    currentAnswerStyle = 'sinhvien';
+    currentAnswerStyle = style || 'sinhvien';
     renderAnswer();
     closeDrawer();
     answerDrawer.classList.add('open');
@@ -523,7 +1572,7 @@
   }
 
   document.querySelectorAll('.answer-trigger').forEach(btn=>{
-    btn.addEventListener('click', ()=>openAnswerDrawer('q'+btn.dataset.aq));
+    btn.addEventListener('click', ()=>openAnswerDrawer('q'+btn.dataset.aq, btn.dataset.astyle));
   });
   document.getElementById('answerDrawerClose').addEventListener('click', closeAnswerDrawer);
   document.querySelectorAll('.style-tab').forEach(btn=>{
@@ -544,6 +1593,101 @@
       document.querySelector('.reading').scrollTo({top:0, behavior:'smooth'});
     });
   });
+
+  /* ---------- Dàn ý GK: khóa mật khẩu + segmented control ---------- */
+  (function(){
+    const PASS  = 'Mimapmap';
+    const lock  = document.getElementById('gkLock');
+    const gkBody= document.getElementById('gkBody');
+    const gkFoot= document.getElementById('gkFoot');
+    const input = document.getElementById('gkPass');
+    const err   = document.getElementById('gkErr');
+    const segs  = Array.from(document.querySelectorAll('.seg__btn'));
+    let spied = false;
+
+    function initSpy(){
+      if(spied) return;
+      spied = true;
+      const plans = segs.map(b=>document.getElementById(b.dataset.go));
+      const io = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            const i = plans.indexOf(e.target);
+            segs.forEach((s,k)=>s.classList.toggle('is-on', k===i));
+          }
+        });
+      }, { rootMargin:'-70px 0px -55% 0px', threshold:0 });
+      plans.forEach(p=>io.observe(p));
+    }
+
+    function unlock(){
+      lock.hidden = true;
+      gkBody.hidden = false;
+      gkFoot.hidden = false;
+      sessionStorage.setItem('gk-unlocked','1');
+      if(window.renderGKMaps) window.renderGKMaps();
+      initSpy();
+    }
+    window.gkUnlocked = () => !gkBody.hidden;
+    if(sessionStorage.getItem('gk-unlocked') === '1') unlock();
+
+    function tryPass(){
+      if(input.value.trim() === PASS){ unlock(); }
+      else {
+        err.hidden = false;
+        lock.classList.remove('shake');
+        void lock.offsetWidth;
+        lock.classList.add('shake');
+        input.select();
+      }
+    }
+    document.getElementById('gkBtn').addEventListener('click', tryPass);
+    input.addEventListener('keydown', e=>{ if(e.key==='Enter') tryPass(); });
+
+    segs.forEach(b=>b.addEventListener('click', ()=>{
+      document.getElementById(b.dataset.go).scrollIntoView({behavior:'smooth', block:'start'});
+    }));
+  })();
+</script>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({
+    startOnLoad:false,
+    securityLevel:'loose',
+    theme:'base',
+    themeVariables:{
+      fontFamily:'"IBM Plex Sans", system-ui, sans-serif',
+      fontSize:'13px',
+      primaryColor:'#F7F2E7',
+      primaryTextColor:'#2A2420',
+      primaryBorderColor:'#7C2D2D',
+      lineColor:'#A67C3D',
+      textColor:'#5C5040',
+      background:'#EEE7D8'
+    }
+  });
+  let drawn = false;
+  window.renderGKMaps = async () => {
+    if(drawn) return;
+    drawn = true;
+    for(const [id, code] of Object.entries(window.GK_MAPS || {})){
+      const fig = document.getElementById(id);
+      if(!fig) continue;
+      const canvas = fig.querySelector('.map__canvas');
+      try{
+        const { svg } = await mermaid.render(id + '-svg', code);
+        canvas.innerHTML = svg;
+      }catch(err){
+        console.error(err);
+        canvas.remove();
+        const fb = fig.querySelector('.map__fallback');
+        fb.textContent = code;
+        fig.classList.add('is-failed');
+      }
+    }
+  };
+  if(window.gkUnlocked && window.gkUnlocked()) window.renderGKMaps();
 </script>
 </body>
 </html>
