@@ -17,7 +17,7 @@ tlh-lam-sang/
 │   ├── nhanh-tri-lieu.js       # Danh sách 3 nhánh (sửa 1 chỗ, mọi trang tự cập nhật)
 │   ├── questions-cbt.js        # Ngân hàng — CBT (60 câu)
 │   ├── questions-phan-tam.js   # — Lâm sàng định hướng phân tâm (60 câu)
-│   └── questions-gia-dinh.js   # — Hệ thống gia đình (60 câu)
+│   └── questions-gia-dinh.js   # — Hệ thống gia đình (70 câu)
 └── nhanh/
     ├── cbt.html
     ├── phan-tam.html
@@ -26,21 +26,21 @@ tlh-lam-sang/
 
 Đối chiếu với `cac-tiep-can/`: `nhanh/` ↔ `tiep-can/`, `data/nhanh-tri-lieu.js` ↔
 `data/approaches.js`, `data/questions-*.js` ↔ `data/quiz-bank.js` (tách làm 3 file
-theo nhánh vì ngân hàng lớn — 180 câu).
+theo nhánh vì ngân hàng lớn — 190 câu).
 
 ## Trạng thái
 
 | Phần | Trạng thái | Nguồn |
 |---|---|---|
-| Ngân hàng trắc nghiệm | **180 câu** — mỗi nhánh 30 lý thuyết + 30 tình huống, có lý giải đúng/sai từng phương án | |
+| Ngân hàng trắc nghiệm | **190 câu** — CBT và Phân tâm 30+30, Hệ thống gia đình 35+35, có lý giải đúng/sai từng phương án | |
 | Quiz engine | Xong | |
 | `nhanh/cbt.html` | **Đã đổ nội dung** — 10 mục | Slide Nguyễn Huỳnh Luân: *Cấu trúc các buổi làm việc*; *Làm việc trên các suy nghĩ & niềm tin* |
 | `nhanh/phan-tam.html` | **Đã đổ nội dung** — 10 mục | Slide ThS. Phạm Ngọc Long: *Giới thiệu — Lâm sàng định hướng phân tâm*; *Trung gian trị liệu* |
-| `nhanh/he-thong-gia-dinh.html` | **Khung sườn** — 8 mục còn placeholder | PDF nguồn là bản scan, chưa trích được text |
+| `nhanh/he-thong-gia-dinh.html` | **Đã đổ nội dung** — 7 phần I–VII + bảng đối chiếu | Sổ tay chuyên đề: ThS. Vương Nguyễn Toàn Thiện — *Trị liệu Tâm lý tiếp cận Hệ thống – Gia đình* |
 
-Ngân hàng CBT và Phân tâm đã viết lại bám sát slide, dùng đúng thuật ngữ của giảng viên
-(*chuyển cảm / phản chuyển cảm*, *đồng nhất hoá*, *SNTĐ*, *định hình ca*). Ngân hàng
-Hệ thống gia đình hiện vẫn theo giáo trình chung, sẽ viết lại khi có bản slide đọc được.
+Cả ba ngân hàng đều viết bám sát tài liệu gốc của từng giảng viên, dùng đúng thuật ngữ
+được dạy — *chuyển cảm / phản chuyển cảm*, *đồng nhất hoá*, *SNTĐ*, *định hình ca*,
+*morphostasis / morphogenesis*, *bảng xoay nợ*, *phụ mẫu hoá*.
 
 ## CSS
 
@@ -68,26 +68,17 @@ Nhãn thuật ngữ dùng `.pill` của theme kèm modifier màu theo nhánh:
 Điều hướng: `index.html` dùng `.back-link` về landing page; `quiz.html` và `nhanh/*.html`
 dùng `.topbar` với `a.back` + `.crumb` — cùng markup với `cac-tiep-can/`.
 
-## Đổ nội dung cho nhánh còn lại
+## Đổ nội dung cho một nhánh
 
-`nhanh/he-thong-gia-dinh.html` dựng sẵn 8 mục:
+Ba trang trong `nhanh/` đều đã có nội dung. Nếu bổ sung hoặc sửa: mỗi mục là một
+`<section class="block">` với `.q-head` + `.q-no` + `.q-sub` làm tiêu đề.
 
-1. Bối cảnh & lịch sử hình thành
-2. Quan niệm về bệnh lý tâm thần
-3. Mục tiêu trị liệu
-4. Khái niệm cốt lõi
-5. Kỹ thuật can thiệp
-6. Tiến trình một ca trị liệu
-7. Bằng chứng thực nghiệm & hạn chế
-8. Đối chiếu với hai nhánh còn lại
-
-Chỗ cần điền là các khối `<div class="placeholder"> … </div>` — thay cả khối bằng nội dung thật.
-Điền xong thì đổi `xong: false` → `xong: true` trong `data/nhanh-tri-lieu.js`; nhãn trạng thái
+Điền xong nhánh nào thì đặt `xong: true` trong `data/nhanh-tri-lieu.js`; nhãn trạng thái
 trên trang mục lục và bảng tiến độ tự cập nhật.
 
 Class dùng được ngay: `.callout` (ô nhấn mạnh, từ theme), `.pill` (nhãn thuật ngữ),
-`.datatable` (bảng so sánh), `.q-head` + `.q-no` + `.q-sub` (tiêu đề mục),
-`<h4>` (tiêu đề phụ in nghiêng), `.divider-end` (dòng kết).
+`.datatable` (bảng), `<h4>` (tiêu đề phụ in nghiêng), `.divider-end` (dòng kết).
+Chú thích ôn thi viết bằng `<p class="q-sub" style="margin-left:0;">`.
 
 ## Quiz hoạt động thế nào
 
@@ -104,7 +95,7 @@ Class dùng được ngay: `.callout` (ô nhấn mạnh, từ theme), `.pill` (n
 |---|---|
 | `quiz.html` | màn hình thiết lập |
 | `quiz.html?branch=cbt` | mở sẵn đề 20 câu cho CBT (`phan-tam`, `gia-dinh` tương tự) |
-| `quiz.html?mode=review` | đọc toàn bộ 180 câu kèm đáp án, không tính điểm |
+| `quiz.html?mode=review` | đọc toàn bộ 190 câu kèm đáp án, không tính điểm |
 
 ## Thêm câu trắc nghiệm
 

@@ -43,13 +43,13 @@ window.NHANH_TRI_LIEU = [
   },
   {
     ma: "gia-dinh",
-    ten: "Trị liệu Hệ thống gia đình",
+    ten: "Trị liệu Hệ thống – Gia đình",
     tenNgan: "Gia đình",
     enTen: "Family Systems Therapy",
     file: "nhanh/he-thong-gia-dinh.html",
-    tomTat: "Vấn đề nằm trong quan hệ chứ không nằm trong một cá nhân; can thiệp nhắm vào ranh giới, phân cấp, tam giác và các vòng lặp tương tác.",
-    tuKhoa: ["Bowen", "Minuchin", "Haley", "Milan", "nhân quả vòng tròn", "genogram", "tự sự · giải pháp"],
-    nguon: "Chờ bản PDF có lớp text (bản hiện tại là scan)",
-    xong: false
+    tomTat: "Bảy phần của sổ tay chuyên đề: khung pháp lý hành nghề, lý thuyết hệ thống tổng quát, nhân quả vòng tròn và hai loại phản hồi, chu kỳ đời sống gia đình, các trường phái và mô hình Satir, liệu pháp bối cảnh xuyên thế hệ.",
+    tuKhoa: ["Nghị định 96/2023", "von Bertalanffy", "phản hồi âm / dương", "McGoldrick — 6 giai đoạn", "Minuchin", "Bowen", "Haley · Madanes", "Satir · Whitaker", "Böszörményi-Nagy", "White · Epston", "bảng xoay nợ", "phụ mẫu hoá"],
+    nguon: "Sổ tay chuyên đề — ThS. Vương Nguyễn Toàn Thiện",
+    xong: true
   }
 ];

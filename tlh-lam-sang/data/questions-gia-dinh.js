@@ -1,1129 +1,1320 @@
 /* ============================================================
-   NGÂN HÀNG CÂU HỎI — NHÁNH 3: TRỊ LIỆU HỆ THỐNG GIA ĐÌNH
+   NGÂN HÀNG CÂU HỎI — NHÁNH 3: TRỊ LIỆU HỆ THỐNG – GIA ĐÌNH
+   Bám sát tài liệu của ThS. Vương Nguyễn Toàn Thiện:
+   "Trị liệu Tâm lý tiếp cận Hệ thống – Gia đình — Sổ tay Phân tích
+    Lâm sàng, Động lực học Hệ thống, Vòng đời Gia đình & Đạo đức
+    Xuyên thế hệ" (7 phần I–VII)
    60 câu = 30 lý thuyết (LT) + 30 tình huống suy luận (TH)
-   Schema: xem chú thích trong questions-cbt.js
+   Schema: xem README.md
    ============================================================ */
 
 window.QUIZ_BANK = window.QUIZ_BANK || {};
 
 window.QUIZ_BANK["gia-dinh"] = {
-  ten: "Trị liệu Hệ thống gia đình",
+  ten: "Trị liệu Hệ thống – Gia đình",
   mau: "gia-dinh",
+  nguon: "Sổ tay chuyên đề — ThS. Vương Nguyễn Toàn Thiện",
   cauHoi: [
 
 /* ========================= LÝ THUYẾT ========================= */
 
 {
-  id:"GD-LT-01", loai:"ly-thuyet", chuDe:"Lý thuyết hệ thống",
-  cauHoi:"Nguyên lý “tính chỉnh thể” (wholeness) mà trị liệu gia đình tiếp thu từ lý thuyết hệ thống tổng quát của von Bertalanffy phát biểu rằng:",
+  id:"GD-LT-01", loai:"ly-thuyet", chuDe:"Định vị chuyên môn",
+  cauHoi:"Điểm phân biệt cốt lõi giữa Tâm lý gia Lâm sàng (Clinical Psychologist) và Nhà Trị liệu (Psychotherapist) theo tài liệu là gì?",
   luaChon:[
-    "Hệ thống là tổng cộng đơn giản của các thành phần cấu tạo nên nó",
-    "Hệ thống lớn hơn tổng các thành phần; không thể hiểu một thành viên nếu tách họ khỏi các mối quan hệ trong hệ thống",
-    "Mỗi thành viên trong gia đình vận hành hoàn toàn độc lập",
-    "Hệ thống gia đình luôn hướng tới việc thay đổi liên tục"
+    "Tâm lý gia Lâm sàng chỉ làm việc trong bệnh viện, Nhà Trị liệu làm ở phòng khám tư",
+    "Tâm lý gia Lâm sàng được đào tạo bài bản theo tiêu chuẩn viện trường/y khoa về đánh giá, chẩn đoán tâm bệnh học (DSM/ICD), phân tích cơ chế bệnh sinh và can thiệp dựa trên chứng cứ khoa học; Nhà Trị liệu là danh xưng bao quát hơn",
+    "Nhà Trị liệu có trình độ cao hơn Tâm lý gia Lâm sàng",
+    "Hai chức danh này hoàn toàn đồng nghĩa trong luật Việt Nam"
   ],
   dapAn:1,
-  giaiThich:"Đây là bước ngoặt nhận thức luận của trị liệu gia đình: hành vi của một cá nhân chỉ trở nên dễ hiểu khi được đặt trong mạng lưới tương tác mà nó thuộc về, vì thế đơn vị quan sát chuyển từ cá nhân sang hệ thống.",
+  giaiThich:"Tài liệu định nghĩa Tâm lý gia Lâm sàng gắn với ba năng lực: chẩn đoán tâm bệnh học theo DSM/ICD, phân tích cơ chế bệnh sinh, và can thiệp bằng liệu pháp dựa trên chứng cứ. “Nhà Trị liệu” là danh xưng bao quát cho người thực hành can thiệp tâm lý, trị liệu biểu cảm, tham vấn học đường hoặc chuyên sâu một trường phái gia đình/cặp đôi.",
   viSaoSai:[
-    "Đây chính là quan điểm nguyên tử luận mà lý thuyết hệ thống bác bỏ.",
+    "Nơi làm việc không phải tiêu chí phân biệt được nêu.",
     "",
-    "Trái ngược với nguyên lý liên thuộc giữa các thành phần.",
-    "Hệ thống có xu hướng duy trì trạng thái ổn định, không phải thay đổi liên tục."
+    "Tài liệu không xếp hạng cao thấp theo cách này; điểm khác nằm ở chuẩn đào tạo và phạm vi chuyên môn.",
+    "Nghị định 96/2023 quy định riêng chức danh Tâm lý lâm sàng, nên hai khái niệm không đồng nghĩa."
   ]
 },
 {
-  id:"GD-LT-02", loai:"ly-thuyet", chuDe:"Nhân quả vòng tròn",
-  cauHoi:"“Nhân quả vòng tròn” (circular causality) khác với nhân quả tuyến tính ở điểm nào?",
+  id:"GD-LT-02", loai:"ly-thuyet", chuDe:"Khung pháp lý",
+  cauHoi:"Nghị định 96/2023/NĐ-CP quy định cấp phép hành nghề chức danh Tâm lý lâm sàng tại Việt Nam có hiệu lực từ thời điểm nào?",
   luaChon:[
-    "Nó xác định chính xác hơn ai là người có lỗi trong gia đình",
-    "Nó xem hành vi của các thành viên như những mắt xích tác động qua lại và duy trì lẫn nhau, thay vì xếp thành chuỗi nguyên nhân – kết quả một chiều",
-    "Nó chỉ áp dụng cho các gia đình có nhiều hơn ba thành viên",
-    "Nó thay thế khái niệm hệ thống bằng khái niệm cá nhân"
+    "01/01/2023",
+    "30/12/2023",
+    "01/07/2024",
+    "30/12/2024"
   ],
   dapAn:1,
-  giaiThich:"Trong tư duy vòng tròn, câu hỏi “ai bắt đầu trước” trở nên vô nghĩa vì việc đặt dấu chấm câu ở đâu chỉ là quy ước. Điều quan trọng là nhận ra khuôn mẫu tự duy trì và can thiệp vào bất kỳ điểm nào của vòng lặp.",
+  giaiThich:"Tài liệu ghi rõ: Nghị định 96/2023/NĐ-CP (Điều 8) quy định cấp phép hành nghề chức danh Tâm lý lâm sàng tại Việt Nam từ 30/12/2023.",
   viSaoSai:[
-    "Ngược lại, nó chuyển trọng tâm ra khỏi việc quy lỗi.",
+    "Không phải mốc được nêu.",
     "",
-    "Nó áp dụng cho mọi hệ thống, kể cả cặp đôi hai người.",
-    "Nó làm điều ngược lại: chuyển trọng tâm từ cá nhân sang hệ thống."
+    "Không phải mốc được nêu.",
+    "Không phải mốc được nêu."
   ]
 },
 {
-  id:"GD-LT-03", loai:"ly-thuyet", chuDe:"Cân bằng nội tại",
-  cauHoi:"Khái niệm “cân bằng nội tại” (homeostasis) trong hệ thống gia đình chỉ:",
+  id:"GD-LT-03", loai:"ly-thuyet", chuDe:"Khung pháp lý",
+  cauHoi:"Theo Nghị định 96/2023, ai đủ điều kiện hành nghề Tâm lý lâm sàng ở PHẠM VI CƠ BẢN?",
   luaChon:[
-    "Sự bình đẳng về quyền lực giữa các thành viên",
-    "Xu hướng của hệ thống duy trì trạng thái ổn định quen thuộc và chống lại thay đổi, kể cả khi trạng thái đó gây đau khổ",
-    "Trạng thái không có xung đột trong gia đình",
-    "Khả năng gia đình thích nghi nhanh với mọi biến cố"
-  ],
-  dapAn:1,
-  giaiThich:"Homeostasis giải thích vì sao gia đình vừa tìm đến trị liệu vừa vô thức chống lại thay đổi: các cơ chế giữ ổn định được kích hoạt khi hệ thống bị đẩy ra khỏi trạng thái quen thuộc, ngay cả khi trạng thái đó có triệu chứng.",
-  viSaoSai:[
-    "Bình đẳng quyền lực là chủ đề khác, không phải nội dung của khái niệm này.",
-    "",
-    "Hệ thống có thể duy trì cân bằng ngay giữa xung đột triền miên.",
-    "Đó là tính linh hoạt (adaptability), khái niệm bổ sung chứ không đồng nghĩa."
-  ]
-},
-{
-  id:"GD-LT-04", loai:"ly-thuyet", chuDe:"Phản hồi",
-  cauHoi:"Trong ngôn ngữ điều khiển học, phản hồi âm (negative feedback) trong gia đình có chức năng gì?",
-  luaChon:[
-    "Đưa hệ thống trở lại trạng thái ổn định trước đó, giảm thiểu độ lệch",
-    "Khuếch đại độ lệch và đẩy hệ thống sang trạng thái mới",
-    "Tạo ra xung đột giữa các thành viên",
-    "Cắt đứt liên lạc giữa các tiểu hệ thống"
+    "Bác sĩ hoặc Cử nhân Tâm lý học có chứng chỉ đào tạo chuyên khoa cơ bản tâm lý lâm sàng",
+    "Chỉ Thạc sĩ hoặc Tiến sĩ Tâm lý học lâm sàng",
+    "Bất kỳ ai có bằng cử nhân ngành khoa học xã hội",
+    "Chỉ bác sĩ chuyên khoa tâm thần"
   ],
   dapAn:0,
-  giaiThich:"“Âm” ở đây không mang nghĩa xấu mà mang nghĩa điều chỉnh ngược: khi một thành viên đi lệch khỏi khuôn mẫu, hệ thống phát tín hiệu kéo họ trở lại. Phản hồi dương thì ngược lại — nó khuếch đại độ lệch và có thể dẫn tới thay đổi bậc hai.",
+  giaiThich:"Phạm vi cơ bản (Khoản 2 Điều 128): bác sĩ hoặc cử nhân Tâm lý học có chứng chỉ đào tạo chuyên khoa cơ bản tâm lý lâm sàng. Phạm vi chuyên khoa mới yêu cầu Thạc sĩ/Tiến sĩ hoặc văn bằng chuyên khoa.",
   viSaoSai:[
     "",
-    "Đó là phản hồi dương (positive feedback).",
-    "Xung đột không phải định nghĩa của phản hồi.",
-    "Không liên quan tới định nghĩa của khái niệm."
+    "Đó là điều kiện của phạm vi chuyên khoa.",
+    "Cử nhân phải đúng ngành Tâm lý học và phải có chứng chỉ chuyên khoa cơ bản.",
+    "Bác sĩ nói chung, không giới hạn chuyên khoa tâm thần."
   ]
 },
 {
-  id:"GD-LT-05", loai:"ly-thuyet", chuDe:"Đẳng kết cục",
-  cauHoi:"Nguyên lý “đẳng kết cục” (equifinality) hàm ý điều gì cho thực hành trị liệu gia đình?",
+  id:"GD-LT-04", loai:"ly-thuyet", chuDe:"Khung pháp lý",
+  cauHoi:"Điều kiện cho PHẠM VI CHUYÊN KHOA của chức danh Tâm lý lâm sàng là gì?",
   luaChon:[
-    "Mọi gia đình đều cần cùng một phác đồ can thiệp",
-    "Cùng một kết cục có thể đến từ nhiều khởi điểm khác nhau, nên việc truy tìm “nguyên nhân gốc” trong quá khứ ít quan trọng hơn việc hiểu khuôn mẫu đang vận hành",
-    "Kết quả trị liệu luôn giống nhau bất kể can thiệp gì",
-    "Mỗi gia đình chỉ có một con đường duy nhất dẫn tới thay đổi"
+    "Có chứng chỉ đào tạo chuyên khoa cơ bản tâm lý lâm sàng",
+    "Thạc sĩ / Tiến sĩ Tâm lý học lâm sàng hoặc Văn bằng chuyên khoa tâm lý lâm sàng",
+    "Có ít nhất 5 năm kinh nghiệm thực hành",
+    "Là thành viên của một hội đoàn trị liệu quốc tế"
   ],
   dapAn:1,
-  giaiThich:"Đẳng kết cục (và khái niệm sinh đôi với nó là đa kết cục) là một lý do quan trọng khiến trị liệu hệ thống tập trung vào tương tác ở hiện tại thay vì khảo cổ học nguyên nhân trong quá khứ.",
+  giaiThich:"Theo Khoản 1 Điều 12 được dẫn trong tài liệu: phạm vi chuyên khoa dành cho Thạc sĩ / Tiến sĩ Tâm lý học lâm sàng hoặc người có Văn bằng chuyên khoa tâm lý lâm sàng.",
   viSaoSai:[
-    "Trái ngược: nguyên lý này ủng hộ tính đa dạng của con đường.",
+    "Đó là điều kiện của phạm vi cơ bản.",
     "",
-    "Đây là hiểu sai; nguyên lý nói về con đường dẫn tới kết cục, không nói mọi can thiệp đều tương đương.",
-    "Trái ngược với nội dung của nguyên lý."
+    "Số năm kinh nghiệm không phải tiêu chí được nêu.",
+    "Tư cách hội viên không phải tiêu chí được nêu."
   ]
 },
 {
-  id:"GD-LT-06", loai:"ly-thuyet", chuDe:"Thân chủ được chỉ định",
-  cauHoi:"Thuật ngữ “thân chủ được chỉ định” (identified patient) chỉ:",
+  id:"GD-LT-05", loai:"ly-thuyet", chuDe:"Cảnh báo lâm sàng",
+  cauHoi:"Theo cảnh báo lâm sàng trong tài liệu, nguy cơ lớn nhất khi muốn “chữa lành một người quá nhanh” là gì?",
   luaChon:[
-    "Người được bảo hiểm chi trả chi phí trị liệu",
-    "Thành viên được gia đình chỉ ra là “người có vấn đề”, nhưng theo góc nhìn hệ thống thì đang mang triệu chứng thay cho toàn bộ hệ thống",
-    "Thành viên đầu tiên liên hệ đặt lịch hẹn",
-    "Người có quyền quyết định trong gia đình"
+    "Thân chủ sẽ lệ thuộc vào nhà trị liệu",
+    "Cân bằng nội môi của gia đình bị phá vỡ đột ngột, dễ đẩy hệ thống vào khủng hoảng tan rã hoặc phát sinh triệu chứng bệnh lý nơi người khác",
+    "Chi phí trị liệu tăng cao ngoài dự kiến",
+    "Thân chủ sẽ tái phát đúng triệu chứng cũ sau vài tháng"
   ],
   dapAn:1,
-  giaiThich:"Khái niệm này chứa đựng toàn bộ bước chuyển của trị liệu gia đình: triệu chứng của một người được đọc như thông tin về hệ thống, chứ không phải như thuộc tính riêng của cá nhân đó.",
+  giaiThich:"Tài liệu dùng cụm “lành ít dữ nhiều”: nôn nóng cắt bỏ triệu chứng cá nhân mà không hiểu hệ sinh thái nâng đỡ xung quanh sẽ phá vỡ cân bằng nội môi của gia đình, đẩy hệ thống vào khủng hoảng hoặc làm triệu chứng chuyển sang một thành viên khác.",
   viSaoSai:[
-    "Đây là vấn đề hành chính, không liên quan khái niệm.",
+    "Lệ thuộc là rủi ro khác, không phải nội dung cảnh báo này.",
     "",
-    "Người liên hệ đầu tiên thường không phải người mang triệu chứng.",
-    "Đó là vấn đề phân cấp quyền lực, một khái niệm khác."
+    "Không phải nội dung được nêu.",
+    "Điểm nhấn nằm ở hệ thống và ở người khác, không phải ở chính thân chủ."
   ]
 },
 {
-  id:"GD-LT-07", loai:"ly-thuyet", chuDe:"Minuchin – ranh giới",
-  cauHoi:"Theo Salvador Minuchin, gia đình có ranh giới “quá dính” (enmeshed) đặc trưng bởi:",
+  id:"GD-LT-06", loai:"ly-thuyet", chuDe:"Lý thuyết hệ thống",
+  cauHoi:"Lý thuyết Hệ thống tạo ra “cuộc cách mạng dịch chuyển tư duy” nào trong tâm lý học?",
   luaChon:[
-    "Ranh giới quá cứng, các thành viên ít giao tiếp và ít hỗ trợ nhau",
-    "Ranh giới quá mờ nhạt, các thành viên can dự quá mức vào đời sống của nhau và cá tính riêng bị hoà tan",
-    "Sự vắng mặt hoàn toàn của phân cấp trong gia đình",
-    "Việc gia đình có quá nhiều thế hệ sống chung"
+    "Từ nghiên cứu hành vi quan sát được sang nghiên cứu quá trình nhận thức",
+    "Từ tập trung vào xung đột nội tâm cá nhân (intrapsychic) sang nghiên cứu mạng lưới quan hệ tương thuộc (interpersonal context)",
+    "Từ nghiên cứu người lớn sang nghiên cứu trẻ em",
+    "Từ nghiên cứu định tính sang nghiên cứu định lượng"
   ],
   dapAn:1,
-  giaiThich:"Minuchin đặt ranh giới trên một trục liên tục: quá dính ở một đầu, rời rạc (disengaged) ở đầu kia, và ranh giới rõ ràng nhưng thẩm thấu được nằm ở giữa. Cả hai cực đều gắn với nguy cơ bệnh lý.",
+  giaiThich:"Đây là câu mở đầu phần II của tài liệu — bước chuyển từ intrapsychic sang interpersonal context chính là điều làm nên tính “cách mạng” của tiếp cận hệ thống.",
   viSaoSai:[
-    "Đó là mô tả của kiểu rời rạc (disengaged).",
+    "Đó là bước chuyển từ hành vi luận sang cách mạng nhận thức, thuộc nhánh CBT.",
     "",
-    "Phân cấp là một chiều kích khác của cấu trúc gia đình.",
-    "Số thế hệ sống chung không quyết định kiểu ranh giới."
+    "Không phải nội dung được nêu.",
+    "Không phải nội dung được nêu."
   ]
 },
 {
-  id:"GD-LT-08", loai:"ly-thuyet", chuDe:"Minuchin – tiểu hệ thống",
-  cauHoi:"Ba tiểu hệ thống cơ bản trong mô hình cấu trúc gia đình của Minuchin là:",
+  id:"GD-LT-07", loai:"ly-thuyet", chuDe:"Nguồn gốc lý thuyết",
+  cauHoi:"Lý thuyết Hệ thống trong tâm lý học kế thừa từ hai nguồn nào?",
   luaChon:[
-    "Tiểu hệ thống vợ chồng, tiểu hệ thống cha mẹ, và tiểu hệ thống anh chị em",
-    "Tiểu hệ thống kinh tế, tiểu hệ thống giáo dục, và tiểu hệ thống tình cảm",
-    "Tiểu hệ thống ý thức, tiền ý thức và vô thức",
-    "Tiểu hệ thống nội tâm, liên cá nhân và xã hội"
+    "Ngôn ngữ học cấu trúc của Ferdinand de Saussure (1931) và Lý thuyết Hệ thống Tổng quát của nhà sinh học Ludwig von Bertalanffy (1950)",
+    "Phân tâm học của Freud và Tâm lý học hành vi của Skinner",
+    "Điều khiển học của Wiener và Thuyết tiến hoá của Darwin",
+    "Hiện tượng học của Husserl và Triết học hiện sinh của Sartre"
   ],
   dapAn:0,
-  giaiThich:"Việc phân biệt tiểu hệ thống vợ chồng với tiểu hệ thống cha mẹ rất quan trọng trên thực hành: hai người có thể phối hợp tốt trong vai trò cha mẹ nhưng bế tắc trong vai trò vợ chồng, và ngược lại.",
+  giaiThich:"Tài liệu nêu đích danh hai nguồn kèm năm: de Saussure (1931) từ ngôn ngữ học cấu trúc, và von Bertalanffy (1950) — một nhà sinh học — với Lý thuyết Hệ thống Tổng quát.",
   viSaoSai:[
     "",
-    "Đây không phải cách phân chia của Minuchin.",
-    "Đây là mô hình địa hình của Freud.",
-    "Đây không phải khái niệm tiểu hệ thống trong trị liệu cấu trúc."
+    "Không phải hai nguồn được dẫn.",
+    "Điều khiển học có liên quan tới tư duy hệ thống nói chung nhưng không phải hai nguồn được tài liệu nêu.",
+    "Không phải hai nguồn được dẫn."
   ]
 },
 {
-  id:"GD-LT-09", loai:"ly-thuyet", chuDe:"Phân cấp",
-  cauHoi:"Trong trị liệu cấu trúc, “phân cấp rối loạn” (dysfunctional hierarchy) thường được hiểu là:",
+  id:"GD-LT-08", loai:"ly-thuyet", chuDe:"Tập hợp vs hệ thống",
+  cauHoi:"Điều gì phân biệt một HỆ THỐNG với một TẬP HỢP (aggregate)?",
   luaChon:[
-    "Cha mẹ đặt ra quá nhiều quy tắc cho con cái",
-    "Quyền lực điều hành không nằm đúng ở tiểu hệ thống cha mẹ — chẳng hạn một đứa trẻ hoặc ông bà nắm quyền quyết định thay cha mẹ",
-    "Gia đình có nhiều hơn hai thế hệ",
-    "Cha và mẹ có phong cách nuôi dạy khác nhau"
+    "Hệ thống có nhiều thành viên hơn tập hợp",
+    "Hệ thống là chỉnh thể có cấu trúc, thứ bậc, phân công vai trò và mục tiêu chung; tập hợp chỉ là đám đông ngẫu nhiên rời rạc",
+    "Hệ thống tồn tại lâu dài, tập hợp chỉ tồn tại tạm thời",
+    "Hệ thống là khái niệm sinh học, tập hợp là khái niệm xã hội học"
   ],
   dapAn:1,
-  giaiThich:"Trị liệu cấu trúc coi việc khôi phục một phân cấp rõ ràng, trong đó cha mẹ giữ vai trò điều hành, là mục tiêu can thiệp trung tâm với nhiều vấn đề hành vi ở trẻ.",
+  giaiThich:"Ví dụ trong tài liệu: dòng người kẹt xe là một tập hợp; cơ thể sống, hệ sinh thái và gia đình là hệ thống — vì có cấu trúc, thứ bậc, phân công vai trò và mục tiêu chung.",
   viSaoSai:[
-    "Nhiều quy tắc chưa hẳn là phân cấp rối loạn.",
+    "Số lượng không phải tiêu chí.",
     "",
-    "Số thế hệ tự nó không tạo ra phân cấp rối loạn.",
-    "Khác biệt phong cách là bình thường, chỉ trở thành vấn đề khi nó phá vỡ liên minh cha mẹ."
+    "Thời gian tồn tại không phải tiêu chí được nêu.",
+    "Cả hai khái niệm đều được dùng xuyên ngành."
   ]
 },
 {
-  id:"GD-LT-10", loai:"ly-thuyet", chuDe:"Tam giác hoá",
-  cauHoi:"“Tam giác hoá” (triangulation) mô tả hiện tượng gì?",
+  id:"GD-LT-09", loai:"ly-thuyet", chuDe:"Hệ thống đóng / mở",
+  cauHoi:"Hiện tượng suy thoái xảy ra ở hệ thống đóng được gọi là gì?",
   luaChon:[
-    "Ba thế hệ cùng tham gia buổi trị liệu",
-    "Khi căng thẳng giữa hai người tăng lên, họ kéo một người thứ ba vào để giảm bớt áp lực trực tiếp giữa hai bên",
-    "Việc nhà trị liệu làm việc lần lượt với ba tiểu hệ thống",
-    "Ba nhà trị liệu cùng quan sát một gia đình qua gương một chiều"
+    "Morphostasis",
+    "Morphogenesis",
+    "Entropia",
+    "Equifinality"
+  ],
+  dapAn:2,
+  giaiThich:"Tài liệu ghi: hệ thống đóng cách ly, không nhận năng lượng ngoài, dễ suy thoái — Entropia. Ngược lại, hệ thống mở liên tục trao đổi thông tin, tự tái tạo và thích ứng.",
+  viSaoSai:[
+    "Morphostasis là cơ chế giữ nguyên trạng của phản hồi âm tính.",
+    "Morphogenesis là cơ chế biến đổi của phản hồi dương tính.",
+    "",
+    "Equifinality là đặc tính đẳng kết: nhiều ngả dẫn tới một đích."
+  ]
+},
+{
+  id:"GD-LT-10", loai:"ly-thuyet", chuDe:"Hệ thống đóng / mở",
+  cauHoi:"Theo tài liệu, gia đình lành mạnh là loại hệ thống nào?",
+  luaChon:[
+    "Hệ thống đóng, để bảo vệ các thành viên khỏi tác động bên ngoài",
+    "Hệ thống mở — liên tục trao đổi thông tin, tự tái tạo và thích ứng",
+    "Hệ thống bán mở, chỉ trao đổi với họ hàng ruột thịt",
+    "Tuỳ nền văn hoá, không có quy chuẩn chung"
   ],
   dapAn:1,
-  giaiThich:"Bowen coi tam giác là đơn vị ổn định nhỏ nhất của hệ thống cảm xúc: cặp đôi hai người vốn không ổn định dưới áp lực, nên người thứ ba — thường là một đứa trẻ — bị kéo vào để hấp thụ căng thẳng.",
+  giaiThich:"Tài liệu khẳng định trực tiếp: “Gia đình lành mạnh luôn là một hệ thống mở.” Đóng cửa với bên ngoài dẫn tới entropia — suy thoái.",
   viSaoSai:[
-    "Đó là vấn đề tổ chức buổi làm việc, không phải khái niệm này.",
+    "Hệ thống đóng dễ suy thoái, không phải mô hình lành mạnh.",
     "",
-    "Đó là cách sắp xếp trị liệu, không phải hiện tượng cảm xúc.",
-    "Đó là nhóm phản ánh (reflecting team)."
+    "Không phải cách phân loại trong tài liệu.",
+    "Tài liệu nêu một khẳng định rõ ràng, không để ngỏ."
   ]
 },
 {
-  id:"GD-LT-11", loai:"ly-thuyet", chuDe:"Liên minh xuyên thế hệ",
-  cauHoi:"“Liên minh xuyên thế hệ” (cross-generational coalition) là:",
+  id:"GD-LT-11", loai:"ly-thuyet", chuDe:"10 đặc tính hệ thống",
+  cauHoi:"Đặc tính “Không Tổng Hợp” trong 10 đặc tính hệ thống của von Bertalanffy có nghĩa là gì?",
   luaChon:[
-    "Việc ông bà và cha mẹ thống nhất cách dạy con",
-    "Việc một phụ huynh và một đứa con liên kết với nhau chống lại phụ huynh còn lại, vượt qua ranh giới giữa các thế hệ",
-    "Việc con cái ở các độ tuổi khác nhau chơi với nhau",
-    "Việc gia đình duy trì truyền thống qua nhiều đời"
+    "Các thành phần trong hệ thống không thể kết hợp với nhau",
+    "Tổng thể lớn hơn tổng số cộng của các thành phần",
+    "Hệ thống không thể tổng hợp thông tin từ bên ngoài",
+    "Không thể tổng hợp nhiều hệ thống thành một hệ thống lớn hơn"
   ],
   dapAn:1,
-  giaiThich:"Đây là một trong những cấu hình gây bệnh lý điển hình nhất trong mô hình cấu trúc: nó phá vỡ ranh giới thế hệ, làm suy yếu tiểu hệ thống cha mẹ và đặt đứa trẻ vào vị trí không phù hợp với lứa tuổi.",
+  giaiThich:"“Không Tổng Hợp” (non-summativity) là đặc tính số 2: tổng thể lớn hơn tổng số cộng — không thể hiểu gia đình bằng cách cộng dồn đặc điểm của từng thành viên.",
   viSaoSai:[
-    "Đó là sự phối hợp lành mạnh, không phải liên minh chống đối.",
+    "Hiểu sai theo nghĩa đen của từ.",
     "",
-    "Đó là quan hệ trong tiểu hệ thống anh chị em.",
-    "Đó là truyền thống gia đình, khái niệm khác."
+    "Đó liên quan tới hệ thống đóng/mở.",
+    "Trái với đặc tính “Phân cấp thứ tự” — hệ con nằm trong hệ lớn."
   ]
 },
 {
-  id:"GD-LT-12", loai:"ly-thuyet", chuDe:"Kỹ thuật cấu trúc",
-  cauHoi:"Kỹ thuật “diễn cảnh” (enactment) trong trị liệu cấu trúc là:",
+  id:"GD-LT-12", loai:"ly-thuyet", chuDe:"10 đặc tính hệ thống",
+  cauHoi:"Đặc tính “Đẳng Kết” (Equifinality) phát biểu điều gì?",
   luaChon:[
-    "Yêu cầu gia đình kể lại chi tiết một cuộc cãi vã đã xảy ra ở nhà",
-    "Yêu cầu các thành viên tương tác trực tiếp với nhau ngay trong buổi trị liệu để nhà trị liệu quan sát và can thiệp vào khuôn mẫu đang diễn ra",
-    "Nhà trị liệu đóng vai một thành viên trong gia đình",
-    "Gia đình viết ra kịch bản cho cuộc sống lý tưởng của họ"
+    "Mọi thành viên trong hệ thống đều có vai trò ngang nhau",
+    "Nhiều con đường khác nhau có thể dẫn tới cùng một kết cục",
+    "Hệ thống luôn kết thúc ở trạng thái cân bằng",
+    "Kết quả của hệ thống luôn tương xứng với đầu vào"
   ],
   dapAn:1,
-  giaiThich:"Minuchin nhấn mạnh sự khác biệt giữa nghe kể và nhìn thấy. Khi khuôn mẫu diễn ra ngay trước mắt, nhà trị liệu có thể can thiệp vào chính thời điểm nó vận hành thay vì bàn luận về nó một cách trừu tượng.",
+  giaiThich:"Tài liệu tóm tắt đặc tính số 3 bằng cụm “Nhiều ngả → Một đích”. Hệ quả thực hành: truy tìm một “nguyên nhân gốc” duy nhất là việc ít hữu ích trong tiếp cận hệ thống.",
   viSaoSai:[
-    "Kể lại chỉ cung cấp phiên bản đã được biên tập; diễn cảnh nhắm tới tương tác trực tiếp.",
+    "Đó gần với ý bình đẳng vai trò, không phải đẳng kết.",
     "",
-    "Đó là kỹ thuật sắm vai, không phải diễn cảnh.",
-    "Đó gần với kỹ thuật của trị liệu tập trung giải pháp."
+    "Đó là đặc tính Tính Ổn Định (cân bằng nội môi).",
+    "Trái với bản chất phi tuyến của hệ thống."
   ]
 },
 {
-  id:"GD-LT-13", loai:"ly-thuyet", chuDe:"Bowen – phân biệt hoá",
-  cauHoi:"“Phân biệt hoá bản thân” (differentiation of self) theo Murray Bowen là:",
+  id:"GD-LT-13", loai:"ly-thuyet", chuDe:"10 đặc tính hệ thống",
+  cauHoi:"Đặc tính “Tính Ổn Định” trong danh sách 10 đặc tính tương ứng với khái niệm nào?",
   luaChon:[
-    "Khả năng cắt đứt hoàn toàn quan hệ với gia đình gốc để sống độc lập",
-    "Khả năng phân biệt giữa quá trình lý trí và quá trình cảm xúc, giữ được lập trường riêng mà vẫn duy trì kết nối cảm xúc với người thân",
-    "Mức độ khác biệt về tính cách giữa các thành viên trong gia đình",
-    "Khả năng che giấu cảm xúc thật trước mặt gia đình"
-  ],
-  dapAn:1,
-  giaiThich:"Phân biệt hoá không đồng nghĩa với xa cách. Người phân biệt hoá cao có thể ở gần người thân mà không bị cuốn vào phản ứng cảm xúc tự động của hệ thống, và có thể giữ vị thế “tôi” ngay giữa áp lực.",
-  viSaoSai:[
-    "Đó là cắt đứt cảm xúc (emotional cutoff) — trạng thái mà Bowen coi là biểu hiện của phân biệt hoá thấp.",
-    "",
-    "Đây không phải nội dung của khái niệm.",
-    "Che giấu cảm xúc không phải phân biệt hoá."
-  ]
-},
-{
-  id:"GD-LT-14", loai:"ly-thuyet", chuDe:"Bowen – tam giác",
-  cauHoi:"Vì sao Bowen coi tam giác là “khối xây dựng” cơ bản của hệ thống cảm xúc gia đình?",
-  luaChon:[
-    "Vì mọi gia đình đều có đúng ba thành viên",
-    "Vì quan hệ hai người vốn không ổn định khi căng thẳng tăng, nên hệ thống tự động kéo người thứ ba vào để phân tán áp lực",
-    "Vì ba thế hệ luôn sống cùng nhau trong một mái nhà",
-    "Vì nhà trị liệu luôn tạo thành tam giác với cặp đôi"
-  ],
-  dapAn:1,
-  giaiThich:"Bowen lập luận rằng khi lo âu ở mức thấp, một cặp đôi có thể ổn định; nhưng khi lo âu tăng, một người thứ ba sẽ được kéo vào, và các hệ thống lớn được cấu tạo từ nhiều tam giác lồng vào nhau.",
-  viSaoSai:[
-    "Số thành viên thực tế không liên quan đến luận điểm này.",
-    "",
-    "Không liên quan tới sắp xếp cư trú.",
-    "Nhà trị liệu có thể bị kéo vào tam giác, nhưng đó là hệ quả chứ không phải lý do lý thuyết."
-  ]
-},
-{
-  id:"GD-LT-15", loai:"ly-thuyet", chuDe:"Bowen – phóng chiếu gia đình",
-  cauHoi:"“Quá trình phóng chiếu gia đình” (family projection process) theo Bowen mô tả:",
-  luaChon:[
-    "Cách cha mẹ truyền sự thiếu phân biệt hoá và lo âu của mình sang một hoặc vài đứa con, thường là đứa được tập trung chú ý nhiều nhất",
-    "Việc gia đình quy trách nhiệm cho các yếu tố bên ngoài như nhà trường hay xã hội",
-    "Việc trẻ gán cho cha mẹ những cảm xúc của chính mình",
-    "Cách gia đình lên kế hoạch cho tương lai của con cái"
+    "Cân bằng nội môi (Homeostasis)",
+    "Đẳng kết (Equifinality)",
+    "Khác biệt hoá (Differentiation)",
+    "Tập trung hoá (Centralization)"
   ],
   dapAn:0,
-  giaiThich:"Đứa trẻ trở thành tiêu điểm của lo âu cha mẹ thường phát triển mức phân biệt hoá thấp hơn anh chị em, và đây là cơ chế nối liền một thế hệ với thế hệ tiếp theo trong lý thuyết Bowen.",
+  giaiThich:"Đặc tính số 10 được ghi kèm chú thích “Cân bằng nội môi (Homeo)”. Đây là nền tảng để hiểu vì sao hệ thống chống lại thay đổi.",
   viSaoSai:[
     "",
-    "Đó là quy lỗi ra bên ngoài, không phải khái niệm này.",
-    "Đó là phóng chiếu theo nghĩa phân tâm, khác với khái niệm của Bowen.",
-    "Không liên quan tới nội dung khái niệm."
+    "Đẳng kết là đặc tính số 3.",
+    "Khác biệt hoá là đặc tính số 7 — chuyên môn hoá vai trò.",
+    "Tập trung hoá là đặc tính số 5 — trọng tâm quyền lực."
   ]
 },
 {
-  id:"GD-LT-16", loai:"ly-thuyet", chuDe:"Bowen – truyền dẫn đa thế hệ",
-  cauHoi:"“Quá trình truyền dẫn đa thế hệ” (multigenerational transmission process) hàm ý điều gì?",
+  id:"GD-LT-14", loai:"ly-thuyet", chuDe:"10 đặc tính hệ thống",
+  cauHoi:"Đặc tính “Phân Cấp Thứ Tự” được mô tả bằng công thức nào?",
   luaChon:[
-    "Các bệnh tâm thần luôn được di truyền qua gen",
-    "Mức phân biệt hoá và các khuôn mẫu cảm xúc được truyền từ thế hệ này sang thế hệ kế tiếp, có thể tích luỹ dần qua nhiều đời",
-    "Mỗi thế hệ luôn phát triển lành mạnh hơn thế hệ trước",
-    "Chỉ có con trưởng mới chịu ảnh hưởng từ gia đình gốc"
+    "Đấu tranh nguồn lực",
+    "Hệ con / hệ cha / hệ lớn",
+    "Chuyên môn hoá vai trò",
+    "Vận hành hướng đích"
   ],
   dapAn:1,
-  giaiThich:"Bowen cho rằng khuôn mẫu quan hệ được học và tái tạo qua các thế hệ; theo thời gian, một nhánh của gia đình có thể trượt dần xuống mức phân biệt hoá thấp hơn, làm tăng nguy cơ rối loạn.",
+  giaiThich:"Đặc tính số 6 — Phân Cấp Thứ Tự — được ghi là “Hệ con / Hệ cha / Hệ lớn”, tức mọi hệ thống đều nằm lồng trong một hệ thống lớn hơn và chứa các hệ thống nhỏ hơn.",
   viSaoSai:[
-    "Đây là cơ chế quan hệ và học tập, không phải cơ chế di truyền sinh học.",
+    "Đó là đặc tính số 4 — Cạnh Tranh.",
     "",
-    "Lý thuyết không giả định tiến bộ tất yếu qua các thế hệ.",
-    "Mọi thành viên đều chịu ảnh hưởng, tuy mức độ khác nhau."
+    "Đó là đặc tính số 7 — Khác Biệt Hoá.",
+    "Đó là đặc tính số 9 — Tính Mục Tiêu."
   ]
 },
 {
-  id:"GD-LT-17", loai:"ly-thuyet", chuDe:"Bowen – cắt đứt cảm xúc",
-  cauHoi:"“Cắt đứt cảm xúc” (emotional cutoff) trong lý thuyết Bowen được hiểu là:",
+  id:"GD-LT-15", loai:"ly-thuyet", chuDe:"Nhân quả",
+  cauHoi:"Hệ quả thực hành đáng lo ngại nhất của tư duy nhân quả TUYẾN TÍNH trong làm việc với gia đình là gì?",
   luaChon:[
-    "Dấu hiệu của sự trưởng thành và độc lập đã hoàn tất",
-    "Cách quản lý sự dính mắc chưa được giải quyết với gia đình gốc bằng khoảng cách vật lý hoặc im lặng — bề ngoài giống độc lập nhưng thực chất là phân biệt hoá thấp",
-    "Việc gia đình chủ động từ chối tham gia trị liệu",
-    "Sự mất trí nhớ về các sự kiện gia đình trong quá khứ"
+    "Làm tiến trình trị liệu kéo dài hơn",
+    "Dẫn tới việc đổ lỗi cá nhân",
+    "Khiến nhà trị liệu bỏ qua yếu tố sinh học",
+    "Làm gia đình mất niềm tin vào khoa học"
   ],
   dapAn:1,
-  giaiThich:"Bowen phân biệt rõ giữa phân biệt hoá và cắt đứt: người cắt đứt vẫn bị hệ thống chi phối mạnh, chỉ là họ quản lý cường độ đó bằng cách tránh tiếp xúc. Vì vậy việc quay lại kết nối với gia đình gốc là một phần công việc trị liệu.",
+  giaiThich:"Tài liệu chú thích ngay dưới sơ đồ nhân quả tuyến tính: “Tìm nguyên nhân A → gây kết quả B (Đổ lỗi cá nhân)”. Đây chính là điều mà tư duy vòng tròn khắc phục.",
   viSaoSai:[
-    "Đây chính là ngộ nhận mà Bowen muốn làm rõ.",
+    "Không phải hệ quả được nêu.",
     "",
-    "Đó là vấn đề tham gia trị liệu, không phải khái niệm này.",
-    "Không liên quan tới trí nhớ."
+    "Không phải hệ quả được nêu.",
+    "Không phải hệ quả được nêu."
   ]
 },
 {
-  id:"GD-LT-18", loai:"ly-thuyet", chuDe:"Genogram",
-  cauHoi:"Một genogram được xây dựng đúng chuẩn cần bao gồm tối thiểu:",
+  id:"GD-LT-16", loai:"ly-thuyet", chuDe:"Nhân quả vòng tròn",
+  cauHoi:"Hình ảnh “bánh răng” được dùng để minh hoạ điều gì trong tư duy hệ thống?",
   luaChon:[
-    "Một thế hệ với đầy đủ thông tin y tế",
-    "Ba thế hệ, kèm các sự kiện quan trọng và ký hiệu thể hiện chất lượng quan hệ (gần gũi, xung đột, cắt đứt)",
-    "Chỉ những thành viên hiện đang sống chung một nhà",
-    "Sơ đồ chỗ ngồi của gia đình trong buổi trị liệu"
+    "Sự cứng nhắc của các quy tắc gia đình",
+    "Tác động quy hồi qua lại: bánh răng A xoay làm B xoay, và ngược lại",
+    "Sự hao mòn của hệ thống theo thời gian",
+    "Vai trò của người đứng đầu gia đình"
   ],
   dapAn:1,
-  giaiThich:"Genogram không chỉ là cây phả hệ: giá trị lâm sàng nằm ở lớp thông tin về quan hệ và các khuôn mẫu lặp lại qua ba thế hệ, giúp nhìn thấy quá trình truyền dẫn đa thế hệ.",
+  giaiThich:"Tài liệu đối chiếu hai sơ đồ: nhân quả tuyến tính là mũi tên một chiều A → B; nhân quả vòng tròn/bánh răng là tác động quy hồi qua lại, nên không có điểm khởi đầu tuyệt đối.",
   viSaoSai:[
-    "Một thế hệ không cho thấy được khuôn mẫu lặp lại.",
+    "Không phải nội dung của hình ảnh này.",
     "",
-    "Giới hạn ở hộ gia đình hiện tại sẽ bỏ mất chiều liên thế hệ.",
-    "Đó là sơ đồ chỗ ngồi, một công cụ quan sát khác."
+    "Không phải nội dung của hình ảnh này.",
+    "Đó gần với đặc tính Tập Trung Hoá."
   ]
 },
 {
-  id:"GD-LT-19", loai:"ly-thuyet", chuDe:"Trị liệu chiến lược",
-  cauHoi:"“Kê đơn triệu chứng” (prescribing the symptom) là kỹ thuật đặc trưng của trường phái nào và dựa trên logic gì?",
+  id:"GD-LT-17", loai:"ly-thuyet", chuDe:"Phản hồi âm tính",
+  cauHoi:"Phản hồi ÂM tính (Negative Feedback) có cơ chế và tên gọi chuyên môn là gì?",
   luaChon:[
-    "Trị liệu cấu trúc; dựa trên việc củng cố ranh giới",
-    "Trị liệu chiến lược; đây là một can thiệp nghịch lý, yêu cầu thân chủ chủ động thực hiện triệu chứng khiến nó mất tính tự động và không còn ngoài tầm kiểm soát",
-    "Trị liệu tập trung giải pháp; dựa trên việc khuếch đại ngoại lệ",
-    "Trị liệu tự sự; dựa trên việc ngoại hoá vấn đề"
+    "Khuếch đại độ lệch để tạo cân bằng mới — Morphogenesis",
+    "Tự điều chỉnh nhằm triệt tiêu độ lệch, duy trì trạng thái ổn định và bảo toàn cân bằng nội môi hiện hữu — Morphostasis",
+    "Cắt đứt liên hệ giữa các thành viên — Entropia",
+    "Tạo ra nhiều con đường dẫn tới một đích — Equifinality"
   ],
   dapAn:1,
-  giaiThich:"Logic nghịch lý là: nếu triệu chứng được thực hiện theo yêu cầu và theo lịch, nó không còn là thứ “tự xảy đến”. Dù thân chủ tuân thủ hay không tuân thủ, cả hai kết quả đều tạo ra thay đổi trong khuôn mẫu.",
+  giaiThich:"Phản hồi âm giữ nguyên trạng: nó triệt tiêu độ lệch để hệ thống trở lại trạng thái quen thuộc. Tên chuyên môn là Morphostasis (giữ nguyên hình thái).",
   viSaoSai:[
-    "Trị liệu cấu trúc làm việc với ranh giới và phân cấp, không dùng nghịch lý làm kỹ thuật trung tâm.",
+    "Đó là phản hồi dương tính.",
     "",
-    "Trị liệu tập trung giải pháp đi theo hướng hoàn toàn khác.",
-    "Ngoại hoá là kỹ thuật của trị liệu tự sự, không phải kê đơn triệu chứng."
+    "Entropia là sự suy thoái ở hệ thống đóng.",
+    "Equifinality là một trong 10 đặc tính hệ thống."
   ]
 },
 {
-  id:"GD-LT-20", loai:"ly-thuyet", chuDe:"Nhóm Milan",
-  cauHoi:"“Câu hỏi vòng tròn” (circular questioning) của nhóm Milan có đặc điểm gì?",
+  id:"GD-LT-18", loai:"ly-thuyet", chuDe:"Phản hồi dương tính",
+  cauHoi:"Phản hồi DƯƠNG tính (Positive Feedback) dẫn tới kết quả gì đối với hệ thống?",
   luaChon:[
-    "Hỏi lần lượt từng thành viên về cảm xúc của chính họ",
-    "Hỏi một thành viên về quan hệ, suy nghĩ hoặc phản ứng giữa hai thành viên khác, qua đó làm hiện lên các khác biệt và khuôn mẫu trong hệ thống",
-    "Lặp lại cùng một câu hỏi cho tới khi có câu trả lời thoả đáng",
-    "Hỏi về quá khứ theo trình tự thời gian từ xa tới gần"
+    "Đưa hệ thống trở lại đúng trạng thái ban đầu",
+    "Khuếch đại độ lệch, kích thích biến đổi leo thang, phá vỡ cấu trúc cũ để buộc hệ thống tái lập cân bằng mới — Morphogenesis",
+    "Làm hệ thống ngừng vận động hoàn toàn",
+    "Tăng số lượng thành viên trong hệ thống"
   ],
   dapAn:1,
-  giaiThich:"Ví dụ: “Khi bố và mẹ tranh cãi, ai là người khó chịu nhất? Em nghĩ em gái em nhìn chuyện đó thế nào?” Kiểu câu hỏi này vừa thu thập thông tin về khuôn mẫu, vừa tự nó đã là một can thiệp vì buộc gia đình nhìn nhau theo cách mới.",
+  giaiThich:"Phản hồi dương đẩy hệ thống ra khỏi trạng thái cũ. “Dương” không có nghĩa là tốt — nó chỉ hướng khuếch đại. Tên chuyên môn: Morphogenesis (sinh ra hình thái mới).",
   viSaoSai:[
-    "Đó là câu hỏi tuyến tính thông thường.",
+    "Đó là phản hồi âm tính.",
     "",
-    "Không liên quan tới định nghĩa kỹ thuật.",
-    "Đó là khai thác tiền sử, không phải câu hỏi vòng tròn."
+    "Không phải nội dung được nêu.",
+    "Không phải nội dung được nêu."
   ]
 },
 {
-  id:"GD-LT-21", loai:"ly-thuyet", chuDe:"Nhóm Milan",
-  cauHoi:"Ba nguyên tắc dẫn dắt do nhóm Milan (Selvini Palazzoli và cộng sự) đề xuất là:",
+  id:"GD-LT-19", loai:"ly-thuyet", chuDe:"Ví dụ phản hồi",
+  cauHoi:"Ví dụ sinh học nào được tài liệu dùng để minh hoạ phản hồi DƯƠNG tính?",
   luaChon:[
-    "Đặt giả thuyết, tính vòng tròn, và trung lập",
-    "Gia nhập, diễn cảnh, và tái cấu trúc",
-    "Ngoại hoá, tái tác giả, và nhân chứng bên ngoài",
-    "Chấp nhận, cam kết, và giá trị sống"
+    "Đổ mồ hôi giải nhiệt giúp giữ thân nhiệt ổn định 37°C",
+    "Co bóp tử cung kích thích tiết Oxytocin làm tăng cơn co thắt khi sinh nở",
+    "Phản xạ rụt tay khi chạm vật nóng",
+    "Đồng tử co lại khi gặp ánh sáng mạnh"
+  ],
+  dapAn:1,
+  giaiThich:"Cơn co tử cung → tiết Oxytocin → cơn co mạnh hơn → tiết thêm Oxytocin: một vòng khuếch đại điển hình. Còn đổ mồ hôi giữ thân nhiệt 37°C là ví dụ của phản hồi âm.",
+  viSaoSai:[
+    "Đó là ví dụ của phản hồi âm tính.",
+    "",
+    "Không phải ví dụ được nêu trong tài liệu.",
+    "Không phải ví dụ được nêu trong tài liệu."
+  ]
+},
+{
+  id:"GD-LT-20", loai:"ly-thuyet", chuDe:"Ví dụ phản hồi",
+  cauHoi:"Câu ca dao “Chồng giận thì vợ bớt lời / Cơm sôi nhỏ lửa biết đời nào khê” minh hoạ cơ chế nào?",
+  luaChon:[
+    "Phản hồi âm tính — tự điều chỉnh để triệt tiêu độ lệch, giữ ổn định",
+    "Phản hồi dương tính — khuếch đại xung đột",
+    "Tam giác hoá trong hệ thống gia đình",
+    "Phụ mẫu hoá vai trò vợ chồng"
   ],
   dapAn:0,
-  giaiThich:"Hypothesizing – circularity – neutrality là bộ ba nguyên tắc trong bài báo kinh điển năm 1980 của nhóm Milan, định hình phong cách làm việc dựa trên giả thuyết hệ thống và tránh liên minh với bất kỳ thành viên nào.",
+  giaiThich:"Một bên tăng cường độ thì bên kia giảm xuống để trung hoà — đúng logic triệt tiêu độ lệch của phản hồi âm. Câu thành ngữ minh hoạ phản hồi dương trong tài liệu là “Tức nước vỡ bờ”.",
   viSaoSai:[
     "",
-    "Đó là các kỹ thuật của trị liệu cấu trúc (Minuchin).",
-    "Đó là các khái niệm của trị liệu tự sự.",
-    "Đó là các trụ cột của ACT trong nhánh CBT."
+    "Phản hồi dương làm leo thang, trái với nội dung câu ca dao.",
+    "Không có người thứ ba trong tình huống này.",
+    "Không liên quan tới khái niệm phụ mẫu hoá."
   ]
 },
 {
-  id:"GD-LT-22", loai:"ly-thuyet", chuDe:"Tái định khung",
-  cauHoi:"Mục đích chính của “tái định khung” (reframing) hoặc “hàm ý tích cực” (positive connotation) là:",
+  id:"GD-LT-21", loai:"ly-thuyet", chuDe:"Hệ thống bất ổn",
+  cauHoi:"Khi đối diện biến cố (con dậy thì, cha mẹ qua đời, ly hôn…), hệ thống gia đình đứng trước hai lựa chọn nào?",
   luaChon:[
-    "Khiến gia đình cảm thấy dễ chịu hơn về mặt cảm xúc",
-    "Đưa ra một cách hiểu mới về hành vi có vấn đề, thường theo hướng nó phục vụ một chức năng nào đó cho hệ thống, nhờ đó giảm quy lỗi và mở đường cho thay đổi",
-    "Che giấu mức độ nghiêm trọng của vấn đề với gia đình",
-    "Thuyết phục gia đình rằng vấn đề không hề tồn tại"
+    "Tan rã hoàn toàn hoặc giữ nguyên như cũ",
+    "Cố chấp duy trì cơ chế cũ (dẫn đến triệu chứng bệnh lý mãn tính), hoặc chấp nhận biến đổi để kiến tạo thế cân bằng mới",
+    "Tìm sự trợ giúp chuyên môn hoặc tự xoay xở",
+    "Đóng kín với bên ngoài hoặc mở rộng quan hệ xã hội"
   ],
   dapAn:1,
-  giaiThich:"Tái định khung không phải nói dối cho dễ nghe: nó thay đổi khung nghĩa mà hành vi được đặt vào. Khi hành vi không còn được đọc là ác ý hay bệnh hoạn, phòng vệ của gia đình giảm và không gian cho lựa chọn mới xuất hiện.",
+  giaiThich:"Đây là hai lựa chọn được đánh số rõ trong tài liệu. Điểm quan trọng: triệu chứng bệnh lý mãn tính chính là cái giá của việc cố giữ nguyên cơ chế cũ trước một biến cố đòi hỏi thay đổi.",
   viSaoSai:[
-    "Cảm giác dễ chịu chỉ là hệ quả phụ, không phải mục đích.",
+    "Không phải hai lựa chọn được nêu.",
     "",
-    "Che giấu vấn đề là phi đạo đức và không phải nội dung của kỹ thuật.",
-    "Kỹ thuật này không phủ nhận sự tồn tại của vấn đề."
+    "Không phải hai lựa chọn được nêu.",
+    "Đóng/mở là một cặp khái niệm khác."
   ]
 },
 {
-  id:"GD-LT-23", loai:"ly-thuyet", chuDe:"Virginia Satir",
-  cauHoi:"Virginia Satir mô tả bốn kiểu ứng phó giao tiếp không nhất quán khi con người bị căng thẳng, đó là:",
+  id:"GD-LT-22", loai:"ly-thuyet", chuDe:"Ý nghĩa triệu chứng",
+  cauHoi:"Theo Cloe Madanes, đằng sau mỗi triệu chứng tâm lý luôn là tiếng kêu đòi ba điều nào?",
   luaChon:[
-    "Xoa dịu, đổ lỗi, lý trí hoá quá mức, và đánh trống lảng",
-    "Tấn công, rút lui, im lặng, và bùng nổ",
-    "Chủ động, thụ động, gây hấn thụ động, và quyết đoán",
-    "Lo âu, né tránh, hỗn loạn, và an toàn"
+    "Tình yêu thương, sự kết nối hoặc quyền lực",
+    "An toàn, tự do hoặc công nhận",
+    "Tiền bạc, địa vị hoặc danh tiếng",
+    "Sự tha thứ, sự công bằng hoặc sự lãng quên"
   ],
   dapAn:0,
-  giaiThich:"Satir gọi bốn kiểu này là placating, blaming, super-reasonable (computing) và irrelevant (distracting); kiểu thứ năm — giao tiếp nhất quán (congruent) — là mục tiêu trị liệu hướng tới.",
+  giaiThich:"Nguyên văn trong tài liệu: “Behind every symptom is a cry for love, connection, or power.” — tình yêu thương, sự kết nối hoặc quyền lực trong hệ thống gia đình.",
   viSaoSai:[
     "",
-    "Đây không phải hệ phân loại của Satir.",
-    "Đây là phân loại kiểu giao tiếp trong huấn luyện quyết đoán.",
-    "Đây là các kiểu gắn bó trong lý thuyết Bowlby – Ainsworth."
+    "Không phải bộ ba được dẫn.",
+    "Không phải bộ ba được dẫn.",
+    "Không phải bộ ba được dẫn."
   ]
 },
 {
-  id:"GD-LT-24", loai:"ly-thuyet", chuDe:"Ràng buộc kép",
-  cauHoi:"Giả thuyết “ràng buộc kép” (double bind) do nhóm Bateson đề xuất năm 1956 mô tả tình huống nào?",
+  id:"GD-LT-23", loai:"ly-thuyet", chuDe:"Chu kỳ đời sống gia đình",
+  cauHoi:"Mô hình Chu kỳ đời sống gia đình được tài liệu dẫn gắn với tác giả nào và gồm bao nhiêu giai đoạn?",
   luaChon:[
-    "Một người nhận hai mệnh lệnh mâu thuẫn ở hai cấp độ thông điệp khác nhau, không thể tuân thủ cả hai và cũng không được phép rời khỏi hay bình luận về mâu thuẫn đó",
-    "Một người phải chăm sóc đồng thời cả cha mẹ già và con nhỏ",
-    "Hai nhà trị liệu đưa ra hai lời khuyên trái ngược nhau",
-    "Một thành viên bị hai tiểu hệ thống cùng lôi kéo"
+    "Murray Bowen — 8 giai đoạn",
+    "Betty Carter & Monica McGoldrick (2004) — 6 giai đoạn",
+    "Salvador Minuchin — 5 giai đoạn",
+    "Virginia Satir — 4 giai đoạn"
+  ],
+  dapAn:1,
+  giaiThich:"Tài liệu ghi rõ: Family Life Cycle — McGoldrick, 2004; mô hình của Betty Carter và Monica McGoldrick chỉ ra 6 giai đoạn phát triển tất yếu.",
+  viSaoSai:[
+    "Bowen gắn với khái niệm biệt hoá bản thân và tam giác hoá.",
+    "",
+    "Minuchin gắn với trị liệu cấu trúc.",
+    "Satir gắn với mô hình 5 kiểu ứng phó giao tiếp."
+  ]
+},
+{
+  id:"GD-LT-24", loai:"ly-thuyet", chuDe:"Chu kỳ đời sống gia đình",
+  cauHoi:"Thuật ngữ “thế hệ bánh kẹp” xuất hiện ở giai đoạn nào của chu kỳ đời sống gia đình?",
+  luaChon:[
+    "Giai đoạn 2 — Kết hôn / Cặp đôi mới",
+    "Giai đoạn 3 — Gia đình có con nhỏ",
+    "Giai đoạn 4 — Gia đình có con vị thành niên",
+    "Giai đoạn 6 — Gia đình trong tuổi già"
+  ],
+  dapAn:2,
+  giaiThich:"Ở giai đoạn 4, cha mẹ vừa phải nới lỏng ranh giới cho con vị thành niên tự chủ, vừa đối diện sự già yếu của thế hệ ông bà — gánh nặng “lo cho con lẫn cha mẹ già”.",
+  viSaoSai:[
+    "Giai đoạn 2 nổi bật với xung đột kỳ vọng và can thiệp từ gia đình gốc.",
+    "Giai đoạn 3 nổi bật với áp lực vai trò giới và kiệt sức vì chăm con.",
+    "",
+    "Giai đoạn 6 nổi bật với cô đơn, trầm cảm tuổi già và sợ hãi cái chết."
+  ]
+},
+{
+  id:"GD-LT-25", loai:"ly-thuyet", chuDe:"Hội chứng tổ rỗng",
+  cauHoi:"Hội chứng tổ rỗng (Empty Nest Syndrome) khởi phát vào thời điểm nào và nghiêm trọng nhất ở nhóm phụ huynh nào?",
+  luaChon:[
+    "Khi đứa con đầu tiên rời nhà; nghiêm trọng nhất ở phụ huynh còn trẻ",
+    "Khi đứa con cuối cùng rời nhà; nghiêm trọng nhất ở phụ huynh đã hy sinh toàn bộ đời sống riêng cho con",
+    "Khi con kết hôn; nghiêm trọng nhất ở phụ huynh sống một mình",
+    "Khi cha mẹ nghỉ hưu; nghiêm trọng nhất ở người có thu nhập thấp"
+  ],
+  dapAn:1,
+  giaiThich:"Tài liệu ghi rõ hai chi tiết: “khi đứa con cuối cùng rời nhà” và “đặc biệt nghiêm trọng ở phụ huynh hy sinh toàn bộ đời sống riêng cho con”. Biểu hiện gồm cô đơn, mất phương hướng sống, lo âu, trầm buồn, cảm giác vô dụng.",
+  viSaoSai:[
+    "Là đứa con cuối cùng, không phải đứa đầu tiên.",
+    "",
+    "Mốc là việc con rời nhà, không phải kết hôn.",
+    "Nghỉ hưu thuộc giai đoạn 6, không phải điều kiện của hội chứng tổ rỗng."
+  ]
+},
+{
+  id:"GD-LT-26", loai:"ly-thuyet", chuDe:"Generation Boomerang",
+  cauHoi:"Hiện tượng “Generation Boomerang” (Cohen và cộng sự, 2011) mô tả điều gì và đòi hỏi gia đình phải làm gì?",
+  luaChon:[
+    "Người trẻ liên tục đổi việc; gia đình phải hỗ trợ tài chính",
+    "Người trẻ sau khi tốt nghiệp quay về sống cùng cha mẹ do áp lực việc làm/kinh tế; gia đình phải tái thiết lập ranh giới quyền lực và không gian riêng",
+    "Người già quay về sống với con cái; gia đình phải sắp xếp lại chỗ ở",
+    "Người trẻ ra nước ngoài rồi trở về; gia đình phải thích ứng khác biệt văn hoá"
+  ],
+  dapAn:1,
+  giaiThich:"Điểm cần nhớ là hệ quả hệ thống: sự trở về không chỉ là chuyện chỗ ở mà buộc gia đình tái thiết lập ranh giới quyền lực và không gian riêng — đứa con đã trưởng thành nhưng lại quay về vị trí cũ.",
+  viSaoSai:[
+    "Không phải nội dung của khái niệm.",
+    "",
+    "Chiều di chuyển bị đảo ngược.",
+    "Không phải nội dung của khái niệm."
+  ]
+},
+{
+  id:"GD-LT-27", loai:"ly-thuyet", chuDe:"Lịch sử trường phái",
+  cauHoi:"Giai đoạn 1950–1970 trong lịch sử trị liệu gia đình được gọi là gì và đặc trưng bởi điều gì?",
+  luaChon:[
+    "Thời kỳ Khai phá Hệ thống — chuyển dịch trọng tâm sang quan sát động lực tương tác, chuỗi phản hồi và cấu trúc gia đình",
+    "Thời kỳ Hậu hiện đại — giải kiến tạo câu chuyện áp đặt",
+    "Thời kỳ Phân tâm cổ điển — tập trung xung đột nội tâm vô thức",
+    "Thời kỳ Thực chứng — chỉ dùng liệu pháp có bằng chứng"
   ],
   dapAn:0,
-  giaiThich:"Ba yếu tố cấu thành ràng buộc kép là: thông điệp mâu thuẫn giữa lời nói và phi ngôn ngữ, cấm bình luận về mâu thuẫn đó, và không thể thoát khỏi mối quan hệ. Giả thuyết ban đầu liên hệ nó với tâm thần phân liệt, về sau bị phê phán mạnh về mặt bằng chứng nhưng vẫn có ảnh hưởng lớn tới tư duy hệ thống về giao tiếp.",
+  giaiThich:"Tài liệu gọi 1950–1970 là “Thời kỳ Khai phá Hệ thống” với các tên tuổi Bowen, Minuchin, Haley, Satir, Whitaker, Boszormenyi-Nagy.",
   viSaoSai:[
     "",
-    "Đó là gánh nặng của thế hệ kẹp giữa, không phải ràng buộc kép.",
-    "Không phải nội dung của giả thuyết.",
-    "Đó gần với tam giác hoá hơn."
+    "Giải kiến tạo câu chuyện thuộc giai đoạn 1990 – nay.",
+    "Phân tâm cổ điển thuộc giai đoạn trước 1950.",
+    "Không phải cách gọi trong tài liệu."
   ]
 },
 {
-  id:"GD-LT-25", loai:"ly-thuyet", chuDe:"Trị liệu tập trung giải pháp",
-  cauHoi:"Ba kỹ thuật đặc trưng nhất của trị liệu tập trung giải pháp (de Shazer và Berg) là:",
+  id:"GD-LT-28", loai:"ly-thuyet", chuDe:"Lịch sử trường phái",
+  cauHoi:"Ba trường phái nào được xếp vào giai đoạn 1990 – nay?",
   luaChon:[
-    "Câu hỏi phép màu, câu hỏi ngoại lệ, và câu hỏi thang đo",
-    "Diễn cảnh, gia nhập, và đánh dấu ranh giới",
-    "Tự do liên tưởng, phân tích giấc mơ, và diễn giải chuyển di",
-    "Genogram, phi tam giác hoá, và giữ vị thế “tôi”"
+    "Cấu trúc (Minuchin), Chiến lược (Haley), Trải nghiệm (Satir)",
+    "Giải pháp ngắn hạn – SFBT (Insoo Kim Berg), Tường thuật (White & Epston), Bối cảnh (Boszormenyi-Nagy)",
+    "Phân tâm cổ điển, Hành vi, Nhận thức",
+    "Bowen, Whitaker, Madanes"
+  ],
+  dapAn:1,
+  giaiThich:"Đặc trưng chung của giai đoạn này theo tài liệu: giải kiến tạo câu chuyện áp đặt, tìm kiếm ngoại lệ, và thiết lập đối thoại đạo đức quan hệ và công bằng xuyên thế hệ.",
+  viSaoSai:[
+    "Ba trường phái này thuộc giai đoạn 1970–1990.",
+    "",
+    "Không phải nhóm trong bảng lịch sử trị liệu gia đình.",
+    "Ba tên này thuộc các giai đoạn trước."
+  ]
+},
+{
+  id:"GD-LT-29", loai:"ly-thuyet", chuDe:"Satir — 5 kiểu ứng phó",
+  cauHoi:"Trong 5 kiểu giao tiếp của Virginia Satir (1972), kiểu nào là đích hướng tới của trị liệu?",
+  luaChon:[
+    "Đổ lỗi (Blamer)",
+    "Máy tính (Computer)",
+    "Xoa dịu (Placator)",
+    "Chân thực (Leveler)"
+  ],
+  dapAn:3,
+  giaiThich:"Bốn kiểu đầu — Đổ lỗi, Máy tính, Phân tâm, Xoa dịu — là các “vai diễn” phòng vệ. Chỉ kiểu thứ năm, Chân thực (Leveler), được mô tả là đồng nhất, trắc ẩn và tự tin.",
+  viSaoSai:[
+    "Blamer: chỉ trích, bất lực ngầm.",
+    "Computer: siêu lý trí, sợ cảm xúc.",
+    "Placator: hạ mình, sợ bị bỏ rơi.",
+    ""
+  ]
+},
+{
+  id:"GD-LT-30", loai:"ly-thuyet", chuDe:"Nagy — 4 chiều kích",
+  cauHoi:"Trong Tháp 4 chiều kích Thực tại Quan hệ của Boszormenyi-Nagy, chiều kích ở tầng CAO NHẤT là gì?",
+  luaChon:[
+    "Sự kiện thực tế khách quan (Facts / 5W + 1H)",
+    "Tâm lý cá nhân (Individual Psychology)",
+    "Tương tác quan hệ (Transactional Patterns)",
+    "Đạo đức quan hệ (Relational Ethics)"
+  ],
+  dapAn:3,
+  giaiThich:"Thứ tự từ nền lên đỉnh: (1) Sự kiện thực tế khách quan → (2) Tâm lý cá nhân → (3) Tương tác quan hệ → (4) Đạo đức quan hệ. Chiều kích thứ tư là đóng góp riêng của Nagy so với các trường phái hệ thống khác.",
+  viSaoSai:[
+    "Đó là tầng nền, tầng 1.",
+    "Đó là tầng 2.",
+    "Đó là tầng 3.",
+    ""
+  ]
+},
+
+{
+  id:"GD-LT-31", loai:"ly-thuyet", chuDe:"Người sáng lập trường phái",
+  cauHoi:"Trị liệu Cấu trúc (Structural Family Therapy) gắn với tên tuổi nào?",
+  luaChon:[
+    "Murray Bowen",
+    "Salvador Minuchin",
+    "Jay Haley",
+    "Carl Whitaker"
+  ],
+  dapAn:1,
+  giaiThich:"Bảng lịch sử trường phái trong tài liệu ghi rõ ở mốc 1970–1990: “Cấu trúc: Salvador Minuchin”. Đóng góp đặc trưng của ông là tái cấu trúc ranh giới và bản đồ cấu trúc gia đình.",
+  viSaoSai:[
+    "Bowen gắn với trường phái Hệ thống Bowen — biệt hoá bản thân và tam giác hoá.",
+    "",
+    "Haley gắn với trường phái Chiến lược.",
+    "Whitaker gắn với trường phái Trải nghiệm, cùng Virginia Satir."
+  ]
+},
+{
+  id:"GD-LT-32", loai:"ly-thuyet", chuDe:"Người sáng lập trường phái",
+  cauHoi:"Hai khái niệm “biệt hoá bản thân” (differentiation of self) và “tam giác hoá” (triangulation) gắn với trường phái và tác giả nào?",
+  luaChon:[
+    "Trường phái Chiến lược — Jay Haley",
+    "Hệ thống Bowen — Murray Bowen",
+    "Trường phái Trải nghiệm — Virginia Satir",
+    "Liệu pháp Bối cảnh — Iván Böszörményi-Nagy"
+  ],
+  dapAn:1,
+  giaiThich:"Trong bảng lịch sử, mục tiêu can thiệp của giai đoạn 1970–1990 gồm “hoá giải liên minh/tam giác hoá bệnh lý” và “nâng cao mức độ biệt hoá bản thân” — hai khái niệm này là dấu ấn của Murray Bowen (1913–1990).",
+  viSaoSai:[
+    "Haley gắn với chỉ thị và can thiệp nghịch lý.",
+    "",
+    "Satir gắn với mô hình 5 kiểu ứng phó giao tiếp.",
+    "Nagy gắn với đạo đức quan hệ, cán cân cho – nhận và bảng xoay nợ."
+  ]
+},
+{
+  id:"GD-LT-33", loai:"ly-thuyet", chuDe:"Người sáng lập trường phái",
+  cauHoi:"Mô hình 5 kiểu giao tiếp / ứng phó dưới áp lực (1972) là của ai, và người này thuộc trường phái nào?",
+  luaChon:[
+    "Virginia Satir (1916–1988) — trường phái Trải nghiệm, cùng Carl Whitaker",
+    "Cloe Madanes — trường phái Chiến lược",
+    "Insoo Kim Berg — trường phái Giải pháp ngắn hạn",
+    "Michael White — trường phái Tường thuật"
   ],
   dapAn:0,
-  giaiThich:"Trị liệu tập trung giải pháp chuyển trọng tâm khỏi vấn đề: câu hỏi phép màu dựng lên hình ảnh tương lai mong muốn, câu hỏi ngoại lệ tìm những lúc vấn đề không xuất hiện, câu hỏi thang đo lượng hoá tiến bộ và bước kế tiếp khả thi.",
+  giaiThich:"Tài liệu ghi “Mô hình 5 Kiểu Giao tiếp / Ứng phó Dưới Áp lực (Virginia Satir, 1972)”, và trong bảng lịch sử bà được xếp vào trường phái Trải nghiệm cùng Carl Whitaker — với mục tiêu giải phóng cảm xúc chân thực.",
   viSaoSai:[
     "",
-    "Đó là kỹ thuật của trị liệu cấu trúc.",
-    "Đó là kỹ thuật phân tâm.",
-    "Đó là kỹ thuật của trường phái Bowen."
+    "Madanes gắn với câu nói về tiếng kêu đòi tình yêu thương, sự kết nối hoặc quyền lực.",
+    "Insoo Kim Berg gắn với việc tìm kiếm ngoại lệ.",
+    "Michael White gắn với việc giải kiến tạo câu chuyện áp đặt."
   ]
 },
 {
-  id:"GD-LT-26", loai:"ly-thuyet", chuDe:"Trị liệu tự sự",
-  cauHoi:"Câu châm ngôn “Vấn đề là vấn đề; con người không phải là vấn đề” gắn với kỹ thuật nào và của ai?",
+  id:"GD-LT-34", loai:"ly-thuyet", chuDe:"Người sáng lập trường phái",
+  cauHoi:"Liệu pháp Bối cảnh (Contextual Therapy) do ai sáng lập?",
   luaChon:[
-    "Kỹ thuật tái định khung của nhóm Milan",
-    "Kỹ thuật ngoại hoá vấn đề (externalizing) trong trị liệu tự sự của Michael White và David Epston",
-    "Kỹ thuật kê đơn triệu chứng của Jay Haley",
-    "Kỹ thuật phi tam giác hoá của Murray Bowen"
+    "Salvador Minuchin",
+    "Iván Böszörményi-Nagy (1920–2007)",
+    "Gregory Bateson",
+    "David Epston"
   ],
   dapAn:1,
-  giaiThich:"Ngoại hoá tách con người khỏi vấn đề bằng ngôn ngữ — vấn đề được đặt tên và nói tới như một thực thể riêng (“Nỗi Lo Lắng”, “Cơn Giận”), nhờ đó gia đình chuyển từ đổ lỗi sang cùng nhau đối phó với vấn đề.",
+  giaiThich:"Tài liệu mở đầu phần VI: “Sáng lập bởi Iván Böszörményi-Nagy (1920–2007)”. Ông là người đưa ra Tháp 4 chiều kích Thực tại Quan hệ, khái niệm lòng trung thành, cán cân cho – nhận, bảng xoay nợ và phụ mẫu hoá.",
   viSaoSai:[
-    "Tái định khung có họ hàng về tinh thần nhưng câu này gắn với trị liệu tự sự.",
+    "Minuchin sáng lập trị liệu Cấu trúc.",
     "",
-    "Kê đơn triệu chứng là can thiệp nghịch lý, không liên quan câu này.",
-    "Phi tam giác hoá thuộc lý thuyết Bowen."
+    "Bateson dẫn dắt nhóm Palo Alto — không nằm trong tài liệu này.",
+    "Epston đồng sáng lập trị liệu Tường thuật cùng Michael White."
   ]
 },
 {
-  id:"GD-LT-27", loai:"ly-thuyet", chuDe:"Chu kỳ đời sống gia đình",
-  cauHoi:"Mô hình “chu kỳ đời sống gia đình” (Carter và McGoldrick) hữu ích cho trị liệu vì:",
+  id:"GD-LT-35", loai:"ly-thuyet", chuDe:"Người sáng lập trường phái",
+  cauHoi:"Cặp tên nào gắn với trường phái Tường thuật (Narrative Therapy) trong giai đoạn 1990 – nay?",
   luaChon:[
-    "Nó cho phép dự đoán chính xác thời điểm mỗi gia đình sẽ tan vỡ",
-    "Nó giúp nhận diện các giai đoạn chuyển tiếp mà gia đình buộc phải tái tổ chức cấu trúc; triệu chứng thường xuất hiện đúng vào những điểm chuyển tiếp này",
-    "Nó xác định mức phân biệt hoá của từng thành viên",
-    "Nó thay thế cho việc đánh giá lâm sàng từng cá nhân"
+    "Betty Carter & Monica McGoldrick",
+    "Michael White & David Epston",
+    "Jay Haley & Cloe Madanes",
+    "Virginia Satir & Carl Whitaker"
   ],
   dapAn:1,
-  giaiThich:"Kết hôn, sinh con đầu lòng, con vào tuổi vị thành niên, con rời nhà, nghỉ hưu, mất người thân — mỗi mốc đòi hỏi thay đổi quy tắc và vai trò. Gia đình mắc kẹt ở một điểm chuyển tiếp là bối cảnh rất hay gặp khi triệu chứng xuất hiện.",
+  giaiThich:"Bảng lịch sử ghi ở mốc 1990 – nay: “Tường thuật: Michael White, David Epston”, với đặc trưng là giải kiến tạo câu chuyện áp đặt (deconstruct narratives).",
   viSaoSai:[
-    "Mô hình mô tả xu hướng chung, không dự đoán số phận từng gia đình.",
+    "Carter & McGoldrick là tác giả mô hình Chu kỳ đời sống gia đình.",
     "",
-    "Phân biệt hoá là khái niệm của Bowen, đo bằng cách khác.",
-    "Nó bổ sung cho đánh giá lâm sàng chứ không thay thế."
-  ]
-},
-{
-  id:"GD-LT-28", loai:"ly-thuyet", chuDe:"Biểu lộ cảm xúc",
-  cauHoi:"Khái niệm “biểu lộ cảm xúc” (expressed emotion – EE) trong nghiên cứu gia đình chỉ:",
-  luaChon:[
-    "Mức độ gia đình thể hiện tình yêu thương với nhau",
-    "Mức độ chỉ trích, thù địch và can dự cảm xúc quá mức của người thân đối với bệnh nhân; EE cao liên hệ với nguy cơ tái phát cao hơn, đặc biệt trong tâm thần phân liệt",
-    "Khả năng gia đình bộc lộ cảm xúc trong buổi trị liệu",
-    "Số lượng cảm xúc mà thân chủ nhận diện được"
-  ],
-  dapAn:1,
-  giaiThich:"EE là một trong những phát hiện có nền tảng thực nghiệm vững nhất của nghiên cứu gia đình; các chương trình can thiệp gia đình nhằm giảm EE đã cho thấy hiệu quả giảm tỷ lệ tái phát.",
-  viSaoSai:[
-    "EE đo các thành phần chỉ trích và can dự quá mức, không phải mức độ yêu thương nói chung.",
-    "",
-    "Đây là quan sát trong buổi, không phải cấu trúc khái niệm EE.",
-    "Đó gần với khái niệm nhận biết cảm xúc, không liên quan."
-  ]
-},
-{
-  id:"GD-LT-29", loai:"ly-thuyet", chuDe:"Bằng chứng thực nghiệm",
-  cauHoi:"Trị liệu gia đình dựa trên mô hình Maudsley (FBT) được xem là can thiệp hàng đầu cho nhóm nào?",
-  luaChon:[
-    "Người lớn mắc rối loạn trầm cảm nặng",
-    "Thanh thiếu niên mắc chán ăn tâm thần (anorexia nervosa)",
-    "Trẻ em mắc rối loạn phổ tự kỷ",
-    "Người cao tuổi mắc sa sút trí tuệ"
-  ],
-  dapAn:1,
-  giaiThich:"FBT trao lại cho cha mẹ vai trò chủ động trong việc phục hồi dinh dưỡng cho con ở giai đoạn đầu, sau đó dần trả lại quyền tự chủ cho thiếu niên; đây là một trong những mảng có bằng chứng mạnh nhất của trị liệu gia đình.",
-  viSaoSai:[
-    "Trầm cảm ở người lớn không phải chỉ định chính của mô hình này.",
-    "",
-    "Tự kỷ cần các chương trình can thiệp phát triển khác.",
-    "Sa sút trí tuệ cần can thiệp khác, dù hỗ trợ gia đình vẫn quan trọng."
-  ]
-},
-{
-  id:"GD-LT-30", loai:"ly-thuyet", chuDe:"Phê bình",
-  cauHoi:"Phê bình từ góc nhìn nữ quyền đối với trị liệu gia đình truyền thống tập trung vào điểm nào?",
-  luaChon:[
-    "Trị liệu gia đình quá tốn kém so với trị liệu cá nhân",
-    "Các khái niệm như “trung lập” và “nhân quả vòng tròn” có thể che giấu sự bất bình đẳng quyền lực và, trong các ca bạo lực, dẫn tới việc chia sẻ trách nhiệm một cách bất công cho nạn nhân",
-    "Trị liệu gia đình không quan tâm tới trẻ em",
-    "Trị liệu gia đình chỉ áp dụng được ở phương Tây"
-  ],
-  dapAn:1,
-  giaiThich:"Nếu mọi hành vi đều được đọc là mắt xích trong một vòng lặp chung, thì bạo lực của một người có nguy cơ bị mô tả như “phần của khuôn mẫu”. Vì vậy đồng thuận hiện nay là an toàn được ưu tiên tuyệt đối và trung lập không áp dụng khi có bạo lực.",
-  viSaoSai:[
-    "Chi phí không phải nội dung của phê bình này.",
-    "",
-    "Trẻ em thường là trung tâm chú ý của trị liệu gia đình.",
-    "Tính liên văn hoá là một phê bình khác và trị liệu gia đình lại thường được xem là phù hợp với các nền văn hoá coi trọng gia đình."
+    "Haley & Madanes thuộc trường phái Chiến lược.",
+    "Satir & Whitaker thuộc trường phái Trải nghiệm."
   ]
 },
 
 /* ========================= THỰC HÀNH / SUY LUẬN ========================= */
 
 {
-  id:"GD-TH-01", loai:"thuc-hanh", chuDe:"Chức năng của triệu chứng",
-  boiCanh:"Bé Nam, 10 tuổi, được đưa tới vì “ăn vạ, la hét”. Khi hỏi kỹ, các cơn ăn vạ hầu như chỉ xảy ra vào buổi tối khi bố mẹ bắt đầu to tiếng với nhau; ngay khi Nam la hét, bố mẹ ngừng cãi và cùng dỗ con.",
-  cauHoi:"Cách khái niệm hoá theo góc nhìn hệ thống là:",
+  id:"GD-TH-01", loai:"thuc-hanh", chuDe:"Phản hồi âm tính",
+  boiCanh:"Mỗi lần cha mẹ to tiếng với nhau, bé Minh 7 tuổi lại kêu đau bụng và khóc. Cha mẹ lập tức ngừng cãi vã để chăm con. Chuỗi này lặp lại gần như mỗi tuần trong hai năm qua.",
+  cauHoi:"Cơ chế hệ thống nào đang vận hành và triệu chứng của bé Minh có chức năng gì?",
   luaChon:[
-    "Nam mắc rối loạn hành vi và cần can thiệp hành vi cá nhân",
-    "Triệu chứng của Nam đang thực hiện một chức năng trong hệ thống: nó chuyển hướng căng thẳng khỏi mâu thuẫn vợ chồng và tạm thời tái lập sự phối hợp giữa bố mẹ — một dạng tam giác hoá",
-    "Bố mẹ đang cố ý sử dụng con để tránh nói chuyện với nhau",
-    "Nam đang bắt chước hành vi của bạn bè ở trường"
+    "Phản hồi dương tính — triệu chứng khuếch đại xung đột vợ chồng",
+    "Phản hồi âm tính (Morphostasis) — triệu chứng của con triệt tiêu độ lệch, duy trì sự ổn định tạm thời của hôn nhân",
+    "Entropia — hệ thống đang suy thoái vì đóng kín",
+    "Đẳng kết — nhiều nguyên nhân dẫn tới cùng một triệu chứng"
   ],
   dapAn:1,
-  giaiThich:"Chi tiết quyết định là thời điểm: triệu chứng gắn chặt với chu trình xung đột vợ chồng và có tác dụng làm dừng chu trình đó. Đây là ví dụ kinh điển về tam giác hoá và về việc triệu chứng ổn định hệ thống.",
+  giaiThich:"Đây đúng là ví dụ gia đình mà tài liệu dùng để minh hoạ phản hồi âm tính: “Cha mẹ to tiếng → đứa trẻ đau bụng/khóc → cha mẹ ngừng cãi vã để chăm con.” Triệu chứng của con đóng vai trò duy trì sự ổn định tạm thời của hôn nhân.",
   viSaoSai:[
-    "Cách hiểu này bỏ qua toàn bộ bối cảnh quan hệ và sẽ khiến can thiệp trượt mục tiêu.",
+    "Phản hồi dương làm leo thang; ở đây xung đột bị dập tắt.",
     "",
-    "Quá trình này diễn ra ngoài ý thức; quy kết cố ý là quy lỗi chứ không phải khái niệm hoá hệ thống.",
-    "Không có dữ liệu nào ủng hộ giả thuyết này."
+    "Entropia là sự suy thoái của hệ thống đóng, không phải cơ chế ở đây.",
+    "Đẳng kết nói về nhiều con đường dẫn tới một đích."
   ]
 },
 {
-  id:"GD-TH-02", loai:"thuc-hanh", chuDe:"Ranh giới",
-  boiCanh:"Mẹ và con gái 15 tuổi chia sẻ mọi bí mật, mẹ kể cho con nghe chi tiết những bất mãn với bố, hai mẹ con ngủ chung phòng, còn bố ngủ riêng và “không được biết chuyện của hai mẹ con”.",
-  cauHoi:"Cấu hình này được mô tả chính xác nhất là:",
+  id:"GD-TH-02", loai:"thuc-hanh", chuDe:"Phản hồi dương tính",
+  boiCanh:"Con cãi lời → mẹ mắng → con la hét phản kháng → cha đánh → cả nhà rơi vào khủng hoảng, con bỏ đi khỏi nhà.",
+  cauHoi:"Chuỗi này minh hoạ cơ chế nào?",
   luaChon:[
-    "Ranh giới rời rạc giữa mẹ và con",
-    "Ranh giới quá dính giữa mẹ và con, kết hợp liên minh xuyên thế hệ chống lại người bố",
-    "Phân cấp lành mạnh với người mẹ ở vị trí điều hành",
-    "Cắt đứt cảm xúc giữa mẹ và con"
+    "Phản hồi âm tính (Morphostasis)",
+    "Phản hồi dương tính (Morphogenesis) — khuếch đại độ lệch, biến đổi leo thang, phá vỡ cấu trúc cũ",
+    "Cân bằng nội môi được bảo toàn",
+    "Lòng trung thành vô hình"
   ],
   dapAn:1,
-  giaiThich:"Hai vấn đề cấu trúc chồng lên nhau: ranh giới thế hệ bị xoá (con gái được đặt vào vai trò bạn tâm giao của mẹ) và một liên minh mẹ – con hình thành chống lại bố, làm suy yếu tiểu hệ thống vợ chồng.",
+  giaiThich:"Đây là ví dụ xung đột mà tài liệu dùng cho phản hồi dương tính. Mỗi phản ứng làm tăng cường độ của phản ứng kế tiếp cho tới khi cấu trúc cũ vỡ ra — hệ thống buộc phải tái lập cân bằng mới.",
   viSaoSai:[
-    "Mô tả cho thấy sự can dự quá mức, ngược với rời rạc.",
+    "Phản hồi âm triệt tiêu độ lệch; ở đây độ lệch bị khuếch đại.",
     "",
-    "Đây là phân cấp bị bóp méo, không phải lành mạnh.",
-    "Cắt đứt cảm xúc là khoảng cách, trái với mô tả ở đây."
+    "Cân bằng nội môi đã bị phá vỡ, không được bảo toàn.",
+    "Không có yếu tố hy sinh vô thức vì cha mẹ ở đây."
   ]
 },
 {
-  id:"GD-TH-03", loai:"thuc-hanh", chuDe:"Ranh giới",
-  boiCanh:"Trong một gia đình, bố mẹ đều làm ca kíp, cả nhà hầu như không ăn cơm chung, không ai biết con trai 14 tuổi đã nghỉ học ba tuần cho tới khi nhà trường gọi điện.",
-  cauHoi:"Theo Minuchin, kiểu ranh giới ở gia đình này là:",
+  id:"GD-TH-03", loai:"thuc-hanh", chuDe:"Cảnh báo can thiệp nhanh",
+  boiCanh:"Nhà trị liệu làm việc cá nhân rất tích cực với cô con gái 17 tuổi có triệu chứng lo âu. Sau 6 tuần, triệu chứng của em gần như biến mất. Hai tháng sau, người mẹ gọi điện báo rằng vợ chồng bà đang làm thủ tục ly thân và cậu em trai 12 tuổi bắt đầu bỏ học.",
+  cauHoi:"Cách hiểu phù hợp nhất với khung hệ thống là gì?",
   luaChon:[
-    "Ranh giới quá dính (enmeshed)",
-    "Ranh giới rời rạc (disengaged)",
-    "Ranh giới rõ ràng và thẩm thấu tốt",
-    "Liên minh xuyên thế hệ"
+    "Trị liệu đã thành công với thân chủ; các vấn đề mới là chuyện riêng của gia đình",
+    "Triệu chứng của cô gái vốn giữ chức năng ổn định hệ thống; cắt bỏ nó quá nhanh mà không hiểu hệ sinh thái nâng đỡ đã phá vỡ cân bằng nội môi, đẩy hệ thống vào khủng hoảng và làm triệu chứng chuyển sang thành viên khác",
+    "Cậu em trai có rối loạn di truyền chưa được phát hiện",
+    "Nhà trị liệu cần tăng số buổi cho cô gái để phòng tái phát"
   ],
   dapAn:1,
-  giaiThich:"Ranh giới quá cứng khiến các tiểu hệ thống gần như tách biệt: sự hỗ trợ, giám sát và trao đổi thông tin đều thiếu, nên vấn đề của một thành viên có thể tiến rất xa mà không ai phát hiện.",
+  giaiThich:"Đây chính là kịch bản “lành ít dữ nhiều” mà cảnh báo lâm sàng trong tài liệu mô tả. Nó cũng là lý do vì sao tiếp cận hệ thống yêu cầu hiểu chức năng của triệu chứng trong toàn bộ mạng lưới trước khi can thiệp.",
   viSaoSai:[
-    "Quá dính là thái cực ngược lại, đặc trưng bởi can dự quá mức.",
+    "Tách rời cá nhân khỏi hệ thống chính là sai lầm mà tài liệu cảnh báo.",
     "",
-    "Ranh giới rõ ràng cho phép vừa tự chủ vừa kết nối — không khớp với mô tả.",
-    "Không có mô tả về liên minh chống lại ai."
+    "Không có dữ liệu nào ủng hộ giả thuyết này.",
+    "Vấn đề không nằm ở số buổi dành cho cô gái."
   ]
 },
 {
-  id:"GD-TH-04", loai:"thuc-hanh", chuDe:"Phân cấp",
-  boiCanh:"Bà nội quyết định mọi việc liên quan tới cháu: giờ ăn, giờ học, trường học. Khi người mẹ đặt ra một quy tắc, bà lập tức phủ quyết trước mặt cháu và nói “mẹ cháu chẳng biết gì đâu”.",
-  cauHoi:"Mục tiêu can thiệp ưu tiên theo trị liệu cấu trúc là:",
+  id:"GD-TH-04", loai:"thuc-hanh", chuDe:"Tập hợp vs hệ thống",
+  boiCanh:"Một sinh viên hỏi: “Một đám đông kẹt xe trên đường và một gia đình bốn người — cả hai đều là nhiều người ở cùng một chỗ, khác nhau ở đâu?”",
+  cauHoi:"Câu trả lời đúng theo tài liệu là:",
   luaChon:[
-    "Làm việc với ký ức tuổi thơ của người mẹ để hiểu vì sao chị không dám phản kháng",
-    "Khôi phục phân cấp: củng cố tiểu hệ thống cha mẹ ở vị trí điều hành và đánh dấu lại ranh giới với thế hệ ông bà",
-    "Khuyên người mẹ cắt đứt liên lạc với mẹ chồng",
-    "Dạy đứa trẻ các kỹ năng đối phó với mâu thuẫn giữa người lớn"
-  ],
-  dapAn:1,
-  giaiThich:"Trong mô hình cấu trúc, vấn đề nằm ở nơi quyền quyết định đang đặt sai chỗ. Can thiệp nhắm vào việc trao lại chức năng điều hành cho cha mẹ, chẳng hạn bằng cách sắp xếp lại chỗ ngồi, chặn các lần cắt ngang và tạo diễn cảnh nơi cha mẹ ra quyết định trước mặt con.",
-  viSaoSai:[
-    "Đây là hướng tâm động, không phải ưu tiên của trị liệu cấu trúc.",
-    "",
-    "Cắt đứt là giải pháp cực đoan và thường tạo thêm vấn đề mới.",
-    "Can thiệp vào đứa trẻ là bỏ qua nguyên nhân cấu trúc."
-  ]
-},
-{
-  id:"GD-TH-05", loai:"thuc-hanh", chuDe:"Kỹ thuật diễn cảnh",
-  boiCanh:"Nhà trị liệu nói với bố mẹ: “Ngay bây giờ, ngay tại đây, anh chị hãy cùng nhau thống nhất một giờ giới nghiêm cho cháu. Tôi sẽ ngồi im quan sát.”",
-  cauHoi:"Đây là kỹ thuật gì và nhằm mục đích gì?",
-  luaChon:[
-    "Câu hỏi vòng tròn; nhằm thu thập thông tin về khác biệt trong hệ thống",
-    "Diễn cảnh (enactment); nhằm làm khuôn mẫu tương tác hiện ra ngay trong buổi để có thể quan sát và can thiệp trực tiếp",
-    "Can thiệp nghịch lý; nhằm khiến gia đình chống lại chỉ thị",
-    "Ngoại hoá vấn đề; nhằm tách con người khỏi vấn đề"
-  ],
-  dapAn:1,
-  giaiThich:"Thay vì hỏi “anh chị thường ra quyết định thế nào”, nhà trị liệu tạo điều kiện để quá trình đó diễn ra thật. Những gì bộc lộ — ai nói trước, ai bị ngắt lời, con có xen vào không — đều là dữ liệu và cũng là điểm can thiệp.",
-  viSaoSai:[
-    "Câu hỏi vòng tròn là kỹ thuật hỏi, không phải yêu cầu tương tác trực tiếp.",
-    "",
-    "Không có yếu tố nghịch lý trong chỉ thị này.",
-    "Ngoại hoá là kỹ thuật ngôn ngữ của trị liệu tự sự."
-  ]
-},
-{
-  id:"GD-TH-06", loai:"thuc-hanh", chuDe:"Tái định khung",
-  boiCanh:"Gia đình mở đầu buổi trị liệu: “Nhà em chẳng có vấn đề gì cả, chỉ mỗi thằng bé là hư thôi. Bác chữa cho nó là xong.”",
-  cauHoi:"Can thiệp phù hợp nhất ở buổi đầu là:",
-  luaChon:[
-    "Đồng ý với gia đình và bắt đầu làm việc cá nhân với cậu bé",
-    "Ghi nhận nỗi vất vả của gia đình, rồi từng bước đưa ra một cách nhìn rộng hơn — ví dụ hỏi mỗi người ảnh hưởng của vấn đề tới họ ra sao — để chuyển dần trọng tâm từ “thằng bé có vấn đề” sang “cả nhà đang cùng vật lộn với một vấn đề”",
-    "Nói thẳng rằng gia đình mới là nguyên nhân và cậu bé chỉ là nạn nhân",
-    "Từ chối làm việc nếu gia đình không thừa nhận vai trò của mình"
-  ],
-  dapAn:1,
-  giaiThich:"Đây là bài toán kinh điển của buổi đầu: nếu chấp nhận khung của gia đình thì trị liệu hệ thống không thể bắt đầu, nhưng nếu bác bỏ thẳng thì gia đình sẽ phòng vệ hoặc bỏ đi. Cách xử lý là gia nhập trước, mở rộng khung sau.",
-  viSaoSai:[
-    "Chấp nhận vai trò “thân chủ được chỉ định” củng cố chính khuôn mẫu cần thay đổi.",
-    "",
-    "Đảo chiều quy lỗi vẫn là quy lỗi và thường phá vỡ liên minh ngay lập tức.",
-    "Ra điều kiện ở buổi đầu là bỏ qua bước gia nhập."
-  ]
-},
-{
-  id:"GD-TH-07", loai:"thuc-hanh", chuDe:"Nhân quả vòng tròn",
-  boiCanh:"Vợ nói: “Tôi phải nhắc suốt vì anh ấy chẳng bao giờ chịu nói gì.” Chồng nói: “Tôi im vì cô ấy cằn nhằn suốt ngày.”",
-  cauHoi:"Cách hiểu theo tư duy hệ thống là:",
-  luaChon:[
-    "Cần xác định ai là người khởi đầu chu trình để biết ai phải thay đổi trước",
-    "Đây là một chu trình đeo bám – rút lui tự duy trì; mỗi hành vi vừa là phản ứng vừa là kích thích, và can thiệp có thể bắt đầu từ bất kỳ điểm nào trong vòng lặp",
-    "Người vợ là nguyên nhân chính vì bà nói nhiều hơn",
-    "Người chồng là nguyên nhân chính vì ông từ chối giao tiếp"
-  ],
-  dapAn:1,
-  giaiThich:"Đây là ví dụ mẫu mực về việc “đặt dấu chấm câu” tuỳ tiện: mỗi bên đọc chuỗi sự kiện theo cách khiến mình là người phản ứng. Nhiệm vụ của nhà trị liệu là làm cho cả hai nhìn thấy vòng lặp thay vì tranh cãi về điểm khởi đầu.",
-  viSaoSai:[
-    "Truy tìm điểm khởi đầu chính là tư duy tuyến tính mà lý thuyết hệ thống bác bỏ.",
-    "",
-    "Quy lỗi cho một bên bỏ qua tính tương hỗ của khuôn mẫu.",
-    "Quy lỗi cho bên còn lại cũng mắc cùng một sai lầm."
-  ]
-},
-{
-  id:"GD-TH-08", loai:"thuc-hanh", chuDe:"Đọc genogram",
-  boiCanh:"Genogram ba thế hệ cho thấy: ông nội mất sớm, bà nội một mình nuôi con và con trưởng phải bỏ học đi làm; đến đời bố, ông cũng là con trưởng và gánh vác cả họ; hiện tại con trai cả 17 tuổi của thân chủ đang bỏ học để đi làm phụ gia đình.",
-  cauHoi:"Khái niệm nào của Bowen mô tả sát nhất khuôn mẫu này?",
-  luaChon:[
-    "Cắt đứt cảm xúc",
-    "Quá trình truyền dẫn đa thế hệ",
-    "Đẳng kết cục",
-    "Ràng buộc kép"
-  ],
-  dapAn:1,
-  giaiThich:"Cùng một vai trò và cùng một kịch bản quan hệ được tái tạo qua ba thế hệ. Genogram làm khuôn mẫu này hiện ra bằng hình ảnh, và việc gia đình nhìn thấy nó tự nó đã là một can thiệp.",
-  viSaoSai:[
-    "Cắt đứt cảm xúc là sự xa cách với gia đình gốc, không có trong mô tả.",
-    "",
-    "Đẳng kết cục nói về nhiều con đường dẫn tới cùng kết cục, không phải sự lặp lại qua các đời.",
-    "Ràng buộc kép là hiện tượng giao tiếp mâu thuẫn."
-  ]
-},
-{
-  id:"GD-TH-09", loai:"thuc-hanh", chuDe:"Cắt đứt cảm xúc",
-  boiCanh:"Anh H., 40 tuổi, không liên lạc với bố mẹ suốt 15 năm. Anh nói: “Tôi ổn mà. Tôi chẳng cần họ, tôi đã tự lo được hết.” Tuy nhiên anh phản ứng dữ dội mỗi khi ai đó nhắc tới gia đình, và trong mọi mối quan hệ thân mật anh đều rút lui khi bắt đầu gần gũi.",
-  cauHoi:"Theo Bowen, đây là biểu hiện của:",
-  luaChon:[
-    "Mức phân biệt hoá bản thân cao",
-    "Cắt đứt cảm xúc — một cách quản lý sự dính mắc chưa được giải quyết, phản ánh mức phân biệt hoá thấp chứ không phải trưởng thành",
-    "Ranh giới rõ ràng và lành mạnh",
-    "Đẳng kết cục"
-  ],
-  dapAn:1,
-  giaiThich:"Dấu hiệu phân biệt cắt đứt với phân biệt hoá thật nằm ở phản ứng cảm xúc: người phân biệt hoá cao có thể nói về gia đình mà không bị kích hoạt. Ở đây, cường độ phản ứng và sự lặp lại của khuôn mẫu rút lui cho thấy hệ thống vẫn đang chi phối anh H. rất mạnh.",
-  viSaoSai:[
-    "Phân biệt hoá cao đi kèm khả năng duy trì kết nối, không phải cắt đứt.",
-    "",
-    "Ranh giới lành mạnh cho phép vừa tự chủ vừa gần gũi.",
-    "Đẳng kết cục là nguyên lý về con đường dẫn tới kết cục, không liên quan."
-  ]
-},
-{
-  id:"GD-TH-10", loai:"thuc-hanh", chuDe:"Phân biệt hoá",
-  boiCanh:"Trong bữa cơm gia đình, mọi người gây áp lực buộc chị T. phải nghỉ việc để về quê chăm bố mẹ chồng.",
-  cauHoi:"Phản ứng nào thể hiện mức phân biệt hoá bản thân CAO theo Bowen?",
-  luaChon:[
-    "Chị im lặng đồng ý cho êm chuyện rồi âm thầm oán giận",
-    "Chị bình tĩnh nói rõ quan điểm và giới hạn của mình, không tấn công ai, đồng thời vẫn giữ được sự gắn kết và tiếp tục tham gia bữa cơm",
-    "Chị nổi giận, kể tội cả nhà rồi bỏ về và cắt liên lạc",
-    "Chị nhờ chồng đứng ra nói thay và tránh mặt gia đình"
-  ],
-  dapAn:1,
-  giaiThich:"Phân biệt hoá cao thể hiện ở việc giữ vị thế “tôi”: nêu được lập trường riêng dưới áp lực của hệ thống mà không cần hoặc tấn công hoặc rút chạy, và vẫn duy trì kết nối.",
-  viSaoSai:[
-    "Đây là hoà tan vào hệ thống để tránh lo âu — biểu hiện của phân biệt hoá thấp.",
-    "",
-    "Đây là phản ứng cảm xúc và cắt đứt, cũng là biểu hiện của phân biệt hoá thấp.",
-    "Đây là tam giác hoá: kéo người thứ ba vào để tránh đối diện trực tiếp."
-  ]
-},
-{
-  id:"GD-TH-11", loai:"thuc-hanh", chuDe:"Câu hỏi vòng tròn",
-  boiCanh:"Nhà trị liệu hỏi cô con gái: “Khi bố và mẹ im lặng với nhau, theo em thì ai là người khó chịu hơn? Và em nghĩ mẹ hiểu sự im lặng của bố là gì?”",
-  cauHoi:"Đây là kỹ thuật của trường phái nào và có tác dụng gì?",
-  luaChon:[
-    "Câu hỏi vòng tròn của nhóm Milan; vừa thu thập thông tin về khuôn mẫu quan hệ vừa tự nó là can thiệp vì buộc các thành viên nhìn nhau theo góc mới",
-    "Câu hỏi phép màu của trị liệu tập trung giải pháp; nhằm dựng lên viễn cảnh tương lai",
-    "Câu hỏi Socrates của CBT; nhằm kiểm định niềm tin",
-    "Tự do liên tưởng của phân tâm; nhằm tiếp cận vô thức"
+    "Đám đông kẹt xe là tập hợp ngẫu nhiên rời rạc; gia đình là hệ thống — có cấu trúc, thứ bậc, phân công vai trò và mục tiêu chung",
+    "Khác nhau ở số lượng người tham gia",
+    "Khác nhau ở việc gia đình có quan hệ huyết thống còn đám đông thì không",
+    "Không khác nhau về mặt lý thuyết hệ thống"
   ],
   dapAn:0,
-  giaiThich:"Đặc trưng của câu hỏi vòng tròn là hỏi người này về quan hệ giữa hai người khác. Điều đó vừa cho nhà trị liệu thấy bản đồ quan hệ, vừa cho cả gia đình nghe thấy những khác biệt trong cách mỗi người đọc cùng một sự kiện.",
+  giaiThich:"Bốn tiêu chí phân biệt được tài liệu nêu là: cấu trúc, thứ bậc, phân công vai trò và mục tiêu chung. Huyết thống không phải tiêu chí — một tổ chức hay một lớp học cũng có thể là hệ thống.",
   viSaoSai:[
     "",
-    "Câu hỏi phép màu hỏi về một tương lai giả định khi vấn đề biến mất.",
-    "Câu hỏi Socrates nhắm vào niềm tin của cá nhân, không vào quan hệ giữa các thành viên khác.",
-    "Tự do liên tưởng không phải kỹ thuật hỏi có cấu trúc như thế này."
+    "Số lượng không phải tiêu chí.",
+    "Huyết thống không nằm trong bốn tiêu chí; nếu lấy huyết thống làm chuẩn thì gia đình nhận nuôi sẽ không phải hệ thống.",
+    "Hai khái niệm được phân biệt rất rõ trong tài liệu."
   ]
 },
 {
-  id:"GD-TH-12", loai:"thuc-hanh", chuDe:"Can thiệp nghịch lý",
-  boiCanh:"Một cặp đôi cãi nhau mỗi tối và không thể dừng lại. Nhà trị liệu yêu cầu: “Từ nay tới buổi sau, mỗi tối anh chị hãy dành đúng 20 phút, bấm đồng hồ, để cãi nhau. Ngoài khung giờ đó thì không được cãi.”",
-  cauHoi:"Logic của can thiệp này là gì?",
+  id:"GD-TH-05", loai:"thuc-hanh", chuDe:"Hệ thống đóng",
+  boiCanh:"Một gia đình cấm con cái kết bạn ngoài họ hàng, không cho ai bên ngoài biết chuyện trong nhà, từ chối mọi lời khuyên từ nhà trường, và giữ nguyên các quy tắc từ đời ông bà dù hoàn cảnh đã đổi khác.",
+  cauHoi:"Đây là biểu hiện của điều gì và hệ quả dự kiến là gì?",
   luaChon:[
-    "Giúp cặp đôi cãi nhau hiệu quả hơn và giải quyết vấn đề nhanh hơn",
-    "Đây là can thiệp nghịch lý kiểu kê đơn triệu chứng: khi việc cãi nhau trở thành nhiệm vụ có lịch, nó mất tính tự phát và chuyển từ chỗ ngoài tầm kiểm soát sang chỗ có thể kiểm soát",
-    "Nhằm chứng minh cho cặp đôi thấy họ vô lý đến mức nào",
-    "Nhằm thu thập dữ liệu định lượng về tần suất xung đột"
+    "Hệ thống mở với ranh giới rõ ràng; hệ quả là gắn kết bền vững",
+    "Hệ thống đóng — cách ly, không nhận năng lượng từ bên ngoài; hệ quả là dễ suy thoái (Entropia)",
+    "Cân bằng nội môi lành mạnh; hệ quả là ổn định lâu dài",
+    "Phản hồi dương tính; hệ quả là biến đổi nhanh"
   ],
   dapAn:1,
-  giaiThich:"Dù cặp đôi tuân thủ (và thấy khó cãi theo lịch) hay không tuân thủ (và cãi ít đi), khuôn mẫu tự động đều bị phá vỡ. Lưu ý: các can thiệp nghịch lý cần được dùng thận trọng và không phù hợp khi có bạo lực.",
+  giaiThich:"Tài liệu định nghĩa hệ thống đóng đúng bằng ba đặc điểm này và khẳng định “gia đình lành mạnh luôn là một hệ thống mở”. Hệ thống đóng không trao đổi thông tin nên không tự tái tạo và thích ứng được.",
   viSaoSai:[
-    "Mục tiêu không phải cải thiện kỹ năng tranh luận.",
+    "Mô tả cho thấy sự cách ly, trái với hệ thống mở.",
     "",
-    "Làm thân chủ bẽ mặt không phải mục đích của kỹ thuật.",
-    "Thu thập dữ liệu là mục tiêu phụ, không phải logic của can thiệp."
+    "Ổn định do đóng kín khác với cân bằng nội môi lành mạnh; đây là con đường dẫn tới entropia.",
+    "Không có yếu tố khuếch đại độ lệch nào ở đây."
   ]
 },
 {
-  id:"GD-TH-13", loai:"thuc-hanh", chuDe:"Kiềm chế thay đổi",
-  boiCanh:"Sau vài tiến bộ ban đầu, nhà trị liệu chiến lược nói với gia đình: “Tôi nghĩ ta nên đi chậm lại. Thay đổi nhanh quá đôi khi khiến mọi thứ mất thăng bằng, có lẽ tuần này gia đình đừng vội thay đổi thêm gì.”",
-  cauHoi:"Kỹ thuật này được gọi là gì và nhằm mục đích gì?",
+  id:"GD-TH-06", loai:"thuc-hanh", chuDe:"Đẳng kết",
+  boiCanh:"Ba thiếu niên cùng có triệu chứng trầm cảm. Em thứ nhất lớn lên trong gia đình bạo hành; em thứ hai trong gia đình quá bao bọc; em thứ ba trong gia đình cha mẹ ly hôn sớm.",
+  cauHoi:"Đặc tính hệ thống nào giải thích hiện tượng này, và hệ quả thực hành là gì?",
   luaChon:[
-    "Kiềm chế thay đổi (restraining); nhằm giảm áp lực phải tiến bộ, xử lý sự chống đối với thay đổi và thường khiến gia đình tự thúc đẩy tiến bộ",
-    "Gia nhập; nhằm tạo liên minh với gia đình",
-    "Ngoại hoá; nhằm tách vấn đề khỏi con người",
-    "Đánh dấu ranh giới; nhằm tái lập cấu trúc"
+    "Đẳng kết (Equifinality) — nhiều ngả dẫn tới một đích; nên việc truy tìm một “nguyên nhân gốc” duy nhất ít hữu ích, cần hiểu khuôn mẫu đang vận hành",
+    "Không tổng hợp — tổng thể lớn hơn tổng các phần",
+    "Tập trung hoá — mọi vấn đề đều quy về một trọng tâm quyền lực",
+    "Cạnh tranh — các thành viên đấu tranh nguồn lực"
   ],
   dapAn:0,
-  giaiThich:"Restraining là một can thiệp nghịch lý xuất phát từ nhận định rằng hệ thống có xu hướng chống lại áp lực thay đổi; khi nhà trị liệu đứng về phía sự thận trọng, xu hướng chống đối đó lại chuyển thành động lực tiến lên.",
+  giaiThich:"Đẳng kết là đặc tính số 3 trong danh sách của von Bertalanffy, được tóm tắt là “Nhiều ngả → Một đích”. Đây là một lý do quan trọng khiến tiếp cận hệ thống ưu tiên mô tả khuôn mẫu hiện tại hơn là truy nguyên nhân quá khứ.",
   viSaoSai:[
     "",
-    "Gia nhập diễn ra ở giai đoạn đầu và mang nội dung khác.",
-    "Ngoại hoá là kỹ thuật ngôn ngữ của trị liệu tự sự.",
-    "Đánh dấu ranh giới là kỹ thuật cấu trúc."
+    "Không tổng hợp nói về quan hệ giữa tổng thể và các phần.",
+    "Tập trung hoá nói về trọng tâm quyền lực.",
+    "Cạnh tranh nói về đấu tranh nguồn lực."
   ]
 },
 {
-  id:"GD-TH-14", loai:"thuc-hanh", chuDe:"Hàm ý tích cực",
-  boiCanh:"Nhà trị liệu nói với gia đình: “Tôi thấy mỗi khi bố mẹ căng thẳng thì con lại ốm. Có lẽ theo cách riêng của mình, con đang cố giữ cho bố mẹ ở gần nhau.”",
-  cauHoi:"Mục đích chính của phát biểu này là:",
+  id:"GD-TH-07", loai:"thuc-hanh", chuDe:"Nhân quả tuyến tính",
+  boiCanh:"Buổi đầu tiên, cả gia đình đồng thanh: “Nhà em chẳng có vấn đề gì, chỉ tại thằng bé hư nên mọi chuyện mới ra thế này.”",
+  cauHoi:"Gia đình đang vận hành theo kiểu tư duy nào và điều gì cần được lưu ý?",
   luaChon:[
-    "Khiến đứa trẻ cảm thấy có lỗi vì đã can thiệp vào chuyện người lớn",
-    "Gán một ý nghĩa tích cực cho triệu chứng để giảm quy lỗi, đưa vấn đề trở lại bối cảnh quan hệ và mở đường cho gia đình nhìn nhận vai trò của mình",
-    "Khẳng định rằng đứa trẻ đang giả vờ ốm",
-    "Chuyển trách nhiệm điều trị sang cho bố mẹ"
+    "Tư duy nhân quả vòng tròn; cần khuyến khích duy trì",
+    "Tư duy nhân quả tuyến tính (A → B); hệ quả là đổ lỗi cá nhân, nhiệm vụ của nhà trị liệu là mở rộng sang cách nhìn quy hồi qua lại",
+    "Tư duy đẳng kết; cần tìm thêm nguyên nhân khác",
+    "Tư duy hệ thống mở; cần củng cố ranh giới"
   ],
   dapAn:1,
-  giaiThich:"Hàm ý tích cực là kỹ thuật đặc trưng của nhóm Milan. Nó thay đổi khung nghĩa của triệu chứng từ “hư hỏng” hoặc “bệnh hoạn” sang “có chức năng”, nhờ đó giảm phòng vệ và làm hiện lên mối liên hệ giữa triệu chứng và hệ thống.",
+  giaiThich:"Tài liệu chú thích ngay dưới sơ đồ tuyến tính rằng hệ quả của nó là “đổ lỗi cá nhân”. Chuyển sang tư duy bánh răng giúp gia đình thấy mỗi hành vi vừa là phản ứng vừa là kích thích, từ đó thoát khỏi thế bế tắc quy lỗi.",
   viSaoSai:[
-    "Kỹ thuật này nhằm giảm chứ không tăng cảm giác tội lỗi.",
+    "Đây đúng là kiểu tư duy trái ngược với vòng tròn.",
     "",
-    "Nó không hàm ý đứa trẻ giả vờ; nó nói về chức năng chứ không nói về ý định.",
-    "Đây là hệ quả có thể có, không phải mục đích chính."
+    "Đẳng kết là một đặc tính hệ thống, không phải kiểu tư duy nhân quả này.",
+    "Không có dấu hiệu nào về tính đóng/mở ở đây."
   ]
 },
 {
-  id:"GD-TH-15", loai:"thuc-hanh", chuDe:"Câu hỏi phép màu",
-  boiCanh:"Bạn muốn dùng câu hỏi phép màu với một gia đình theo trị liệu tập trung giải pháp.",
-  cauHoi:"Cách đặt câu hỏi nào đúng nhất?",
+  id:"GD-TH-08", loai:"thuc-hanh", chuDe:"Nhân quả vòng tròn",
+  boiCanh:"Vợ: “Tôi phải nói suốt vì anh ấy chẳng bao giờ chịu mở miệng.” Chồng: “Tôi im vì cô ấy nói cả ngày.”",
+  cauHoi:"Cách mô tả phù hợp với tư duy bánh răng là:",
   luaChon:[
-    "“Nếu có phép màu, gia đình mình muốn thay đổi ai nhất?”",
-    "“Giả sử đêm nay khi cả nhà đang ngủ, một phép màu xảy ra và vấn đề này biến mất. Sáng mai, dấu hiệu đầu tiên nào khiến anh chị nhận ra điều gì đó đã khác? Ai sẽ là người nhận ra đầu tiên, và họ sẽ thấy gì?”",
-    "“Theo anh chị, nguyên nhân sâu xa nhất của vấn đề này là gì?”",
-    "“Nếu vấn đề không được giải quyết, chuyện tồi tệ nhất có thể xảy ra là gì?”"
+    "Cần xác định ai bắt đầu trước để biết ai phải thay đổi",
+    "Đây là hai bánh răng ăn khớp: hành vi của mỗi người vừa là phản ứng với người kia vừa là kích thích cho người kia; can thiệp có thể bắt đầu từ bất kỳ điểm nào của vòng lặp",
+    "Người vợ là nguyên nhân vì bà chủ động nói trước",
+    "Người chồng là nguyên nhân vì ông từ chối giao tiếp"
   ],
   dapAn:1,
-  giaiThich:"Câu hỏi phép màu được thiết kế để gia đình mô tả tương lai mong muốn bằng những dấu hiệu cụ thể, quan sát được và ở quy mô nhỏ — từ đó rút ra bước hành động khả thi ngay hôm nay.",
+  giaiThich:"Trong tư duy quy hồi, câu hỏi “ai bắt đầu trước” không có câu trả lời khách quan — mỗi bên đều mô tả mình đang phản ứng. Nhiệm vụ của nhà trị liệu là làm hiện lên chính vòng lặp đó.",
   viSaoSai:[
-    "Câu hỏi này quay lại việc chỉ ra người có vấn đề.",
+    "Truy điểm khởi đầu chính là tư duy tuyến tính.",
     "",
-    "Truy tìm nguyên nhân là hướng ngược lại với triết lý tập trung giải pháp.",
-    "Đây là câu hỏi hướng về kịch bản xấu, không phải câu hỏi phép màu."
+    "Quy lỗi cho một bên bỏ qua tính tương hỗ.",
+    "Quy lỗi cho bên còn lại cũng mắc cùng lỗi."
   ]
 },
 {
-  id:"GD-TH-16", loai:"thuc-hanh", chuDe:"Câu hỏi thang đo",
-  boiCanh:"Thân chủ chấm tình trạng hiện tại của gia đình là 4 trên thang 0–10.",
-  cauHoi:"Câu hỏi tiếp theo phù hợp nhất với tinh thần trị liệu tập trung giải pháp là:",
+  id:"GD-TH-09", loai:"thuc-hanh", chuDe:"Chu kỳ đời sống",
+  boiCanh:"Bà L., 52 tuổi, xuất hiện lo âu và trầm buồn kéo dài từ khi cô con gái út vào đại học ở xa. Bà nói: “Hai mươi năm nay tôi chỉ sống vì các con, giờ tôi chẳng biết mình để làm gì nữa.”",
+  cauHoi:"Đây là giai đoạn nào trong chu kỳ đời sống gia đình và hiện tượng gì?",
   luaChon:[
-    "“Tại sao lại thấp như vậy? Điều gì khiến gia đình chỉ được 4?”",
-    "“Điều gì đã giúp gia đình ở mức 4 chứ không phải 1 hay 2? Và dấu hiệu cụ thể nào sẽ cho anh chị biết mình đã nhích lên 5?”",
-    "“Bao giờ thì anh chị nghĩ mình sẽ đạt 10?”",
-    "“Ai trong nhà là người kéo điểm số xuống nhiều nhất?”"
+    "Giai đoạn 4 — Gia đình có con vị thành niên; khủng hoảng dậy thì",
+    "Giai đoạn 5 — “Tung cánh” (Launching); Hội chứng tổ rỗng, đặc biệt nghiêm trọng ở phụ huynh hy sinh toàn bộ đời sống riêng cho con",
+    "Giai đoạn 6 — Gia đình trong tuổi già; trầm cảm tuổi già",
+    "Giai đoạn 1 — Độc thân trẻ; dính mắc cảm xúc"
   ],
   dapAn:1,
-  giaiThich:"Câu hỏi thang đo được dùng theo hai hướng: nhìn xuống để phát hiện các nguồn lực đã có (vì sao không phải là 1), và nhìn lên một nấc để xác định bước kế tiếp nhỏ và cụ thể.",
+  giaiThich:"Đứa con cuối cùng rời nhà là mốc của hội chứng tổ rỗng, thuộc giai đoạn Launching. Chi tiết “hai mươi năm chỉ sống vì các con” khớp đúng với nhóm nguy cơ cao mà tài liệu chỉ ra.",
   viSaoSai:[
-    "Hỏi “tại sao thấp” kéo cuộc trò chuyện quay về vấn đề và sự thiếu hụt.",
+    "Con đã vào đại học và rời nhà, không còn ở giai đoạn vị thành niên trong nhà.",
     "",
-    "Nhảy thẳng tới 10 tạo mục tiêu quá xa và không khả thi.",
-    "Câu hỏi này quy lỗi cho một thành viên, đi ngược tinh thần của trường phái."
+    "Giai đoạn 6 gắn với nghỉ hưu, suy giảm thể lực và mất mát bạn đời.",
+    "Giai đoạn 1 nói về chính người trẻ tách khỏi gia đình gốc."
   ]
 },
 {
-  id:"GD-TH-17", loai:"thuc-hanh", chuDe:"Ngoại hoá vấn đề",
-  boiCanh:"Nhà trị liệu hỏi cậu bé: “Nỗi Lo Lắng thường thuyết phục con điều gì về bản thân? Có lần nào con không nghe lời nó không?”",
-  cauHoi:"Kỹ thuật này thuộc trường phái nào và nhằm mục đích gì?",
+  id:"GD-TH-10", loai:"thuc-hanh", chuDe:"Generation Boomerang",
+  boiCanh:"Anh T., 26 tuổi, tốt nghiệp hai năm nhưng chưa tìm được việc ổn định nên quay về sống với cha mẹ. Mẹ vẫn giặt đồ, nấu ăn và hỏi giờ về như hồi anh học cấp ba; anh khó chịu nhưng không dám nói. Cha mẹ thì bực vì “lớn rồi mà chẳng lo được thân”.",
+  cauHoi:"Hiện tượng này gọi là gì và nhiệm vụ hệ thống cần giải quyết là gì?",
   luaChon:[
-    "Trị liệu tự sự; ngoại hoá vấn đề để tách con người khỏi vấn đề, giảm cảm giác tội lỗi và mở ra không gian cho hành động chống lại vấn đề",
-    "Trị liệu cấu trúc; nhằm đánh dấu ranh giới giữa các tiểu hệ thống",
-    "Trị liệu chiến lược; nhằm kê đơn triệu chứng",
-    "Trị liệu Bowen; nhằm nâng mức phân biệt hoá"
+    "Hội chứng tổ rỗng; nhiệm vụ là giúp cha mẹ tìm ý nghĩa sống mới",
+    "Generation Boomerang; nhiệm vụ là tái thiết lập ranh giới quyền lực và không gian riêng cho phù hợp với việc con đã trưởng thành",
+    "Phụ mẫu hoá; nhiệm vụ là trả lại vai trò cha mẹ cho người lớn",
+    "Xung đột lòng trung thành; nhiệm vụ là chọn giữa gia đình gốc và bạn đời"
+  ],
+  dapAn:1,
+  giaiThich:"Cohen và cộng sự (2011) mô tả đúng tình huống người trẻ tốt nghiệp quay về vì áp lực việc làm/kinh tế. Tài liệu nhấn mạnh hệ quả hệ thống: gia đình buộc phải tái thiết lập ranh giới quyền lực và không gian riêng.",
+  viSaoSai:[
+    "Tổ rỗng xảy ra khi con rời đi, ở đây con đã quay về.",
+    "",
+    "Phụ mẫu hoá là đứa trẻ bị ép làm cha mẹ cho chính phụ huynh, không phải tình huống này.",
+    "Không có mâu thuẫn giữa hai lòng trung thành ở đây."
+  ]
+},
+{
+  id:"GD-TH-11", loai:"thuc-hanh", chuDe:"Chu kỳ đời sống",
+  boiCanh:"Cặp vợ chồng mới cưới 8 tháng đến trị liệu. Mẹ chồng gọi điện mỗi ngày, tự ý sắp xếp lại đồ đạc trong nhà họ và quyết định thay họ chuyện chi tiêu. Người vợ thấy ngột ngạt, người chồng thì không dám lên tiếng với mẹ.",
+  cauHoi:"Đây là điểm nghẽn đặc trưng của giai đoạn nào và nhiệm vụ phát triển tương ứng là gì?",
+  luaChon:[
+    "Giai đoạn 2 — Kết hôn / Cặp đôi mới; nhiệm vụ là tạo dựng hệ thống đôi mới và thương lượng lại ranh giới với cha mẹ hai bên",
+    "Giai đoạn 3 — Gia đình có con nhỏ; nhiệm vụ là san sẻ gánh nặng chăm sóc trẻ",
+    "Giai đoạn 1 — Độc thân trẻ; nhiệm vụ là tách khỏi gia đình gốc",
+    "Giai đoạn 5 — Tung cánh; nhiệm vụ là tái định nghĩa hôn nhân"
   ],
   dapAn:0,
-  giaiThich:"Ngoại hoá đặt vấn đề ra ngoài con người bằng chính ngôn ngữ. Câu hỏi thứ hai còn nhắm tới “kết quả độc đáo” — những lần cậu bé đã kháng lại vấn đề — là chất liệu để bắt đầu tái tác giả câu chuyện.",
+  giaiThich:"Tài liệu ghi điểm nghẽn của giai đoạn 2 gồm xung đột kỳ vọng, bất đồng lối sống – tài chính và “sự can thiệp thái quá từ gia đình gốc (mẹ chồng/nàng dâu)”. Nhiệm vụ phát triển tương ứng là thương lượng lại ranh giới với cha mẹ hai bên.",
   viSaoSai:[
     "",
-    "Đánh dấu ranh giới là kỹ thuật khác hẳn.",
-    "Không có yếu tố nghịch lý ở đây.",
-    "Phân biệt hoá được làm việc bằng genogram và huấn luyện, không phải kiểu hỏi này."
+    "Cặp đôi chưa có con.",
+    "Cả hai đã kết hôn, không còn ở giai đoạn độc thân trẻ.",
+    "Giai đoạn 5 xảy ra khi con cái đã rời nhà."
   ]
 },
 {
-  id:"GD-TH-18", loai:"thuc-hanh", chuDe:"Kết quả độc đáo",
-  boiCanh:"Một thiếu niên nói: “Lúc nào con cũng nổi khùng, con không kiểm soát được gì hết.” Sau đó cậu kể thoáng qua rằng tuần trước bị bạn khiêu khích nhưng cậu đã bỏ đi chỗ khác.",
-  cauHoi:"Theo trị liệu tự sự, nhà trị liệu nên làm gì với chi tiết này?",
+  id:"GD-TH-12", loai:"thuc-hanh", chuDe:"Thế hệ bánh kẹp",
+  boiCanh:"Chị H., 45 tuổi, vừa phải xoay xở với cậu con trai 15 tuổi đang chống đối dữ dội, vừa chăm mẹ ruột 78 tuổi mới đột quỵ. Chị kiệt sức và thấy có lỗi với cả hai bên.",
+  cauHoi:"Chị H. đang ở giai đoạn nào và khái niệm nào mô tả đúng tình trạng của chị?",
   luaChon:[
-    "Bỏ qua vì đó chỉ là một ngoại lệ nhỏ không đại diện cho vấn đề",
-    "Dừng lại và khai thác kỹ chi tiết này như một “kết quả độc đáo”: cậu đã làm điều đó thế nào, điều đó nói lên gì về con người cậu, ai sẽ không ngạc nhiên khi biết chuyện này",
-    "Dùng nó để chứng minh rằng cậu đã nói quá về vấn đề của mình",
-    "Ghi lại làm dữ liệu cơ sở để so sánh về sau"
+    "Giai đoạn 3; áp lực vai trò giới",
+    "Giai đoạn 4 — Gia đình có con vị thành niên; gánh nặng “thế hệ bánh kẹp”",
+    "Giai đoạn 6; cảm giác bất lực vì phụ thuộc con cái",
+    "Giai đoạn 5; hội chứng tổ rỗng"
   ],
   dapAn:1,
-  giaiThich:"Kết quả độc đáo là những khoảnh khắc không khớp với câu chuyện thống trị về vấn đề. Việc làm dày các chi tiết quanh những khoảnh khắc đó là cách trị liệu tự sự xây dựng một câu chuyện thay thế về bản sắc.",
+  giaiThich:"Giai đoạn 4 được tài liệu mô tả bằng hai nhiệm vụ song song: nới lỏng ranh giới cho con vị thành niên tự chủ, đồng thời đối diện sự già yếu của thế hệ ông bà — đúng thế kẹp mà chị H. đang chịu.",
   viSaoSai:[
-    "Đây chính là chất liệu quý nhất, không nên bỏ qua.",
+    "Giai đoạn 3 dành cho gia đình có con nhỏ.",
     "",
-    "Bắt lỗi mâu thuẫn sẽ khiến thiếu niên phòng vệ và đóng lại.",
-    "Ghi chép đơn thuần bỏ lỡ cơ hội can thiệp ngay lúc đó."
+    "Giai đoạn 6 nói về chính người cao tuổi.",
+    "Con chị vẫn đang ở nhà, chưa tới giai đoạn tung cánh."
   ]
 },
 {
-  id:"GD-TH-19", loai:"thuc-hanh", chuDe:"FBT cho chán ăn tâm thần",
-  boiCanh:"Em gái 16 tuổi được chẩn đoán chán ăn tâm thần, chỉ số khối cơ thể rất thấp nhưng chưa tới mức phải nhập viện. Gia đình hỏi nên bắt đầu từ đâu.",
-  cauHoi:"Theo mô hình trị liệu gia đình Maudsley (FBT), trọng tâm của giai đoạn đầu là:",
+  id:"GD-TH-13", loai:"thuc-hanh", chuDe:"Satir — Placator",
+  boiCanh:"Mỗi khi không khí gia đình căng thẳng, chị M. lập tức xin lỗi dù không có lỗi, nói “thôi tại em cả”, hạ giọng và đồng ý với mọi điều người khác nói.",
+  cauHoi:"Đây là kiểu ứng phó nào theo Satir và động cơ ngầm bên dưới là gì?",
   luaChon:[
-    "Khám phá nguyên nhân tâm lý sâu xa khiến em phát triển rối loạn ăn uống",
-    "Trao lại cho cha mẹ vai trò chủ động trong việc phục hồi dinh dưỡng cho con, với lập trường không quy lỗi cho gia đình và tách rối loạn ra khỏi bản sắc của em",
-    "Để em tự quyết định chế độ ăn nhằm tôn trọng quyền tự chủ",
-    "Trị liệu cá nhân cho em về hình ảnh cơ thể trước, sau đó mới làm việc với gia đình"
+    "Đổ lỗi (Blamer) — bất lực ngầm",
+    "Xoa dịu (Placator) — hạ mình vì sợ bị bỏ rơi",
+    "Máy tính (Computer) — sợ cảm xúc",
+    "Phân tâm (Distracter) — tránh né thực tại"
   ],
   dapAn:1,
-  giaiThich:"FBT đảo ngược cách tiếp cận truyền thống: thay vì coi gia đình là nguyên nhân, mô hình huy động cha mẹ như nguồn lực chính cho việc phục hồi cân nặng ở giai đoạn một, rồi mới dần trả lại quyền tự chủ cho thiếu niên ở các giai đoạn sau.",
+  giaiThich:"Tài liệu mô tả Placator bằng đúng hai nét: “hạ mình” và “sợ bị bỏ rơi”. Đây là một trong bốn vai diễn phòng vệ lấn át cái tôi chân thật.",
   viSaoSai:[
-    "Truy tìm nguyên nhân không phải trọng tâm và có thể trì hoãn việc xử lý nguy cơ y tế.",
+    "Blamer chỉ trích người khác, ngược với hạ mình.",
     "",
-    "Ở giai đoạn suy dinh dưỡng nặng, trao quyền quyết định ăn uống cho em là không an toàn.",
-    "FBT đặt công việc gia đình lên trước, không phải sau."
+    "Computer dùng lý lẽ và tránh cảm xúc, không hạ mình xin lỗi.",
+    "Distracter pha trò, đánh trống lảng."
   ]
 },
 {
-  id:"GD-TH-20", loai:"thuc-hanh", chuDe:"Biểu lộ cảm xúc",
-  boiCanh:"Anh trai của thân chủ mắc tâm thần phân liệt đã ổn định sau đợt điều trị. Mẹ liên tục nói: “Nó lười chứ bệnh gì, cứ nằm suốt ngày”, đồng thời theo sát, nhắc nhở từng việc nhỏ và tự làm thay mọi thứ cho con.",
-  cauHoi:"Nguy cơ chính và hướng can thiệp phù hợp là:",
+  id:"GD-TH-14", loai:"thuc-hanh", chuDe:"Satir — Computer",
+  boiCanh:"Khi vợ khóc và nói mình cô đơn trong hôn nhân, anh K. đáp bằng giọng đều đều: “Theo thống kê thì phần lớn các cặp đôi đều trải qua giai đoạn này. Vấn đề là em cần phân bổ thời gian hợp lý hơn.” Anh không nhắc gì tới cảm xúc của mình.",
+  cauHoi:"Kiểu ứng phó của anh K. là:",
   luaChon:[
-    "Không có nguy cơ gì; sự quan tâm của mẹ luôn có lợi cho quá trình hồi phục",
-    "Đây là biểu hiện của mức biểu lộ cảm xúc cao (chỉ trích kèm can dự quá mức), liên hệ với nguy cơ tái phát; can thiệp phù hợp là chương trình giáo dục tâm lý gia đình nhằm giảm chỉ trích và điều chỉnh mức độ can dự",
-    "Cần tách bệnh nhân khỏi gia đình càng sớm càng tốt",
-    "Cần tăng liều thuốc để bù cho môi trường gia đình căng thẳng"
-  ],
-  dapAn:1,
-  giaiThich:"Chỉ trích, thù địch và can dự cảm xúc quá mức là ba thành phần của EE cao. Các chương trình can thiệp gia đình giúp người thân hiểu bản chất bệnh, điều chỉnh kỳ vọng và cách giao tiếp, qua đó giảm rõ rệt tỷ lệ tái phát.",
-  viSaoSai:[
-    "Sự quan tâm ở dạng chỉ trích và can dự quá mức lại là yếu tố nguy cơ.",
-    "",
-    "Tách khỏi gia đình không phải khuyến nghị chuẩn và thường bất khả thi.",
-    "Điều chỉnh thuốc không thay thế được việc can thiệp vào môi trường quan hệ."
-  ]
-},
-{
-  id:"GD-TH-21", loai:"thuc-hanh", chuDe:"Đạo đức – bạo lực gia đình",
-  boiCanh:"Một cặp vợ chồng tới trị liệu. Trong buổi đầu, người vợ tiết lộ chồng đã nhiều lần đánh chị, lần gần nhất là tuần trước. Người chồng nói: “Tại cô ấy khiêu khích tôi.”",
-  cauHoi:"Ứng xử phù hợp nhất là:",
-  luaChon:[
-    "Tiếp tục trị liệu cặp đôi với lập trường trung lập và mô tả bạo lực như một phần của chu trình tương tác giữa hai người",
-    "Ưu tiên an toàn: đánh giá nguy cơ, gặp riêng người vợ, hỗ trợ lập kế hoạch an toàn, khẳng định rõ trách nhiệm về hành vi bạo lực thuộc về người gây ra, và không tiến hành trị liệu cặp đôi chung khi bạo lực còn tiếp diễn",
-    "Yêu cầu người vợ thay đổi cách nói chuyện để tránh kích động chồng",
-    "Từ chối ca này và không cung cấp bất kỳ thông tin hỗ trợ nào"
-  ],
-  dapAn:1,
-  giaiThich:"Đây chính là điểm mà phê bình nữ quyền nhắm tới: áp dụng nhân quả vòng tròn và trung lập cho bạo lực sẽ khiến trách nhiệm bị san đều và làm tăng nguy cơ cho nạn nhân. Đồng thuận chuyên môn hiện nay là an toàn được ưu tiên tuyệt đối và trách nhiệm về bạo lực không được chia sẻ.",
-  viSaoSai:[
-    "Cách làm này nguy hiểm và đã bị phê phán rộng rãi trong y văn.",
-    "",
-    "Đây là quy trách nhiệm cho nạn nhân, hoàn toàn không chấp nhận được.",
-    "Từ chối mà không hỗ trợ hay chuyển tuyến là bỏ rơi thân chủ trong tình huống nguy cơ."
-  ]
-},
-{
-  id:"GD-TH-22", loai:"thuc-hanh", chuDe:"Làm việc hệ thống với một người",
-  boiCanh:"Chị M. muốn trị liệu để cải thiện quan hệ với gia đình chồng, nhưng không ai trong gia đình đồng ý tham gia.",
-  cauHoi:"Lựa chọn phù hợp nhất là:",
-  luaChon:[
-    "Từ chối vì trị liệu hệ thống bắt buộc phải có mặt tất cả các thành viên",
-    "Vẫn có thể làm việc theo hướng hệ thống với một mình chị M. — ví dụ dùng genogram, xác định các tam giác, huấn luyện chị giữ vị thế “tôi” và thay đổi phần của mình trong các vòng lặp tương tác",
-    "Chuyển sang trị liệu cá nhân thuần tuý và bỏ hẳn khung hệ thống",
-    "Yêu cầu chị thuyết phục bằng được gia đình tới, nếu không thì dừng"
-  ],
-  dapAn:1,
-  giaiThich:"Bowen đặc biệt nổi tiếng với việc làm việc với một thành viên có động cơ nhất: nếu người đó thay đổi được cách mình tham gia vào hệ thống cảm xúc, toàn bộ hệ thống buộc phải điều chỉnh theo.",
-  viSaoSai:[
-    "Sự có mặt của tất cả là lý tưởng nhưng không phải điều kiện bắt buộc.",
-    "",
-    "Không cần từ bỏ khung hệ thống chỉ vì số người tham dự.",
-    "Ra điều kiện như vậy đặt gánh nặng không hợp lý lên thân chủ."
-  ]
-},
-{
-  id:"GD-TH-23", loai:"thuc-hanh", chuDe:"Chu kỳ đời sống gia đình",
-  boiCanh:"Chị K., 50 tuổi, xuất hiện triệu chứng trầm cảm ngay sau khi con út vào đại học và chuyển ra ở riêng. Chị nói: “Tự nhiên tôi chẳng biết mình còn để làm gì nữa.”",
-  cauHoi:"Cách khái niệm hoá theo góc nhìn hệ thống là:",
-  luaChon:[
-    "Đây thuần tuý là một giai đoạn trầm cảm nội sinh, không liên quan bối cảnh",
-    "Gia đình đang ở giai đoạn chuyển tiếp “con cái rời nhà”, đòi hỏi tái tổ chức vai trò và tái thương lượng quan hệ vợ chồng; triệu chứng của chị K. cần được đọc trong bối cảnh chuyển tiếp này",
-    "Chị K. có mức phân biệt hoá cao nên phản ứng mạnh với sự thay đổi",
-    "Đây là biểu hiện của ràng buộc kép trong gia đình"
-  ],
-  dapAn:1,
-  giaiThich:"Các điểm chuyển tiếp trong chu kỳ đời sống gia đình là nơi triệu chứng hay xuất hiện nhất, vì chúng buộc hệ thống phải thay đổi quy tắc và vai trò. Can thiệp hữu ích thường bao gồm việc cặp vợ chồng tái thương lượng quan hệ sau khi vai trò làm cha mẹ toàn thời gian kết thúc.",
-  viSaoSai:[
-    "Bỏ qua bối cảnh chuyển tiếp là bỏ mất thông tin quan trọng nhất về thời điểm khởi phát.",
-    "",
-    "Phản ứng mạnh với thay đổi gợi ý phân biệt hoá thấp hơn chứ không phải cao.",
-    "Không có mô tả nào về thông điệp mâu thuẫn hai cấp độ."
-  ]
-},
-{
-  id:"GD-TH-24", loai:"thuc-hanh", chuDe:"Nhà trị liệu bị tam giác hoá",
-  boiCanh:"Sau vài buổi, hai đứa con liên tục nhìn nhà trị liệu tìm sự đồng tình mỗi khi nói về bố mẹ; bố mẹ bắt đầu nói: “Đấy, đến bác sĩ cũng thấy chúng tôi sai.” Nhà trị liệu nhận ra mình đang hay gật đầu với bọn trẻ hơn.",
-  cauHoi:"Điều gì đang xảy ra và cần làm gì?",
-  luaChon:[
-    "Nhà trị liệu đang xây dựng liên minh tốt với trẻ, nên tiếp tục",
-    "Nhà trị liệu đã bị kéo vào một tam giác trong hệ thống; cần nhận diện, khôi phục vị thế cân bằng và nếu phù hợp thì nêu chính hiện tượng này ra để cùng gia đình nhìn nhận",
-    "Cần chuyển ca sang đồng nghiệp khác ngay lập tức",
-    "Cần ngừng làm việc với trẻ và chỉ gặp riêng bố mẹ"
-  ],
-  dapAn:1,
-  giaiThich:"Nhà trị liệu luôn có nguy cơ trở thành đỉnh thứ ba của một tam giác. Việc nhận ra và tự điều chỉnh — thậm chí đưa hiện tượng ra bàn luận — vừa bảo vệ tính hiệu quả của trị liệu vừa làm mẫu cho gia đình về cách thoát khỏi tam giác.",
-  viSaoSai:[
-    "Liên minh lệch với một phía làm mất khả năng làm việc với toàn hệ thống.",
-    "",
-    "Chuyển ca là phản ứng thái quá cho một hiện tượng có thể xử lý được.",
-    "Loại trẻ khỏi buổi làm việc không giải quyết được vấn đề tam giác."
-  ]
-},
-{
-  id:"GD-TH-25", loai:"thuc-hanh", chuDe:"Cân bằng nội tại",
-  boiCanh:"Sau bốn buổi, hành vi của cậu con trai cải thiện rõ. Đúng lúc đó bố mẹ bắt đầu nói tới chuyện ly thân; ngay tuần sau, cậu bé bỏ nhà đi hai ngày và mọi chuyện ly thân bị gác lại.",
-  cauHoi:"Cách hiểu phù hợp nhất theo lý thuyết hệ thống là:",
-  luaChon:[
-    "Trị liệu đã thất bại vì cậu bé tái phát nặng hơn trước",
-    "Đây là biểu hiện của cân bằng nội tại: khi hệ thống bị đẩy về phía một thay đổi lớn, triệu chứng quay lại và kéo hệ thống trở về trạng thái quen thuộc",
-    "Cậu bé đang cố ý thao túng bố mẹ để họ không ly thân",
-    "Bố mẹ đã bí mật khuyến khích con bỏ nhà đi"
-  ],
-  dapAn:1,
-  giaiThich:"Sự tái xuất hiện của triệu chứng đúng vào thời điểm hệ thống sắp thay đổi cấu trúc là minh hoạ kinh điển của homeostasis. Nhận ra điều này giúp nhà trị liệu không hoảng hốt mà đưa chính mối liên hệ đó ra làm việc.",
-  viSaoSai:[
-    "Diễn giải này bỏ qua ý nghĩa của thời điểm và chức năng của triệu chứng.",
-    "",
-    "Quá trình này vận hành ngoài ý thức; quy kết cố ý là quy lỗi.",
-    "Không có bằng chứng nào cho giả thuyết này."
-  ]
-},
-{
-  id:"GD-TH-26", loai:"thuc-hanh", chuDe:"Satir – kiểu giao tiếp",
-  boiCanh:"Trong buổi trị liệu, mỗi khi có căng thẳng, người vợ lập tức xin lỗi, nói “tại em cả”, hạ giọng và đồng ý với mọi điều chồng nói dù trước đó chị vừa nêu quan điểm ngược lại.",
-  cauHoi:"Theo phân loại của Satir, đây là kiểu ứng phó nào?",
-  luaChon:[
-    "Đổ lỗi (blaming)",
-    "Xoa dịu (placating)",
-    "Lý trí hoá quá mức (super-reasonable)",
-    "Đánh trống lảng (irrelevant)"
-  ],
-  dapAn:1,
-  giaiThich:"Kiểu xoa dịu hy sinh nhu cầu và quan điểm của bản thân để giữ hoà khí; người đó chú ý tới người khác và bối cảnh nhưng bỏ quên chính mình. Mục tiêu trị liệu là hướng tới giao tiếp nhất quán (congruent), nơi cả ba yếu tố đều có mặt.",
-  viSaoSai:[
-    "Đổ lỗi chú ý tới bản thân và bối cảnh nhưng bỏ qua người khác.",
-    "",
-    "Kiểu lý trí hoá quá mức chỉ chú ý tới bối cảnh, nói bằng ngôn ngữ trừu tượng và tách cảm xúc.",
-    "Kiểu đánh trống lảng bỏ qua cả ba yếu tố, thường chuyển chủ đề hoặc pha trò."
-  ]
-},
-{
-  id:"GD-TH-27", loai:"thuc-hanh", chuDe:"Ràng buộc kép",
-  boiCanh:"Mẹ nói với con: “Con cứ tự nhiên nói ra suy nghĩ của mình đi, mẹ muốn con thành thật.” Nhưng mỗi lần con nói điều mẹ không thích, mẹ im lặng, quay mặt đi và lạnh nhạt suốt hai ngày. Con không được phép nhắc tới chuyện này.",
-  cauHoi:"Tình huống này minh hoạ khái niệm nào?",
-  luaChon:[
-    "Ràng buộc kép (double bind)",
-    "Tam giác hoá",
-    "Đẳng kết cục",
-    "Hàm ý tích cực"
+    "Máy tính (Computer) — siêu lý trí, sợ cảm xúc",
+    "Chân thực (Leveler) — đồng nhất, trắc ẩn",
+    "Đổ lỗi (Blamer) — chỉ trích",
+    "Xoa dịu (Placator) — hạ mình"
   ],
   dapAn:0,
-  giaiThich:"Đủ cả ba yếu tố: thông điệp lời nói (“hãy thành thật”) mâu thuẫn với thông điệp phi ngôn ngữ (trừng phạt bằng sự lạnh nhạt), cấm bình luận về mâu thuẫn, và đứa trẻ không thể rời khỏi mối quan hệ.",
+  giaiThich:"Computer là vai diễn siêu lý trí: chỉ chú ý tới bối cảnh và lập luận, cắt đứt khỏi cảm xúc của cả mình lẫn người đối diện. Tài liệu ghi ngắn gọn: “Siêu lý trí / Sợ cảm xúc”.",
   viSaoSai:[
     "",
-    "Không có người thứ ba bị kéo vào để giảm căng thẳng.",
-    "Đẳng kết cục là nguyên lý về con đường dẫn tới kết cục.",
-    "Hàm ý tích cực là một kỹ thuật can thiệp, không phải hiện tượng giao tiếp."
+    "Leveler thể hiện cảm xúc chân thật và trắc ẩn — trái với mô tả.",
+    "Anh K. không chỉ trích mà đưa lời khuyên bằng lý lẽ.",
+    "Anh K. không hạ mình xin lỗi."
   ]
 },
 {
-  id:"GD-TH-28", loai:"thuc-hanh", chuDe:"Gia nhập",
-  boiCanh:"Buổi đầu tiên với một gia đình bốn người đang căng thẳng và nghi ngờ trị liệu.",
-  cauHoi:"“Gia nhập” (joining) theo Minuchin có nghĩa là nhà trị liệu làm gì?",
+  id:"GD-TH-15", loai:"thuc-hanh", chuDe:"Satir — Distracter",
+  boiCanh:"Cứ khi cuộc trò chuyện gia đình chạm tới chuyện nợ nần, cậu con trai lại pha trò, đổi sang chuyện bóng đá hoặc giả vờ nghịch điện thoại cho cả nhà cười rồi quên mất chủ đề.",
+  cauHoi:"Kiểu ứng phó nào đang được sử dụng?",
   luaChon:[
-    "Đứng về phía thành viên yếu thế nhất để bảo vệ họ",
-    "Tạm thời hoà mình vào hệ thống — tôn trọng cách thức tổ chức, ngôn ngữ và thứ bậc của gia đình, kết nối với từng thành viên — để có đủ tín nhiệm mà sau đó can thiệp vào cấu trúc",
-    "Giữ khoảng cách hoàn toàn để duy trì tính khách quan",
-    "Đưa ra ngay các chỉ thị thay đổi cấu trúc từ buổi đầu"
+    "Xoa dịu (Placator)",
+    "Phân tâm (Distracter) — pha trò hề, tránh né thực tại",
+    "Máy tính (Computer)",
+    "Chân thực (Leveler)"
   ],
   dapAn:1,
-  giaiThich:"Minuchin dùng hình ảnh nhà trị liệu vừa là người trong cuộc vừa là người ngoài cuộc: phải được gia đình chấp nhận thì mới có “đòn bẩy” để tạo mất cân bằng và tái cấu trúc. Gia nhập trước, tái cấu trúc sau.",
+  giaiThich:"Distracter được tài liệu mô tả bằng “pha trò hề / tránh né thực tại” — người này bỏ qua cả bản thân, người khác lẫn bối cảnh để thoát khỏi áp lực.",
   viSaoSai:[
-    "Đứng hẳn về một phía ngay từ đầu sẽ phá vỡ khả năng làm việc với toàn hệ thống.",
+    "Placator hạ mình và nhận lỗi, không đánh trống lảng.",
     "",
-    "Khoảng cách hoàn toàn khiến gia đình không cảm thấy được thấu hiểu và dễ bỏ trị liệu.",
-    "Can thiệp cấu trúc quá sớm khi chưa có tín nhiệm thường bị hệ thống đẩy ra."
+    "Computer bám vào lý lẽ và bối cảnh, không né tránh chủ đề.",
+    "Leveler nói thẳng vào vấn đề."
   ]
 },
 {
-  id:"GD-TH-29", loai:"thuc-hanh", chuDe:"Ai tham dự buổi làm việc",
-  boiCanh:"Nhà trường giới thiệu một học sinh lớp 7 có hành vi gây rối. Mẹ gọi điện đặt lịch và hỏi: “Em đưa mình cháu tới thôi có được không ạ?”",
-  cauHoi:"Trả lời phù hợp nhất với khung hệ thống là:",
+  id:"GD-TH-16", loai:"thuc-hanh", chuDe:"Satir — Leveler",
+  boiCanh:"Trong buổi trị liệu, người chồng nói: “Anh thấy lo và hơi tủi khi em nói chuyện tiền bạc với mẹ trước rồi mới nói với anh. Anh muốn hai đứa mình bàn với nhau trước.”",
+  cauHoi:"Kiểu giao tiếp này là gì và vì sao nó là đích hướng tới của trị liệu?",
   luaChon:[
-    "“Vâng, chị cứ đưa cháu tới, tôi sẽ làm việc riêng với cháu.”",
-    "“Nếu được, tôi rất mong buổi đầu có mặt những người sống cùng và cùng chăm sóc cháu — vì hành vi của cháu diễn ra trong các mối quan hệ, và mỗi người sẽ cho tôi một góc nhìn mà cháu không tự kể được.”",
-    "“Chị đưa cháu tới, còn bố cháu thì không cần thiết.”",
-    "“Tôi chỉ nhận ca khi có mặt đầy đủ cả ba thế hệ.”"
+    "Đổ lỗi — vì đã chỉ ra hành vi của vợ",
+    "Chân thực (Leveler) — đồng nhất giữa cảm xúc bên trong và lời nói ra, có trắc ẩn và tự tin; đây là kiểu duy nhất không phải vai diễn phòng vệ",
+    "Máy tính — vì trình bày mạch lạc",
+    "Xoa dịu — vì giọng điệu ôn hoà"
   ],
   dapAn:1,
-  giaiThich:"Việc mời ai tới buổi đầu tự nó đã là một can thiệp: nó gửi đi thông điệp rằng vấn đề nằm trong quan hệ chứ không nằm trong một đứa trẻ. Đồng thời lời mời cần linh hoạt và có giải thích, không phải một điều kiện cứng.",
+  giaiThich:"Leveler nói được cả cảm xúc của mình (“lo và hơi tủi”), tôn trọng người kia và bám sát bối cảnh cụ thể. Bốn kiểu còn lại đều là “vai diễn” che lấp cái tôi chân thật (Authentic Self).",
   viSaoSai:[
-    "Chấp nhận ngay khung “chỉ mình cháu có vấn đề” là củng cố vai trò thân chủ được chỉ định.",
+    "Blamer chỉ trích nhân cách người khác; ở đây anh nói về cảm xúc của chính mình.",
     "",
-    "Loại trừ người bố ngay từ đầu là một quyết định thiếu cơ sở và có thể củng cố cấu hình có sẵn.",
-    "Đặt điều kiện cứng nhắc dễ khiến gia đình không tới nữa."
+    "Computer né tránh cảm xúc; ở đây cảm xúc được nói ra trực tiếp.",
+    "Placator hạ mình và bỏ nhu cầu của bản thân; ở đây nhu cầu được nêu rõ."
   ]
 },
 {
-  id:"GD-TH-30", loai:"thuc-hanh", chuDe:"So sánh ba nhánh",
-  boiCanh:"Một thiếu niên 15 tuổi có hành vi trốn học và cãi lời. Ba nhà trị liệu thuộc ba trường phái khác nhau đưa ra ba cách hiểu.",
-  cauHoi:"Phát biểu nào phản ánh đúng nhất khái niệm hoá theo trị liệu HỆ THỐNG GIA ĐÌNH?",
+  id:"GD-TH-17", loai:"thuc-hanh", chuDe:"Cái Gia Gia",
+  boiCanh:"Một nhà thực hành nhớ lại: “Hồi nhỏ nhà em lúc nào cũng căng. Em thành đứa hay pha trò, cứ thấy bố mẹ sắp cãi là em bày trò cho cả nhà cười. Giờ đi làm em vẫn là người chọc cười trong mọi cuộc họp căng thẳng, và em không biết mình thật sự nghĩ gì nữa.”",
+  cauHoi:"Khái niệm nào mô tả đúng hiện tượng này?",
   luaChon:[
-    "“Em có niềm tin cốt lõi rằng mình vô dụng, dẫn tới các suy nghĩ tự động tiêu cực khi đến trường và hành vi né tránh.”",
-    "“Hành vi của em cần được đọc trong bối cảnh gia đình: nó xuất hiện đúng lúc bố mẹ mâu thuẫn gay gắt và có tác dụng kéo hai người vào một nhiệm vụ chung, đồng thời ranh giới giữa các thế hệ trong nhà đang khá mờ.”",
-    "“Sự chống đối của em là biểu hiện của xung đột chưa được giải quyết với người cha, được diễn ra thay vì được nhớ lại và nói thành lời.”",
-    "“Hành vi của em được duy trì bởi củng cố âm: trốn học giúp em thoát khỏi lo âu về bài kiểm tra.”"
+    "“Cái Gia Gia” — vai diễn hình thành trong hệ thống gia đình thiếu an toàn cảm xúc, khi trưởng thành thì lấn át cái tôi chân thật",
+    "Bảng xoay nợ — bất công từ thế hệ trước trút lên thế hệ sau",
+    "Phụ mẫu hoá — trẻ bị ép làm cha mẹ cho phụ huynh",
+    "Lòng trung thành vô hình — tự chuốc lấy thất bại để đồng cam cộng khổ"
+  ],
+  dapAn:0,
+  giaiThich:"Tài liệu định nghĩa “Cái Gia Gia”: trong hệ thống gia đình thiếu an toàn cảm xúc, mỗi người vô thức khoác lên mình một vai diễn để tự vệ; khi trưởng thành, vai diễn này lấn át cái tôi chân thật (Authentic Self). Vai ở đây là Distracter.",
+  viSaoSai:[
+    "",
+    "Bảng xoay nợ nói về sự bất công truyền đời, không phải vai diễn giao tiếp.",
+    "Không có việc đứa trẻ gánh vai cha mẹ cho phụ huynh.",
+    "Không có việc tự chuốc lấy thất bại/bệnh tật."
+  ]
+},
+{
+  id:"GD-TH-18", loai:"thuc-hanh", chuDe:"Phụ mẫu hoá",
+  boiCanh:"Em N., 16 tuổi, bỏ học buổi chiều để về lo cơm nước, quản lý tiền chợ, an ủi mẹ mỗi lần mẹ khóc vì bố nhậu say, và là người gọi điện xin lỗi hàng xóm thay bố.",
+  cauHoi:"Hiện tượng này được Boszormenyi-Nagy gọi là gì?",
+  luaChon:[
+    "Lòng trung thành chiều ngang",
+    "Phụ mẫu hoá (Parentification) — đứa trẻ bị ép làm cha mẹ cho chính phụ huynh của mình, gánh vác cảm xúc và sửa sai lầm cho người lớn",
+    "Món nợ cuộc đời (Existential Debt)",
+    "Xung đột lòng trung thành"
   ],
   dapAn:1,
-  giaiThich:"Dấu hiệu nhận biết khái niệm hoá hệ thống là: đơn vị phân tích là mạng lưới quan hệ, triệu chứng được đọc như có chức năng trong hệ thống, và các khái niệm cấu trúc (ranh giới, phân cấp, tam giác) được huy động.",
+  giaiThich:"Định nghĩa trong tài liệu khớp chính xác: gánh vác cảm xúc và sửa sai lầm cho người lớn. Em N. đảm nhận cả chức năng nuôi dưỡng, quản lý và điều hoà cảm xúc lẽ ra thuộc về cha mẹ.",
   viSaoSai:[
-    "Đây là khái niệm hoá theo CBT (mô hình nhận thức ba tầng).",
+    "Trung thành chiều ngang là cam kết tự nguyện với bạn đời, anh chị em, bạn hữu.",
     "",
-    "Đây là khái niệm hoá theo phân tâm (xung đột vô thức, acting out).",
-    "Đây cũng là khái niệm hoá theo CBT, nhánh hành vi (mô hình hai yếu tố)."
+    "Món nợ cuộc đời là ơn sinh thành dưỡng dục mà con cái nhận từ cha mẹ — chiều ngược lại.",
+    "Xung đột lòng trung thành là bị kẹt giữa hai phía, không phải đảo vai."
+  ]
+},
+{
+  id:"GD-TH-19", loai:"thuc-hanh", chuDe:"Lòng trung thành vô hình",
+  boiCanh:"Anh P. là người thông minh, có năng lực, nhưng cứ sắp được thăng chức là anh lại phá hỏng mọi thứ. Cha anh cả đời làm công nhân, luôn nói “nhà mình không có số làm quan”. Anh nói: “Em thấy áy náy lắm nếu em sống sung sướng hơn bố.”",
+  cauHoi:"Khái niệm nào giải thích rõ nhất mẫu hình này?",
+  luaChon:[
+    "Lòng trung thành vô hình (Invisible Loyalty) — đứa trẻ vô thức tự chuốc lấy thất bại/bệnh tật để đồng cam cộng khổ với cha mẹ bất hạnh",
+    "Lòng trung thành chiều ngang",
+    "Phụ mẫu hoá",
+    "Hội chứng tổ rỗng"
+  ],
+  dapAn:0,
+  giaiThich:"Tài liệu mô tả đúng cơ chế này: sự thành công bị vô thức xem là phản bội, nên cá nhân tự phá hoại để giữ lòng trung thành với số phận của cha mẹ. Câu “em thấy áy náy nếu sống sung sướng hơn bố” là dấu hiệu điển hình.",
+  viSaoSai:[
+    "",
+    "Trung thành chiều ngang hướng tới bạn đời, anh chị em, bạn hữu.",
+    "Không có việc anh P. đảm nhận vai cha mẹ cho phụ huynh.",
+    "Không liên quan tới việc con rời nhà."
+  ]
+},
+{
+  id:"GD-TH-20", loai:"thuc-hanh", chuDe:"Bảng xoay nợ",
+  boiCanh:"Ông nội bị gia đình bên nội đối xử bất công, mất phần thừa kế. Ông cay đắng suốt đời và rất khắc nghiệt với con trai. Người con trai này lớn lên lại hà khắc với con mình, luôn đòi hỏi chúng phải “bù lại” những gì ông đã thiệt.",
+  cauHoi:"Khái niệm nào của Boszormenyi-Nagy mô tả hiện tượng này?",
+  luaChon:[
+    "Món nợ cuộc đời (Existential Debt)",
+    "Bảng xoay nợ (Revolving Slate) — mạng lưới bất công, thiếu thốn từ thế hệ trước bị trút lên thế hệ sau; con cháu kiệt sức vì trả nợ không phải do mình gây ra",
+    "Cán cân cho – nhận đang ở thế cân bằng",
+    "Lòng trung thành chiều dọc lành mạnh"
+  ],
+  dapAn:1,
+  giaiThich:"Revolving Slate là hình ảnh “tấm bảng nợ quay vòng”: món nợ không được trả cho đúng người mà bị đòi ở thế hệ kế tiếp. Trong tài liệu, tiến trình được ghi là G1 → G2 → G3.",
+  viSaoSai:[
+    "Món nợ cuộc đời là ơn sinh thành dưỡng dục ban đầu — một khái niệm khác và không mang tính bất công.",
+    "",
+    "Cán cân đang lệch nghiêm trọng, không cân bằng.",
+    "Lòng trung thành chiều dọc là liên kết nguyên thuỷ, ở đây điều được truyền lại là sự bất công."
+  ]
+},
+{
+  id:"GD-TH-21", loai:"thuc-hanh", chuDe:"Xung đột lòng trung thành",
+  boiCanh:"Anh V. bị kẹt giữa mẹ ruột (đòi anh gửi tiền hằng tháng về quê và về ở với bà khi bà ốm) và vợ (muốn hai vợ chồng dồn tiền lo cho con và giữ không gian riêng). Mỗi lần chọn một bên, anh đều thấy mình phản bội bên còn lại.",
+  cauHoi:"Tình huống này được gọi tên là gì trong liệu pháp bối cảnh?",
+  luaChon:[
+    "Phụ mẫu hoá",
+    "Xung đột lòng trung thành (Split Loyalty) — bị kẹt giữa hiếu nghĩa với gia đình gốc (chiều dọc) và trách nhiệm xây dựng tổ ấm riêng (chiều ngang)",
+    "Bảng xoay nợ",
+    "Lòng trung thành vô hình"
+  ],
+  dapAn:1,
+  giaiThich:"Tài liệu dùng đúng ví dụ “Cứu mẹ hay cứu vợ?” cho khái niệm này. Điểm mấu chốt là hai lòng trung thành đều chính đáng — một chiều dọc, một chiều ngang — nên xung đột không thể giải quyết bằng cách chọn phe.",
+  viSaoSai:[
+    "Không có việc anh V. đảm nhận vai cha mẹ cho phụ huynh.",
+    "",
+    "Không mô tả sự bất công truyền từ thế hệ trước sang thế hệ sau.",
+    "Không có việc tự chuốc lấy thất bại để đồng cam cộng khổ."
+  ]
+},
+{
+  id:"GD-TH-22", loai:"thuc-hanh", chuDe:"Hai chiều lòng trung thành",
+  boiCanh:"Bốn mối liên hệ: (a) con cái với cha mẹ ruột; (b) một người với bạn đời; (c) một người với anh chị em; (d) một người với dòng họ.",
+  cauHoi:"Nhóm nào thuộc lòng trung thành CHIỀU DỌC?",
+  luaChon:[
+    "(a) và (d)",
+    "(b) và (c)",
+    "(a) và (b)",
+    "Cả bốn đều là chiều dọc"
+  ],
+  dapAn:0,
+  giaiThich:"Chiều dọc là liên kết nguyên thuỷ không thể xoá bỏ giữa con cái với cha mẹ và dòng họ. Chiều ngang là cam kết tự nguyện với bạn đời, anh chị em, bạn hữu.",
+  viSaoSai:[
+    "",
+    "Đó là hai ví dụ của chiều ngang.",
+    "Bạn đời thuộc chiều ngang.",
+    "Chỉ (a) và (d) mang tính nguyên thuỷ, không tự nguyện."
+  ]
+},
+{
+  id:"GD-TH-23", loai:"thuc-hanh", chuDe:"Bốn chiều kích của Nagy",
+  boiCanh:"Trong buổi đánh giá, nhà lâm sàng hỏi: ai sống trong nhà, từ bao giờ, biến cố xảy ra ngày nào, ở đâu, diễn ra ra sao.",
+  cauHoi:"Nhà lâm sàng đang làm việc ở chiều kích nào trong Tháp 4 chiều kích Thực tại Quan hệ?",
+  luaChon:[
+    "Chiều kích 1 — Sự kiện thực tế khách quan (Facts / 5W + 1H)",
+    "Chiều kích 2 — Tâm lý cá nhân",
+    "Chiều kích 3 — Tương tác quan hệ",
+    "Chiều kích 4 — Đạo đức quan hệ"
+  ],
+  dapAn:0,
+  giaiThich:"Bộ câu hỏi 5W + 1H nằm đúng ở tầng nền của tháp: sự kiện thực tế khách quan. Đây là điểm xuất phát, nhưng dừng lại ở đây thì chưa chạm được ba tầng còn lại.",
+  viSaoSai:[
+    "",
+    "Tâm lý cá nhân là tầng 2 — đời sống nội tâm của từng thành viên.",
+    "Tương tác quan hệ là tầng 3 — các khuôn mẫu giao tiếp lặp lại.",
+    "Đạo đức quan hệ là tầng 4 — công bằng, cán cân cho – nhận."
+  ]
+},
+{
+  id:"GD-TH-24", loai:"thuc-hanh", chuDe:"Bốn chiều kích của Nagy",
+  boiCanh:"Nhà lâm sàng đã mô tả kỹ sự kiện, đã hiểu tâm lý từng thành viên và đã vẽ được các khuôn mẫu tương tác. Nhưng ca vẫn bế tắc: người con cả nói “Cái em cần không phải là mọi người hiểu em, mà là ai đó thừa nhận em đã thiệt thòi suốt hai mươi năm.”",
+  cauHoi:"Chiều kích nào chưa được làm việc, và đó là đóng góp riêng của ai?",
+  luaChon:[
+    "Chiều kích 3 — Tương tác quan hệ; đóng góp của Minuchin",
+    "Chiều kích 4 — Đạo đức quan hệ (Relational Ethics); đóng góp riêng của Boszormenyi-Nagy",
+    "Chiều kích 2 — Tâm lý cá nhân; đóng góp của Freud",
+    "Chiều kích 1 — Sự kiện khách quan; đóng góp của von Bertalanffy"
+  ],
+  dapAn:1,
+  giaiThich:"Nhu cầu “được thừa nhận là đã thiệt thòi” thuộc về công bằng trong quan hệ — chính là chiều kích thứ tư. Đây là điều làm nên tính riêng của liệu pháp bối cảnh so với các trường phái hệ thống khác, và cũng là lý do tài liệu nhấn mạnh “đối thoại đạo đức công bằng”.",
+  viSaoSai:[
+    "Tương tác quan hệ đã được làm việc theo mô tả trong đề bài.",
+    "",
+    "Tâm lý cá nhân cũng đã được làm việc.",
+    "Sự kiện khách quan đã được mô tả kỹ."
+  ]
+},
+{
+  id:"GD-TH-25", loai:"thuc-hanh", chuDe:"Sang chấn hệ thống",
+  boiCanh:"Bé 9 tuổi mất cả cha lẫn mẹ vì COVID-19 trong vòng ba tuần, không được gặp mặt lần cuối, sau đó chuyển về sống với bác họ ở tỉnh khác.",
+  cauHoi:"Theo tài liệu, biến cố này gây sang chấn qua bộ ba tác động nào?",
+  luaChon:[
+    "Bất ngờ — Chia cắt — Bất lực",
+    "Sợ hãi — Tức giận — Buồn bã",
+    "Mất mát — Nghèo đói — Kỳ thị",
+    "Chối bỏ — Thương lượng — Chấp nhận"
+  ],
+  dapAn:0,
+  giaiThich:"Ba tác động được tài liệu nêu: Bất ngờ (cú sốc ập đến không kịp chuẩn bị tâm lý), Chia cắt (đứt gãy mối gắn bó an toàn với nguồn nuôi dưỡng), Bất lực (hệ thống phòng vệ tâm lý bị quá tải hoàn toàn).",
+  viSaoSai:[
+    "",
+    "Đó là các cảm xúc, không phải bộ ba cơ chế được nêu.",
+    "Không phải bộ ba được nêu.",
+    "Đó là các giai đoạn tang chế theo mô hình Kübler-Ross."
+  ]
+},
+{
+  id:"GD-TH-26", loai:"thuc-hanh", chuDe:"Thông điệp đúc kết",
+  boiCanh:"Sau ba buổi làm việc, nhà trị liệu kết luận trước cả gia đình: “Rõ ràng gốc rễ mọi chuyện là cách nuôi dạy sai lầm của người mẹ. Chị cần thay đổi thì mọi thứ mới khá lên được.”",
+  cauHoi:"Vấn đề lớn nhất của can thiệp này theo tinh thần tài liệu là gì?",
+  luaChon:[
+    "Nhà trị liệu chưa thu thập đủ dữ liệu ở chiều kích 1",
+    "Nhà trị liệu đã biến trị liệu hệ thống thành việc “tìm một cá nhân để luận tội”, trong khi mục đích là mở ra không gian đối thoại đạo đức công bằng",
+    "Nhà trị liệu nói trước cả gia đình thay vì gặp riêng người mẹ",
+    "Nhà trị liệu chưa dùng đúng thuật ngữ chuyên môn"
+  ],
+  dapAn:1,
+  giaiThich:"Thông điệp đúc kết của tài liệu nói thẳng: trị liệu hệ thống không nhằm tìm kiếm một cá nhân để “luận tội”, mà mở ra không gian đối thoại đạo đức công bằng, giúp các thành viên nhìn thấu những liên kết vô hình. Đây cũng chính là điều mà tư duy nhân quả vòng tròn hướng tới.",
+  viSaoSai:[
+    "Vấn đề không nằm ở lượng dữ liệu mà ở khung tư duy.",
+    "",
+    "Bối cảnh nói ra không phải vấn đề cốt lõi.",
+    "Thuật ngữ không phải vấn đề cốt lõi."
+  ]
+},
+{
+  id:"GD-TH-27", loai:"thuc-hanh", chuDe:"Khung pháp lý",
+  boiCanh:"Chị D. có bằng Thạc sĩ Tâm lý học lâm sàng, muốn đăng ký hành nghề tại Việt Nam sau khi Nghị định 96/2023 có hiệu lực.",
+  cauHoi:"Chị D. đủ điều kiện cho phạm vi hành nghề nào?",
+  luaChon:[
+    "Chỉ phạm vi cơ bản, vì cần thêm chứng chỉ chuyên khoa cơ bản",
+    "Phạm vi chuyên khoa, vì Thạc sĩ Tâm lý học lâm sàng là một trong các điều kiện được nêu",
+    "Không đủ điều kiện, vì chị không phải bác sĩ",
+    "Không đủ điều kiện, vì cần bằng Tiến sĩ"
+  ],
+  dapAn:1,
+  giaiThich:"Phạm vi chuyên khoa yêu cầu Thạc sĩ / Tiến sĩ Tâm lý học lâm sàng hoặc Văn bằng chuyên khoa tâm lý lâm sàng. Bằng Thạc sĩ đúng chuyên ngành đã thoả điều kiện.",
+  viSaoSai:[
+    "Chứng chỉ chuyên khoa cơ bản là điều kiện của phạm vi cơ bản, dành cho bác sĩ hoặc cử nhân.",
+    "",
+    "Bác sĩ chỉ là một trong các con đường, không bắt buộc.",
+    "Tiến sĩ là một lựa chọn, không phải yêu cầu tối thiểu."
+  ]
+},
+{
+  id:"GD-TH-28", loai:"thuc-hanh", chuDe:"Khung pháp lý",
+  boiCanh:"Anh S. vừa tốt nghiệp Cử nhân Tâm lý học và muốn hành nghề tâm lý lâm sàng.",
+  cauHoi:"Anh S. cần bổ sung điều gì để đủ điều kiện ở phạm vi cơ bản?",
+  luaChon:[
+    "Chứng chỉ đào tạo chuyên khoa cơ bản tâm lý lâm sàng",
+    "Bằng Thạc sĩ Tâm lý học lâm sàng",
+    "Bằng bác sĩ đa khoa",
+    "Không cần bổ sung gì, bằng cử nhân là đủ"
+  ],
+  dapAn:0,
+  giaiThich:"Phạm vi cơ bản (Khoản 2 Điều 128) yêu cầu: bác sĩ hoặc cử nhân Tâm lý học có chứng chỉ đào tạo chuyên khoa cơ bản tâm lý lâm sàng. Bằng cử nhân một mình chưa đủ.",
+  viSaoSai:[
+    "",
+    "Thạc sĩ là điều kiện cho phạm vi chuyên khoa — cao hơn mức cần thiết ở đây.",
+    "Bác sĩ là một con đường thay thế, không phải thứ cần bổ sung cho cử nhân tâm lý.",
+    "Cử nhân đơn thuần chưa đủ theo quy định."
+  ]
+},
+{
+  id:"GD-TH-29", loai:"thuc-hanh", chuDe:"Cố chấp duy trì cơ chế cũ",
+  boiCanh:"Con gái út vào lớp 10 và bắt đầu muốn tự quyết định giờ giấc, bạn bè. Cha mẹ phản ứng bằng cách siết chặt hơn nữa các quy tắc từ thời em học tiểu học: kiểm tra điện thoại mỗi tối, cấm ra khỏi nhà ngoài giờ học. Sau một năm, em xuất hiện triệu chứng lo âu và rối loạn ăn uống kéo dài.",
+  cauHoi:"Cách khái niệm hoá phù hợp nhất là:",
+  luaChon:[
+    "Gia đình đang thực hiện phản hồi dương tính, thúc đẩy biến đổi",
+    "Trước biến cố phát triển (con vào tuổi vị thành niên), hệ thống đã chọn cố chấp duy trì cơ chế cũ thay vì chấp nhận biến đổi — hệ quả đúng như tài liệu mô tả là triệu chứng bệnh lý mãn tính",
+    "Đây là hệ thống mở đang thích ứng lành mạnh",
+    "Đây là hiện tượng bảng xoay nợ xuyên thế hệ"
+  ],
+  dapAn:1,
+  giaiThich:"Nhiệm vụ phát triển của giai đoạn 4 là nới lỏng ranh giới để con tự chủ. Khi hệ thống chọn phương án (1) — cố chấp duy trì cơ chế cũ — tài liệu chỉ rõ hệ quả là triệu chứng bệnh lý mãn tính.",
+  viSaoSai:[
+    "Siết chặt quy tắc là nỗ lực triệt tiêu độ lệch — cơ chế của phản hồi âm.",
+    "",
+    "Hệ thống mở thích ứng bằng cách thay đổi quy tắc theo giai đoạn phát triển.",
+    "Không có mô tả về sự bất công truyền từ thế hệ trước."
+  ]
+},
+{
+  id:"GD-TH-30", loai:"thuc-hanh", chuDe:"Đối chiếu ba nhánh",
+  boiCanh:"Một thiếu niên 15 tuổi trốn học và chống đối. Ba nhà trị liệu thuộc ba nhánh đưa ra ba cách hiểu khác nhau.",
+  cauHoi:"Phát biểu nào phản ánh đúng khái niệm hoá theo TRỊ LIỆU HỆ THỐNG – GIA ĐÌNH?",
+  luaChon:[
+    "“Em có niềm tin cốt lõi rằng mình vô dụng; suy nghĩ tự động khi tới trường kích hoạt hành vi né tránh.”",
+    "“Hành vi của em cần đọc trong mạng lưới quan hệ: nó xuất hiện đúng lúc cha mẹ xung đột gay gắt và có tác dụng kéo họ vào một mối bận tâm chung — đằng sau triệu chứng là tiếng kêu đòi kết nối hoặc quyền lực trong hệ thống.”",
+    "“Sự chống đối là xung đột chưa được giải quyết với người cha, được diễn ra bằng hành động thay vì được nói thành lời.”",
+    "“Trốn học được duy trì bởi củng cố âm: em thoát khỏi lo âu về bài kiểm tra.”"
+  ],
+  dapAn:1,
+  giaiThich:"Ba dấu hiệu nhận biết khung hệ thống: đơn vị phân tích là mạng lưới quan hệ, triệu chứng được đọc như có chức năng trong hệ thống, và cách diễn đạt bám theo Madanes — tiếng kêu đòi tình yêu thương, sự kết nối hoặc quyền lực.",
+  viSaoSai:[
+    "Đây là khái niệm hoá theo CBT — mô hình ba cấp độ nhận thức.",
+    "",
+    "Đây là khái niệm hoá theo lâm sàng định hướng phân tâm.",
+    "Đây cũng là CBT, ở nhánh hành vi."
+  ]
+},
+{
+  id:"GD-TH-31", loai:"thuc-hanh", chuDe:"Nhận diện trường phái qua kỹ thuật",
+  boiCanh:"Nhà trị liệu yêu cầu cả nhà ngồi lại theo đúng vị trí thường ngày, vẽ sơ đồ ai gần ai, chỉ ra rằng bà nội đang giữ vai trò quyết định thay cha mẹ, rồi sắp xếp lại chỗ ngồi để cha mẹ ngồi cạnh nhau và đối diện với con.",
+  cauHoi:"Đây là trường phái nào và ai là người sáng lập?",
+  luaChon:[
+    "Trị liệu Cấu trúc — Salvador Minuchin",
+    "Liệu pháp Bối cảnh — Iván Böszörményi-Nagy",
+    "Trị liệu Tường thuật — Michael White",
+    "Trị liệu Giải pháp ngắn hạn — Insoo Kim Berg"
+  ],
+  dapAn:0,
+  giaiThich:"Vẽ bản đồ cấu trúc, đánh dấu ranh giới và sắp xếp lại vị trí trong buổi làm việc là các kỹ thuật đặc trưng của trị liệu Cấu trúc. Mục tiêu can thiệp được tài liệu ghi là “tái cấu trúc ranh giới”.",
+  viSaoSai:[
+    "",
+    "Nagy làm việc với đạo đức quan hệ và cán cân cho – nhận, không phải sơ đồ chỗ ngồi.",
+    "White làm việc với câu chuyện và ngôn ngữ, không tái cấu trúc không gian.",
+    "Insoo Kim Berg tập trung vào ngoại lệ và giải pháp."
+  ]
+},
+{
+  id:"GD-TH-32", loai:"thuc-hanh", chuDe:"Nhận diện trường phái qua kỹ thuật",
+  boiCanh:"Nhà trị liệu hỏi: “Trong nhà mình, ai đã cho đi nhiều nhất mà chưa từng được ghi nhận? Điều gì anh đang phải trả mà thật ra không phải anh vay?”",
+  cauHoi:"Nhà trị liệu đang làm việc theo trường phái nào, và khái niệm nào đang được huy động?",
+  luaChon:[
+    "Trị liệu Chiến lược — can thiệp nghịch lý",
+    "Liệu pháp Bối cảnh của Iván Böszörményi-Nagy — cán cân cho – nhận và bảng xoay nợ",
+    "Hệ thống Bowen — biệt hoá bản thân",
+    "Trị liệu Trải nghiệm — giải phóng cảm xúc chân thực"
+  ],
+  dapAn:1,
+  giaiThich:"Hai câu hỏi này chạm đúng vào chiều kích thứ tư — Đạo đức Quan hệ. “Cho đi mà chưa được ghi nhận” là cán cân cho – nhận bị lệch; “trả món nợ không phải mình vay” là bảng xoay nợ (Revolving Slate).",
+  viSaoSai:[
+    "Không có yếu tố chỉ thị hay nghịch lý nào ở đây.",
+    "",
+    "Bowen làm việc với mức độ phản ứng cảm xúc tự động, không phải công bằng cho – nhận.",
+    "Trải nghiệm nhắm vào bộc lộ cảm xúc chân thật, không phải kế toán đạo đức."
+  ]
+},
+{
+  id:"GD-TH-33", loai:"thuc-hanh", chuDe:"Nhận diện trường phái qua kỹ thuật",
+  boiCanh:"Nhà trị liệu nói với gia đình: “Trong ba tháng qua, có lần nào mà chuyện này KHÔNG xảy ra không? Hôm đó có gì khác?”",
+  cauHoi:"Kỹ thuật này thuộc trường phái nào và gắn với tên tuổi nào trong tài liệu?",
+  luaChon:[
+    "Trị liệu Cấu trúc — Salvador Minuchin",
+    "Trị liệu Giải pháp ngắn hạn (SFBT) — Insoo Kim Berg; đặc trưng là tìm kiếm ngoại lệ",
+    "Trị liệu Chiến lược — Cloe Madanes",
+    "Hệ thống Bowen — Murray Bowen"
+  ],
+  dapAn:1,
+  giaiThich:"Bảng lịch sử ghi ở mốc 1990 – nay: “Giải pháp ngắn hạn (SFBT): Insoo Kim Berg”, với đặc trưng “tìm kiếm ngoại lệ”. Câu hỏi về những lần vấn đề KHÔNG xảy ra chính là câu hỏi ngoại lệ.",
+  viSaoSai:[
+    "Minuchin làm việc với ranh giới và cấu trúc.",
+    "",
+    "Madanes gắn với chỉ thị và cách đọc triệu chứng như tiếng kêu đòi.",
+    "Bowen làm việc với biệt hoá bản thân và tam giác."
+  ]
+},
+{
+  id:"GD-TH-34", loai:"thuc-hanh", chuDe:"Nhận diện trường phái qua kỹ thuật",
+  boiCanh:"Nhà trị liệu nói: “Từ nãy giờ em kể câu chuyện ‘em là đứa con hư’. Ai là người đầu tiên kể câu chuyện đó về em? Và có chi tiết nào trong đời em mà câu chuyện ấy bỏ sót không?”",
+  cauHoi:"Đây là trường phái nào và ai sáng lập?",
+  luaChon:[
+    "Trị liệu Trải nghiệm — Virginia Satir & Carl Whitaker",
+    "Trị liệu Tường thuật — Michael White & David Epston; đặc trưng là giải kiến tạo câu chuyện áp đặt",
+    "Liệu pháp Bối cảnh — Iván Böszörményi-Nagy",
+    "Trị liệu Cấu trúc — Salvador Minuchin"
+  ],
+  dapAn:1,
+  giaiThich:"Hỏi ai là tác giả của câu chuyện và tìm những chi tiết bị câu chuyện đó bỏ sót chính là “giải kiến tạo câu chuyện áp đặt” (deconstruct narratives) — đặc trưng của trị liệu Tường thuật do Michael White và David Epston phát triển.",
+  viSaoSai:[
+    "Trải nghiệm tập trung vào bộc lộ cảm xúc chân thực trong buổi làm việc.",
+    "",
+    "Nagy làm việc với công bằng và món nợ xuyên thế hệ.",
+    "Minuchin làm việc với ranh giới và phân cấp."
+  ]
+},
+{
+  id:"GD-TH-35", loai:"thuc-hanh", chuDe:"Ghép trường phái với người sáng lập",
+  boiCanh:"Bốn cặp ghép giữa trường phái và người sáng lập.",
+  cauHoi:"Cặp nào ghép SAI?",
+  luaChon:[
+    "Trị liệu Cấu trúc — Salvador Minuchin",
+    "Trị liệu Chiến lược — Jay Haley và Cloe Madanes",
+    "Hệ thống Bowen — Virginia Satir",
+    "Liệu pháp Bối cảnh — Iván Böszörményi-Nagy"
+  ],
+  dapAn:2,
+  giaiThich:"Hệ thống Bowen gắn với Murray Bowen; Virginia Satir thuộc trường phái Trải nghiệm cùng Carl Whitaker. Cả hai đều có mặt trong “Thời kỳ Khai phá Hệ thống 1950–1970” nên rất dễ nhầm — nhưng ở mốc 1970–1990 họ được xếp vào hai trường phái khác nhau.",
+  viSaoSai:[
+    "Ghép đúng theo bảng lịch sử trong tài liệu.",
+    "Ghép đúng — cả hai đều thuộc trường phái Chiến lược.",
+    "",
+    "Ghép đúng — tài liệu ghi rõ Nagy là người sáng lập Liệu pháp Bối cảnh."
   ]
 }
 
