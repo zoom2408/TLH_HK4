@@ -12,6 +12,11 @@
 </head>
 <body>
 
+<div class="topbar">
+  <a class="back" href="index.html">&larr; Mục lục môn học</a>
+  <span class="crumb" id="crumb">Quiz trắc nghiệm</span>
+</div>
+
 <!-- thanh tiến độ (ẩn cho tới khi bắt đầu làm bài) -->
 <div class="progressbar hidden" id="progressbar">
   <span id="progressLabel">0 / 0 câu</span>
@@ -189,10 +194,10 @@
     var h = '<article class="' + cls + '" id="q' + n + '" data-n="' + n + '">';
     h += '<div class="qcard__meta">';
     h += '<span class="qcard__no">Câu ' + (n + 1) + '</span>';
-    h += '<span class="chip chip--' + it.nhanh + '">' + LABEL[it.nhanh] + '</span>';
-    h += '<span class="chip chip--' + it.loai + '">' + LOAI[it.loai] + '</span>';
-    h += '<span class="chip">' + esc(q.chuDe) + '</span>';
-    if (show) h += '<span class="chip">' + esc(q.id) + '</span>';
+    h += '<span class="pill pill--' + it.nhanh + '">' + LABEL[it.nhanh] + '</span>';
+    h += '<span class="pill pill--' + it.loai + '">' + LOAI[it.loai] + '</span>';
+    h += '<span class="pill pill--plain">' + esc(q.chuDe) + '</span>';
+    if (show) h += '<span class="pill pill--plain">' + esc(q.id) + '</span>';
     h += '</div>';
 
     h += '<p class="qcard__stem">';
@@ -314,7 +319,7 @@
     h += '<div class="score">' + s.correct + '<small> / ' + s.total + ' câu · ' + pct + '% · ' + diem10 + '/10</small></div>';
     h += '<p class="verdict">' + verdict + '</p>';
 
-    h += '<table class="scoretable"><thead><tr><th>Theo nhánh trị liệu</th><th style="text-align:right">Đúng</th><th style="text-align:right">Tỷ lệ</th></tr></thead><tbody>';
+    h += '<table class="datatable"><thead><tr><th>Theo nhánh trị liệu</th><th style="text-align:right">Đúng</th><th style="text-align:right">Tỷ lệ</th></tr></thead><tbody>';
     ORDER.forEach(function(b){
       if (!s.byBranch[b]) return;
       var x = s.byBranch[b];
@@ -322,7 +327,7 @@
     });
     h += '</tbody></table>';
 
-    h += '<table class="scoretable"><thead><tr><th>Theo dạng câu hỏi</th><th style="text-align:right">Đúng</th><th style="text-align:right">Tỷ lệ</th></tr></thead><tbody>';
+    h += '<table class="datatable"><thead><tr><th>Theo dạng câu hỏi</th><th style="text-align:right">Đúng</th><th style="text-align:right">Tỷ lệ</th></tr></thead><tbody>';
     ["ly-thuyet","thuc-hanh"].forEach(function(l){
       if (!s.byLoai[l]) return;
       var x = s.byLoai[l];
@@ -333,7 +338,7 @@
     var weak = Object.keys(s.byChuDe).sort(function(a,b){ return s.byChuDe[b] - s.byChuDe[a]; }).slice(0, 8);
     if (weak.length){
       h += '<p style="font-family:var(--sans); font-size:13px; color:var(--ink-soft); margin:0 0 8px;"><strong>Chủ đề sai nhiều nhất:</strong></p><p>';
-      weak.forEach(function(c){ h += '<span class="chip">' + esc(c) + ' · ' + s.byChuDe[c] + '</span>'; });
+      weak.forEach(function(c){ h += '<span class="pill pill--plain">' + esc(c) + ' · ' + s.byChuDe[c] + '</span>'; });
       h += '</p>';
     }
 

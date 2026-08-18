@@ -12,21 +12,10 @@
 </head>
 <body>
 
-<div class="app">
-
-  <!-- Thumb-index tab rail — dựng từ data/nhanh-tri-lieu.js -->
-  <nav class="tabs" aria-label="Điều hướng môn học">
-    <span class="tabs__label">Mục lục</span>
-    <a class="tab is-active" href="index.html"><span class="tab__num">Tổng quan</span></a>
-    <span id="tabNhanh"></span>
-    <a class="tab" href="quiz.html"><span class="tab__num">Quiz</span></a>
-  </nav>
-
-  <main class="reading">
-
-    <p class="crumb"><a href="../index.html">Ôn thi Học kỳ 4</a> · Môn học</p>
+<main class="reading" style="max-width:980px;">
 
     <header class="titlepage">
+      <a class="back-link" href="../index.html">&larr; Học kỳ 4</a>
       <p class="eyebrow">Mục lục môn — 3 nhánh trị liệu + ngân hàng câu hỏi</p>
       <h1>Nhập môn Tâm lý học Lâm sàng</h1>
       <p>Ba nhánh trị liệu chính sẽ ra thi được tách thành ba trang riêng, cùng chung một khung 8 mục để dễ đối chiếu chéo. Phần ôn tập gồm ngân hàng <strong>180 câu trắc nghiệm</strong> tự chấm điểm — hình thức thi của môn là trắc nghiệm tập trung.</p>
@@ -36,19 +25,19 @@
     <!-- ============ BA NHÁNH TRỊ LIỆU ============ -->
     <section class="block">
       <h3>Ba nhánh trị liệu sẽ thi</h3>
-      <div class="grid" id="branchGrid"></div>
+      <div class="hub-grid" id="branchGrid"></div>
     </section>
 
     <!-- ============ ÔN TẬP ============ -->
     <section class="block">
       <h3>Ôn tập &amp; luyện đề</h3>
 
-      <div class="grid">
+      <div class="hub-grid">
         <a class="branch-card" href="quiz.html">
           <p class="tagline">Trắc nghiệm</p>
           <h3>Quiz tự chấm điểm</h3>
           <p>Ba phiên bản đề: <strong>20 câu</strong> (một nhánh), <strong>30 câu</strong> (đề ngắn cả ba nhánh) và <strong>60 câu</strong> (đề chuẩn). Rút ngẫu nhiên từ ngân hàng, xáo trộn đáp án, chấm điểm sau khi nộp và xem lại lý do đúng/sai từng phương án.</p>
-          <span class="go">Vào phòng thi thử →</span>
+          <span class="cta">Vào phòng thi thử →</span>
           <span class="count" id="quizCount"></span>
         </a>
 
@@ -56,7 +45,7 @@
           <p class="tagline">Đọc ôn</p>
           <h3>Toàn bộ ngân hàng &amp; đáp án</h3>
           <p>Xem thẳng cả ngân hàng câu hỏi với đáp án và lý giải hiện sẵn, lọc theo nhánh — dùng để đọc lướt trước khi luyện đề, không tính điểm.</p>
-          <span class="go">Mở chế độ đọc →</span>
+          <span class="cta">Mở chế độ đọc →</span>
           <span class="count" id="reviewCount"></span>
         </a>
       </div>
@@ -74,7 +63,7 @@
     <!-- ============ TIẾN ĐỘ ============ -->
     <section class="block">
       <h3>Tiến độ đổ nội dung</h3>
-      <table class="scoretable">
+      <table class="datatable">
         <thead><tr><th>Nhánh</th><th>Nội dung lý thuyết</th><th style="text-align:right">Ngân hàng câu hỏi</th></tr></thead>
         <tbody id="progressBody"></tbody>
       </table>
@@ -86,7 +75,6 @@
     <p class="divider-end">Mỗi trang nhánh dựng sẵn 8 mục theo cùng một khung: bối cảnh lịch sử → quan niệm về bệnh lý → mục tiêu trị liệu → khái niệm cốt lõi → kỹ thuật can thiệp → tiến trình một ca → bằng chứng &amp; hạn chế → bảng đối chiếu với hai nhánh còn lại. Chỉ cần thay các ô "chờ đổ nội dung".</p>
 
   </main>
-</div>
 
 <script src="data/nhanh-tri-lieu.js"></script>
 <script src="data/questions-cbt.js"></script>
@@ -100,23 +88,20 @@
   function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
   function dem(ma){ return (BANKS[ma] && BANKS[ma].cauHoi) ? BANKS[ma].cauHoi.length : 0; }
 
-  /* tab rail */
-  document.getElementById("tabNhanh").innerHTML = NHANH.map(function(n){
-    return '<a class="tab" href="' + n.file + '"><span class="tab__num">' + esc(n.tenNgan) + '</span></a>';
-  }).join("");
-
   /* thẻ 3 nhánh */
   document.getElementById("branchGrid").innerHTML = NHANH.map(function(n, i){
-    var pills = (n.tuKhoa||[]).map(function(t){ return '<span class="pill">' + esc(t) + '</span>'; }).join("");
+    var pills = (n.tuKhoa||[]).map(function(t){
+      return '<span class="pill pill--' + n.ma + '">' + esc(t) + '</span>';
+    }).join("");
     return '<a class="branch-card" data-branch="' + n.ma + '" href="' + n.file + '">' +
       '<p class="tagline">Nhánh ' + (i+1) + '</p>' +
       '<span class="status ' + (n.xong ? "status--done" : "status--todo") + '">' +
         (n.xong ? "đã đổ nội dung" : "khung sườn") + '</span>' +
       '<h3>' + esc(n.ten) + '</h3>' +
-      '<p style="font-family:var(--mono); font-size:11px; color:var(--ink-faint); margin:-4px 0 10px;">' + esc(n.enTen) + '</p>' +
+      '<p class="en">' + esc(n.enTen) + '</p>' +
       '<p>' + esc(n.tomTat) + '</p>' +
       '<p style="margin:0 0 10px;">' + pills + '</p>' +
-      '<span class="go">Mở trang nhánh →</span>' +
+      '<span class="cta">Mở trang nhánh →</span>' +
       '<span class="count">' + dem(n.ma) + ' câu trắc nghiệm trong ngân hàng</span>' +
     '</a>';
   }).join("");
@@ -131,6 +116,7 @@
   /* số đếm trên thẻ ôn tập */
   var tong = NHANH.reduce(function(s,n){ return s + dem(n.ma); }, 0);
   document.getElementById("quizCount").textContent = "Ngân hàng hiện có " + tong + " câu";
+  document.getElementById("reviewCount").textContent = tong + " câu, hiện sẵn đáp án";
 })();
 </script>
 </body>

@@ -1,23 +1,24 @@
 # tlh-lam-sang — Nhập môn Tâm lý học Lâm sàng
 
-Module môn học cho repo [`TLH_HK4`](https://github.com/zoom2408/TLH_HK4), dựng theo đúng
-quy ước của `cac-tiep-can/`: hub dữ liệu hoá + quiz trắc nghiệm tự chấm điểm,
-HTML/CSS/JS thuần, không cần build.
+Module môn học trong repo `TLH_HK4`, dựng theo đúng quy ước của `cac-tiep-can/`:
+topbar + hub dữ liệu hoá + quiz trắc nghiệm tự chấm điểm. HTML/CSS/JS thuần, không cần build.
+
+Môn này thi **trắc nghiệm tập trung** nên không có phần câu hỏi ngắn/tự luận.
 
 ## Cấu trúc
 
 ```
 tlh-lam-sang/
-├── index.html              # Mục lục môn — 3 nhánh + link quiz
-├── style.css               # CSS riêng (hub, thẻ nhánh, quiz engine)
-├── quiz.html               # Quiz 3 phiên bản 20/30/60 câu, tự chấm + xem lại
+├── index.html              # Mục lục môn — 3 nhánh trị liệu + link quiz
+├── style.css               # CSS riêng (topbar, thẻ nhánh, bảng, quiz engine)
+├── quiz.html               # Quiz 20/30/60 câu, tự chấm + xem lý giải đúng/sai
 ├── README.md
 ├── data/
-│   ├── nhanh-tri-lieu.js   # Danh sách 3 nhánh (sửa 1 chỗ, mọi trang tự cập nhật)
-│   ├── questions-cbt.js    # Ngân hàng trắc nghiệm — CBT (60 câu)
-│   ├── questions-phan-tam.js   # — Phân tâm (60 câu)
+│   ├── nhanh-tri-lieu.js       # Danh sách 3 nhánh (sửa 1 chỗ, mọi trang tự cập nhật)
+│   ├── questions-cbt.js        # Ngân hàng — CBT (60 câu)
+│   ├── questions-phan-tam.js   # — Lâm sàng định hướng phân tâm (60 câu)
 │   └── questions-gia-dinh.js   # — Hệ thống gia đình (60 câu)
-└── nhanh/                  # 3 file con, mỗi file 1 nhánh trị liệu (khung sườn)
+└── nhanh/
     ├── cbt.html
     ├── phan-tam.html
     └── he-thong-gia-dinh.html
@@ -25,57 +26,51 @@ tlh-lam-sang/
 
 Đối chiếu với `cac-tiep-can/`: `nhanh/` ↔ `tiep-can/`, `data/nhanh-tri-lieu.js` ↔
 `data/approaches.js`, `data/questions-*.js` ↔ `data/quiz-bank.js` (tách làm 3 file
-theo nhánh vì ngân hàng lớn — 180 câu). Môn này **không có phần câu hỏi ngắn/tự luận** —
-hình thức thi là trắc nghiệm tập trung.
+theo nhánh vì ngân hàng lớn — 180 câu).
 
 ## Trạng thái
 
-| Phần | Trạng thái |
-|---|---|
-| Ngân hàng trắc nghiệm | **180 câu đầy đủ** — mỗi nhánh 30 lý thuyết + 30 tình huống, có lý giải đúng/sai từng phương án |
-| Quiz engine | Xong |
-| Nội dung 3 nhánh trong `nhanh/` | **Khung sườn** — 8 mục/nhánh, còn placeholder |
+| Phần | Trạng thái | Nguồn |
+|---|---|---|
+| Ngân hàng trắc nghiệm | **180 câu** — mỗi nhánh 30 lý thuyết + 30 tình huống, có lý giải đúng/sai từng phương án | |
+| Quiz engine | Xong | |
+| `nhanh/cbt.html` | **Đã đổ nội dung** — 10 mục | Slide Nguyễn Huỳnh Luân: *Cấu trúc các buổi làm việc*; *Làm việc trên các suy nghĩ & niềm tin* |
+| `nhanh/phan-tam.html` | **Đã đổ nội dung** — 10 mục | Slide ThS. Phạm Ngọc Long: *Giới thiệu — Lâm sàng định hướng phân tâm*; *Trung gian trị liệu* |
+| `nhanh/he-thong-gia-dinh.html` | **Khung sườn** — 8 mục còn placeholder | PDF nguồn là bản scan, chưa trích được text |
 
-## CSS: quy ước link
+Ngân hàng CBT và Phân tâm đã viết lại bám sát slide, dùng đúng thuật ngữ của giảng viên
+(*chuyển cảm / phản chuyển cảm*, *đồng nhất hoá*, *SNTĐ*, *định hình ca*). Ngân hàng
+Hệ thống gia đình hiện vẫn theo giáo trình chung, sẽ viết lại khi có bản slide đọc được.
 
-Theo đúng README gốc của repo — link `theme.css` dùng chung **trước**, rồi mới tới CSS riêng:
+## CSS
+
+Theo đúng quy ước repo — link `theme.css` dùng chung **trước**, rồi mới tới CSS riêng:
 
 ```html
-<!-- ở index.html và quiz.html -->
+<!-- index.html, quiz.html -->
 <link rel="stylesheet" href="../assets/css/theme.css">
 <link rel="stylesheet" href="style.css">
 
-<!-- ở nhanh/*.html (sâu hơn 1 cấp) -->
+<!-- nhanh/*.html (sâu hơn 1 cấp) -->
 <link rel="stylesheet" href="../../assets/css/theme.css">
 <link rel="stylesheet" href="../style.css">
 ```
 
-Khối `:root` trong `style.css` ghim bảng màu riêng của môn (cùng hệ paper/maroon/gold
-với `tlh-ton-giao/`) nên trang vẫn hiển thị đúng kể cả khi mở lẻ không có `theme.css`.
-Nếu muốn môn này ăn theo đúng màu của `theme.css`, chỉ cần xoá các dòng token tương ứng
-trong `:root` — phần còn lại của file không phải sửa gì. Lớp `.pill` được định nghĩa
-đồng nghĩa với `.chip` để dùng chung tên gọi với các module khác.
+`style.css` **không** khai báo lại token màu/font, reset, `.eyebrow`, `.callout` hay
+`.pill` — tất cả lấy từ `theme.css`, giống cách `cac-tiep-can/style.css` làm. Khối
+`:root` ở đây chỉ thêm vài token riêng: `--ok`/`--bad` cho trạng thái chấm điểm và
+`--cbt`/`--ptam`/`--httgd` cho màu nhận diện ba nhánh.
 
-## Thêm module này vào trang chủ repo
+Nhãn thuật ngữ dùng `.pill` của theme kèm modifier màu theo nhánh:
+`.pill--cbt`, `.pill--phan-tam`, `.pill--gia-dinh`, `.pill--ly-thuyet`,
+`.pill--thuc-hanh`, `.pill--plain`.
 
-Chèn vào `index.html` ở gốc repo, cạnh các thẻ môn khác:
+Điều hướng: `index.html` dùng `.back-link` về landing page; `quiz.html` và `nhanh/*.html`
+dùng `.topbar` với `a.back` + `.crumb` — cùng markup với `cac-tiep-can/`.
 
-```html
-<a class="subject-card subject-card--active" href="tlh-lam-sang/index.html">
-  <p class="eyebrow">Học kỳ 4</p>
-  <h2>Nhập môn Tâm lý học Lâm sàng</h2>
-  <p>Ba nhánh trị liệu sẽ thi — CBT, Phân tâm, Hệ thống gia đình —
-     kèm ngân hàng 180 câu trắc nghiệm tự chấm điểm.</p>
-  <span class="pill">3 nhánh</span>
-  <span class="pill">180 câu trắc nghiệm</span>
-  <span class="pill">quiz 20/30/60</span>
-</a>
-```
+## Đổ nội dung cho nhánh còn lại
 
-## Đổ nội dung cho 3 nhánh
-
-Mỗi trang trong `nhanh/` dựng sẵn 8 mục theo cùng một khung, để câu hỏi so sánh chéo
-giữa ba nhánh làm được ngay:
+`nhanh/he-thong-gia-dinh.html` dựng sẵn 8 mục:
 
 1. Bối cảnh & lịch sử hình thành
 2. Quan niệm về bệnh lý tâm thần
@@ -87,11 +82,12 @@ giữa ba nhánh làm được ngay:
 8. Đối chiếu với hai nhánh còn lại
 
 Chỗ cần điền là các khối `<div class="placeholder"> … </div>` — thay cả khối bằng nội dung thật.
-Điền xong nhánh nào thì đổi `xong: false` → `xong: true` trong `data/nhanh-tri-lieu.js`;
-nhãn trạng thái trên trang chủ và bảng tiến độ tự cập nhật.
+Điền xong thì đổi `xong: false` → `xong: true` trong `data/nhanh-tri-lieu.js`; nhãn trạng thái
+trên trang mục lục và bảng tiến độ tự cập nhật.
 
-Class dùng được ngay: `.callout` (ô nhấn mạnh), `.pill` / `.chip` (nhãn thuật ngữ),
-`.scoretable` (bảng so sánh), `<h4>` (tiêu đề phụ in nghiêng), `.divider-end` (dòng kết).
+Class dùng được ngay: `.callout` (ô nhấn mạnh, từ theme), `.pill` (nhãn thuật ngữ),
+`.datatable` (bảng so sánh), `.q-head` + `.q-no` + `.q-sub` (tiêu đề mục),
+`<h4>` (tiêu đề phụ in nghiêng), `.divider-end` (dòng kết).
 
 ## Quiz hoạt động thế nào
 
@@ -130,6 +126,7 @@ Nối thêm object vào mảng `cauHoi` trong file `data/questions-*.js` tương
 
 `viSaoSai` phải có đúng 4 phần tử, phần tử ở vị trí `dapAn` để chuỗi rỗng.
 Quy ước mã: `CBT` / `PT` / `GD` + `LT` hoặc `TH` + số thứ tự.
+Dùng dấu nháy cong `"…"` cho ngoặc kép bên trong chuỗi để khỏi phải escape.
 
 ## Thêm một nhánh trị liệu mới
 
@@ -137,7 +134,7 @@ Quy ước mã: `CBT` / `PT` / `GD` + `LT` hoặc `TH` + số thứ tự.
 2. Tạo `data/questions-ten-nhanh.js`, đặt `window.QUIZ_BANK["ten-nhanh"] = {...}`.
 3. Thêm object vào `data/nhanh-tri-lieu.js` với `ma: "ten-nhanh"`.
 4. Thêm `<script src="data/questions-ten-nhanh.js"></script>` vào `index.html` và `quiz.html`.
-5. Thêm màu nhận diện `.chip--ten-nhanh` trong `style.css`.
+5. Thêm modifier màu `.pill--ten-nhanh` và `.branch-card[data-branch="ten-nhanh"]` trong `style.css`.
 
 ## Chạy thử
 
