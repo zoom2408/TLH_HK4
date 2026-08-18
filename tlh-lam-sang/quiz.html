@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thi thử — Nhập môn Tâm lý học Lâm sàng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- thanh tiến độ (ẩn cho tới khi bắt đầu làm bài) -->
+<div class="progressbar hidden" id="progressbar">
+  <span id="progressLabel">0 / 0 câu</span>
+  <span class="bar"><span id="progressFill"></span></span>
+  <span id="timer">00:00</span>
+</div>
+
+<div class="quiz-shell">
+
+
+  <!-- ================= MÀN HÌNH THIẾT LẬP ================= -->
+  <section id="screenSetup">
+    <header class="titlepage">
+      <p class="eyebrow">Ngân hàng 180 câu · rút ngẫu nhiên mỗi lượt</p>
+      <h1>Thi thử trắc nghiệm</h1>
+      <p>Mỗi đề chuẩn gồm 60 câu: 20 câu cho mỗi nhánh trị liệu, trong đó một nửa là câu lý thuyết và một nửa là câu tình huống lâm sàng đòi hỏi suy luận. Sau khi nộp bài, bạn xem được điểm tách theo nhánh và theo dạng câu, cùng lý giải đúng/sai cho từng phương án.</p>
+    </header>
+
+    <div class="setup">
+      <h2>Thiết lập đề</h2>
+      <p>Chọn phạm vi và bấm bắt đầu. Mỗi lần bắt đầu là một đề khác nhau.</p>
+
+      <div class="setup__row">
+        <label>Phiên bản đề
+          <select id="optVersion">
+            <option value="60" selected>60 câu — đề chuẩn, cả 3 nhánh (20 câu/nhánh)</option>
+            <option value="30">30 câu — đề ngắn, cả 3 nhánh (10 câu/nhánh)</option>
+            <option value="20">20 câu — luyện riêng một nhánh</option>
+          </select>
+        </label>
+
+        <label id="scopeWrap" style="display:none;">Nhánh
+          <select id="optScope">
+            <option value="cbt">CBT — Nhận thức Hành vi</option>
+            <option value="phan-tam">Phân tâm</option>
+            <option value="gia-dinh">Hệ thống gia đình</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="setup__row">
+        <label><input type="checkbox" id="optShuffleOpts" checked> Xáo trộn thứ tự đáp án A–B–C–D</label>
+        <label><input type="checkbox" id="optMixBranches"> Trộn lẫn các nhánh (mặc định: nhóm theo nhánh)</label>
+      </div>
+
+      <div class="setup__row">
+        <button class="btn" id="btnStart">Bắt đầu làm bài →</button>
+        <button class="btn btn--ghost" id="btnReviewAll">Xem toàn bộ ngân hàng &amp; đáp án</button>
+      </div>
+
+      <p id="bankStats" style="font-family:var(--mono); font-size:11.5px; color:var(--ink-faint); margin:16px 0 0;"></p>
+    </div>
+  </section>
+
+  <!-- ================= MÀN HÌNH LÀM BÀI / KẾT QUẢ ================= -->
+  <section id="screenQuiz" class="hidden">
+    <div id="resultBox"></div>
+    <div class="filters hidden" id="filters">
+      <button data-f="all" class="is-on">Tất cả</button>
+      <button data-f="wrong">Chỉ câu sai</button>
+      <button data-f="blank">Chưa trả lời</button>
+      <button data-f="right">Câu đúng</button>
+    </div>
+    <div id="questionList"></div>
+  </section>
+
+</div>
+
+<!-- thanh nộp bài -->
+<div class="sticky-submit hidden" id="stickySubmit">
+  <span class="note" id="submitNote"></span>
+  <span style="display:flex; gap:10px; flex-wrap:wrap;">
+    <button class="btn btn--ghost" id="btnQuit">Thoát về thiết lập</button>
+    <button class="btn" id="btnSubmit">Nộp bài &amp; chấm điểm</button>
+  </span>
+</div>
+
+<script src="data/questions-cbt.js"></script>
+<script src="data/questions-phan-tam.js"></script>
+<script src="data/questions-gia-dinh.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  var BANKS = window.QUIZ_BANK || {};
+  var ORDER = ["cbt","phan-tam","gia-dinh"];
+  var LABEL = {"cbt":"CBT","phan-tam":"Phân tâm","gia-dinh":"Hệ thống gia đình"};
+  var LOAI  = {"ly-thuyet":"Lý thuyết","thuc-hanh":"Tình huống"};
+  var LETTER = ["A","B","C","D","E","F"];
+
+  var state = { items:[], answers:{}, graded:false, t0:0, timerId:null, reviewOnly:false };
+
+  /* ---------- tiện ích ---------- */
+  function $(id){ return document.getElementById(id); }
+  function esc(s){
+    return String(s == null ? "" : s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+  function shuffle(a){
+    for (var i = a.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function pick(arr, n){ return shuffle(arr.slice()).slice(0, Math.min(n, arr.length)); }
+
+  /* ---------- chuẩn bị một câu (kèm xáo đáp án) ---------- */
+  function prep(q, branch, doShuffle){
+    var idx = q.luaChon.map(function(_, i){ return i; });
+    if (doShuffle) shuffle(idx);
+    var opts = idx.map(function(i){ return q.luaChon[i]; });
+    var why  = idx.map(function(i){ return (q.viSaoSai && q.viSaoSai[i]) || ""; });
+    return {
+      ref: q,
+      nhanh: branch,
+      loai: q.loai,
+      luaChon: opts,
+      viSaoSai: why,
+      dapAn: idx.indexOf(q.dapAn)
+    };
+  }
+
+  /* ---------- dựng đề ---------- */
+  function buildExam(scope, perType, shuffleOpts, mixBranches){
+    var branches = (scope === "all") ? ORDER.slice() : [scope];
+    var items = [];
+    branches.forEach(function(b){
+      var bank = BANKS[b];
+      if (!bank) return;
+      var lt = bank.cauHoi.filter(function(q){ return q.loai === "ly-thuyet"; });
+      var th = bank.cauHoi.filter(function(q){ return q.loai === "thuc-hanh"; });
+      var chunk = pick(lt, perType).concat(pick(th, perType));
+      shuffle(chunk);
+      items = items.concat(chunk.map(function(q){ return prep(q, b, shuffleOpts); }));
+    });
+    if (mixBranches) shuffle(items);
+    return items;
+  }
+
+  function buildFullReview(){
+    var items = [];
+    ORDER.forEach(function(b){
+      var bank = BANKS[b];
+      if (!bank) return;
+      bank.cauHoi.forEach(function(q){ items.push(prep(q, b, false)); });
+    });
+    return items;
+  }
+
+  /* ---------- render ---------- */
+  function renderQuestions(){
+    var html = "";
+    state.items.forEach(function(it, n){
+      html += renderCard(it, n);
+    });
+    $("questionList").innerHTML = html;
+
+    if (!state.graded && !state.reviewOnly){
+      $("questionList").addEventListener("change", onPick);
+    }
+  }
+
+  function renderCard(it, n){
+    var q = it.ref;
+    var picked = state.answers[n];
+    var show = state.graded || state.reviewOnly;
+    var cls = "qcard";
+    if (state.graded){
+      if (picked === undefined) cls += " is-blank";
+      else if (picked === it.dapAn) cls += " is-right";
+      else cls += " is-wrong";
+    }
+
+    var h = '<article class="' + cls + '" id="q' + n + '" data-n="' + n + '">';
+    h += '<div class="qcard__meta">';
+    h += '<span class="qcard__no">Câu ' + (n + 1) + '</span>';
+    h += '<span class="chip chip--' + it.nhanh + '">' + LABEL[it.nhanh] + '</span>';
+    h += '<span class="chip chip--' + it.loai + '">' + LOAI[it.loai] + '</span>';
+    h += '<span class="chip">' + esc(q.chuDe) + '</span>';
+    if (show) h += '<span class="chip">' + esc(q.id) + '</span>';
+    h += '</div>';
+
+    h += '<p class="qcard__stem">';
+    if (q.boiCanh) h += '<span class="vignette">' + esc(q.boiCanh) + '</span>';
+    h += esc(q.cauHoi) + '</p>';
+
+    h += '<ul class="opts">';
+    it.luaChon.forEach(function(opt, i){
+      var oc = "opt";
+      var mark = "";
+      if (state.graded || state.reviewOnly){
+        if (i === it.dapAn){ oc += " is-correct"; mark = '<span class="mark">✓ Đáp án</span>'; }
+        else if (state.graded && picked === i){ oc += " is-wrong"; mark = '<span class="mark">✗ Bạn chọn</span>'; }
+      } else if (picked === i){
+        oc += " is-picked";
+      }
+      h += '<li><label class="' + oc + '">';
+      if (!show){
+        h += '<input type="radio" name="q' + n + '" value="' + i + '"' + (picked === i ? " checked" : "") + '>';
+      }
+      h += '<span class="letter">' + LETTER[i] + '.</span><span>' + esc(opt) + '</span>' + mark;
+      h += '</label></li>';
+    });
+    h += '</ul>';
+
+    if (show){
+      h += '<div class="explain"><h5>Vì sao đáp án ' + LETTER[it.dapAn] + ' đúng</h5>';
+      h += '<p>' + esc(q.giaiThich) + '</p>';
+      var wrongs = "";
+      it.viSaoSai.forEach(function(w, i){
+        if (i !== it.dapAn && w) wrongs += '<p class="wrongwhy"><strong>' + LETTER[i] + '.</strong> ' + esc(w) + '</p>';
+      });
+      if (wrongs) h += '<h5 style="margin-top:12px;">Vì sao các phương án còn lại sai</h5>' + wrongs;
+      h += '</div>';
+    }
+
+    h += '</article>';
+    return h;
+  }
+
+  function onPick(e){
+    if (!e.target || e.target.type !== "radio") return;
+    var card = e.target.closest(".qcard");
+    var n = parseInt(card.getAttribute("data-n"), 10);
+    state.answers[n] = parseInt(e.target.value, 10);
+    card.querySelectorAll(".opt").forEach(function(o){ o.classList.remove("is-picked"); });
+    e.target.closest(".opt").classList.add("is-picked");
+    updateProgress();
+  }
+
+  function updateProgress(){
+    var done = Object.keys(state.answers).length;
+    var total = state.items.length;
+    $("progressLabel").textContent = done + " / " + total + " câu";
+    $("progressFill").style.width = (total ? (done / total * 100) : 0) + "%";
+    $("submitNote").textContent = (done === total)
+      ? "Đã trả lời hết " + total + " câu."
+      : "Còn " + (total - done) + " câu chưa trả lời.";
+  }
+
+  /* ---------- đồng hồ ---------- */
+  function startTimer(){
+    state.t0 = Date.now();
+    state.timerId = setInterval(function(){
+      var s = Math.floor((Date.now() - state.t0) / 1000);
+      var m = Math.floor(s / 60);
+      $("timer").textContent = String(m).padStart(2,"0") + ":" + String(s % 60).padStart(2,"0");
+    }, 1000);
+  }
+  function stopTimer(){ if (state.timerId){ clearInterval(state.timerId); state.timerId = null; } }
+
+  /* ---------- chấm điểm ---------- */
+  function grade(){
+    var done = Object.keys(state.answers).length;
+    if (done < state.items.length){
+      if (!confirm("Còn " + (state.items.length - done) + " câu chưa trả lời. Vẫn nộp bài?")) return;
+    }
+    state.graded = true;
+    stopTimer();
+
+    var stats = { total:0, correct:0, byBranch:{}, byLoai:{}, byChuDe:{} };
+    state.items.forEach(function(it, n){
+      var ok = state.answers[n] === it.dapAn;
+      stats.total++;
+      if (ok) stats.correct++;
+
+      var b = it.nhanh;
+      stats.byBranch[b] = stats.byBranch[b] || { t:0, c:0 };
+      stats.byBranch[b].t++; if (ok) stats.byBranch[b].c++;
+
+      var l = it.loai;
+      stats.byLoai[l] = stats.byLoai[l] || { t:0, c:0 };
+      stats.byLoai[l].t++; if (ok) stats.byLoai[l].c++;
+
+      if (!ok){
+        var cd = it.ref.chuDe;
+        stats.byChuDe[cd] = (stats.byChuDe[cd] || 0) + 1;
+      }
+    });
+
+    renderResult(stats);
+    renderQuestions();
+    $("filters").classList.remove("hidden");
+    $("stickySubmit").classList.add("hidden");
+    window.scrollTo({ top:0, behavior:"smooth" });
+  }
+
+  function renderResult(s){
+    var pct = Math.round(s.correct / s.total * 100);
+    var diem10 = (s.correct / s.total * 10).toFixed(1);
+    var verdict;
+    if (pct >= 90)      verdict = "Rất vững. Có thể chuyển sang ôn các câu tự luận so sánh giữa ba nhánh.";
+    else if (pct >= 75) verdict = "Nắm khá chắc. Rà lại các chủ đề sai bên dưới là đủ.";
+    else if (pct >= 60) verdict = "Qua được nhưng còn lỗ hổng. Nên đọc lại phần lý thuyết của nhánh có điểm thấp nhất.";
+    else                verdict = "Cần ôn lại nền tảng trước khi luyện đề tiếp.";
+
+    var h = '<div class="result">';
+    h += '<h2>Kết quả</h2>';
+    h += '<div class="score">' + s.correct + '<small> / ' + s.total + ' câu · ' + pct + '% · ' + diem10 + '/10</small></div>';
+    h += '<p class="verdict">' + verdict + '</p>';
+
+    h += '<table class="scoretable"><thead><tr><th>Theo nhánh trị liệu</th><th style="text-align:right">Đúng</th><th style="text-align:right">Tỷ lệ</th></tr></thead><tbody>';
+    ORDER.forEach(function(b){
+      if (!s.byBranch[b]) return;
+      var x = s.byBranch[b];
+      h += '<tr><td>' + LABEL[b] + '</td><td class="num">' + x.c + '/' + x.t + '</td><td class="num">' + Math.round(x.c/x.t*100) + '%</td></tr>';
+    });
+    h += '</tbody></table>';
+
+    h += '<table class="scoretable"><thead><tr><th>Theo dạng câu hỏi</th><th style="text-align:right">Đúng</th><th style="text-align:right">Tỷ lệ</th></tr></thead><tbody>';
+    ["ly-thuyet","thuc-hanh"].forEach(function(l){
+      if (!s.byLoai[l]) return;
+      var x = s.byLoai[l];
+      h += '<tr><td>' + LOAI[l] + '</td><td class="num">' + x.c + '/' + x.t + '</td><td class="num">' + Math.round(x.c/x.t*100) + '%</td></tr>';
+    });
+    h += '</tbody></table>';
+
+    var weak = Object.keys(s.byChuDe).sort(function(a,b){ return s.byChuDe[b] - s.byChuDe[a]; }).slice(0, 8);
+    if (weak.length){
+      h += '<p style="font-family:var(--sans); font-size:13px; color:var(--ink-soft); margin:0 0 8px;"><strong>Chủ đề sai nhiều nhất:</strong></p><p>';
+      weak.forEach(function(c){ h += '<span class="chip">' + esc(c) + ' · ' + s.byChuDe[c] + '</span>'; });
+      h += '</p>';
+    }
+
+    h += '<div class="result__actions">';
+    h += '<button class="btn" id="btnRetry">Làm đề mới</button>';
+    h += '<button class="btn btn--ghost" id="btnPrint">In / lưu PDF bản chữa</button>';
+    h += '<a class="btn btn--ghost" href="index.html">Về mục lục môn học</a>';
+    h += '</div></div>';
+
+    $("resultBox").innerHTML = h;
+    $("btnRetry").addEventListener("click", backToSetup);
+    $("btnPrint").addEventListener("click", function(){ window.print(); });
+  }
+
+  /* ---------- lọc khi xem lại ---------- */
+  function applyFilter(f){
+    state.items.forEach(function(it, n){
+      var card = $("q" + n);
+      if (!card) return;
+      var picked = state.answers[n];
+      var show = true;
+      if (f === "wrong") show = (picked !== undefined && picked !== it.dapAn);
+      else if (f === "blank") show = (picked === undefined);
+      else if (f === "right") show = (picked === it.dapAn);
+      card.style.display = show ? "" : "none";
+    });
+  }
+
+  /* ---------- điều hướng màn hình ---------- */
+  function backToSetup(){
+    stopTimer();
+    state = { items:[], answers:{}, graded:false, t0:0, timerId:null, reviewOnly:false };
+    $("resultBox").innerHTML = "";
+    $("questionList").innerHTML = "";
+    $("filters").classList.add("hidden");
+    $("progressbar").classList.add("hidden");
+    $("stickySubmit").classList.add("hidden");
+    $("screenQuiz").classList.add("hidden");
+    $("screenSetup").classList.remove("hidden");
+    window.scrollTo({ top:0 });
+  }
+
+  function start(){
+    var ver = $("optVersion").value;                 // "60" | "30" | "20"
+    var scope = (ver === "20") ? $("optScope").value : "all";
+    var perType = (ver === "60") ? 10 : (ver === "30" ? 5 : 10);
+    state.items = buildExam(scope, perType, $("optShuffleOpts").checked, $("optMixBranches").checked);
+    state.answers = {}; state.graded = false; state.reviewOnly = false;
+
+    if (!state.items.length){ alert("Không nạp được ngân hàng câu hỏi. Kiểm tra thư mục data/."); return; }
+
+    $("screenSetup").classList.add("hidden");
+    $("screenQuiz").classList.remove("hidden");
+    $("progressbar").classList.remove("hidden");
+    $("stickySubmit").classList.remove("hidden");
+    $("filters").classList.add("hidden");
+    $("resultBox").innerHTML = "";
+    renderQuestions();
+    updateProgress();
+    startTimer();
+    window.scrollTo({ top:0 });
+  }
+
+  function reviewAll(){
+    state.items = buildFullReview();
+    state.answers = {}; state.graded = false; state.reviewOnly = true;
+    $("screenSetup").classList.add("hidden");
+    $("screenQuiz").classList.remove("hidden");
+    $("progressbar").classList.add("hidden");
+    $("stickySubmit").classList.add("hidden");
+    $("filters").classList.add("hidden");
+    $("resultBox").innerHTML =
+      '<div class="result"><h2>Toàn bộ ngân hàng câu hỏi</h2>' +
+      '<p class="verdict">' + state.items.length + ' câu, đã hiện sẵn đáp án và lý giải. Dùng để đọc ôn, không tính điểm.</p>' +
+      '<div class="result__actions"><button class="btn" id="btnBack2">← Về thiết lập đề</button></div></div>';
+    renderQuestions();
+    $("btnBack2").addEventListener("click", backToSetup);
+    window.scrollTo({ top:0 });
+  }
+
+  /* ---------- khởi tạo ---------- */
+  function init(){
+    var counts = [];
+    var totalAll = 0;
+    ORDER.forEach(function(b){
+      var bank = BANKS[b];
+      if (!bank){ counts.push(LABEL[b] + ": chưa nạp"); return; }
+      var lt = bank.cauHoi.filter(function(q){ return q.loai === "ly-thuyet"; }).length;
+      var th = bank.cauHoi.filter(function(q){ return q.loai === "thuc-hanh"; }).length;
+      totalAll += lt + th;
+      counts.push(LABEL[b] + ": " + (lt + th) + " câu (" + lt + " LT / " + th + " TH)");
+    });
+    $("bankStats").textContent = "Ngân hàng hiện có " + totalAll + " câu — " + counts.join(" · ");
+
+    $("btnStart").addEventListener("click", start);
+    $("btnReviewAll").addEventListener("click", reviewAll);
+    $("btnSubmit").addEventListener("click", grade);
+    $("btnQuit").addEventListener("click", function(){
+      if (confirm("Thoát và huỷ bài làm hiện tại?")) backToSetup();
+    });
+    $("filters").addEventListener("click", function(e){
+      if (e.target.tagName !== "BUTTON") return;
+      $("filters").querySelectorAll("button").forEach(function(b){ b.classList.remove("is-on"); });
+      e.target.classList.add("is-on");
+      applyFilter(e.target.getAttribute("data-f"));
+    });
+
+    // hiện ô chọn nhánh chỉ khi làm đề 20 câu
+    function syncScope(){
+      $("scopeWrap").style.display = ($("optVersion").value === "20") ? "" : "none";
+    }
+    $("optVersion").addEventListener("change", syncScope);
+    syncScope();
+
+    // tham số URL: ?branch=cbt  /  ?mode=review
+    var p = new URLSearchParams(window.location.search);
+    var br = p.get("branch");
+    if (br && BANKS[br]){
+      $("optVersion").value = "20";
+      $("optScope").value = br;
+      syncScope();
+    }
+    if (p.get("mode") === "review") reviewAll();
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script>
+</body>
+</html>

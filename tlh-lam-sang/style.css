@@ -1,0 +1,377 @@
+/* ============================================================
+   TLH Lâm sàng — Nhập môn Tâm lý học Lâm sàng
+   CSS riêng của môn. Dùng chung design token với cả repo.
+   ------------------------------------------------------------
+   QUY ƯỚC REPO (giống cac-tiep-can/ và tlh-ton-giao/):
+   trong <head> link theme.css TRƯỚC, rồi mới tới file này —
+
+     <link rel="stylesheet" href="../assets/css/theme.css">
+     <link rel="stylesheet" href="style.css">
+
+   (ở nhanh/*.html thì là ../../assets/css/theme.css và ../style.css)
+
+   theme.css cung cấp reset + các lớp tiện ích dùng chung của repo
+   (.callout, .pill, .eyebrow…). Khối :root dưới đây ghim bảng màu
+   riêng của môn này (cùng hệ paper/maroon/gold với tlh-ton-giao)
+   nên trang vẫn hiển thị đúng kể cả khi mở lẻ, không có theme.css.
+   Muốn môn này ăn theo màu của theme thì xoá các dòng tương ứng.
+   ============================================================ */
+
+:root{
+  --paper:#EEE7D8;
+  --paper-dark:#E2D8C0;
+  --card:#F7F2E7;
+  --ink:#2A2420;
+  --ink-soft:#5C5040;
+  --ink-faint:#8A7D68;
+  --maroon:#7C2D2D;
+  --maroon-deep:#571F1F;
+  --forest:#33463B;
+  --gold:#A67C3D;
+  --line:#C9BC9B;
+  --shadow: 0 18px 40px -20px rgba(42,36,32,.45);
+  --serif:'Literata','Noto Serif',Georgia,serif;
+  --sans:'IBM Plex Sans','Noto Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono','Noto Sans Mono',ui-monospace,monospace;
+
+  /* trạng thái chấm điểm */
+  --ok:#2F6B45;  --ok-bg:#E3EFE6;
+  --bad:#9B2C2C; --bad-bg:#F6E3E0;
+
+  /* màu nhận diện từng nhánh trị liệu */
+  --cbt:#1F5673;   --cbt-bg:#E3EDF3;
+  --ptam:#6B3E7A;  --ptam-bg:#EEE4F1;
+  --httgd:#2F6B45; --httgd-bg:#E3EFE6;
+}
+
+*{box-sizing:border-box;}
+html{-webkit-font-smoothing:antialiased; scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 800px at 15% -10%, #F4EEDF 0%, transparent 55%),
+    var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  line-height:1.6;
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+  html{scroll-behavior:auto;}
+}
+
+/* ---------- layout shell ---------- */
+.app{ display:grid; grid-template-columns:64px minmax(0,1fr); min-height:100vh; }
+.app--wide{ grid-template-columns:1fr; }
+
+/* ---------- thumb-index tab rail ---------- */
+.tabs{
+  background:linear-gradient(180deg, var(--paper-dark), var(--paper));
+  border-right:1px solid var(--line);
+  display:flex; flex-direction:column; align-items:stretch;
+  padding:22px 0; gap:6px;
+  position:sticky; top:0; height:100vh;
+}
+.tabs__label{
+  font-family:var(--mono); font-size:10px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-faint);
+  writing-mode:vertical-rl; text-orientation:mixed;
+  text-align:center; margin-bottom:10px; padding-left:2px;
+}
+.tab{
+  border:none; background:transparent; cursor:pointer; padding:14px 0;
+  display:flex; align-items:center; justify-content:center; position:relative;
+  color:var(--ink-soft); font-family:var(--sans); flex:1; min-height:64px;
+  text-decoration:none;
+}
+.tab__num{ writing-mode:vertical-rl; text-orientation:mixed; font-size:13px; font-weight:600; letter-spacing:.06em; }
+.tab::before{
+  content:""; position:absolute; left:0; top:10%; bottom:10%; width:4px;
+  background:transparent; border-radius:0 3px 3px 0; transition:background .18s ease;
+}
+.tab:hover{color:var(--ink);}
+.tab:hover::before{background:var(--gold);}
+.tab[aria-selected="true"], .tab.is-active{
+  background:var(--card); color:var(--maroon-deep); box-shadow:inset -1px 0 0 var(--card);
+}
+.tab[aria-selected="true"]::before, .tab.is-active::before{background:var(--maroon);}
+.tab:focus-visible{outline:2px solid var(--maroon); outline-offset:-2px;}
+
+/* ---------- reading column ---------- */
+.reading{ padding:44px clamp(20px,5vw,72px) 120px; max-width:860px; }
+.reading--wide{ max-width:920px; margin:0 auto; }
+
+/* ---------- title page ---------- */
+.titlepage{ margin-bottom:44px; padding-bottom:28px; border-bottom:1px solid var(--line); }
+.titlepage .eyebrow{
+  font-family:var(--mono); font-size:11px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--maroon); margin:0 0 10px;
+}
+.titlepage h1{
+  font-family:var(--serif); font-weight:700;
+  font-size:clamp(28px,4.2vw,42px); margin:0 0 14px; color:var(--ink); letter-spacing:-.01em;
+}
+.titlepage p{ margin:0; color:var(--ink-soft); font-size:15px; max-width:60ch; }
+.titlepage .src{
+  display:inline-flex; align-items:center; gap:8px; margin-top:16px;
+  font-family:var(--mono); font-size:11.5px; color:var(--ink-faint);
+}
+.titlepage .src .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);}
+
+/* ---------- section heads ---------- */
+.q-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:6px; }
+.q-head .q-no{
+  font-family:var(--serif); font-weight:700; font-size:15px;
+  color:var(--card); background:var(--maroon);
+  width:30px;height:30px;border-radius:3px;
+  display:flex;align-items:center;justify-content:center;flex:none;
+}
+.q-head h2{ font-family:var(--serif); font-size:clamp(21px,2.6vw,27px); font-weight:600; margin:0; color:var(--ink); }
+.q-sub{ color:var(--ink-faint); font-family:var(--mono); font-size:11.5px; letter-spacing:.04em; margin:0 0 26px 44px; }
+
+.block{margin:0 0 28px;}
+.block h3{
+  font-family:var(--sans); font-weight:600; font-size:13px; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--maroon-deep); margin:0 0 12px;
+  display:flex; align-items:center; gap:10px;
+}
+.block h3::after{ content:""; flex:1; height:1px; background:var(--line); }
+.block h4{ font-family:var(--serif); font-weight:600; font-style:italic; font-size:16px; margin:18px 0 8px; color:var(--ink); }
+.block p{margin:0 0 10px; color:var(--ink);}
+.block ul, .block ol{margin:0 0 10px; padding-left:22px;}
+.block li{margin-bottom:7px;}
+.block li::marker{color:var(--ink-faint);}
+
+.callout{
+  background:var(--card); border:1px solid var(--line); border-left:3px solid var(--forest);
+  border-radius:4px; padding:14px 16px; margin:14px 0 18px; font-size:14.5px;
+}
+.callout strong{color:var(--forest);}
+
+/* ô chờ đổ nội dung */
+.placeholder{
+  border:1px dashed var(--line); border-radius:4px;
+  padding:16px 18px; margin:10px 0 18px;
+  background:rgba(247,242,231,.55);
+  color:var(--ink-faint); font-family:var(--sans); font-size:13.5px;
+}
+.placeholder::before{
+  content:"CHỜ ĐỔ NỘI DUNG";
+  display:block; font-family:var(--mono); font-size:10px; letter-spacing:.14em;
+  color:var(--gold); margin-bottom:6px;
+}
+
+.divider-end{
+  margin-top:52px; padding-top:20px; border-top:1px dashed var(--line);
+  color:var(--ink-faint); font-size:13.5px; font-style:italic;
+}
+
+/* ---------- hub cards (index.html) ---------- */
+.grid{ display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); margin:0 0 34px; }
+.branch-card{
+  display:block; text-decoration:none; color:inherit;
+  background:var(--card); border:1px solid var(--line); border-top:4px solid var(--maroon);
+  border-radius:5px; padding:20px 20px 18px; box-shadow:0 8px 22px -18px rgba(42,36,32,.6);
+  transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+.branch-card:hover{ transform:translateY(-2px); box-shadow:0 16px 30px -20px rgba(42,36,32,.65); }
+.branch-card:focus-visible{outline:2px solid var(--maroon); outline-offset:3px;}
+.branch-card[data-branch="cbt"]{border-top-color:var(--cbt);}
+.branch-card[data-branch="phan-tam"]{border-top-color:var(--ptam);}
+.branch-card[data-branch="gia-dinh"]{border-top-color:var(--httgd);}
+.branch-card .tagline{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-faint); margin:0 0 8px;
+}
+.branch-card h3{ font-family:var(--serif); font-size:20px; font-weight:700; margin:0 0 8px; }
+.branch-card p{ margin:0 0 12px; font-size:14px; color:var(--ink-soft); }
+.branch-card .go{ font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--maroon-deep); }
+
+.chip{
+  display:inline-block; font-family:var(--mono); font-size:10.5px; letter-spacing:.05em;
+  border-radius:3px; padding:2px 8px; margin:0 6px 6px 0; border:1px solid var(--line);
+  background:var(--paper-dark); color:var(--ink-soft);
+}
+.chip--cbt{background:var(--cbt-bg); color:var(--cbt); border-color:var(--cbt);}
+.chip--phan-tam{background:var(--ptam-bg); color:var(--ptam); border-color:var(--ptam);}
+.chip--gia-dinh{background:var(--httgd-bg); color:var(--httgd); border-color:var(--httgd);}
+.chip--ly-thuyet{background:#EFE6D3; color:var(--gold); border-color:var(--gold);}
+.chip--thuc-hanh{background:#E9E3D5; color:var(--maroon-deep); border-color:var(--maroon);}
+
+/* .pill — tên gọi dùng chung của repo, đồng nghĩa với .chip ở file này */
+.pill{
+  display:inline-block; font-family:var(--mono); font-size:10.5px; letter-spacing:.05em;
+  border-radius:3px; padding:2px 8px; margin:0 6px 6px 0;
+  border:1px solid var(--line); background:var(--paper-dark); color:var(--ink-soft);
+}
+
+/* trạng thái nội dung của từng nhánh trên hub */
+.branch-card .status{
+  display:inline-block; font-family:var(--mono); font-size:10px; letter-spacing:.1em;
+  text-transform:uppercase; border-radius:3px; padding:2px 7px; margin-bottom:10px;
+}
+.status--todo{ background:#F1E7D2; color:var(--gold); border:1px solid var(--gold); }
+.status--done{ background:var(--ok-bg); color:var(--ok); border:1px solid var(--ok); }
+.branch-card .count{
+  display:block; margin-top:10px; font-family:var(--mono);
+  font-size:11px; color:var(--ink-faint);
+}
+
+/* ---------- buttons ---------- */
+.btn{
+  font-family:var(--sans); font-weight:600; font-size:14px;
+  border:1px solid var(--maroon); background:var(--maroon); color:#fff;
+  border-radius:4px; padding:11px 20px; cursor:pointer; text-decoration:none;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.btn:hover{background:var(--maroon-deep); border-color:var(--maroon-deep);}
+.btn:focus-visible{outline:2px solid var(--ink); outline-offset:3px;}
+.btn--ghost{ background:transparent; color:var(--maroon-deep); }
+.btn--ghost:hover{ background:var(--card); color:var(--maroon-deep); }
+.btn:disabled{opacity:.45; cursor:not-allowed;}
+
+/* ---------- breadcrumb ---------- */
+.crumb{
+  font-family:var(--mono); font-size:11px; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--ink-faint); margin:0 0 18px;
+}
+.crumb a{color:var(--maroon-deep); text-decoration:none;}
+.crumb a:hover{text-decoration:underline;}
+
+/* ============================================================
+   QUIZ
+   ============================================================ */
+.quiz-shell{ max-width:920px; margin:0 auto; padding:40px clamp(18px,4vw,40px) 140px; }
+
+.setup{
+  background:var(--card); border:1px solid var(--line); border-radius:5px;
+  padding:24px; margin-bottom:28px;
+}
+.setup h2{font-family:var(--serif); font-size:20px; margin:0 0 6px;}
+.setup p{margin:0 0 16px; font-size:14px; color:var(--ink-soft);}
+.setup__row{display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-bottom:14px;}
+.setup label{font-family:var(--sans); font-size:13.5px; color:var(--ink-soft); display:flex; align-items:center; gap:7px;}
+.setup select, .setup input[type=number]{
+  font-family:var(--sans); font-size:13.5px; padding:7px 10px;
+  border:1px solid var(--line); border-radius:4px; background:var(--paper); color:var(--ink);
+}
+
+.progressbar{
+  position:sticky; top:0; z-index:20;
+  background:var(--paper-dark); border-bottom:1px solid var(--line);
+  padding:10px clamp(18px,4vw,40px);
+  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+  font-family:var(--sans); font-size:13px; color:var(--ink-soft);
+}
+.progressbar .bar{ flex:1; min-width:120px; height:7px; background:var(--paper); border:1px solid var(--line); border-radius:99px; overflow:hidden; }
+.progressbar .bar span{display:block; height:100%; width:0%; background:var(--maroon); transition:width .2s ease;}
+
+.qcard{
+  background:var(--card); border:1px solid var(--line); border-radius:5px;
+  padding:20px 22px; margin:0 0 18px; scroll-margin-top:80px;
+}
+.qcard__meta{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+.qcard__no{
+  font-family:var(--mono); font-size:11px; font-weight:600; color:var(--card);
+  background:var(--maroon); border-radius:3px; padding:3px 8px;
+}
+.qcard__stem{ font-family:var(--serif); font-size:16.5px; margin:0 0 14px; line-height:1.62; }
+.qcard__stem .vignette{display:block; font-style:italic; color:var(--ink-soft); margin-bottom:8px; font-size:15.5px;}
+
+.opts{list-style:none; margin:0; padding:0;}
+.opt{
+  display:flex; gap:11px; align-items:flex-start;
+  border:1px solid var(--line); border-radius:4px;
+  padding:11px 13px; margin-bottom:9px; cursor:pointer;
+  background:var(--paper); font-size:15px; transition:border-color .14s ease, background .14s ease;
+}
+.opt:hover{border-color:var(--gold); background:#F3EBD8;}
+.opt input{margin-top:5px; accent-color:var(--maroon); flex:none;}
+.opt .letter{font-family:var(--mono); font-weight:600; font-size:13px; color:var(--maroon-deep); flex:none; min-width:16px;}
+.opt.is-picked{border-color:var(--maroon); background:#F3EBD8;}
+
+/* trạng thái sau khi chấm */
+.graded .opt{cursor:default;}
+.graded .opt.is-correct{border-color:var(--ok); background:var(--ok-bg);}
+.graded .opt.is-wrong{border-color:var(--bad); background:var(--bad-bg);}
+.opt .mark{margin-left:auto; font-family:var(--mono); font-size:11px; font-weight:600; flex:none;}
+.opt.is-correct .mark{color:var(--ok);}
+.opt.is-wrong .mark{color:var(--bad);}
+
+.explain{
+  margin-top:14px; border-left:3px solid var(--gold);
+  background:var(--paper); border:1px solid var(--line); border-left-width:3px;
+  border-radius:4px; padding:13px 15px; font-size:14.5px;
+}
+.explain h5{
+  font-family:var(--sans); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--gold); margin:0 0 7px; font-weight:600;
+}
+.explain p{margin:0 0 8px;}
+.explain p:last-child{margin-bottom:0;}
+.explain .wrongwhy{font-size:13.5px; color:var(--ink-soft);}
+.qcard.is-right{border-left:4px solid var(--ok);}
+.qcard.is-wrong{border-left:4px solid var(--bad);}
+.qcard.is-blank{border-left:4px solid var(--ink-faint);}
+
+/* ---------- kết quả ---------- */
+.result{
+  background:var(--card); border:1px solid var(--line); border-top:4px solid var(--maroon);
+  border-radius:5px; padding:26px; margin-bottom:26px;
+}
+.result h2{font-family:var(--serif); font-size:24px; margin:0 0 4px;}
+.score{
+  font-family:var(--serif); font-weight:700; font-size:46px; color:var(--maroon-deep);
+  line-height:1.1; margin:8px 0 2px;
+}
+.score small{font-size:17px; color:var(--ink-faint); font-weight:400;}
+.verdict{font-family:var(--sans); font-size:14px; color:var(--ink-soft); margin:0 0 20px;}
+
+.scoretable{width:100%; border-collapse:collapse; font-family:var(--sans); font-size:13.5px; margin-bottom:18px;}
+.scoretable th, .scoretable td{ text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); }
+.scoretable th{ font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; }
+.scoretable td.num{font-family:var(--mono); text-align:right;}
+
+.result__actions{display:flex; gap:12px; flex-wrap:wrap;}
+
+.filters{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 18px;}
+.filters button{
+  font-family:var(--sans); font-size:12.5px; font-weight:600;
+  border:1px solid var(--line); background:var(--paper); color:var(--ink-soft);
+  border-radius:99px; padding:6px 14px; cursor:pointer;
+}
+.filters button.is-on{background:var(--maroon); color:#fff; border-color:var(--maroon);}
+
+.sticky-submit{
+  position:fixed; left:0; right:0; bottom:0; z-index:30;
+  background:var(--paper-dark); border-top:1px solid var(--line);
+  padding:12px clamp(18px,4vw,40px);
+  display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+  box-shadow:0 -10px 24px -20px rgba(42,36,32,.6);
+}
+.sticky-submit .note{font-family:var(--sans); font-size:12.5px; color:var(--ink-soft);}
+
+.hidden{display:none !important;}
+
+/* ---------- responsive ---------- */
+@media (max-width:720px){
+  .app{grid-template-columns:1fr;}
+  .tabs{
+    position:sticky; top:0; z-index:30; height:auto; width:100%;
+    flex-direction:row; overflow-x:auto; border-right:none;
+    border-bottom:1px solid var(--line); padding:10px 8px;
+  }
+  .tabs__label{display:none;}
+  .tab{min-height:auto; padding:8px 14px; flex:none;}
+  .tab__num{writing-mode:horizontal-tb;}
+  .tab::before{left:10%; right:10%; top:auto; bottom:0; height:3px; width:auto;}
+  .reading{padding:28px 18px 100px;}
+  .q-sub{margin-left:0;}
+  .quiz-shell{padding:24px 16px 150px;}
+}
+
+@media print{
+  .tabs, .sticky-submit, .filters, .progressbar, .result__actions{display:none !important;}
+  body{background:#fff;}
+  .qcard{break-inside:avoid;}
+}
