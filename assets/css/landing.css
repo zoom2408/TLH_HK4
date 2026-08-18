@@ -38,7 +38,7 @@
 }
 
 .hero__art{
-   flex:none;
+  flex:none;
   width:min(320px, 34vw);
 }
 .hero__art img{

@@ -96,7 +96,7 @@
 /* ---------- reading column ---------- */
 .reading{
   padding:44px clamp(20px,5vw,72px) 120px;
-  max-width:820px;
+  max-width:980px;
 }
 
 .titlepage{
