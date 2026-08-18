@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ma trận so sánh — Các tiếp cận tham vấn trị liệu tâm lý</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <a class="back" href="index.html">&larr; Mục lục môn học</a>
+  <span class="crumb">Ma trận so sánh</span>
+</div>
+
+<main class="reading" style="max-width:980px;">
+
+  <header class="titlepage">
+    <p class="eyebrow">Công cụ chọn cách tiếp cận</p>
+    <h1>Ma trận so sánh — Ưu điểm &amp; hạn chế</h1>
+    <p>So sánh cả 11 cách tiếp cận theo 2 chiều: <strong>lý thuyết</strong> (nền tảng khái niệm/khoa học) và <strong>thực hành</strong> (áp dụng thật trong phòng tham vấn) — vì một cách tiếp cận có thể hay về lý thuyết nhưng khó thực hành, hoặc ngược lại. Dùng bảng này để chọn cách tiếp cận làm nền tảng phong cách tham vấn của riêng bạn.</p>
+    <div class="src"><span class="dot"></span> Tổng hợp từ mục "Ưu điểm &amp; hạn chế" trong 11 trang chi tiết — <a href="https://drive.google.com/drive/folders/1-psxQ1fs_h9YM0VsXfAKHfe8ZpDW1bAa" target="_blank" rel="noopener">nguồn slide gốc trên Google Drive ↗</a></div>
+  </header>
+
+  <div class="callout" style="margin-bottom:32px;">
+    <strong>Dùng cho câu tự luận đề thi:</strong> 2 câu tự luận thật đều hỏi cảm nghĩ cá nhân — "bạn sẽ chọn cách tiếp cận nào và vì sao". Mỗi thẻ bên dưới có dòng <em>"Phù hợp với bạn nếu…"</em> để bạn đối chiếu với tính cách/phong cách của chính mình trước khi viết. Xem thêm văn mẫu đầy đủ tại <a href="cau-hoi-ngan.html">câu hỏi ngắn &amp; văn mẫu</a>.
+  </div>
+
+  <div class="cmp-controls">
+    <div class="cmp-filter" id="cmpTimeFilter" role="group" aria-label="Lọc theo thời lượng trị liệu điển hình">
+      <button class="cmp-chip is-active" data-time="all" type="button">Tất cả</button>
+      <!-- các chip thời lượng còn lại render bởi JS, dựa trên data/comparison.js -->
+    </div>
+    <div class="cmp-search">
+      <input type="search" id="cmpSearch" placeholder="Tìm theo tên, phù hợp khi nào, điểm mạnh/hạn chế…" aria-label="Tìm kiếm trong ma trận so sánh">
+    </div>
+  </div>
+  <p class="cmp-count" id="cmpCount"></p>
+
+  <div class="cmp-grid" id="cmpGrid"><!-- render bởi JS từ data/approaches.js + data/comparison.js --></div>
+  <p class="placeholder" id="cmpEmpty" hidden>Không tìm thấy cách tiếp cận nào khớp bộ lọc — thử xoá bớt từ khoá hoặc chọn "Tất cả".</p>
+
+  <p class="divider-end">Đổi/thêm nội dung so sánh: sửa trong <code>data/comparison.js</code> — trang này sẽ tự cập nhật theo. Xem đầy đủ lý thuyết từng cách tiếp cận tại <a href="index.html#hubGrid">mục lục 11 cách tiếp cận</a>.</p>
+
+</main>
+
+<script src="data/approaches.js"></script>
+<script src="data/comparison.js"></script>
+<script>
+  const approachById = Object.fromEntries(APPROACHES.map(a => [a.id, a]));
+
+  const TIME_LABELS = ["Rất ngắn – ngắn hạn", "Ngắn – trung hạn", "Trung hạn", "Trung – dài hạn", "Dài hạn", "Linh hoạt"];
+
+  // ---- render chip thời lượng (chỉ hiện những giá trị thật sự có trong data) ----
+  const timeFilterEl = document.getElementById('cmpTimeFilter');
+  const usedTimes = TIME_LABELS.filter(t => COMPARISON.some(c => c.timeHorizon === t));
+  timeFilterEl.innerHTML += usedTimes.map(t => `<button class="cmp-chip" data-time="${t}" type="button">${t}</button>`).join('');
+
+  // ---- render 11 thẻ so sánh ----
+  const grid = document.getElementById('cmpGrid');
+
+  function listHtml(items) {
+    return `<ul>${items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+  }
+
+  function cardHtml(c) {
+    const a = approachById[c.id];
+    if (!a) return '';
+    const searchBlob = [
+      a.name, a.en, a.founders, c.timeHorizon,
+      ...(c.bestFor || []), ...(c.theory.pros||[]), ...(c.theory.cons||[]),
+      ...(c.practice.pros||[]), ...(c.practice.cons||[]), c.selfFit
+    ].join(' ').toLowerCase();
+
+    return `
+    <article class="cmp-card" data-time="${c.timeHorizon}" data-search="${searchBlob.replace(/"/g,'&quot;')}">
+      <div class="cmp-card__head">
+        <span class="cmp-no">${String(a.no).padStart(2,'0')}</span>
+        <div class="cmp-card__title">
+          <h3><a href="${a.file}">${a.name}</a></h3>
+          <p class="cmp-founders">${a.en} — ${a.founders}</p>
+        </div>
+        <span class="cmp-time-badge">${c.timeHorizon}</span>
+      </div>
+
+      <div class="cmp-bestfor">
+        <span class="cmp-bestfor__label">Phù hợp khi</span>
+        ${(c.bestFor||[]).map(t => `<span class="cmp-pill">${t}</span>`).join('')}
+      </div>
+
+      <div class="cmp-quad">
+        <div class="cmp-cell cmp-cell--pro">
+          <h4>Lý thuyết — điểm mạnh</h4>
+          ${listHtml(c.theory.pros)}
+        </div>
+        <div class="cmp-cell cmp-cell--con">
+          <h4>Lý thuyết — hạn chế</h4>
+          ${listHtml(c.theory.cons)}
+        </div>
+        <div class="cmp-cell cmp-cell--pro">
+          <h4>Thực hành — điểm mạnh</h4>
+          ${listHtml(c.practice.pros)}
+        </div>
+        <div class="cmp-cell cmp-cell--con">
+          <h4>Thực hành — hạn chế</h4>
+          ${listHtml(c.practice.cons)}
+        </div>
+      </div>
+
+      <p class="cmp-selffit"><strong>Phù hợp với bạn nếu:</strong> ${c.selfFit}</p>
+    </article>`;
+  }
+
+  grid.innerHTML = COMPARISON.map(cardHtml).join('');
+
+  // ---- lọc theo chip thời lượng + tìm kiếm ----
+  const cards = [...grid.querySelectorAll('.cmp-card')];
+  const countEl = document.getElementById('cmpCount');
+  const emptyEl = document.getElementById('cmpEmpty');
+  const searchInput = document.getElementById('cmpSearch');
+  let activeTime = 'all';
+
+  function applyFilters() {
+    const q = searchInput.value.trim().toLowerCase();
+    let visible = 0;
+    cards.forEach(card => {
+      const matchesTime = activeTime === 'all' || card.dataset.time === activeTime;
+      const matchesSearch = !q || card.dataset.search.includes(q);
+      const show = matchesTime && matchesSearch;
+      card.hidden = !show;
+      if (show) visible++;
+    });
+    countEl.textContent = `Hiện ${visible} / ${cards.length} cách tiếp cận`;
+    emptyEl.hidden = visible !== 0;
+  }
+
+  timeFilterEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('.cmp-chip');
+    if (!btn) return;
+    timeFilterEl.querySelectorAll('.cmp-chip').forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    activeTime = btn.dataset.time;
+    applyFilters();
+  });
+
+  searchInput.addEventListener('input', applyFilters);
+
+  applyFilters();
+</script>
+</body>
+</html>
