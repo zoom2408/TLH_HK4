@@ -16,8 +16,8 @@ tlh-lam-sang/
 ├── data/
 │   ├── nhanh-tri-lieu.js       # Danh sách 3 nhánh (sửa 1 chỗ, mọi trang tự cập nhật)
 │   ├── questions-cbt.js        # Ngân hàng — CBT (60 câu)
-│   ├── questions-phan-tam.js   # — Lâm sàng định hướng phân tâm (60 câu)
-│   └── questions-gia-dinh.js   # — Hệ thống gia đình (70 câu)
+│   ├── questions-phan-tam.js   # — Lâm sàng định hướng phân tâm (76 câu)
+│   └── questions-gia-dinh.js   # — Hệ thống gia đình (98 câu)
 └── nhanh/
     ├── cbt.html
     ├── phan-tam.html
@@ -26,17 +26,17 @@ tlh-lam-sang/
 
 Đối chiếu với `cac-tiep-can/`: `nhanh/` ↔ `tiep-can/`, `data/nhanh-tri-lieu.js` ↔
 `data/approaches.js`, `data/questions-*.js` ↔ `data/quiz-bank.js` (tách làm 3 file
-theo nhánh vì ngân hàng lớn — 190 câu).
+theo nhánh vì ngân hàng lớn — 234 câu).
 
 ## Trạng thái
 
 | Phần | Trạng thái | Nguồn |
 |---|---|---|
-| Ngân hàng trắc nghiệm | **190 câu** — CBT và Phân tâm 30+30, Hệ thống gia đình 35+35, có lý giải đúng/sai từng phương án | |
+| Ngân hàng trắc nghiệm | **234 câu** — CBT 30+30, Phân tâm 38+38, Hệ thống gia đình 49+49, có lý giải đúng/sai từng phương án | |
 | Quiz engine | Xong | |
 | `nhanh/cbt.html` | **Đã đổ nội dung** — 10 mục | Slide Nguyễn Huỳnh Luân: *Cấu trúc các buổi làm việc*; *Làm việc trên các suy nghĩ & niềm tin* |
 | `nhanh/phan-tam.html` | **Đã đổ nội dung** — 10 mục | Slide ThS. Phạm Ngọc Long: *Giới thiệu — Lâm sàng định hướng phân tâm*; *Trung gian trị liệu* |
-| `nhanh/he-thong-gia-dinh.html` | **Đã đổ nội dung** — 7 phần I–VII + bảng đối chiếu | Sổ tay chuyên đề: ThS. Vương Nguyễn Toàn Thiện — *Trị liệu Tâm lý tiếp cận Hệ thống – Gia đình* |
+| `nhanh/he-thong-gia-dinh.html` | **Đã đổ nội dung** — 10 mục I–X + bảng đối chiếu | Sổ tay chuyên đề **bản đầy đủ 6 trang**: ThS. Vương Nguyễn Toàn Thiện |
 
 Cả ba ngân hàng đều viết bám sát tài liệu gốc của từng giảng viên, dùng đúng thuật ngữ
 được dạy — *chuyển cảm / phản chuyển cảm*, *đồng nhất hoá*, *SNTĐ*, *định hình ca*,
@@ -95,7 +95,7 @@ Chú thích ôn thi viết bằng `<p class="q-sub" style="margin-left:0;">`.
 |---|---|
 | `quiz.html` | màn hình thiết lập |
 | `quiz.html?branch=cbt` | mở sẵn đề 20 câu cho CBT (`phan-tam`, `gia-dinh` tương tự) |
-| `quiz.html?mode=review` | đọc toàn bộ 190 câu kèm đáp án, không tính điểm |
+| `quiz.html?mode=review` | đọc toàn bộ 234 câu kèm đáp án, không tính điểm |
 
 ## Thêm câu trắc nghiệm
 

@@ -559,6 +559,151 @@ window.QUIZ_BANK["phan-tam"] = {
   ]
 },
 
+{
+  id:"PT-LT-31", loai:"ly-thuyet", chuDe:"Ý kiến cá nhân — LSPT vs TLPT",
+  cauHoi:"Nhận định: “Một tâm lý gia lâm sàng định hướng phân tâm (LSPT) cũng là một nhà trị liệu phân tâm (TLPT).” Đánh giá đúng nhất là:",
+  luaChon:[
+    "ĐÚNG — hai chức danh chỉ là hai cách gọi khác nhau của cùng một nghề",
+    "SAI — đây là hai con đường đào tạo và hai phạm vi hành nghề khác nhau; LSPT ứng dụng phân tâm trong công việc lâm sàng nhưng không đương nhiên là nhà TLPT được hội đoàn chuyên môn công nhận",
+    "ĐÚNG — vì cả hai đều làm việc với vô thức",
+    "Không thể trả lời vì tài liệu không đề cập"
+  ],
+  dapAn:1,
+  giaiThich:"Theo bảng so sánh trong bài giảng: TLPT được đào tạo bởi hội đoàn chuyên môn (thường ngoài đại học), hoạt động chính là “giúp vô thức được ý thức”, theo một hướng duy nhất và chuyên biệt. LSPT học sau đại học ngành TLH lâm sàng, làm đánh giá tâm lý và có thể kết hợp nhiều trường phái. Cùng dùng phân tâm không đồng nghĩa với cùng một tư cách nghề nghiệp.",
+  viSaoSai:[
+    "Bảng so sánh phân biệt rõ bốn tiêu chí giữa hai chức danh.",
+    "",
+    "Cùng đối tượng làm việc không đồng nghĩa cùng chức danh và phạm vi hành nghề.",
+    "Tài liệu có hẳn một bảng so sánh dành cho câu hỏi này."
+  ]
+},
+{
+  id:"PT-LT-32", loai:"ly-thuyet", chuDe:"Ý kiến cá nhân — LSPT vs TLPT",
+  cauHoi:"Nhận định: “Một nhà LSPT cũng có những hoạt động trị liệu phân tâm.” Đánh giá đúng nhất là:",
+  luaChon:[
+    "ĐÚNG — hoạt động nghề nghiệp của LSPT gồm đánh giá tâm lý và đồng hành trị liệu giúp thân chủ “khoẻ” hơn bằng ứng dụng của phân tâm",
+    "SAI — LSPT chỉ được làm đánh giá tâm lý, không được trị liệu",
+    "SAI — LSPT chỉ làm nghiên cứu và giảng dạy",
+    "ĐÚNG — nhưng chỉ khi có thêm chứng chỉ của hội đoàn phân tâm"
+  ],
+  dapAn:0,
+  giaiThich:"Bảng so sánh ghi hoạt động nghề nghiệp chính của LSPT gồm hai vế: đánh giá tâm lý, và đồng hành trị liệu giúp TC “khoẻ” hơn bằng ứng dụng của phân tâm. Đây chính là điểm giao giữa hai chức danh.",
+  viSaoSai:[
+    "",
+    "Trái với mô tả trong bảng so sánh.",
+    "Không phải nội dung được nêu.",
+    "Bảng so sánh không đặt điều kiện này cho hoạt động trị liệu của LSPT."
+  ]
+},
+{
+  id:"PT-LT-33", loai:"ly-thuyet", chuDe:"Ý kiến cá nhân — đánh giá tâm lý",
+  cauHoi:"Hai nhận định: (a) “Nhà TLPT phải nắm chắc kỹ năng đánh giá tâm lý bằng các công cụ, phương pháp khác nhau”; (b) “Nhà LSPT phải nắm chắc kỹ năng đó”. Đánh giá đúng là:",
+  luaChon:[
+    "Cả (a) và (b) đều đúng",
+    "(a) sai, (b) đúng — đánh giá tâm lý là hoạt động nghề nghiệp đặc trưng của LSPT; hoạt động chính của TLPT là giúp vô thức được ý thức",
+    "(a) đúng, (b) sai",
+    "Cả hai đều sai"
+  ],
+  dapAn:1,
+  giaiThich:"Bảng so sánh đặt “đánh giá tâm lý” vào cột LSPT, còn cột TLPT chỉ ghi “giúp vô thức được ý thức”. Tương tự, tâm bệnh học nằm trong “giao điểm chuyên môn” của lâm sàng phân tâm — bắt buộc với LSPT chứ không đương nhiên bắt buộc với TLPT.",
+  viSaoSai:[
+    "Nếu cả hai đều đúng thì bảng so sánh đã không tách hai cột.",
+    "",
+    "Đảo ngược so với bảng so sánh.",
+    "(b) chắc chắn đúng theo mô tả hoạt động nghề nghiệp của LSPT."
+  ]
+},
+{
+  id:"PT-LT-34", loai:"ly-thuyet", chuDe:"Ý kiến cá nhân — bác sĩ tâm lý",
+  cauHoi:"Nhận định: “Tâm lý gia lâm sàng là một bác sĩ tâm lý.” Đánh giá đúng là:",
+  luaChon:[
+    "ĐÚNG — vì tâm lý gia lâm sàng làm việc trong bệnh viện",
+    "SAI — không tồn tại nghề “bác sĩ tâm lý”; tâm lý gia và bác sĩ tâm thần là hai nghề khác nhau, và việc tự nhận là bác sĩ chính là cung cấp thông tin sai",
+    "ĐÚNG — vì cả hai đều được cấp phép hành nghề khám chữa bệnh",
+    "Tuỳ quốc gia, không có câu trả lời chung"
+  ],
+  dapAn:1,
+  giaiThich:"“Bác sĩ tâm lý” là một cách gọi sai phổ biến. Tâm lý gia lâm sàng không phải bác sĩ, không kê đơn thuốc; bác sĩ tâm thần mới là bác sĩ. Trong khung trị liệu, tự giới thiệu sai vai trò còn bị xem là hành vi phá khung vì tạo ra kỳ vọng sai lệch nơi thân chủ.",
+  viSaoSai:[
+    "Nơi làm việc không quyết định chức danh.",
+    "",
+    "Tâm lý gia lâm sàng được cấp phép hành nghề nhưng không phải với tư cách bác sĩ.",
+    "Sự phân biệt giữa hai nghề là nhất quán."
+  ]
+},
+{
+  id:"PT-LT-35", loai:"ly-thuyet", chuDe:"Khung trị liệu",
+  cauHoi:"Khung trị liệu (setting/frame) bảo vệ ai?",
+  luaChon:[
+    "Chỉ bảo vệ thân chủ",
+    "Chỉ bảo vệ nhà trị liệu",
+    "Bảo vệ CẢ HAI — thân chủ có môi trường chứa đựng an toàn để bộc lộ; nhà trị liệu có điểm tựa để không bị vắt kiệt, không bị thao túng và không bộc phát hành động",
+    "Không bảo vệ ai, chỉ là quy định hành chính"
+  ],
+  dapAn:2,
+  giaiThich:"Với thân chủ: sự tĩnh tại và bất biến của khung tạo môi trường chứa đựng (holding environment), cho phép bộc lộ những góc tối hỗn loạn nhất mà không phá huỷ thực tại. Với nhà trị liệu: khung như một chiếc áo giáp, giúp không bị vắt kiệt, không bị thao túng và không bộc phát hành động (acting in).",
+  viSaoSai:[
+    "Đúng nhưng thiếu một nửa.",
+    "Đúng nhưng thiếu một nửa.",
+    "",
+    "Khung là công cụ lâm sàng có chức năng bảo vệ rõ ràng."
+  ]
+},
+{
+  id:"PT-LT-36", loai:"ly-thuyet", chuDe:"Khung trị liệu",
+  cauHoi:"Nhận định: “Khung tạo ra sự thoải mái nhất cho thân chủ.” Đánh giá đúng là:",
+  luaChon:[
+    "ĐÚNG — mục tiêu của khung là làm thân chủ dễ chịu nhất có thể",
+    "SAI — khung tạo ra sự AN TOÀN và CHỨA ĐỰNG, nhưng không phải lúc nào cũng thoải mái; nguyên tắc tiết chế và giới hạn thời gian tạo ra “sự thất vọng vừa đủ”, và chính điều đó là động lực chữa lành",
+    "SAI — vì khung chỉ phục vụ nhà trị liệu",
+    "ĐÚNG — với điều kiện thân chủ đã quen với khung"
+  ],
+  dapAn:1,
+  giaiThich:"Đây là chỗ rất dễ nhầm: an toàn ≠ thoải mái. Trị liệu phân tâm thường “không thoải mái” vì nguyên tắc tiết chế (không thoả mãn các khao khát của thân chủ) và vì khung thời gian cứng — ví dụ kết thúc buổi đúng giờ dù thân chủ đang khóc.",
+  viSaoSai:[
+    "Nhầm an toàn với thoải mái.",
+    "",
+    "Khung bảo vệ cả hai bên, không chỉ nhà trị liệu.",
+    "Sự khó chịu do tiết chế là có chủ đích, không mất đi theo thời gian."
+  ]
+},
+{
+  id:"PT-LT-37", loai:"ly-thuyet", chuDe:"Ba cấu trúc nhân cách",
+  cauHoi:"Đặc trưng “sự cố định tương đối” gắn với cấu trúc nhân cách nào và vì sao?",
+  luaChon:[
+    "Cấu trúc Nhiễu tâm (Neurotic) — vì có bản ngã vững chắc, khả năng kiểm tra thực tại tốt và các cơ chế phòng vệ bậc cao, nên nhân cách và triệu chứng ổn định hơn nhiều so với nhóm Ranh giới hay Loạn tâm",
+    "Cấu trúc Ranh giới (Borderline) — vì cảm xúc luôn dao động",
+    "Cấu trúc Loạn tâm (Psychotic) — vì mất khả năng kiểm tra thực tại",
+    "Cả ba cấu trúc đều có mức cố định như nhau"
+  ],
+  dapAn:0,
+  giaiThich:"Ba cấu trúc xếp theo mức độ vững chắc của bản ngã: Nhiễu tâm (vững, phòng vệ bậc cao, triệu chứng ổn định) → Ranh giới (chông chênh, cảm xúc bất ổn) → Loạn tâm (vỡ vụn, mất kiểm tra thực tại).",
+  viSaoSai:[
+    "",
+    "Ranh giới đặc trưng bởi sự chông chênh, không phải cố định.",
+    "Loạn tâm đặc trưng bởi sự sụp đổ cấu trúc.",
+    "Ba cấu trúc khác nhau rõ rệt về mức độ ổn định."
+  ]
+},
+{
+  id:"PT-LT-38", loai:"ly-thuyet", chuDe:"Ba cấu trúc nhân cách",
+  cauHoi:"Nhận định: “Rối nhiễu loạn tâm đặc trưng là sự cao trào về cảm xúc.” Đánh giá đúng là:",
+  luaChon:[
+    "ĐÚNG — người loạn tâm luôn có cảm xúc mãnh liệt",
+    "SAI — cao trào và bất ổn cảm xúc là đặc trưng của cấu trúc Ranh giới (hoặc nét Hystery); đặc trưng cốt lõi của Loạn tâm là sự sụp đổ cấu trúc, mất khả năng kiểm tra thực tại (hoang tưởng, ảo giác), đôi khi kèm cùn mòn/vô cảm về cảm xúc",
+    "SAI — vì loạn tâm không có cảm xúc",
+    "ĐÚNG — nhưng chỉ trong giai đoạn cấp"
+  ],
+  dapAn:1,
+  giaiThich:"Đây là bẫy hoán đổi đặc trưng giữa hai cấu trúc. Ghi nhớ: dao động cảm xúc dữ dội → Ranh giới; mất kiểm tra thực tại, hoang tưởng ảo giác, có thể cùn mòn cảm xúc → Loạn tâm.",
+  viSaoSai:[
+    "Đây chính là đặc trưng bị gán nhầm.",
+    "",
+    "Loạn tâm không phải là không có cảm xúc; đặc trưng là cùn mòn hoặc mất kiểm tra thực tại.",
+    "Cao trào cảm xúc vẫn không phải đặc trưng cốt lõi của loạn tâm."
+  ]
+},
+
 /* ========================= THỰC HÀNH / SUY LUẬN ========================= */
 
 {
@@ -1129,6 +1274,158 @@ window.QUIZ_BANK["phan-tam"] = {
     "",
     "IQ đã có và không phải trọng tâm của việc đọc tranh.",
     "Đề bài yêu cầu vẽ mẹ, nên đây không phải lựa chọn tự phát của trẻ."
+  ]
+},
+{
+  id:"PT-TH-31", loai:"thuc-hanh", chuDe:"Im lặng — chức năng khám phá",
+  boiCanh:"Thân chủ vừa nói ra một điều quan trọng rồi im lặng, ánh mắt hướng vào trong, rõ ràng đang chiêm nghiệm. Nhà trị liệu thấy hơi bồn chồn với khoảng lặng.",
+  cauHoi:"Nhà trị liệu nên làm gì?",
+  luaChon:[
+    "Phá vỡ sự im lặng ngay bằng một câu hỏi để buổi làm việc không bị gián đoạn",
+    "Duy trì không gian chứa đựng (holding) và lắng nghe chính sự im lặng đó; sự bồn chồn muốn lấp đầy khoảng lặng thường là phản chuyển cảm của nhà trị liệu chứ không phải nhu cầu của thân chủ",
+    "Hỏi thân chủ vì sao lại im lặng",
+    "Kết thúc buổi sớm vì thân chủ không còn gì để nói"
+  ],
+  dapAn:1,
+  giaiThich:"Im lặng là một “chất liệu” vô giá: nó có thể là kháng cự, hồi tưởng, hoặc một khoảng không an toàn để chiêm nghiệm. Điều cần kiểm tra trước tiên là động cơ của chính nhà trị liệu — vội vã phá vỡ im lặng thường xuất phát từ lo âu của người làm nghề.",
+  viSaoSai:[
+    "Đây chính là sai lầm được cảnh báo.",
+    "",
+    "Hỏi ngay cũng là một cách phá vỡ khoảng lặng đang có chức năng.",
+    "Im lặng không đồng nghĩa với hết chất liệu."
+  ]
+},
+{
+  id:"PT-TH-32", loai:"thuc-hanh", chuDe:"Phá khung",
+  boiCanh:"Trong buổi đầu, nhà tâm lý lâm sàng giới thiệu với thân chủ: “Tôi là bác sĩ tâm lý, tôi sẽ khám và điều trị cho anh.”",
+  cauHoi:"Vấn đề ở đây là gì?",
+  luaChon:[
+    "Không có vấn đề gì, đó chỉ là cách nói dân dã cho dễ hiểu",
+    "Đây là hành vi phá khung: định vị sai vai trò nghề nghiệp, cung cấp thông tin sai (không tồn tại nghề “bác sĩ tâm lý”), làm méo mó khung bên trong và tạo kỳ vọng sai lệch nơi thân chủ — chẳng hạn kỳ vọng được kê đơn thuốc",
+    "Chỉ là lỗi nhỏ về thuật ngữ, có thể đính chính ở buổi sau",
+    "Vấn đề nằm ở chữ “điều trị” chứ không phải chữ “bác sĩ”"
+  ],
+  dapAn:1,
+  giaiThich:"Tâm lý gia và bác sĩ tâm thần là hai nghề khác nhau; “bác sĩ tâm lý” không tồn tại. Việc tự nhận sai vai trò vi phạm tính chân thực của khung ngay từ điểm khởi đầu của mối quan hệ trị liệu.",
+  viSaoSai:[
+    "Cách nói “cho dễ hiểu” ở đây là thông tin sai về tư cách nghề nghiệp.",
+    "",
+    "Sai lệch về vai trò nghề nghiệp không phải lỗi nhỏ.",
+    "Chính chữ “bác sĩ” mới là vấn đề cốt lõi."
+  ]
+},
+{
+  id:"PT-TH-33", loai:"thuc-hanh", chuDe:"Thời điểm diễn giải chuyển cảm",
+  boiCanh:"Ở buổi thứ ba, nhà trị liệu nhận ra thân chủ đang chuyển cảm rất rõ: cô đối xử với mình y hệt cách cô mô tả quan hệ với người cha khắt khe. Nhà trị liệu thấy phát hiện này thú vị và muốn nói ra ngay.",
+  cauHoi:"Ứng xử phù hợp nhất là:",
+  luaChon:[
+    "Diễn dịch ngay vì chuyển cảm là chất liệu quý, nói sớm sẽ mở ra nhiều điều mới",
+    "Nhận diện và chứa đựng chuyển cảm, nuôi dưỡng cho tới khi chín muồi rồi mới diễn dịch — chỉ ra quá sớm khi bản ngã thân chủ chưa sẵn sàng sẽ gây kháng cự mãnh liệt hoặc chối bỏ",
+    "Bỏ qua vì chuyển cảm không nên được nói tới",
+    "Chuyển thân chủ sang đồng nghiệp khác để tránh chuyển cảm"
+  ],
+  dapAn:1,
+  giaiThich:"Nhận ra chuyển cảm và làm việc với chuyển cảm là hai bước khác nhau. Tính thời điểm (timing) là nguyên tắc kỹ thuật cốt lõi: diễn dịch đúng nội dung nhưng sai thời điểm vẫn phản tác dụng — trùng với nguyên tắc trình tự làm rõ – đối chất – diễn giải.",
+  viSaoSai:[
+    "Đây là nhận định sai phổ biến; chuyển cảm quý nhưng không được diễn dịch vội.",
+    "",
+    "Bỏ qua là một trong hai điều bài giảng khuyên không làm (không xuôi theo, không bỏ qua).",
+    "Chuyển cảm là hiện tượng phổ quát, đổi người không giải quyết được gì."
+  ]
+},
+{
+  id:"PT-TH-34", loai:"thuc-hanh", chuDe:"Phản chuyển cảm là chất liệu",
+  boiCanh:"Với một thân chủ, nhà trị liệu liên tục thấy buồn ngủ; với một thân chủ khác, cô thấy tức giận vô cớ ngay từ phút đầu.",
+  cauHoi:"Cách hiểu đúng theo phân tâm học hiện đại là gì?",
+  luaChon:[
+    "Đây là điểm mù cản trở, cần loại bỏ càng nhanh càng tốt",
+    "Đây là công cụ vô giá — những cảm xúc nảy sinh bên trong nhà trị liệu chính là chiếc radar nhạy bén nhất để dò tìm cơ chế phóng chiếu nhận đồng và những tổn thương vô thức chưa nói thành lời của thân chủ",
+    "Đây là dấu hiệu nhà trị liệu cần nghỉ ngơi, không liên quan tới ca",
+    "Đây là chuyển cảm của thân chủ"
+  ],
+  dapAn:1,
+  giaiThich:"Freud thời kỳ đầu coi phản chuyển cảm là điểm mù cản trở; phân tâm hiện đại đảo ngược quan điểm đó. Tính đặc hiệu — chỉ xảy ra với riêng một thân chủ — là dấu hiệu cho thấy đây là dữ liệu lâm sàng chứ không phải trạng thái cá nhân ngẫu nhiên.",
+  viSaoSai:[
+    "Đó là quan điểm cổ điển đã được thay thế.",
+    "",
+    "Tính đặc hiệu với từng ca loại trừ cách giải thích này.",
+    "Cảm xúc nảy sinh ở phía nhà trị liệu là phản chuyển cảm, không phải chuyển cảm."
+  ]
+},
+{
+  id:"PT-TH-35", loai:"thuc-hanh", chuDe:"Tiết chế và giới hạn khung",
+  boiCanh:"Đã hết giờ nhưng thân chủ đang khóc và nói chưa muốn về. Nhà trị liệu phân vân có nên kéo dài buổi thêm 30 phút không.",
+  cauHoi:"Lập trường phù hợp với khung phân tâm là:",
+  luaChon:[
+    "Kéo dài buổi vì đặt nhu cầu thân chủ lên trên quy định",
+    "Kết thúc đúng giờ với thái độ ân cần: giới hạn thời gian là một phần của khung, và “sự thất vọng vừa đủ” do nguyên tắc tiết chế tạo ra chính là động lực chữa lành",
+    "Kết thúc đúng giờ và không nói gì thêm để giữ tính trung lập",
+    "Kéo dài buổi lần này rồi giải thích ở buổi sau"
+  ],
+  dapAn:1,
+  giaiThich:"Khung tạo an toàn chứ không tạo thoải mái. Phá khung để làm dịu thân chủ tức thì sẽ lấy đi chính điều kiện làm nên hiệu quả trị liệu, và cũng là bước đầu của việc bị cuốn vào diễn ra phản chuyển cảm.",
+  viSaoSai:[
+    "Đây là hành vi phá khung, dù xuất phát từ thiện ý.",
+    "",
+    "Giữ khung không đồng nghĩa với lạnh lùng; vẫn cần ân cần khi kết thúc.",
+    "Phá khung một lần đã tạo tiền lệ và làm khung mất tính bất biến."
+  ]
+},
+{
+  id:"PT-TH-36", loai:"thuc-hanh", chuDe:"Phản tư vs diễn dịch",
+  boiCanh:"Một sinh viên phát biểu: “Nhà lâm sàng định hướng phân tâm chủ yếu giúp thân chủ tự phản tư (reflection) câu chuyện của mình.”",
+  cauHoi:"Nhận xét đúng nhất là:",
+  luaChon:[
+    "Đúng hoàn toàn — đó là mục tiêu chính của mọi trường phái",
+    "Chưa chính xác nếu xét trong hệ quy chiếu phân tâm: phản tư và thấu cảm là kỹ thuật trọng tâm của trường phái Nhân văn (Carl Rogers); phân tâm đi xa hơn — mục tiêu là giúp vô thức được ý thức hoá qua việc diễn dịch cơ chế phòng vệ, chuyển cảm và xung đột sâu kín",
+    "Sai hoàn toàn — phân tâm không quan tâm tới câu chuyện của thân chủ",
+    "Đúng — vì phản tư chính là tên gọi khác của diễn dịch"
+  ],
+  dapAn:1,
+  giaiThich:"Phản tư dừng ở câu chuyện bề mặt; diễn dịch chạm tới tầng vô thức bên dưới. Nhầm hai kỹ thuật này là nhầm luôn hai trường phái — đây là điểm phân biệt hay được hỏi.",
+  viSaoSai:[
+    "Mỗi trường phái có mục tiêu kỹ thuật riêng.",
+    "",
+    "Phân tâm rất quan tâm tới lời kể — nhưng để đi xa hơn nó, không dừng lại ở nó.",
+    "Phản tư và diễn dịch khác nhau cả về chiều sâu lẫn về trường phái."
+  ]
+},
+{
+  id:"PT-TH-37", loai:"thuc-hanh", chuDe:"Phân biệt ba cấu trúc",
+  boiCanh:"Thân chủ nữ 24 tuổi: cảm xúc “lật bánh tráng” trong vòng một buổi — vừa ca ngợi nhà trị liệu hết lời, mười phút sau đã giận dữ phủ nhận toàn bộ; sợ bị bỏ rơi dữ dội; quan hệ nào cũng bùng cháy rồi đổ vỡ. Khả năng kiểm tra thực tại còn nguyên vẹn.",
+  cauHoi:"Cấu trúc nhân cách nào phù hợp nhất?",
+  luaChon:[
+    "Cấu trúc Nhiễu tâm",
+    "Cấu trúc Ranh giới (Borderline)",
+    "Cấu trúc Loạn tâm",
+    "Không thuộc cấu trúc nào trong ba loại"
+  ],
+  dapAn:1,
+  giaiThich:"Ba dấu hiệu hội tụ: dao động cảm xúc dữ dội, sợ bị bỏ rơi, quan hệ bất ổn — kèm chi tiết quyết định là khả năng kiểm tra thực tại còn nguyên vẹn, loại trừ loạn tâm. Sự dao động ca ngợi/phủ nhận cũng chính là phòng vệ tách đôi.",
+  viSaoSai:[
+    "Nhiễu tâm có nhân cách và triệu chứng cố định tương đối, ổn định hơn nhiều.",
+    "",
+    "Loạn tâm đặc trưng bởi mất kiểm tra thực tại — điều đề bài loại trừ rõ ràng.",
+    "Mô tả khớp rất sát với một cấu trúc cụ thể."
+  ]
+},
+{
+  id:"PT-TH-38", loai:"thuc-hanh", chuDe:"Ai đưa ra lời yêu cầu",
+  boiCanh:"Bốn thân chủ cùng than phiền về cuộc sống. Chỉ một người nói: “Tôi nhận ra mình có phần trách nhiệm trong chuyện này, và tôi muốn thay đổi chính mình.”",
+  cauHoi:"Người này đang ở giai đoạn nào trong ba thành tố, và điều đó có ý nghĩa gì?",
+  luaChon:[
+    "Vẫn ở giai đoạn lời than vãn; cần thêm thời gian",
+    "Đã bước sang giai đoạn LỜI YÊU CẦU — nhận lãnh trách nhiệm cá nhân đối với nghịch cảnh và thực sự khao khát thay đổi bản thân; đây là điều kiện để tiến trình trị liệu thực sự bắt đầu",
+    "Đang ở giai đoạn khổ đau",
+    "Đây là biểu hiện của kháng cự được nguỵ trang"
+  ],
+  dapAn:1,
+  giaiThich:"“Lời than vãn” đại diện cho tư duy nạn nhân — đổ lỗi cho người khác. “Lời yêu cầu” là bước ngoặt khi chủ thể nhận trách nhiệm về phần mình. Người đang muốn thay đổi bản thân chính là người đưa ra lời yêu cầu.",
+  viSaoSai:[
+    "Than vãn thiếu đúng yếu tố thừa nhận trách nhiệm mà câu nói này có.",
+    "",
+    "Khổ đau là trạng thái cảm nhận, chưa được cất lời thành yêu cầu.",
+    "Không có căn cứ nào để đọc đây là kháng cự."
   ]
 }
 

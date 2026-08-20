@@ -37,7 +37,7 @@ window.NHANH_TRI_LIEU = [
     enTen: "Psychoanalytically-oriented Clinical Psychology",
     file: "nhanh/phan-tam.html",
     tomTat: "Hai chuyên đề đã học: giới thiệu lâm sàng định hướng phân tâm (tâm thế lâm sàng, ba thành tố, chuyển cảm – phản chuyển cảm, năm hoạt động trong phòng) và trung gian trị liệu.",
-    tuKhoa: ["đau khổ – than vãn – yêu cầu", "đồng nhất hoá", "chuyển cảm", "phản chuyển cảm", "chú ý lửng lơ", "im lặng", "liên tưởng tự do", "tranh vẽ hình người"],
+    tuKhoa: ["đau khổ – than vãn – yêu cầu", "đồng nhất hoá", "chuyển cảm", "phản chuyển cảm", "chú ý lửng lơ", "im lặng", "liên tưởng tự do", "tranh vẽ hình người", "khung trị liệu", "nhiễu tâm · ranh giới · loạn tâm"],
     nguon: "Slide: ThS. Phạm Ngọc Long",
     xong: true
   },
@@ -47,9 +47,9 @@ window.NHANH_TRI_LIEU = [
     tenNgan: "Gia đình",
     enTen: "Family Systems Therapy",
     file: "nhanh/he-thong-gia-dinh.html",
-    tomTat: "Bảy phần của sổ tay chuyên đề: khung pháp lý hành nghề, lý thuyết hệ thống tổng quát, nhân quả vòng tròn và hai loại phản hồi, chu kỳ đời sống gia đình, các trường phái và mô hình Satir, liệu pháp bối cảnh xuyên thế hệ.",
-    tuKhoa: ["Nghị định 96/2023", "von Bertalanffy", "phản hồi âm / dương", "McGoldrick — 6 giai đoạn", "Minuchin", "Bowen", "Haley · Madanes", "Satir · Whitaker", "Böszörményi-Nagy", "White · Epston", "bảng xoay nợ", "phụ mẫu hoá"],
-    nguon: "Sổ tay chuyên đề — ThS. Vương Nguyễn Toàn Thiện",
+    tomTat: "Bản đầy đủ của sổ tay chuyên đề: khung pháp lý hành nghề, lý thuyết hệ thống tổng quát, nhân quả vòng tròn, chu kỳ đời sống gia đình, 5 tiên đề giao tiếp Watzlawick, 5 kiểu ứng phó Satir, liệu pháp bối cảnh xuyên thế hệ, 4 điển cứu lâm sàng và kỹ thuật genogram.",
+    tuKhoa: ["Nghị định 96/2023", "von Bertalanffy", "phản hồi âm / dương", "McGoldrick — 6 giai đoạn", "5 tiên đề Watzlawick", "5 kiểu ứng phó Satir", "Minuchin · Bowen · Haley", "Böszörményi-Nagy", "thiên vị đa hướng", "miễn trừ", "bảng xoay nợ", "phụ mẫu hoá", "genogram", "4 điển cứu"],
+    nguon: "Sổ tay chuyên đề (bản đầy đủ, 6 trang) — ThS. Vương Nguyễn Toàn Thiện",
     xong: true
   }
 ];

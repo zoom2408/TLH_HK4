@@ -650,6 +650,260 @@ window.QUIZ_BANK["gia-dinh"] = {
   ]
 },
 
+{
+  id:"GD-LT-36", loai:"ly-thuyet", chuDe:"Watzlawick — 5 tiên đề",
+  cauHoi:"Tiên đề thứ nhất của Paul Watzlawick phát biểu điều gì?",
+  luaChon:[
+    "Không thể không giao tiếp — mọi hành vi, sự im lặng, cử chỉ đều là một thông điệp gửi đến đối phương",
+    "Mọi giao tiếp đều có thể được kiểm chứng bằng lời nói",
+    "Giao tiếp chỉ xảy ra khi cả hai bên đều có ý định giao tiếp",
+    "Im lặng là cách duy nhất để ngừng giao tiếp"
+  ],
+  dapAn:0,
+  giaiThich:"Tiên đề “không thể không giao tiếp” là nền tảng: ngay cả việc quay lưng, im lặng hay lảng tránh cũng đang gửi đi một thông điệp. Không tồn tại trạng thái “không giao tiếp”.",
+  viSaoSai:[
+    "",
+    "Trái với tiên đề 4 — kênh phi ngôn ngữ (analog) không thể phủ định bằng lời.",
+    "Ý định không phải điều kiện; hành vi tự nó đã mang thông điệp.",
+    "Trái hoàn toàn — im lặng chính là một thông điệp."
+  ]
+},
+{
+  id:"GD-LT-37", loai:"ly-thuyet", chuDe:"Watzlawick — 5 tiên đề",
+  cauHoi:"Theo bài giảng, khi A bắt chuyện thì B có thể phản ứng theo ba cách nào?",
+  luaChon:[
+    "Đồng ý — phản đối — im lặng",
+    "Chấp nhận — Từ chối — Huỷ bỏ",
+    "Lắng nghe — phản hồi — kết thúc",
+    "Digital — Analog — Meta"
+  ],
+  dapAn:1,
+  giaiThich:"Ba khả năng được nêu trong ví dụ minh hoạ tiên đề 1: (a) Chấp nhận, (b) Từ chối, (c) Huỷ bỏ — dùng từ tối nghĩa, ngầm gửi thông điệp “Tôi muốn nhưng tôi không thể”.",
+  viSaoSai:[
+    "Không phải bộ ba được nêu.",
+    "",
+    "Đây là các bước của một cuộc trò chuyện, không phải ba kiểu phản ứng.",
+    "Digital/Analog thuộc tiên đề 4."
+  ]
+},
+{
+  id:"GD-LT-38", loai:"ly-thuyet", chuDe:"Watzlawick — 5 tiên đề",
+  cauHoi:"Tiên đề 2 phân biệt hai cấp độ nào của một thông điệp, và khái niệm nào giúp nhà trị liệu “nhìn từ trên cao”?",
+  luaChon:[
+    "Cấp độ Digital và Analog; khái niệm dấu chấm câu",
+    "Cấp độ Nội dung (What) và Mối quan hệ (How/Who); khái niệm siêu giao tiếp (meta-communication)",
+    "Cấp độ Đối xứng và Bổ sung; khái niệm phản hồi âm tính",
+    "Cấp độ ý thức và vô thức; khái niệm chuyển cảm"
+  ],
+  dapAn:1,
+  giaiThich:"Nội dung truyền tải thông tin (What); mối quan hệ định hình cách hiểu thông tin (How/Who). Bài giảng nhấn mạnh: bất đồng trong mối quan hệ thường đội lốt bất đồng nội dung — và siêu giao tiếp là công cụ để nhìn ra điều đó.",
+  viSaoSai:[
+    "Digital/Analog là tiên đề 4; dấu chấm câu là tiên đề 3.",
+    "",
+    "Đối xứng/Bổ sung là tiên đề 5.",
+    "Đây là khung phân tâm."
+  ]
+},
+{
+  id:"GD-LT-39", loai:"ly-thuyet", chuDe:"Watzlawick — 5 tiên đề",
+  cauHoi:"Theo tiên đề 4, đặc điểm nào phân biệt giao tiếp Digital với Analog?",
+  luaChon:[
+    "Digital là ngôn ngữ lời nói, có thể kiểm duyệt và nói dối; Analog là phi ngôn ngữ, biểu đạt here & now và không thể phủ định",
+    "Digital là giao tiếp qua thiết bị điện tử; Analog là giao tiếp trực tiếp",
+    "Digital chính xác hơn nên ít gây hiểu lầm hơn Analog",
+    "Analog chỉ xuất hiện ở trẻ chưa biết nói"
+  ],
+  dapAn:0,
+  giaiThich:"Bài giảng ghi rõ hai đặc tính đối lập: lời nói có thể kiểm duyệt và nói dối, còn kênh phi ngôn ngữ không thể phủ định, mang tính trực cảm — nhưng dễ gây hiểu lầm nghiêm trọng nếu diễn dịch sai.",
+  viSaoSai:[
+    "",
+    "Đây là hiểu nhầm theo nghĩa công nghệ của từ “digital”.",
+    "Ngược lại — Analog dễ gây hiểu lầm nghiêm trọng nếu diễn dịch sai.",
+    "Analog hiện diện ở mọi lứa tuổi."
+  ]
+},
+{
+  id:"GD-LT-40", loai:"ly-thuyet", chuDe:"Watzlawick — 5 tiên đề",
+  cauHoi:"Tiên đề 5 phân biệt tương tác Đối xứng và Bổ sung; mỗi kiểu có nguy cơ đặc trưng nào?",
+  luaChon:[
+    "Đối xứng dễ dẫn tới đối thoại leo thang; Bổ sung cố định dễ đẩy một bên vào trạng thái lệ thuộc, mất tự chủ",
+    "Đối xứng dẫn tới lệ thuộc; Bổ sung dẫn tới leo thang",
+    "Cả hai đều dẫn tới cắt đứt quan hệ",
+    "Đối xứng luôn lành mạnh; Bổ sung luôn bệnh lý"
+  ],
+  dapAn:0,
+  giaiThich:"Đối xứng là quan hệ hai bên bình đẳng, cạnh tranh — nên dễ leo thang. Bổ sung là một bên lấn át, một bên phục tùng — nếu cố định lâu dài thì bên phục tùng mất tự chủ.",
+  viSaoSai:[
+    "",
+    "Hai nguy cơ bị đảo ngược.",
+    "Bài giảng nêu hai nguy cơ khác nhau cho hai kiểu.",
+    "Không kiểu nào tự nó lành mạnh hay bệnh lý; vấn đề nằm ở tính cứng nhắc."
+  ]
+},
+{
+  id:"GD-LT-41", loai:"ly-thuyet", chuDe:"Thiên vị đa hướng",
+  cauHoi:"“Thiên vị đa hướng” (Multidirected Partiality) được mô tả chính xác nhất là gì?",
+  luaChon:[
+    "Một kỹ thuật đặt câu hỏi luân phiên cho từng thành viên",
+    "Không phải công cụ hay kỹ thuật, mà là “Đạo đức của cuộc tranh luận về đạo đức” — nhà trị liệu lần lượt đứng về phía từng người, kể cả người vắng mặt, mà không thiên vị ai chống lại ai",
+    "Việc nhà trị liệu giữ thái độ trung lập tuyệt đối, không đứng về phía ai",
+    "Việc chia đều thời gian phát biểu cho mọi thành viên trong buổi"
+  ],
+  dapAn:1,
+  giaiThich:"Bài giảng nhấn mạnh đây không phải kỹ thuật mà là một lập trường đạo đức. Điểm đặc biệt: nhà trị liệu đứng về phía cả những người vắng mặt, để mỗi bên đều có cơ hội trình bày bất công của mình.",
+  viSaoSai:[
+    "Tài liệu nói rõ đây không phải công cụ hay kỹ thuật.",
+    "",
+    "Khác trung lập — thiên vị đa hướng là đứng về phía từng người lần lượt, chứ không phải không đứng về phía ai.",
+    "Đây là vấn đề phân bổ thời gian, không phải nội dung khái niệm."
+  ]
+},
+{
+  id:"GD-LT-42", loai:"ly-thuyet", chuDe:"Miễn trừ",
+  cauHoi:"Khái niệm “Miễn trừ” (Exoneration) trong liệu pháp bối cảnh nghĩa là gì?",
+  luaChon:[
+    "Tha thứ dễ dãi cho người đã gây tổn thương",
+    "Thấu hiểu nguồn gốc thiệt hại trong dòng chảy lịch sử hệ thống, đưa trách nhiệm về đúng chủ nhân thật sự",
+    "Xoá bỏ mất mát khỏi ký ức để đi tiếp",
+    "Miễn cho thân chủ nghĩa vụ đền đáp cha mẹ"
+  ],
+  dapAn:1,
+  giaiThich:"Tài liệu nói rõ miễn trừ KHÔNG đồng nghĩa với tha thứ dễ dãi hay xoá bỏ mất mát. Nó là việc đặt lại trách nhiệm cho đúng người — thường là truy ngược lên các thế hệ trước, nơi bất công thật sự bắt nguồn.",
+  viSaoSai:[
+    "Tài liệu phủ định trực tiếp cách hiểu này.",
+    "",
+    "Tài liệu cũng phủ định trực tiếp cách hiểu này.",
+    "Không liên quan tới nội dung khái niệm."
+  ]
+},
+{
+  id:"GD-LT-43", loai:"ly-thuyet", chuDe:"Bệnh nhân bị chỉ định",
+  cauHoi:"Bệnh nhân bị chỉ định (IP — Identified Patient, “vật tế thần”) hình thành qua bốn bước nào?",
+  luaChon:[
+    "Lựa chọn → Khuếch đại → Kết tinh → Bệnh lý hoá",
+    "Sang chấn → Dồn nén → Triệu chứng → Mãn tính hoá",
+    "Xung đột → Tam giác hoá → Cắt đứt → Tái phát",
+    "Bất ngờ → Chia cắt → Bất lực → Sang chấn"
+  ],
+  dapAn:0,
+  giaiThich:"Bốn bước theo tài liệu: hệ thống lựa chọn một người, khuếch đại các dấu hiệu ở người đó, kết tinh vai trò ấy, rồi bệnh lý hoá thành triệu chứng. Người này phát lộ sự đau khổ của cả hệ thống.",
+  viSaoSai:[
+    "",
+    "Đây là ngôn ngữ phân tâm, không phải bốn bước được nêu.",
+    "Không phải bốn bước được nêu.",
+    "Đó là bộ ba tác động của sang chấn hậu COVID trong bản trước."
+  ]
+},
+{
+  id:"GD-LT-44", loai:"ly-thuyet", chuDe:"Genogram",
+  cauHoi:"Theo ký hiệu chuẩn GenoPro, các ký hiệu nhân khẩu cơ bản là gì?",
+  luaChon:[
+    "Nam — hình tròn; Nữ — hình vuông; Đã mất — tô đen",
+    "Nam — hình vuông; Nữ — hình tròn; Mang thai — hình tam giác; Đã mất — gạch chéo X",
+    "Nam — hình tam giác; Nữ — hình vuông; Đã mất — đường đứt nét",
+    "Không có quy ước chuẩn, mỗi nhà trị liệu tự chọn ký hiệu"
+  ],
+  dapAn:1,
+  giaiThich:"Đây là bộ ký hiệu nhân khẩu chuẩn được liệt kê trong tài liệu. Ghi nhớ: vuông là nam, tròn là nữ, tam giác là thai, dấu X là đã mất.",
+  viSaoSai:[
+    "Vuông – tròn bị đảo ngược.",
+    "",
+    "Tam giác dành cho thai, không phải nam.",
+    "GenoPro là bộ ký hiệu đã được chuẩn hoá."
+  ]
+},
+{
+  id:"GD-LT-45", loai:"ly-thuyet", chuDe:"Genogram",
+  cauHoi:"Trong genogram, quan hệ “xung đột / thù địch” và “bạo lực” được vẽ bằng ký hiệu nào?",
+  luaChon:[
+    "Đường đôi và ba đường song song",
+    "Đường ziczac (xung đột/thù địch) và ziczac kép (bạo lực)",
+    "Đường đứt nét và đường xoắn lồng",
+    "Một gạch chéo và hai gạch chéo"
+  ],
+  dapAn:1,
+  giaiThich:"Nhóm ký hiệu quan hệ cảm xúc: hoà hợp — đường đôi; thân thiết — ba đường song song; xung đột/thù địch — đường ziczac; bạo lực — ziczac kép; cắt đứt — đường đứt có hai vạch chặn; phụ thuộc/dính mắc — đường xoắn lồng.",
+  viSaoSai:[
+    "Đó là ký hiệu của hoà hợp và thân thiết.",
+    "",
+    "Đường đứt nét là sống chung (nhóm hôn nhân); đường xoắn lồng là dính mắc.",
+    "Đó là ký hiệu ly thân và ly hôn, thuộc nhóm quan hệ hôn nhân."
+  ]
+},
+
+{
+  id:"GD-LT-46", loai:"ly-thuyet", chuDe:"Nagy — chiều kích tâm lý cá nhân",
+  cauHoi:"Chiều kích “Tâm lý cá nhân” (tầng 2) trong Tháp 4 chiều kích của Nagy làm việc trên những nội dung nào?",
+  luaChon:[
+    "Các sự kiện khách quan có thể kiểm chứng: ai, ở đâu, khi nào",
+    "Bộ máy tâm trí bên trong của từng cá nhân: suy nghĩ, nhận thức, cảm xúc, trí tuệ và cấu trúc nhân cách",
+    "Các khuôn mẫu giao tiếp lặp lại giữa các thành viên",
+    "Cán cân công bằng cho – nhận giữa các thế hệ"
+  ],
+  dapAn:1,
+  giaiThich:"Bốn tầng đi từ ngoài vào trong rồi lên trên: (1) sự kiện khách quan → (2) tâm lý cá nhân — đời sống nội tâm và cấu trúc nhân cách của từng người → (3) tương tác quan hệ → (4) đạo đức quan hệ.",
+  viSaoSai:[
+    "Đó là chiều kích 1 — sự kiện khách quan (5W1H).",
+    "",
+    "Đó là chiều kích 3 — tương tác quan hệ.",
+    "Đó là chiều kích 4 — đạo đức quan hệ."
+  ]
+},
+{
+  id:"GD-LT-47", loai:"ly-thuyet", chuDe:"Chu kỳ đời sống gia đình",
+  cauHoi:"Vấn đề quan trọng nhất khi gia đình có con vị thành niên là gì?",
+  luaChon:[
+    "Kiểm soát chặt hơn để phòng ngừa rủi ro tuổi mới lớn",
+    "Thiết lập sự cân bằng giữa việc cho phép con tự chủ (để phát triển bản sắc cá nhân) và duy trì sự kết nối, giám sát của cha mẹ — ranh giới gia đình phải trở nên linh hoạt hơn",
+    "Chuẩn bị tài chính cho con vào đại học",
+    "Giữ nguyên mọi quy tắc để hệ thống ổn định"
+  ],
+  dapAn:1,
+  giaiThich:"Nhiệm vụ phát triển của giai đoạn 4 là nới lỏng ranh giới để con phát triển tự chủ, nhưng không đánh mất kết nối. Ranh giới phải trở nên linh hoạt hơn — chứ không phải siết chặt cũng không phải buông hẳn.",
+  viSaoSai:[
+    "Siết chặt là lựa chọn “cố chấp duy trì cơ chế cũ”, dẫn tới triệu chứng bệnh lý.",
+    "",
+    "Đây là vấn đề thực tế nhưng không phải nhiệm vụ phát triển cốt lõi của giai đoạn.",
+    "Giữ nguyên quy tắc đúng vào lúc hệ thống cần tái cấu trúc là công thức tạo khủng hoảng."
+  ]
+},
+{
+  id:"GD-LT-48", loai:"ly-thuyet", chuDe:"Bệnh nhân bị chỉ định",
+  cauHoi:"Người gánh chịu áp lực, hứng chịu sự đổ lỗi và mang triệu chứng thay cho sự rối loạn của toàn bộ hệ thống — có khi kéo dài qua nhiều thế hệ — được gọi là gì?",
+  luaChon:[
+    "Người phụ mẫu hoá (Parentified child)",
+    "Bệnh nhân bị chỉ định (Identified Patient — IP), còn được ví như “vật tế thần” (Scapegoat) của gia đình",
+    "Người mang lòng trung thành vô hình",
+    "Người giữ vai trò Leveler trong hệ thống"
+  ],
+  dapAn:1,
+  giaiThich:"IP là người phát lộ đau khổ của cả hệ thống, hình thành qua bốn bước: Lựa chọn → Khuếch đại → Kết tinh → Bệnh lý hoá. Theo Cloe Madanes, mọi triệu chứng của người này thực chất là tiếng kêu cứu đòi tình yêu thương, kết nối hoặc quyền lực.",
+  viSaoSai:[
+    "Phụ mẫu hoá là bị ép làm cha mẹ cho chính phụ huynh — một hiện tượng khác.",
+    "",
+    "Lòng trung thành vô hình là cơ chế, không phải tên gọi của vai trò này.",
+    "Leveler là kiểu giao tiếp chân thực trong mô hình Satir."
+  ]
+},
+{
+  id:"GD-LT-49", loai:"ly-thuyet", chuDe:"Câu hỏi Socrates",
+  cauHoi:"Trong bối cảnh trị liệu, kỹ thuật đặt câu hỏi Socrates nhằm mục đích gì?",
+  luaChon:[
+    "Dẫn dắt thân chủ tới kết luận mà nhà trị liệu đã định sẵn",
+    "Dùng câu hỏi mở, có tính hệ thống để thân chủ tự suy ngẫm, tự bộc lộ mâu thuẫn trong suy nghĩ và tự tìm ra câu trả lời — thay vì nhà trị liệu áp đặt lời khuyên hay chân lý",
+    "Kiểm tra xem thân chủ có hiểu bài giảng lý thuyết không",
+    "Thu thập đủ dữ liệu để đưa ra chẩn đoán chính xác"
+  ],
+  dapAn:1,
+  giaiThich:"Điểm cốt lõi là thân chủ tự đi tới kết luận bằng chính dữ liệu và trải nghiệm của mình. Trong trị liệu hệ thống, kỹ thuật này tương đồng với các câu hỏi khám phá vòng lặp tuần hoàn — dạng câu hỏi “Làm thế nào?” thay vì “Tại sao?”.",
+  viSaoSai:[
+    "Dẫn tới kết luận định sẵn là thao túng, không phải khám phá có hướng dẫn.",
+    "",
+    "Không phải mục đích của kỹ thuật.",
+    "Thu thập dữ liệu chẩn đoán là mục tiêu khác."
+  ]
+},
+
 /* ========================= THỰC HÀNH / SUY LUẬN ========================= */
 
 {
@@ -1315,6 +1569,272 @@ window.QUIZ_BANK["gia-dinh"] = {
     "Ghép đúng — cả hai đều thuộc trường phái Chiến lược.",
     "",
     "Ghép đúng — tài liệu ghi rõ Nagy là người sáng lập Liệu pháp Bối cảnh."
+  ]
+},
+{
+  id:"GD-TH-36", loai:"thuc-hanh", chuDe:"Điển cứu — mẹ nhiễm HIV",
+  boiCanh:"Một người mẹ nhiễm HIV để con lại ở cô nhi viện. Nhiều người xung quanh nói bà là người mẹ vô trách nhiệm, đã bỏ rơi con mình.",
+  cauHoi:"Theo góc nhìn bối cảnh trong bài giảng, cách hiểu đúng là gì?",
+  luaChon:[
+    "Đúng là bà đã bỏ rơi con; nhiệm vụ của nhà trị liệu là giúp đứa trẻ chấp nhận sự thật đó",
+    "Người mẹ đã trao tặng điều quý giá nhất là sự sống (existential gift) và chấp nhận đau khổ để đứa trẻ có cơ hội sống tốt hơn — không thể nhìn nhận hạn hẹp là sự bỏ rơi vô trách nhiệm",
+    "Đây là biểu hiện của lòng trung thành vô hình",
+    "Đây là hiện tượng phụ mẫu hoá ngược"
+  ],
+  dapAn:1,
+  giaiThich:"Câu hỏi mà bài giảng đặt ra là “Có phải người mẹ ‘không cho’ con?”. Trên cán cân cho – nhận, việc trao sự sống là món quà hiện sinh lớn nhất; việc chịu mang tiếng bỏ rơi cũng là một hình thức cho đi. Đây là ví dụ điển hình cho việc phải đọc sự việc ở chiều kích Đạo đức Quan hệ chứ không dừng ở chiều kích Sự kiện khách quan.",
+  viSaoSai:[
+    "Cách đọc này dừng ở tầng sự kiện khách quan và bỏ qua chiều kích đạo đức quan hệ.",
+    "",
+    "Lòng trung thành vô hình nói về việc đứa trẻ tự chuốc lấy thất bại để đồng cam cộng khổ với cha mẹ.",
+    "Phụ mẫu hoá là đứa trẻ bị ép làm cha mẹ cho phụ huynh, không phải tình huống này."
+  ]
+},
+{
+  id:"GD-TH-37", loai:"thuc-hanh", chuDe:"Điển cứu — trẻ quậy phá",
+  boiCanh:"Người mẹ nghèo tần tảo buôn gánh bán bưng nuôi con ăn học. Đứa con lại quậy phá, bỏ học, phá hỏng mọi cơ hội học bổng. Ai cũng nói em vô ơn.",
+  cauHoi:"Bản chất tâm lý của hành vi này theo bài giảng là gì?",
+  luaChon:[
+    "Em vô ơn và thiếu ý chí, cần biện pháp kỷ luật nghiêm khắc hơn",
+    "Lòng trung thành vô thức (Invisible Loyalty) — em vô thức sợ rằng nếu học giỏi, thành đạt và bước sang tầng lớp xã hội khác thì sẽ tách rời và bỏ rơi mẹ lại phía sau, nên tự huỷ hoại tương lai để ở lại cùng vị thế với mẹ",
+    "Em đang ở giai đoạn khủng hoảng tuổi dậy thì bình thường",
+    "Em bị phụ mẫu hoá nên kiệt sức và mất động lực học"
+  ],
+  dapAn:1,
+  giaiThich:"Đây là điển cứu số 2 trong bài giảng. Nghịch lý nằm ở chỗ: chính tình yêu với mẹ — chứ không phải sự vô ơn — mới là động cơ vô thức của hành vi tự phá hoại. Thành công bị vô thức trải nghiệm như một sự phản bội.",
+  viSaoSai:[
+    "Quy về vô ơn là đọc theo tư duy tuyến tính và bỏ lỡ hoàn toàn cơ chế.",
+    "",
+    "Khủng hoảng dậy thì không giải thích được tính hệ thống của việc tự phá hoại đúng vào các cơ hội thăng tiến.",
+    "Em không đảm nhận vai trò cha mẹ cho mẹ mình."
+  ]
+},
+{
+  id:"GD-TH-38", loai:"thuc-hanh", chuDe:"Parentification vs Parentalization",
+  boiCanh:"Người chị cả trong bài hát “Chị tôi” gánh vác việc nhà, lo cho các em ăn học, hy sinh chuyện riêng. Cha mẹ và các em đều biết ơn, ghi nhận công lao của chị.",
+  cauHoi:"Đây là hiện tượng nào và khác gì với phụ mẫu hoá bệnh lý?",
+  luaChon:[
+    "Parentification bệnh lý — vì chị phải làm việc của cha mẹ",
+    "Parentalization (“quyền huynh thế phụ”) — gánh vác theo giai đoạn, gắn với bối cảnh văn hoá Á Đông và ĐƯỢC ghi nhận công ơn; khác với Parentification là cha mẹ mất chức năng hoàn toàn, lạm dụng và bóc lột đứa trẻ mà không bao giờ ghi nhận",
+    "Bảng xoay nợ xuyên thế hệ",
+    "Tam giác hoá giữa chị và cha mẹ"
+  ],
+  dapAn:1,
+  giaiThich:"Tiêu chí phân biệt then chốt trong bài giảng là SỰ GHI NHẬN và tính giai đoạn. Parentalization có thể lành mạnh nếu đứa con được tôn trọng và ghi nhận; Parentification bệnh lý dẫn tới tự ti sâu sắc, trầm cảm và rối loạn ăn uống khi lớn.",
+  viSaoSai:[
+    "Bệnh lý hay không phụ thuộc vào việc có được ghi nhận và có tính giai đoạn hay không.",
+    "",
+    "Bảng xoay nợ nói về bất công truyền từ thế hệ trước xuống thế hệ sau.",
+    "Không có người thứ ba bị kéo vào để giảm căng thẳng."
+  ]
+},
+{
+  id:"GD-TH-39", loai:"thuc-hanh", chuDe:"Cảnh báo trị liệu",
+  boiCanh:"Bạn làm việc với một thiếu niên bị phụ mẫu hoá: em chăm mẹ trầm cảm, lo tiền chợ, dỗ dành các em. Bạn thấy em kiệt sức và định khuyên em ngưng gánh vác ngay để tập trung cho việc học.",
+  cauHoi:"Vì sao bài giảng cảnh báo tuyệt đối không làm như vậy?",
+  luaChon:[
+    "Vì gia đình sẽ không đồng ý và sẽ ngưng trị liệu",
+    "Vì làm vậy sẽ phạm vào lòng trung thành của em và khiến em cảm thấy bị tước đoạt giá trị",
+    "Vì em chưa đủ tuổi để tự quyết định",
+    "Vì cần chờ có chẩn đoán chính thức trước khi can thiệp"
+  ],
+  dapAn:1,
+  giaiThich:"Vai trò gánh vác — dù nặng nề — đang là nguồn giá trị và là cách em thể hiện lòng trung thành với gia đình. Cắt bỏ đột ngột giống hệt logic của cảnh báo lâm sàng ở phần I: chữa quá nhanh mà không hiểu hệ sinh thái nâng đỡ sẽ gây hại nhiều hơn lợi.",
+  viSaoSai:[
+    "Đây là rủi ro thực tế nhưng không phải lý do được nêu.",
+    "",
+    "Không phải lý do được nêu.",
+    "Không phải lý do được nêu."
+  ]
+},
+{
+  id:"GD-TH-40", loai:"thuc-hanh", chuDe:"Điển cứu — đi bộ về quê",
+  boiCanh:"Sau đại dịch COVID, một người đàn ông đi bộ gần 1.200 km để về quê. Nhiều người dọc đường cho tiền để ông đi xe nhưng ông không lấy, cứ tiếp tục đi bộ.",
+  cauHoi:"Bài giảng dùng hình ảnh này để minh hoạ điều gì?",
+  luaChon:[
+    "Sự cố chấp bệnh lý cần được can thiệp tâm lý",
+    "Nhu cầu nguyên thuỷ của con người là VỀ NHÀ — thuộc về một hệ thống gắn bó an toàn, để trả lời ba câu hỏi hiện sinh: “Ở đâu đó có người đợi tôi? Với tôi họ là gì? Với họ tôi là ai?”",
+    "Hậu quả kinh tế của đại dịch đối với lao động nhập cư",
+    "Cơ chế phản hồi dương tính trong hệ thống xã hội"
+  ],
+  dapAn:1,
+  giaiThich:"Chi tiết quan trọng là ông từ chối tiền — nghĩa là động lực không nằm ở phương tiện hay tiền bạc mà ở chính hành trình trở về. Ba câu hỏi hiện sinh này là cách bài giảng diễn đạt nhu cầu thuộc về một hệ thống gắn bó an toàn.",
+  viSaoSai:[
+    "Bài giảng đọc đây là nhu cầu nguyên thuỷ lành mạnh, không phải bệnh lý.",
+    "",
+    "Đó là bối cảnh, không phải điều hình ảnh này minh hoạ.",
+    "Không có yếu tố khuếch đại độ lệch nào ở đây."
+  ]
+},
+{
+  id:"GD-TH-41", loai:"thuc-hanh", chuDe:"Watzlawick — dấu chấm câu",
+  boiCanh:"Chồng: “Vì cô cằn nhằn nên tôi không về nhà.” Vợ: “Vì anh không về nhà nên tôi mới cằn nhằn.”",
+  cauHoi:"Tiên đề nào của Watzlawick giải thích vòng lặp này?",
+  luaChon:[
+    "Tiên đề 1 — Không thể không giao tiếp",
+    "Tiên đề 3 — Dấu chấm câu trong chuỗi sự kiện: cách mỗi bên tự chọn điểm khởi đầu sẽ quyết định cách họ đổ lỗi; chuỗi thực chất không đầu không cuối",
+    "Tiên đề 4 — Digital vs. Analog",
+    "Tiên đề 5 — Đối xứng vs. Bổ sung"
+  ],
+  dapAn:1,
+  giaiThich:"Đây đúng là ví dụ minh hoạ tiên đề 3 trong bài giảng. Mỗi bên đặt “dấu chấm câu” ở chỗ khiến mình trở thành người phản ứng — đó cũng chính là cơ sở lý thuyết của tư duy nhân quả vòng tròn.",
+  viSaoSai:[
+    "Tiên đề 1 nói về việc không thể ngừng gửi thông điệp.",
+    "",
+    "Tiên đề 4 nói về kênh lời nói và phi ngôn ngữ.",
+    "Tiên đề 5 nói về quan hệ bình đẳng hay lấn át – phục tùng."
+  ]
+},
+{
+  id:"GD-TH-42", loai:"thuc-hanh", chuDe:"Watzlawick — huỷ bỏ",
+  boiCanh:"Trong buổi làm việc, người chồng được hỏi có muốn cùng vợ đi tư vấn tiếp không. Anh trả lời lấp lửng: “Ừ thì… cũng tuỳ, để xem sao, nói chung là cũng được mà cũng không biết nữa.”",
+  cauHoi:"Theo tiên đề 1 của Watzlawick, kiểu phản ứng này là gì và ngầm gửi thông điệp nào?",
+  luaChon:[
+    "Chấp nhận — anh đồng ý tham gia",
+    "Huỷ bỏ — dùng từ tối nghĩa, ngầm gửi thông điệp “Tôi muốn nhưng tôi không thể”",
+    "Từ chối — anh không muốn tham gia",
+    "Siêu giao tiếp — anh đang bình luận về chính cuộc trò chuyện"
+  ],
+  dapAn:1,
+  giaiThich:"Ba khả năng phản ứng là chấp nhận, từ chối và huỷ bỏ. “Huỷ bỏ” là dùng ngôn từ mơ hồ để vừa không nhận vừa không chối — bài giảng diễn giải thông điệp ngầm là “Tôi muốn nhưng tôi không thể”.",
+  viSaoSai:[
+    "Chấp nhận sẽ là câu trả lời rõ ràng.",
+    "",
+    "Từ chối cũng là câu trả lời rõ ràng, chỉ theo hướng ngược lại.",
+    "Siêu giao tiếp là nói về chính cách hai bên đang giao tiếp, không phải trả lời lấp lửng."
+  ]
+},
+{
+  id:"GD-TH-43", loai:"thuc-hanh", chuDe:"Thiên vị đa hướng",
+  boiCanh:"Trong buổi làm việc gia đình, người con gái tố cáo cha đã bỏ mặc mẹ con cô suốt thời thơ ấu. Người cha không có mặt trong buổi hôm đó.",
+  cauHoi:"Nhà trị liệu hành xử theo nguyên tắc thiên vị đa hướng sẽ làm gì?",
+  luaChon:[
+    "Đồng tình với người con để cô cảm thấy được ủng hộ",
+    "Giữ im lặng tuyệt đối vì phải trung lập",
+    "Ghi nhận đầy đủ bất công mà cô đã chịu, đồng thời mở không gian cho hoàn cảnh và bất công của chính người cha — kể cả khi ông vắng mặt — mà không thiên vị ai chống lại ai",
+    "Hoãn buổi làm việc cho tới khi người cha có mặt"
+  ],
+  dapAn:2,
+  giaiThich:"Đặc trưng riêng của thiên vị đa hướng là nhà trị liệu đứng về phía cả người vắng mặt. Đây không phải trung lập lạnh lùng, cũng không phải chọn phe — mà là lần lượt đứng về phía từng người để mỗi bên đều được trình bày bất công của mình.",
+  viSaoSai:[
+    "Đứng hẳn về một phía là điều nguyên tắc này bác bỏ.",
+    "Trung lập im lặng khác với thiên vị đa hướng — nguyên tắc này đòi hỏi chủ động ghi nhận từng bên.",
+    "",
+    "Sự vắng mặt của người cha không phải lý do hoãn; chính nguyên tắc này cho phép làm việc với người vắng mặt."
+  ]
+},
+{
+  id:"GD-TH-44", loai:"thuc-hanh", chuDe:"Điển cứu — biến cố mất người thân",
+  boiCanh:"Bố đột ngột qua đời. Gia đình quyết định “không ai được nhắc tới bố nữa cho mẹ đỡ buồn”, giữ nguyên mọi thói quen sinh hoạt như khi bố còn sống, và không ai thay bố đảm nhận các việc ông từng làm. Hai năm sau, cậu con út xuất hiện rối loạn lo âu nặng.",
+  cauHoi:"Hệ thống đã chọn phương án nào và kết quả có phù hợp với dự đoán của bài giảng không?",
+  luaChon:[
+    "Lựa chọn 2 — chấp nhận thay đổi; kết quả là thế cân bằng nội môi mới",
+    "Lựa chọn 1 — cố chấp duy trì cơ chế cũ, kháng cự biến đổi và chối bỏ nỗi đau; kết quả đúng như dự đoán là phát sinh rối loạn bệnh lý và xuất hiện bệnh nhân bị chỉ định",
+    "Hệ thống đã thích ứng nhưng cậu út có yếu tố di truyền",
+    "Đây là hiện tượng bảng xoay nợ xuyên thế hệ"
+  ],
+  dapAn:1,
+  giaiThich:"Ba dấu hiệu của lựa chọn 1 đều có mặt: kháng cự biến đổi, chối bỏ nỗi đau, không tái phân bổ vai trò. Bài giảng dự đoán chính xác kết quả — rối loạn bệnh lý và sự xuất hiện của bệnh nhân bị chỉ định.",
+  viSaoSai:[
+    "Lựa chọn 2 đòi hỏi tái phân bổ vai trò và mở rộng ranh giới — không có ở đây.",
+    "",
+    "Không có dữ liệu nào ủng hộ giả thuyết di truyền, và hệ thống rõ ràng chưa thích ứng.",
+    "Không có mô tả về bất công truyền từ thế hệ trước."
+  ]
+},
+{
+  id:"GD-TH-45", loai:"thuc-hanh", chuDe:"Hội chứng tổ rỗng",
+  boiCanh:"Bà H. suốt 22 năm chỉ xoay quanh việc chăm hai con, không có sở thích hay công việc riêng. Khi đứa út tốt nghiệp và dọn ra ở riêng, bà lặp đi lặp lại câu: “Giờ mẹ biết làm gì đây?”",
+  cauHoi:"Bà H. thuộc nhóm nguy cơ nào, và sáu biểu hiện của hội chứng này là gì?",
+  luaChon:[
+    "Nhóm nguy cơ trung bình; biểu hiện gồm mất ngủ, chán ăn, sụt cân",
+    "Nhóm nguy cơ cao nhất — cha mẹ xem con cái là lẽ sống duy nhất, không có sở thích hay sự nghiệp riêng; sáu biểu hiện: cô đơn, mất mục đích sống, mất kiểm soát, căng thẳng, trầm buồn, lo lắng",
+    "Nhóm nguy cơ thấp vì bà vẫn còn liên lạc với con",
+    "Không thuộc hội chứng tổ rỗng vì con vẫn còn sống"
+  ],
+  dapAn:1,
+  giaiThich:"Câu “Giờ mẹ biết làm gì đây?” chính là phiên bản tiếng Việt của câu hỏi ám ảnh mà bài giảng nêu — “Now what am I supposed to do??”. Chi tiết 22 năm không có đời sống riêng đặt bà đúng vào nhóm nguy cơ cao nhất.",
+  viSaoSai:[
+    "Mất ngủ, chán ăn, sụt cân không phải sáu biểu hiện được liệt kê.",
+    "",
+    "Việc còn liên lạc không làm giảm nguy cơ; yếu tố quyết định là có đời sống riêng hay không.",
+    "Hội chứng tổ rỗng khởi phát khi con rời nhà, không liên quan tới việc con còn sống hay không."
+  ]
+},
+{
+  id:"GD-TH-46", loai:"thuc-hanh", chuDe:"Cán cân cho – nhận",
+  boiCanh:"Thân chủ nam 30 tuổi làm việc quần quật, không dám nghỉ ngơi. Anh nói: “Mỗi lần em ngồi không là em thấy áy náy kinh khủng. Mẹ em đã hy sinh cho em quá nhiều.”",
+  cauHoi:"Hiện tượng này được giải thích thế nào theo liệu pháp bối cảnh?",
+  luaChon:[
+    "Đây là rối loạn ám ảnh cưỡng chế về công việc",
+    "Cán cân cho – nhận mất cân bằng: người mẹ chỉ đóng vai “người cho đi” nên vô tình biến con thành “con nợ”; thân chủ mang món nợ cuộc đời khổng lồ nhưng bị tước mất khả năng đền đáp tương xứng, dẫn tới tội lỗi, áy náy và tự trừng phạt bằng cách làm việc liên tục",
+    "Đây là biểu hiện của phụ mẫu hoá",
+    "Đây là lòng trung thành chiều ngang"
+  ],
+  dapAn:1,
+  giaiThich:"Ba nghĩa vụ đạo đức là Cho đi — Đón nhận — Đền đáp tương xứng. Khi một bên hy sinh quá mức và không cho phép bên kia đền đáp, vế thứ ba bị chặn lại; món nợ không bao giờ trả xong nên biến thành cảm giác tội lỗi mạn tính.",
+  viSaoSai:[
+    "Nhãn chẩn đoán này bỏ qua toàn bộ chiều kích đạo đức quan hệ.",
+    "",
+    "Phụ mẫu hoá là đứa trẻ bị ép làm cha mẹ cho phụ huynh, không phải tình huống này.",
+    "Trung thành chiều ngang hướng tới bạn đời, anh chị em, bạn hữu."
+  ]
+},
+{
+  id:"GD-TH-47", loai:"thuc-hanh", chuDe:"Xung đột lòng trung thành",
+  boiCanh:"Thân chủ mất ngủ kéo dài từ khi ba mất. Trước kia anh học Y nhưng bỏ giữa chừng để chuyển sang Mỹ thuật. Ba anh vốn là một bác sĩ nổi tiếng.",
+  cauHoi:"Cách đọc phù hợp nhất theo khung xuyên thế hệ là gì?",
+  luaChon:[
+    "Rối loạn giấc ngủ do tang chế thông thường, sẽ tự hết theo thời gian",
+    "Xung đột lòng trung thành chiều dọc: việc từ bỏ nghề của cha bị hệ thống vô thức xem là “phản bội” di sản và kỳ vọng gia đình; triệu chứng mất ngủ xuất hiện như một biểu hiện của lòng trung thành vô hình — thân chủ dùng đau khổ để tự trừng phạt và “trả nợ” cho việc đi chệch con đường của cha",
+    "Bảng xoay nợ từ thế hệ ông bà truyền xuống",
+    "Hội chứng tổ rỗng ở người con"
+  ],
+  dapAn:1,
+  giaiThich:"Ba chi tiết khớp nhau: thời điểm khởi phát đúng lúc cha mất, nghề bị từ bỏ chính là nghề của cha, và triệu chứng mang hình thức tự chịu đựng. Cái chết của cha khiến “món nợ” không còn cơ hội được thanh toán trực tiếp, nên nó chuyển thành triệu chứng.",
+  viSaoSai:[
+    "Cách đọc này bỏ qua mối liên hệ rất đặc hiệu giữa triệu chứng và lựa chọn nghề nghiệp.",
+    "",
+    "Bảng xoay nợ nói về bất công từ thế hệ trước bị trút xuống thế hệ sau, không phải trường hợp này.",
+    "Tổ rỗng xảy ra ở cha mẹ khi con rời nhà."
+  ]
+},
+{
+  id:"GD-TH-48", loai:"thuc-hanh", chuDe:"Đạo đức quan hệ",
+  boiCanh:"Thân chủ bức xúc kể về cha mình: “Ông ta không chia đều gia sản nên làm gia đình lục đục tới giờ.”",
+  cauHoi:"Lời phàn nàn này phản ánh trực tiếp khái niệm nào, thuộc trường phái nào?",
+  luaChon:[
+    "Tam giác hoá — thuộc hệ thống Bowen",
+    "Đạo đức quan hệ (Relational Ethics): tính chính đáng và sự công bằng trong hệ thống bị phá vỡ — thuộc Liệu pháp Bối cảnh xuyên thế hệ của Boszormenyi-Nagy",
+    "Ranh giới quá dính — thuộc trị liệu cấu trúc của Minuchin",
+    "Câu chuyện áp đặt — thuộc trị liệu tường thuật"
+  ],
+  dapAn:1,
+  giaiThich:"Từ khoá là “không chia đều” — tức là vấn đề công bằng, thuộc chiều kích thứ tư của tháp 4 chiều kích. Đây chính là địa hạt đặc trưng của Nagy, nơi bất công vật chất được đọc như bất công đạo đức trong hệ thống.",
+  viSaoSai:[
+    "Không có người thứ ba bị kéo vào để giảm căng thẳng giữa hai người.",
+    "",
+    "Không có mô tả nào về ranh giới hay cấu trúc gia đình.",
+    "Không có yếu tố câu chuyện bản sắc bị áp đặt."
+  ]
+},
+{
+  id:"GD-TH-49", loai:"thuc-hanh", chuDe:"Ai yêu cầu — ai mang đau khổ",
+  boiCanh:"Ba mẹ đưa thân chủ 17 tuổi đến trị liệu vì em “hay cãi lời, rồi lại im lặng cả tuần”. Khi được gặp riêng, em kể em chỉ nói chuyện được với chị gái, vì chị là người duy nhất chấp nhận em là người thuộc cộng đồng LGBT.",
+  cauHoi:"Ai là người đưa ra yêu cầu và ai là người mang đau khổ?",
+  luaChon:[
+    "Cả hai đều là thân chủ; không cần phân biệt",
+    "Người đưa ra yêu cầu là ba mẹ (họ muốn nhà trị liệu “sửa” hành vi của con); người mang vác đau khổ là thân chủ — em bị tước đoạt sự chấp nhận bản sắc, phải dùng cãi lời (phản hồi dương tính) hoặc im lặng, rút lui (phản hồi âm tính) để sinh tồn",
+    "Người đưa ra yêu cầu là thân chủ; người mang đau khổ là ba mẹ",
+    "Người chị gái là người mang đau khổ vì phải làm cầu nối"
+  ],
+  dapAn:1,
+  giaiThich:"Đây là dạng câu hỏi kết hợp hai khung: ba thành tố (than vãn – yêu cầu) của lâm sàng phân tâm, và cơ chế phản hồi âm/dương của hệ thống. Người mang triệu chứng không nhất thiết là người có lời yêu cầu — nhận sai điểm này sẽ dẫn tới việc đứng về phía sai ngay từ buổi đầu.",
+  viSaoSai:[
+    "Phân biệt hai vai này là bước đầu tiên của buổi làm việc đầu tiên.",
+    "",
+    "Đảo ngược — thân chủ không phải người chủ động tìm đến trị liệu.",
+    "Người chị là nguồn nâng đỡ duy nhất, không phải người mang triệu chứng."
   ]
 }
 
