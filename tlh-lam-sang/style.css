@@ -340,3 +340,63 @@ a{color:var(--maroon-deep);}
   body{background:#fff;}
   .qcard{break-inside:avoid;}
 }
+
+/* =========================================================
+   ĐỀ IN RA GIẤY — khoanh tròn trắc nghiệm
+   Vùng #printArea chỉ hiện khi <body> có class .print-de và
+   đang ở chế độ in. Kiểu chữ tối giản, đen trắng, tiết kiệm giấy.
+   ========================================================= */
+#printArea{display:none;}
+
+@media print{
+  body.print-de > *{display:none !important;}
+  body.print-de #printArea{display:block !important;}
+  body.print-de{background:#fff; color:#000;}
+  @page{margin:14mm 12mm;}
+}
+
+.de-head{border-bottom:1.5px solid #000; padding-bottom:8px; margin-bottom:12px;}
+.de-title{
+  font-family:var(--serif); font-size:17px; font-weight:700;
+  text-align:center; letter-spacing:.02em; margin:0 0 2px;
+}
+.de-sub{font-family:var(--sans); font-size:11px; text-align:center; margin:0 0 10px;}
+.de-meta{
+  display:flex; justify-content:space-between; gap:16px;
+  font-family:var(--sans); font-size:11px; margin-bottom:8px;
+}
+.de-meta span{flex:1; border-bottom:1px dotted #666; padding-bottom:2px;}
+.de-huongdan{font-family:var(--sans); font-size:10.5px; font-style:italic;}
+
+.de-nhanh{
+  font-family:var(--sans); font-size:10px; font-weight:700; letter-spacing:.12em;
+  text-transform:uppercase; border-bottom:1px solid #000;
+  margin:14px 0 8px; padding-bottom:2px; break-after:avoid;
+}
+.de-q{break-inside:avoid; margin:0 0 9px; font-size:11.5px; line-height:1.45;}
+.de-q__stem{margin:0 0 3px;}
+.de-q__no{font-weight:700;}
+.de-q__boicanh{display:block; font-style:italic; margin:0 0 2px;}
+.de-opts{list-style:none; margin:0; padding:0 0 0 14px;}
+.de-opts--2col{columns:2; column-gap:18px;}
+.de-opt{display:flex; gap:5px; align-items:flex-start; break-inside:avoid; margin-bottom:1px;}
+.de-cir{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:14px; height:14px; flex:none; margin-top:1px;
+  border:1px solid #000; border-radius:50%;
+  font-family:var(--sans); font-size:9px; font-weight:600; line-height:1;
+}
+
+.de-dapan{break-before:page;}
+.de-dapan h3{
+  font-family:var(--sans); font-size:12px; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; border-bottom:1.5px solid #000;
+  padding-bottom:4px; margin:0 0 10px;
+}
+.de-key{
+  display:grid; grid-template-columns:repeat(8, 1fr); gap:3px 10px;
+  font-family:var(--mono); font-size:11px; margin-bottom:14px;
+}
+.de-key b{font-weight:700;}
+.de-giai{font-size:10.5px; line-height:1.45; break-inside:avoid; margin:0 0 7px;}
+.de-giai .n{font-family:var(--mono); font-weight:600;}

@@ -37,7 +37,7 @@
 
     <div class="setup">
       <h2>Thiết lập đề</h2>
-      <p>Chọn phạm vi và bấm bắt đầu. Mỗi lần bắt đầu là một đề khác nhau.</p>
+      <p>Chọn phạm vi và bấm bắt đầu. Mỗi lần bắt đầu là một đề khác nhau. Hai lựa chọn cuối cho phép <strong>làm hết toàn bộ câu hỏi</strong> và vẫn được chấm điểm — khác với chế độ đọc ôn ở nút bên cạnh, vốn hiện sẵn đáp án và không tính điểm.</p>
 
       <div class="setup__row">
         <label>Phiên bản đề
@@ -45,15 +45,24 @@
             <option value="60" selected>60 câu — đề chuẩn, cả 3 nhánh (20 câu/nhánh)</option>
             <option value="30">30 câu — đề ngắn, cả 3 nhánh (10 câu/nhánh)</option>
             <option value="20">20 câu — luyện riêng một nhánh</option>
+            <option value="all" id="optAll">Toàn bộ ngân hàng — có chấm điểm</option>
+            <option value="all-branch" id="optAllBranch">Toàn bộ một nhánh — có chấm điểm</option>
+            <option value="custom">Tự chọn số câu…</option>
           </select>
         </label>
 
         <label id="scopeWrap" style="display:none;">Nhánh
           <select id="optScope">
+            <option value="all">Cả 3 nhánh</option>
             <option value="cbt">CBT — Nhận thức Hành vi</option>
             <option value="phan-tam">Phân tâm</option>
             <option value="gia-dinh">Hệ thống gia đình</option>
           </select>
+        </label>
+
+        <label id="soCauWrap" style="display:none;">Số câu
+          <input type="number" id="optSoCau" value="40" min="1" step="1" style="width:96px;">
+          <span id="soCauMax" style="font-family:var(--mono); font-size:11px; color:var(--ink-faint);"></span>
         </label>
       </div>
 
@@ -68,6 +77,42 @@
       </div>
 
       <p id="bankStats" style="font-family:var(--mono); font-size:11.5px; color:var(--ink-faint); margin:16px 0 0;"></p>
+    </div>
+
+    <!-- ================= IN ĐỀ RA GIẤY ================= -->
+    <div class="setup">
+      <h2>In đề ra giấy</h2>
+      <p>Xuất một đề trắc nghiệm dạng <strong>khoanh tròn</strong> để in hoặc lưu PDF. Chọn số câu, phạm vi, và có kèm trang đáp án hay không.</p>
+
+      <div class="setup__row">
+        <label>Số câu
+          <input type="number" id="inSoCau" value="40" min="1" step="1" style="width:96px;">
+          <span id="inSoCauMax" style="font-family:var(--mono); font-size:11px; color:var(--ink-faint);"></span>
+        </label>
+
+        <label>Phạm vi
+          <select id="inScope">
+            <option value="all">Cả 3 nhánh</option>
+            <option value="cbt">CBT — Nhận thức Hành vi</option>
+            <option value="phan-tam">Phân tâm</option>
+            <option value="gia-dinh">Hệ thống gia đình</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="setup__row">
+        <label><input type="checkbox" id="inXao" checked> Xáo trộn thứ tự đáp án</label>
+        <label><input type="checkbox" id="inDapAn" checked> Kèm trang đáp án ở cuối</label>
+        <label><input type="checkbox" id="inGiaiThich"> Kèm cả lời giải thích</label>
+      </div>
+
+      <div class="setup__row">
+        <button class="btn" id="btnPrint">In đề / Lưu PDF →</button>
+      </div>
+
+      <p style="font-family:var(--mono); font-size:11px; color:var(--ink-faint); margin:14px 0 0;">
+        Hộp thoại in sẽ mở ra — chọn <em>Save as PDF</em> nếu muốn lưu file thay vì in giấy.
+      </p>
     </div>
   </section>
 
@@ -89,10 +134,14 @@
 <div class="sticky-submit hidden" id="stickySubmit">
   <span class="note" id="submitNote"></span>
   <span style="display:flex; gap:10px; flex-wrap:wrap;">
-    <button class="btn btn--ghost" id="btnQuit">Thoát về thiết lập</button>
+    <button class="btn btn--ghost" id="btnQuit">Thoát</button>
+    <button class="btn btn--ghost" id="btnNext">↓ Câu chưa làm</button>
     <button class="btn" id="btnSubmit">Nộp bài &amp; chấm điểm</button>
   </span>
 </div>
+
+<!-- vùng dựng đề in ra giấy, chỉ hiện khi in -->
+<div id="printArea"></div>
 
 <script src="data/questions-cbt.js"></script>
 <script src="data/questions-phan-tam.js"></script>
@@ -155,6 +204,43 @@
     });
     if (mixBranches) shuffle(items);
     return items;
+  }
+
+  /* ---------- dựng đề theo SỐ CÂU tự chọn ----------
+     Rút vòng tròn qua từng nhóm (nhánh × dạng câu) để đề luôn cân bằng
+     giữa các nhánh và giữa lý thuyết / tình huống, dù số câu là bao nhiêu. */
+  function buildExamByCount(scope, soCau, shuffleOpts, mixBranches){
+    var branches = (scope === "all") ? ORDER.slice() : [scope];
+    var pools = [];
+    branches.forEach(function(b){
+      var bank = BANKS[b];
+      if (!bank) return;
+      ["ly-thuyet","thuc-hanh"].forEach(function(l){
+        var ds = shuffle(bank.cauHoi.filter(function(q){ return q.loai === l; }));
+        if (ds.length) pools.push({ nhanh:b, ds:ds });
+      });
+    });
+    var chosen = [], i = 0, conHang = true;
+    while (chosen.length < soCau && conHang){
+      conHang = false;
+      for (var k = 0; k < pools.length && chosen.length < soCau; k++){
+        if (pools[k].ds.length > i){
+          chosen.push(prep(pools[k].ds[i], pools[k].nhanh, shuffleOpts));
+          conHang = true;
+        }
+      }
+      i++;
+    }
+    if (mixBranches) shuffle(chosen);
+    else chosen.sort(function(a,b){ return ORDER.indexOf(a.nhanh) - ORDER.indexOf(b.nhanh); });
+    return chosen;
+  }
+
+  function tongSoCau(scope){
+    var branches = (scope === "all") ? ORDER.slice() : [scope];
+    return branches.reduce(function(s,b){
+      return s + ((BANKS[b] && BANKS[b].cauHoi) ? BANKS[b].cauHoi.length : 0);
+    }, 0);
   }
 
   function buildFullReview(){
@@ -256,6 +342,38 @@
     $("submitNote").textContent = (done === total)
       ? "Đã trả lời hết " + total + " câu."
       : "Còn " + (total - done) + " câu chưa trả lời.";
+    var btn = $("btnNext");
+    if (btn){
+      btn.disabled = (done === total);
+      btn.textContent = (done === total) ? "✓ Đã làm hết" : "↓ Câu chưa làm (" + (total - done) + ")";
+    }
+  }
+
+  /* nhảy tới câu chưa trả lời kế tiếp, tính từ vị trí đang xem */
+  function toiCauChuaLam(){
+    var n = state.items.length;
+    if (!n) return;
+    // tìm câu đầu tiên đang nằm dưới đỉnh màn hình
+    var moc = 0;
+    for (var j = 0; j < n; j++){
+      var el = $("q" + j);
+      if (el && el.getBoundingClientRect().top > 90){ moc = j; break; }
+      moc = j;
+    }
+    var tim = function(from, to){
+      for (var i = from; i < to; i++) if (state.answers[i] === undefined) return i;
+      return -1;
+    };
+    var idx = tim(moc + 1, n);
+    if (idx === -1) idx = tim(0, n);      // hết danh sách thì quay vòng lên đầu
+    if (idx === -1) return;
+    var card = $("q" + idx);
+    if (card){
+      card.scrollIntoView({ behavior:"smooth", block:"start" });
+      card.style.transition = "box-shadow .2s ease";
+      card.style.boxShadow = "0 0 0 3px var(--gold)";
+      setTimeout(function(){ card.style.boxShadow = ""; }, 1200);
+    }
   }
 
   /* ---------- đồng hồ ---------- */
@@ -382,10 +500,26 @@
   }
 
   function start(){
-    var ver = $("optVersion").value;                 // "60" | "30" | "20"
-    var scope = (ver === "20") ? $("optScope").value : "all";
-    var perType = (ver === "60") ? 10 : (ver === "30" ? 5 : 10);
-    state.items = buildExam(scope, perType, $("optShuffleOpts").checked, $("optMixBranches").checked);
+    var ver = $("optVersion").value;   // "60"|"30"|"20"|"all"|"all-branch"|"custom"
+    var canChonNhanh = (ver === "20" || ver === "all-branch" || ver === "custom");
+    var scope = canChonNhanh ? $("optScope").value : "all";
+    var xao = $("optShuffleOpts").checked, tron = $("optMixBranches").checked;
+
+    if (ver === "custom"){
+      var max = tongSoCau(scope);
+      var n = parseInt($("optSoCau").value, 10);
+      if (!n || n < 1) n = 1;
+      if (n > max) n = max;
+      $("optSoCau").value = n;
+      state.items = buildExamByCount(scope, n, xao, tron);
+    } else {
+      var perType;
+      if (ver === "60")       perType = 10;
+      else if (ver === "30")  perType = 5;
+      else if (ver === "20")  perType = 10;
+      else                    perType = Infinity;   // "all" và "all-branch": lấy hết
+      state.items = buildExam(scope, perType, xao, tron);
+    }
     state.answers = {}; state.graded = false; state.reviewOnly = false;
 
     if (!state.items.length){ alert("Không nạp được ngân hàng câu hỏi. Kiểm tra thư mục data/."); return; }
@@ -419,6 +553,78 @@
     window.scrollTo({ top:0 });
   }
 
+  /* =========================================================
+     IN ĐỀ RA GIẤY — dạng khoanh tròn
+     ========================================================= */
+  function soCauHopLe(inputId, scope){
+    var max = tongSoCau(scope);
+    var n = parseInt($(inputId).value, 10);
+    if (!n || n < 1) n = 1;
+    if (n > max) n = max;
+    $(inputId).value = n;
+    return n;
+  }
+
+  function renderDeIn(items, kemDapAn, kemGiaiThich, scope){
+    var d = new Date();
+    var ngay = String(d.getDate()).padStart(2,"0") + "/" + String(d.getMonth()+1).padStart(2,"0") + "/" + d.getFullYear();
+    var phamVi = (scope === "all") ? "Cả 3 nhánh trị liệu" : LABEL[scope];
+
+    var h = '<div class="de-head">'
+      + '<p class="de-title">ĐỀ ÔN TẬP TRẮC NGHIỆM</p>'
+      + '<p class="de-sub">Nhập môn Tâm lý học Lâm sàng · ' + esc(phamVi) + ' · ' + items.length + ' câu</p>'
+      + '<div class="de-meta"><span>Họ và tên:</span><span>Lớp:</span><span>Ngày: ' + ngay + '</span></div>'
+      + '<p class="de-huongdan">Khoanh tròn chữ cái trước phương án đúng nhất. Mỗi câu chỉ chọn một phương án.</p>'
+      + '</div>';
+
+    var nhanhHienTai = null;
+    items.forEach(function(it, n){
+      if (scope === "all" && it.nhanh !== nhanhHienTai){
+        nhanhHienTai = it.nhanh;
+        h += '<p class="de-nhanh">' + esc(LABEL[it.nhanh]) + '</p>';
+      }
+      var q = it.ref;
+      // để đáp án 2 cột nếu phương án đều ngắn
+      var daiNhat = it.luaChon.reduce(function(m,o){ return Math.max(m, o.length); }, 0);
+      var cls = "de-opts" + (daiNhat <= 42 ? " de-opts--2col" : "");
+
+      h += '<div class="de-q"><p class="de-q__stem"><span class="de-q__no">Câu ' + (n+1) + '.</span> ';
+      if (q.boiCanh) h += '<span class="de-q__boicanh">' + esc(q.boiCanh) + '</span>';
+      h += esc(q.cauHoi) + '</p><ul class="' + cls + '">';
+      it.luaChon.forEach(function(o, i){
+        h += '<li class="de-opt"><span class="de-cir">' + LETTER[i] + '</span><span>' + esc(o) + '</span></li>';
+      });
+      h += '</ul></div>';
+    });
+
+    if (kemDapAn){
+      h += '<div class="de-dapan"><h3>Đáp án — ' + items.length + ' câu</h3><div class="de-key">';
+      items.forEach(function(it, n){
+        h += '<span>' + (n+1) + '. <b>' + LETTER[it.dapAn] + '</b></span>';
+      });
+      h += '</div>';
+      if (kemGiaiThich){
+        h += '<h3>Giải thích</h3>';
+        items.forEach(function(it, n){
+          h += '<p class="de-giai"><span class="n">Câu ' + (n+1) + ' — ' + LETTER[it.dapAn] + '.</span> '
+             + esc(it.ref.giaiThich) + '</p>';
+        });
+      }
+      h += '</div>';
+    }
+    return h;
+  }
+
+  function inDe(){
+    var scope = $("inScope").value;
+    var n = soCauHopLe("inSoCau", scope);
+    var items = buildExamByCount(scope, n, $("inXao").checked, false);
+    if (!items.length){ alert("Không dựng được đề. Kiểm tra thư mục data/."); return; }
+    $("printArea").innerHTML = renderDeIn(items, $("inDapAn").checked, $("inGiaiThich").checked, scope);
+    document.body.classList.add("print-de");
+    window.print();
+  }
+
   /* ---------- khởi tạo ---------- */
   function init(){
     var counts = [];
@@ -433,9 +639,41 @@
     });
     $("bankStats").textContent = "Ngân hàng hiện có " + totalAll + " câu — " + counts.join(" · ");
 
+    // ghi số câu thật vào nhãn hai lựa chọn "làm hết"
+    var oAll = $("optAll");
+    if (oAll) oAll.textContent = "Toàn bộ ngân hàng — " + totalAll + " câu (có chấm điểm)";
+    var capNhatNhanAllBranch = function(){
+      var o = $("optAllBranch");
+      if (!o) return;
+      var b = $("optScope").value;
+      var n = (b === "all") ? totalAll : ((BANKS[b] && BANKS[b].cauHoi) ? BANKS[b].cauHoi.length : 0);
+      o.textContent = "Toàn bộ một nhánh — " + n + " câu (có chấm điểm)";
+    };
+
     $("btnStart").addEventListener("click", start);
     $("btnReviewAll").addEventListener("click", reviewAll);
     $("btnSubmit").addEventListener("click", grade);
+    $("btnNext").addEventListener("click", toiCauChuaLam);
+
+    // --- khối in đề ra giấy ---
+    var syncInSoCau = function(){
+      var max = tongSoCau($("inScope").value);
+      $("inSoCau").max = max;
+      $("inSoCauMax").textContent = "/ tối đa " + max;
+      if (parseInt($("inSoCau").value, 10) > max) $("inSoCau").value = max;
+    };
+    $("inScope").addEventListener("change", syncInSoCau);
+    syncInSoCau();
+    $("btnPrint").addEventListener("click", inDe);
+    $("inDapAn").addEventListener("change", function(){
+      $("inGiaiThich").disabled = !this.checked;
+      if (!this.checked) $("inGiaiThich").checked = false;
+    });
+    // dọn sau khi in xong để trang web trở lại bình thường
+    window.addEventListener("afterprint", function(){
+      document.body.classList.remove("print-de");
+      $("printArea").innerHTML = "";
+    });
     $("btnQuit").addEventListener("click", function(){
       if (confirm("Thoát và huỷ bài làm hiện tại?")) backToSetup();
     });
@@ -446,22 +684,47 @@
       applyFilter(e.target.getAttribute("data-f"));
     });
 
-    // hiện ô chọn nhánh chỉ khi làm đề 20 câu
+    // hiện ô chọn nhánh / ô số câu tuỳ theo phiên bản đề
+    var optAllBranches = $("optScope").querySelector('option[value="all"]');
     function syncScope(){
-      $("scopeWrap").style.display = ($("optVersion").value === "20") ? "" : "none";
+      var v = $("optVersion").value;
+      var motNhanh = (v === "20" || v === "all-branch");
+      var tuChon   = (v === "custom");
+      $("scopeWrap").style.display = (motNhanh || tuChon) ? "" : "none";
+      $("soCauWrap").style.display = tuChon ? "" : "none";
+      // "Cả 3 nhánh" chỉ hợp lệ với phiên bản tự chọn số câu
+      optAllBranches.hidden = motNhanh;
+      if (motNhanh && $("optScope").value === "all") $("optScope").value = "cbt";
+      if (tuChon) syncSoCau();
+      if ($("optAllBranch")) capNhatNhanAllBranch();
+    }
+    function syncSoCau(){
+      var max = tongSoCau($("optScope").value);
+      $("optSoCau").max = max;
+      $("soCauMax").textContent = "/ tối đa " + max;
+      if (parseInt($("optSoCau").value, 10) > max) $("optSoCau").value = max;
     }
     $("optVersion").addEventListener("change", syncScope);
+    $("optScope").addEventListener("change", function(){
+      capNhatNhanAllBranch();
+      if ($("optVersion").value === "custom") syncSoCau();
+    });
+    capNhatNhanAllBranch();
     syncScope();
 
     // tham số URL: ?branch=cbt  /  ?mode=review
     var p = new URLSearchParams(window.location.search);
     var br = p.get("branch");
+    var mode = p.get("mode");
     if (br && BANKS[br]){
-      $("optVersion").value = "20";
+      $("optVersion").value = (mode === "all") ? "all-branch" : "20";
       $("optScope").value = br;
       syncScope();
+    } else if (mode === "all"){
+      $("optVersion").value = "all";
+      syncScope();
     }
-    if (p.get("mode") === "review") reviewAll();
+    if (mode === "review") reviewAll();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
